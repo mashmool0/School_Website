@@ -14,8 +14,7 @@
             <div class="text">
                 <h1>خوش آمدید</h1>
                 <p>
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                    استفاده از طراحان گرافیک است،
+                    {{ welcome_text }}
                 </p>
             </div>
         </div>
@@ -38,33 +37,14 @@
         <h1 class="font">ثبت نام</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.fullname }}
-            {% for error in form.fullname.errors %}
-                <label for="IDcode">{{ error }}</label>
-            {% endfor %}
-            {{ form.phone_number }}
-            {% for error in form.phone_number.errors %}
-                <label for="IDcode">{{ error }}</label>
-            {% endfor %}
-            {{ form.password1 }}
-            {% for error in form.password1.errors %}
-                <label for="IDcode">{{ error }}</label>
-            {% endfor %}
-            {{ form.password2 }}
-            {% for error in form.password2.errors %}
-                <label for="IDcode">{{ error }}</label>
-            {% endfor %}
-
-
-            {#            <input dir="rtl" lang="fa" type="text" id="IDcode" placeholder="نام و نام خانوادگی">#}
             <!-- <label for="PhoneNumber">شماره تلفن نامعتبر است</label> -->
-            {#            <input dir="rtl" type="number" id="PhoneNumber" placeholder="شماره تلفن">#}
+            <input dir="rtl" type="tel" id="PhoneNumber" placeholder="شماره تلفن">
             <!-- <label for="email">ایـمیـل نامعتبر است</label> -->
-            {#            <input dir="rtl" type="email" id="email" placeholder="ایـمیـل">#}
+            <input dir="rtl" type="email" id="email" placeholder="ایـمیـل">
             <!-- <label for="password">رمز عبور نامعتبر است</label> -->
-            {#            <input dir="rtl" id="password" type="password" placeholder="رمز ورود">#}
+            <input dir="rtl" id="password" type="password" placeholder="رمز ورود">
             <!-- <label for="Repeatpassword">رمز عبور و نکرار آن با یکدیگر مطابقت ندارد</label> -->
-            {#            <input dir="rtl" type="password" id="passwrd" placeholder="تکرار رمز ورود">#}
+            <input dir="rtl" type="password" id="passwrd" placeholder="تکرار رمز ورود">
             <button type="submit">ورود</button>
             <a href="{% url 'account:login' %}" class="Login">رفتن به صفحه <span>ورود</span></a>
         </form>

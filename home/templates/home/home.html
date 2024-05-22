@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+</head>
+<body style="display: flex;flex: 1fr 1fr ;justify-content: center;align-items: center;margin-top: 300px;column-gap: 10px;flex-grow: inherit">
+<p style="display: block">Hello World</p>
+{% if request.user.is_authenticated %}
+    <button type="button" style="background-color: red;display: block;padding: 10px 10px 10px"
+            onclick="location.href='{% url 'account:logout' %}'">
+        Logout
+    </button>
+{% else %}
+    <button type="button" style="background-color: #325269;display: block;padding: 10px 10px 10px"
+            onclick="location.href='{% url 'account:login' %}'">
+        Login
+    </button>
+    <button type="button" style="background-color: #9dbcbb;display: block;padding: 10px 10px 10px"
+            onclick="location.href='{% url 'account:register' %}'">
+        Register
+    </button>
+{% endif %}
+</body>
+</html>

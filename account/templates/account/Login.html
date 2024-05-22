@@ -15,8 +15,7 @@
             <div class="text">
                 <h1>خوش آمدید</h1>
                 <p>
-                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-                    استفاده از طراحان گرافیک است،
+                    {{ welcome_text }}
                 </p>
             </div>
         </div>
@@ -39,41 +38,37 @@
         <h1 class="font">ورود</h1>
         <form method="post">
             {% csrf_token %}
-            <!-- Wrong EmailPhoneNum -->
-            {{ form.non_field_errors }}
-            {% for error in form.phone_number.errors %}
-                <label for="EmailPhoneNum">{{ error }}</label>
-            {% endfor %}
-            {{ form.phone_number }}
-            {{ form.password }}
 
-            {#            <input#}
-            {#                    dir="rtl"#}
-            {#                    type="text"#}
-            {#                    placeholder="شماره تماس  یا ایمیل خود را وارد کنید "#}
-            {#                    name="EmailPhoneNum"#}
-            {#                    class="EmailPhoneNum"#}
-            {#                    id="EmailPhoneNum"#}
-            {#                    required#}
-            {#            />#}
+            <label for="EmailPhoneNum">{{ error }}</label>
+
+
+            <input
+                    dir="rtl"
+                    type="text"
+                    placeholder="شماره تماس  یا ایمیل خود را وارد کنید "
+                    name="EmailPhoneNum"
+                    class="EmailPhoneNum"
+                    id="EmailPhoneNum"
+                    required
+            />
             <!-- Wrong PassWord -->
             <!-- <label for="password">رمز عبور اشتباه است</label> -->
 
-            {#            <input#}
-            {#                    dir="rtl"#}
-            {#                    type="password"#}
-            {#                    placeholder="رمز خود را وارد کنید"#}
-            {#                    name="Password"#}
-            {#                    id="password"#}
-            {#                    required#}
-            {#            />#}
-            <a href="ForgotPass.html" class="ForgotPass"
+            <input
+                    dir="rtl"
+                    type="password"
+                    placeholder="رمز خود را وارد کنید"
+                    name="Password"
+                    id="password"
+                    required
+            />
+            <a href="" class="ForgotPass"
             >رمز خود را <span>فراموش کردید</span>؟</a
             >
             <button type="submit">ورود</button>
         </form>
 
-        <a href="{% url 'account:signup' %}" class="SignUp"
+        <a href="{% url 'account:register' %}" class="SignUp"
         >اکانتی ندارید؟<span>ساخـت اکانـت</span></a
         >
     </div>
