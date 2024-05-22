@@ -1,0 +1,82 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="https://use.typekit.net/xoy1pfn.css"/>
+    <link rel="stylesheet" href="{% static 'css/Login.css' %}"/>
+    <title>ورود</title>
+</head>
+<body>
+<div class="container">
+    <div class="LeftPart">
+        <div class="InnerWrapper">
+            <div class="text">
+                <h1>خوش آمدید</h1>
+                <p>
+                    لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
+                    استفاده از طراحان گرافیک است،
+                </p>
+            </div>
+        </div>
+        <div class="top-right-circle"></div>
+        <div class="dot1"></div>
+        <div class="top-left-circle"></div>
+        <div class="dot2"></div>
+        <div class="bottom-circle"></div>
+        <div class="Rectangle"></div>
+        <div class="Rectangle1"></div>
+        <div class="Rectangle2"></div>
+        <div class="Rectangle3"></div>
+        <div class="Rectangle4"></div>
+        <div class="Rectangle5"></div>
+        <div class="Rectangle6"></div>
+        <div class="Rectangle7"></div>
+        <div class="Rectangle8"></div>
+    </div>
+    <div class="RightPart">
+        <h1 class="font">ورود</h1>
+        <form method="post">
+            {% csrf_token %}
+            <!-- Wrong EmailPhoneNum -->
+            {{ form.non_field_errors }}
+            {% for error in form.phone_number.errors %}
+                <label for="EmailPhoneNum">{{ error }}</label>
+            {% endfor %}
+            {{ form.phone_number }}
+            {{ form.password }}
+
+            {#            <input#}
+            {#                    dir="rtl"#}
+            {#                    type="text"#}
+            {#                    placeholder="شماره تماس  یا ایمیل خود را وارد کنید "#}
+            {#                    name="EmailPhoneNum"#}
+            {#                    class="EmailPhoneNum"#}
+            {#                    id="EmailPhoneNum"#}
+            {#                    required#}
+            {#            />#}
+            <!-- Wrong PassWord -->
+            <!-- <label for="password">رمز عبور اشتباه است</label> -->
+
+            {#            <input#}
+            {#                    dir="rtl"#}
+            {#                    type="password"#}
+            {#                    placeholder="رمز خود را وارد کنید"#}
+            {#                    name="Password"#}
+            {#                    id="password"#}
+            {#                    required#}
+            {#            />#}
+            <a href="ForgotPass.html" class="ForgotPass"
+            >رمز خود را <span>فراموش کردید</span>؟</a
+            >
+            <button type="submit">ورود</button>
+        </form>
+
+        <a href="{% url 'account:signup' %}" class="SignUp"
+        >اکانتی ندارید؟<span>ساخـت اکانـت</span></a
+        >
+    </div>
+</div>
+</body>
+</html>

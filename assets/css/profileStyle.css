@@ -1,0 +1,19 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+.wrapper{
+  width: 100svw;
+  height: 100svh;
+}
+nav{
+  width: 80svw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+.links{
+  /* width: 40svw; */
+  /* margin-top: 30px; */
+}
