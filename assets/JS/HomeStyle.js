@@ -7,10 +7,16 @@ function clickChecker(){
     for(let a=0 ; a<links.length ; a++){
       links[a].style.display = "block";
     }
+    checker= true;
   }
+
   else{
     
     document.querySelector(".HamburgerMenu").style.background = "none";
-    document.querySelectorAll(".SideLinks a").style.display = "none";
+    let links = document.querySelectorAll(".SideLinks a");
+    for(let a=0 ; a<links.length ; a++){
+      links[a].style.display = "none";
+    }
+    checker = false;
   }
 }
