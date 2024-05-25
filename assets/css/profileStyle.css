@@ -1,19 +1,49 @@
-*{
+@font-face {
+  font-family: "BYekan+";
+  src: url(../fonts/BYekan+.ttf);
+}
+* {
   margin: 0;
   padding: 0;
 }
-.wrapper{
+.wrapper {
   width: 100svw;
   height: 100svh;
+  top: 0;
+  left: 0;
+  position: relative;
+  background-color: whitesmoke;
 }
-nav{
-  width: 80svw;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
+.card {
+  width: 50svw;
+  height: 400px;
+  /* margin-left: 12.5svw; */
+  /* margin-top: 100px; */
+  margin: 100px 17.5svw;
+  background-color: white;
+  padding: 2svw;
 }
-.links{
-  /* width: 40svw; */
-  /* margin-top: 30px; */
+.wrapper div :nth-of-type(2) {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100svh;
+  width: 15svw;
+  border: none;
+  /* background-color: #0f66dc; */
+  background: rgb(43, 62, 177);
+  background: linear-gradient(
+    135deg,
+    rgba(43, 62, 177, 1) 0%,
+    rgba(35, 82, 198, 1) 53%,
+    rgba(15, 102, 220, 1) 100%
+  );
+}
+.card div div h1 , .card div div h2{
+  width: 60%;
+  font-family: "BYekan+";
+  text-align: center;
+  font-size: 30.4px;
+  font-weight: 500;
+
 }

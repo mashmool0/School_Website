@@ -1,7 +1,7 @@
 let checker = false;
 function clickChecker(){
   if(checker==false){
-    document.querySelector(".HamburgerMenu").style.backgroundColor = "rgba(0, 0, 0, 0.4)";
+    document.querySelector(".HamburgerMenu").style.backgroundColor = "rgba(0, 0, 0, 0.6)";
     let links = document.querySelectorAll(".SideLinks a");
     
     for(let a=0 ; a<links.length ; a++){
