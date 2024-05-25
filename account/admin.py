@@ -13,7 +13,7 @@ class UserStudentAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     search_fields = ('codeID', 'phone_number', 'email')
     list_filter = ('super_student_user',)
     fieldsets = [
-        ("اطلاعات کاربری", {"fields": [("phone_number", "email", 'password1')]}),
+        ("اطلاعات کاربری", {"fields": [("phone_number", 'username', "email")]}),
         ("اطلاعات تکمیلی کاربر", {"fields": [('first_name', 'last_name'), ('birthday_date',
                                                                            'section'), ('grade', 'field_of_study'),
                                              ('student_code_id',

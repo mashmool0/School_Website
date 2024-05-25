@@ -35,20 +35,41 @@
     </div>
     <div class="RightPart">
         <h1 class="font">ثبت نام</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- <label for="PhoneNumber">شماره تلفن نامعتبر است</label> -->
-            <input dir="rtl" type="tel" id="PhoneNumber" placeholder="شماره تلفن">
-            <!-- <label for="email">ایـمیـل نامعتبر است</label> -->
-            <input dir="rtl" type="email" id="email" placeholder="ایـمیـل">
-            <!-- <label for="password">رمز عبور نامعتبر است</label> -->
-            <input dir="rtl" id="password" type="password" placeholder="رمز ورود">
-            <!-- <label for="Repeatpassword">رمز عبور و نکرار آن با یکدیگر مطابقت ندارد</label> -->
-            <input dir="rtl" type="password" id="passwrd" placeholder="تکرار رمز ورود">
+            {% if form.non_field_errors %}
+                <div class="non-field-errors">
+                    {{ form.non_field_errors }}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                {{ form.phone_number }}
+                {% if form.phone_number.errors %}
+                    <div class="field-error">
+                        {{ form.phone_number.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <!-- Repeat for all other fields -->
+            <div class="form-group">
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="field-error">
+                        {{ form.password1.errors }}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password2 }}
+                {% if form.password2.errors %}
+                    <div class="field-error">
+                        {{ form.password2.errors }}
+                    </div>
+                {% endif %}
+            </div>
             <button type="submit">ورود</button>
             <a href="{% url 'account:login' %}" class="Login">رفتن به صفحه <span>ورود</span></a>
         </form>
-
     </div>
 </div>
 </body>

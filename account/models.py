@@ -16,8 +16,9 @@ class WelcomeRegister(models.Model):
 class UserStudent(models.Model):
     # Required fields for registration
     phone_number = models.CharField(max_length=11, unique=True, verbose_name="شماره تلفن ثبت نام")
-    email = models.EmailField(unique=True, verbose_name="آدرس ایمیل")
+    username = models.CharField(max_length=30, verbose_name="نام")
     # Required fields for authenticating school
+    email = models.EmailField(unique=True, verbose_name="آدرس ایمیل")
     first_name = models.CharField(max_length=50, verbose_name="نام", blank=True, null=True)
     last_name = models.CharField(max_length=50, verbose_name="نام خانوادگی", blank=True, null=True)
     birthday_date = models.DateField(verbose_name="تاریخ تولد")
@@ -40,7 +41,8 @@ class UserStudent(models.Model):
     mother_serial_number = models.CharField(max_length=20, verbose_name="شماره شناسنامه مادر", blank=True, null=True)
     # Not required
     sibling_education = models.TextField(verbose_name="تحصیلات خواهر یا برادر", blank=True, null=True)
-    profile = models.ImageField(default='static_files/profile/22_Profile.jpg', upload_to='profiles/', verbose_name="پروفایل")
+    profile = models.ImageField(default='static_files/profile/22_Profile.jpg', upload_to='profiles/',
+                                verbose_name="پروفایل")
     # Last authenticate
     super_student_user = models.BooleanField(default=False, verbose_name="قابلیت پرداخت و ثبت نام")
     # Connect this Model to User Model with OneToOne Connection
@@ -49,6 +51,7 @@ class UserStudent(models.Model):
     def __str__(self):
         full_name = f"{self.first_name or ''} {self.last_name or ''}".strip()
         return full_name if full_name else "Unnamed User"
+
 
     class Meta:
         verbose_name = "دانش آموز"

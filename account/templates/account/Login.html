@@ -38,39 +38,38 @@
         <h1 class="font">ورود</h1>
         <form method="post">
             {% csrf_token %}
-
-            <label for="EmailPhoneNum">{{ error }}</label>
-
-
-            <input
-                    dir="rtl"
-                    type="text"
-                    placeholder="شماره تماس  یا ایمیل خود را وارد کنید "
-                    name="EmailPhoneNum"
-                    class="EmailPhoneNum"
-                    id="EmailPhoneNum"
-                    required
-            />
-            <!-- Wrong PassWord -->
-            <!-- <label for="password">رمز عبور اشتباه است</label> -->
-
-            <input
-                    dir="rtl"
-                    type="password"
-                    placeholder="رمز خود را وارد کنید"
-                    name="Password"
-                    id="password"
-                    required
-            />
-            <a href="" class="ForgotPass"
-            >رمز خود را <span>فراموش کردید</span>؟</a
-            >
+            {{ form.errors }}
+            {% if form.non_field_errors %}
+                <div class="non-field-errors">
+                    {% for error in form.non_field_errors %}
+                        <p>{{ error }}</p>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="form-group">
+                {{ form.email_or_phone }}
+                {% if form.email_or_phone.errors %}
+                    <div class="field-error">
+                        {% for error in form.email_or_phone.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <div class="form-group">
+                {{ form.password1 }}
+                {% if form.password1.errors %}
+                    <div class="field-error">
+                        {% for error in form.password1.errors %}
+                            <p>{{ error }}</p>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <a href="" class="ForgotPass">رمز خود را <span>فراموش کردید</span>؟</a>
             <button type="submit">ورود</button>
         </form>
-
-        <a href="{% url 'account:register' %}" class="SignUp"
-        >اکانتی ندارید؟<span>ساخـت اکانـت</span></a
-        >
+        <a href="{% url 'account:register' %}" class="SignUp">اکانتی ندارید؟<span>ساخـت اکانـت</span></a>
     </div>
 </div>
 </body>
