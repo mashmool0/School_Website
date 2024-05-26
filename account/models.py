@@ -48,7 +48,7 @@ class UserStudent(models.Model):
 
     def __str__(self):
         full_name = f"{self.first_name or ''} {self.last_name or ''}".strip()
-        return full_name if full_name else self.phone_number
+        return full_name if full_name else self.username
 
     def set_user(self, user):
         self.user = user

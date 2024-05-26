@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 
 from django import forms
 from .models import UserStudent
+from django.contrib.auth import authenticate
 
 
 class RegisterForm(forms.ModelForm):
@@ -52,16 +53,18 @@ class RegisterForm(forms.ModelForm):
         return user_student, user
 
 
-class LoginForm(forms.Form):
+class LoginForm(forms.ModelForm):
     password1 = forms.CharField(widget=forms.PasswordInput(
         attrs={'id': 'password', 'type': 'password', 'dir': 'rtl', 'placeholder': 'رمز ورود'}))
-    email_or_phone = forms.CharField(widget=forms.TextInput(
-        attrs={'id': 'email_or_phone', 'type': 'text', 'dir': 'rtl', 'placeholder': 'شماره تماس یا ایمیل'}))
+    phone_number = forms.CharField(widget=forms.TextInput(
+        attrs={"maxlength": "11", 'dir': 'rtl', 'placeholder': 'شماره تماس'}))
 
-    def clean_email_or_phone(self):
-        data = self.cleaned_data['email_or_phone']
+    class Meta:
+        model = User
+        fields = ('phone_number', 'password1')
+
+    def clean_phone_number(self):
+        data = self.cleaned_data['phone_number']
         if not re.match(r'^[(09)(9)][0-9]+$', data):
             raise forms.ValidationError("شماره موبایل با 09 یا 9 آغاز میشود")
-        elif not re.match(r'^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$', data):
-            raise forms.ValidationError('ایمیل به شکل غلطی وارد شده است')
         return data

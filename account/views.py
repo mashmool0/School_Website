@@ -8,6 +8,7 @@ from .forms import RegisterForm, LoginForm, UserStudent
 from django.contrib.auth.models import User
 from .decorators import un_authenticated
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import authenticate
 
 
 # Create your views here.
@@ -15,6 +16,17 @@ from django.contrib.auth.decorators import login_required
 def user_login(request):
     welcome_text = WelcomeRegister.objects.last()
     form = LoginForm()
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid():
+            username = form.cleaned_data.get('phone_number')
+            password = form.cleaned_data.get('password1')
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                login(request, user)
+                return redirect('home:home')
+            else:
+                form.add_error(None, "رمز ورود یا شماره تماس اشتباه میباشد")
     return render(request, 'account/Login.html', context={'welcome_text': welcome_text, 'form': form})
 
 
@@ -22,7 +34,6 @@ def user_login(request):
 def user_register(request):
     welcome_text = WelcomeRegister.objects.last()
     form = RegisterForm()
-
     if request.method == "POST":
         form = RegisterForm(request.POST)
         if form.is_valid():
