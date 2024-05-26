@@ -83,14 +83,17 @@ def user_login_with_phone(request):
     if request.method == "POST":
         form = LoginOnlyWithPhone(request.POST)
         if form.is_valid():
-            code = random.randint(1000, 9999)
-            print(code)
+            # code = random.randint(1000, 9999)
+            # print(code)
+
             token_otp = get_random_string(length=99)
             phone_number = form.cleaned_data.get('phone_number')
+
             if not Otp.objects.filter(phone_number=phone_number).exists():
                 if not User.objects.filter(username=phone_number).exists():
                     form.add_error(None, "این شماره قبلا ثبت نام نکرده است")
                 else:
+                    code = send_otp(phone_number)
                     Otp.objects.create(phone_number=phone_number, token=token_otp, code=code)
                     try:
                         # Changed: Redirect to the phone registration page with token as query parameter

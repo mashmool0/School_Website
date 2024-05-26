@@ -1,5 +1,6 @@
 import random
 import requests
+import ast
 
 
 def send_otp(phone_number):
@@ -18,5 +19,9 @@ def send_otp(phone_number):
     }
 
     response = requests.post("https://portal.amootsms.com/rest/SendQuickOTP", headers=headers, data=data)
+    data_dict = ast.literal_eval(response.text)
 
-    return response
+    return data_dict["Data"]["Code"]
+
+
+
