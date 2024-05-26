@@ -6,16 +6,19 @@ from django.contrib.auth import login, logout
 from .models import WelcomeRegister
 from .forms import RegisterForm, LoginForm, UserStudent
 from django.contrib.auth.models import User
-import sys
+from .decorators import un_authenticated
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+@un_authenticated
 def user_login(request):
     welcome_text = WelcomeRegister.objects.last()
     form = LoginForm()
     return render(request, 'account/Login.html', context={'welcome_text': welcome_text, 'form': form})
 
 
+@un_authenticated
 def user_register(request):
     welcome_text = WelcomeRegister.objects.last()
     form = RegisterForm()
@@ -24,13 +27,7 @@ def user_register(request):
         form = RegisterForm(request.POST)
         if form.is_valid():
             try:
-                username = form.cleaned_data.get('username')
-                password = form.cleaned_data.get('password1')
-                password2 = form.cleaned_data.get('password2')
-                phone_number = form.cleaned_data.get('phone_number')
-                # Attempt to create a new user
-                user = User.objects.create_user(username=phone_number, password=password)
-                form.save()
+                user_student, user = form.save()
                 login(request, user)
                 return redirect('home:home')
 
@@ -40,7 +37,7 @@ def user_register(request):
                 else:
                     messages.error(request, f'خطایی رخ داده است: {str(e)}')
             except Exception as e:
-                username = form.cleaned_data.get('username')
+                username = form.cleaned_data.get('phone_number')
                 if User.objects.filter(username=username).exists():
                     User.objects.filter(username=username).delete()
 
@@ -49,6 +46,7 @@ def user_register(request):
     return render(request, 'account/Signup.html', context={'welcome_text': welcome_text, 'form': form})
 
 
+@login_required
 def user_logout(request):
     logout(request)
     return redirect('home:home')

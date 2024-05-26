@@ -38,9 +38,18 @@ class RegisterForm(forms.ModelForm):
 
         return cleaned_data
 
-
     def save(self, commit=True):
+        user_student = super().save(commit=False)
+        password = self.cleaned_data.get('password1')
+        phone_number = self.cleaned_data.get('phone_number')
 
+        user = User.objects.create_user(username=phone_number, password=password)
+        user_student.set_user(user)
+
+        if commit:
+            user_student.save()
+
+        return user_student, user
 
 
 class LoginForm(forms.Form):
