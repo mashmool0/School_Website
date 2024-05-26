@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="https://use.typekit.net/xoy1pfn.css"/>
     <link rel="stylesheet" href="{% static 'css/Login.css' %}"/>
-    <title>ورود</title>
+    <title> ورود با شماره تماس</title>
 </head>
 <body>
 <div class="container">
@@ -36,28 +36,14 @@
     </div>
     <div class="RightPart">
         <h1 class="font">ورود</h1>
-        <form method="post">
+        <form method="get">
             {% csrf_token %}
 
-            {% if form.non_field_errors %}
-                <label>{{ form.non_field_errors }}</label>
-            {% endif %}
-
-            {{ form.phone_number }}
-            {% if form.phone_number.errors %}
-                <label>{{ form.phone_number.errors }}</label>
-            {% endif %}
-
-            {{ form.password1 }}
-            {% if form.password1.errors %}
-                <label>{{ form.password1.errors }}</label>
-            {% endif %}
+            <input type="text" name="phone" placeholder="شماره تماس" class="EmailPhoneNum" id="EmailPhoneNum"
+                   required>
 
             <button type="submit">ورود</button>
         </form>
-
-        <a href="{% url 'account:loginPhone' %}" class="ForgotPass">رمز خود را <span>فراموش کردید</span></a>
-        <a href="{% url 'account:register' %}" class="SignUp">اکانتی ندارید؟<span>ساخـت اکانـت</span></a>
     </div>
 </div>
 </body>

@@ -1,14 +1,8 @@
 import re
-
-from django import forms
 from django.contrib.auth.password_validation import validate_password
-
-from .models import UserStudent
 from django.contrib.auth.models import User
-
 from django import forms
-from .models import UserStudent
-from django.contrib.auth import authenticate
+from .models import UserStudent, Otp
 
 
 class RegisterForm(forms.ModelForm):
@@ -22,6 +16,16 @@ class RegisterForm(forms.ModelForm):
             'phone_number': forms.TextInput(attrs={"dir": "rtl", 'maxlength': '11', 'placeholder': 'شماره تلفن'}),
             'username': forms.TextInput(attrs={"dir": "rtl", 'placeholder': 'نام کاربری'}),
         }
+
+    def clean_phone_number(self):
+        phone = self.cleaned_data.get('phone_number')
+        if not re.match(r'^(09|9)\d+$', phone):
+            raise forms.ValidationError("شماره موبایل با 09 یا 9 آغاز میشود")
+        if len(phone) < 10:
+            raise forms.ValidationError("شماره موبایل وارد شده صحیح نیست ")
+        if phone.startswith('0'):
+            phone = phone[1:]
+        return phone
 
     def clean(self):
         cleaned_data = super().clean()
@@ -49,7 +53,8 @@ class RegisterForm(forms.ModelForm):
 
         if commit:
             user_student.save()
-
+        else:
+            User.delete(user)
         return user_student, user
 
 
@@ -65,6 +70,13 @@ class LoginForm(forms.ModelForm):
 
     def clean_phone_number(self):
         data = self.cleaned_data['phone_number']
-        if not re.match(r'^[(09)(9)][0-9]+$', data):
+        if not re.match(r'^(09|9)\d+$', data):
             raise forms.ValidationError("شماره موبایل با 09 یا 9 آغاز میشود")
+        if len(data) < 10:
+            raise forms.ValidationError("شماره موبایل وارد شده صحیح نیست ")
+        if data.startswith('0'):
+            data = data[1:]
         return data
+
+
+

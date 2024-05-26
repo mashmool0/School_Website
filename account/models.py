@@ -56,3 +56,17 @@ class UserStudent(models.Model):
     class Meta:
         verbose_name = "دانش آموز"
         verbose_name_plural = "اطلاعات کاربری دانش آموزان"
+
+
+class Otp(models.Model):
+    token = models.CharField(max_length=100, unique=True)
+    phone_number = models.CharField(max_length=11)
+    code = models.CharField(max_length=4)
+    expiration_date = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.phone_number
+
+    class Meta:
+        verbose_name = "اعتبارسنجی کاربر"
+        verbose_name_plural = "اعتبارسنجی کاربران"
