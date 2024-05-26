@@ -36,11 +36,17 @@
     </div>
     <div class="RightPart">
         <h1 class="font">ورود</h1>
-        <form method="get">
+        <form method="post">
             {% csrf_token %}
+            {% if form.non_field_errors %}
+                <label>{{ form.non_field_errors }}</label>
+            {% endif %}
 
-            <input type="text" name="phone" placeholder="شماره تماس" class="EmailPhoneNum" id="EmailPhoneNum"
-                   required>
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+                <label>{{ form.phone_number.errors }}</label>
+            {% endif %}
+
 
             <button type="submit">ورود</button>
         </form>

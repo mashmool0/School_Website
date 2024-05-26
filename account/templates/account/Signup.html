@@ -37,7 +37,7 @@
         <h1 class="font">ثبت نام</h1>
         <form method="post">
             {% csrf_token %}
-                {{ request.user.username }}
+            {{ request.user.username }}
             {% if form.non_field_errors %}
                 <label>{{ form.non_field_errors }}</label>
             {% endif %}
@@ -69,3 +69,4 @@
 </div>
 </body>
 </html>
+

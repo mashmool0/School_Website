@@ -1,0 +1,284 @@
+@font-face {
+  font-family: "BYekan+";
+  src: url(../fonts/BYekan+.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body{
+  background-color: whitesmoke;
+}
+nav {
+  position: sticky;
+  content: "";
+  top: 0;
+}
+.HamburgerMenu {
+  display: none;
+  width: 80%;
+  position: fixed;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 300svh;
+  z-index: 3;
+}
+.SideLinks a {
+  margin-right: 4svw;
+  /* backdrop-filter: blur(5px); */
+  display: block;
+  margin-top: 20px;
+}
+.burger {
+  margin-top: 25px;
+  margin-right: 4svw;
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #101010;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-50%);
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
+  top: 0;
+  left: 5px;
+  transform: rotate(405deg);
+}
+
+.burger input:checked ~ span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
+  top: 28px;
+  left: 5px;
+  transform: rotate(-405deg);
+}
+
+ a {
+  color: rgb(7, 7, 7);
+  font-family: "BYekan+";
+  text-decoration: none;
+  margin-right: 6%;
+  margin-left: 10%;
+  font-size: 18px;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 20px;
+  background-color: #9ca7b6;
+  padding-bottom: 20px;
+}
+.links a:hover::after {
+  content: "";
+  border: 1px solid;
+  border-color: rgb(5, 5, 5);
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+}
+.links a:hover {
+  transform: scale(1.1);
+}
+.links {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+.SideLinks a{
+  color: white;
+}
+@media screen and (max-width: 740px) {
+  .links,
+  .links a,
+  nav div button {
+    display: none;
+  }
+  .HamburgerMenu {
+    display: block;
+    background: none;
+  }
+  .SideLinks a{
+    display: none;
+  }
+  nav{
+    padding-top: 35px;
+    padding-bottom: 35px;
+
+  }
+}
+
+nav button {
+  width: 7svw;
+  height: 5.6svh;
+  border-radius: 18px;
+  margin-left: 20px;
+  font-family: "BYekan+Bold";
+  font-size: 1vw;
+  text-align: center;
+  color: #0f66dc;
+  cursor: pointer;
+  border: none;
+}
+
+nav button:hover {
+  transform: scale(1.08);
+}
+.tab {
+  position: fixed;
+  top: 0px;
+  /* right: 25svw; */
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-right: 4px;
+  /* padding-left: -5px; */
+  height: fit-content;
+  right: 60%;
+}
+.forgotPass{
+  z-index: -1;
+  padding-top: 50px;
+  background-color: white;
+  width: 60svw;
+  height: 40svh;
+  border-radius: 10px;
+  margin-left: 20svw;
+  margin-top: 30svh;
+  /* top: 50%; */
+  /* left: 50%; */
+  /* text-align: center; */
+  /* transform: translate(-50% , -20%); */
+  position: fixed;
+  /* transform: ; */
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-items: center;
+}
+
+.forgotPass input{
+  width: 6svw;
+  height: 4svw;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 35px;
+  font-family: "BYekan+";
+  border: 2.4px solid rgb(189, 189, 189);
+}
+.forgotPass input:hover ,.forgotPass input:focus{
+  font-family: "BYekan+";
+  border: 3.5px solid rgb(74, 74, 74);
+  
+}
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button{
+  margin-top: 20px;
+  font-family: "BYekan+";
+  background-color: whitesmoke;
+  border:none;
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: -20px;
+}
+button:hover{
+  transform: scale(1.05);
+}
+.forgotPass h1{
+  margin-bottom: 30px;
+  font-family: "BYekan+";
+  font-size: 2vw;
+  letter-spacing: 1.5px;
+}
+.forgotPass a{
+  margin-right: 3svw;
+  margin-top: 50px;
+  font-size: 20px;
+  text-align: center;
+  }
+.forgotPass a:hover::after{
+  content: "";
+  border: 1px solid;
+  border-color: rgb(5, 5, 5);
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+}
+.forgotPass a:hover{
+  transform: scale(1.08);
+}
+@media screen and (max-width:850px) {
+  .forgotPass h1{
+    font-size: 3vw;
+  }
+  .forgotPass input{
+    width: 10svw;
+    height: 7svw;
+    font-size:4vw;
+  }
+  
+}
+@media screen and (max-width:500px) {
+  .forgotPass{
+   width: 90svw;
+   margin-left: 5svw; 
+   z-index: 1;
+  }
+  .forgotPass h1{
+    font-size: 4vw;
+  }
+  .forgotPass input{
+    width: 14svw;
+    height: 10svw;
+  }
+}

@@ -1,3 +1,340 @@
+<<<<<<< HEAD
+/* Fonts */
+@font-face {
+  font-family: "myriad-arabic";
+  src: url("../fonts/MyriadArabicBold.ttf");
+}
+@font-face {
+  font-family: "myriad-regular";
+  src: url("../fonts/MyriadArabicRegular.ttf");
+}
+@font-face {
+  font-family: "YekanBakh-light";
+  src: url("../fonts/YekanBakh-Light.ttf");
+}
+@font-face {
+  font-family: "RoyaBakh-regular";
+  src: url("../fonts/YekanBakh-Regular.ttf");
+}
+@font-face {
+  font-family: "RoyaBakh-semibold";
+  src: url("../fonts/YekanBakh-SemiBold.ttf");
+}
+*{
+  margin: 0;
+  padding: 0;
+}
+.container{
+  height: 100svh;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+/* Start Of Right Part */
+.RightPart{
+  z-index: 2;
+}
+.RightPart , form{
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+}
+.top-right-circle{
+  width: 150px;
+  height: 150px;
+  background-color: #A4BBCB;
+  position: fixed;
+  top: -44px;
+  right: -66px;
+  border-radius: 50%;
+  display: grid;
+  gap: 0; 
+}
+.dot1{
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background-color: black;
+  position: fixed;
+  top: 125px;
+  right: 15%;
+}
+.top-left-circle{
+    width: 44px;
+    height: 44px;
+    background-color: white;
+    border:  6px solid;
+    position: fixed;
+    top: 8%;
+    right: 33%;
+    border-radius: 50%;
+}
+.dot2{
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background-color: #325269;
+  position: fixed;
+  top: 24%;
+  right: 42.2%;
+}
+.RightPart h1{
+  font-family: "myriad-arabic",sans-serif;
+  margin-bottom: 10px;
+  text-align: center;
+  font-size: 55px;
+  /* margin-top: -40px; */
+}
+.RightPart h1::after{
+  content: "";
+  border: 1px solid;
+  border-color: black;
+  display: block;
+  position: relative;
+  width: 125px;
+}
+input{
+  width: 500px;
+  height: 50px;
+  margin-top: 3%;
+  border-radius: 6px;
+  border: none;
+  box-shadow: 1px 2px 4px 3px #d2e3f0;
+  outline: none;
+  padding-right: 20px;
+  font-size: 20px;
+  font-family: "YekanBakh-light";
+}
+input::placeholder{
+  text-align: right;
+  /* margin-right: 10px; */
+  font-size: 20px;
+}
+input:hover{
+  margin-top: 18px;
+  border: 1.8px solid #6eded885 ;
+}
+.ForgotPass{
+  text-decoration: none;
+  margin-left: 355px;
+  margin-top: 20px;
+  color: #bcbcbc;
+  font-family: "myriad-regular";
+  font-weight: 400;
+  font-size: 20px;
+}
+.ForgotPass span{
+  color: black;
+}
+button{
+  width: 230px;
+  height: 50px;
+  border: none;
+  border-radius: 6px;
+  background-color: #95d6d9;
+  font-family: "myriad-regular",sans-serif;
+  font-size: 28px;
+  color: white;
+  font-weight: 400;
+  margin-top: 5%;
+  text-align: center;
+  cursor: pointer;
+  transition: 0.4s ease-in-out;
+
+}
+button:hover{
+  transform: scale(1.02);
+  background-color: rgb(222, 222, 222);
+  color: #95d6d9;
+  box-shadow: 1px 2px 4px 3px #d2e3f0;
+}
+.Login{
+  text-decoration: none;
+  position: fixed;
+  bottom: 10%;
+  color: #bcbcbc;
+  font-size: 20px;
+  font-family: "myriad-regular",sans-serif;
+}
+.Login span{
+  color: #a6d9d8;
+  font-size: 26px;
+} 
+.bottom-circle{
+  border-radius: 50%;
+  width: 70px;
+  height: 70px;
+  background-color: white;
+  border: 6px solid #9dbcbb;
+  position: fixed;
+  bottom: -32px;
+  right: 40%;
+}
+/* End of Right Part */
+/* Start Of Left Part */
+.text{
+  z-index: 2;
+}
+.LeftPart{
+  z-index: -1;
+  background-color: #262d37;
+  width: 50%;
+  height: 100svh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.LeftPart h1{
+  margin-top: -50%;
+  margin-bottom: 20%;
+  color: white;
+  font-size: 32px;
+  font-family: "RoyaBakh-semibold";
+}
+.LeftPart p{
+  width: 400px;
+  font-size: 23px;
+  color: #8d9295;
+  font-family: "RoyaBakh-regular";
+}
+.Rectangle{
+  width: 4px;
+  height: 300px;
+  transform: rotate(42.65deg);
+  background-color: #767a81;
+  position: fixed;
+  left: 0;
+  top: 50px;
+  border-radius: 0.5px;
+}
+.Rectangle1{
+  z-index: -1;
+ width: 120px;
+ height: 420px;
+ background-color: #325269;
+ position: fixed;
+ left: 20px;
+ top: 0px;
+ border-radius: 7px;
+ transform: rotate(42.65deg); 
+}
+.Rectangle2{
+  height: 150px;
+  width: 3px;
+  background-color: #40474f;
+  position: fixed;
+  transform: rotate(42.65deg);
+  left: 0;
+  top: 315px;
+}
+.Rectangle3{
+  height: 200px;
+  width: 120px;
+  transform: rotate(42.65deg);
+  position: fixed;
+  top: 460px;
+  left: -45px;
+  background-color: #325269;
+  border-radius: 6px;
+}
+.Rectangle4{
+  width: 40px;
+  height: 900px;
+  transform: rotate(42.65deg);
+  position: fixed;
+  top: 155px;
+  left: 0px;
+  border-radius: 6px;
+  background-color: #325269;
+  z-index: -1;
+  
+}
+.Rectangle5{
+  height: 300px;
+  width: 1.5px;
+  border-radius: 0.1px;
+  transform: rotate(42.65deg);
+  position: fixed;
+  left: 138px;
+  top: 345px;
+  background-color: white;  
+  z-index: 1;
+}
+.Rectangle6{
+  position: fixed;
+  top: 55svh;
+  left: 0;
+  width: 30px;
+  height: 580px;
+  transform: rotate(42.65deg);
+  background-color: #73a3a8;
+  border-radius: 6px;
+  
+}
+.Rectangle7{
+  position: fixed;
+  transform: rotate(42.65deg);
+  left: 20px;
+  top: 45svh;
+  height: 900px;
+  border-radius: 8px;
+  width: 140px;
+  background-color: #325269;
+  z-index: -1;
+}
+.Rectangle8{
+  width: 1px;
+  height: 170px;
+  position: fixed;
+  left: 265px;
+  background-color: #767a81;
+  top: 220px;
+  transform: rotate(42.65deg);
+  z-index: -1;
+}
+@media screen and (max-width: 1100px) {
+  .top-left-circle{
+    border-color: #325269;
+  }
+}
+@media screen and (max-width: 1070px) {
+  input{
+    width: 40svw;
+    margin-right: 10px;
+  }
+  .ForgotPass{
+    margin-right: 0%;
+    width: 100%;
+  }
+}
+@media screen and (max-width:932px) {
+  .LeftPart{display: none;}
+  
+}
+@media screen and (max-width: 450px) {
+  .RightPart form input , .RightPart form input::placeholder{
+    font-size: 13px;
+  }
+}
+@media screen and (max-width:420px) {
+  button{
+    width: 60%;
+  }
+}
+.RightPart form input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+}
+label{
+  margin-top: 5px;
+  color: red;
+  font-family: "RoyaBakh-regular";
+=======
 /* Fonts */
 @font-face {
   font-family: "myriad-arabic";
@@ -333,4 +670,5 @@ label{
   margin-top: 5px;
   color: red;
   font-family: "RoyaBakh-regular";
+>>>>>>> 44848a1dfacf0c22d2088fa6393bc6309c71d0c2
 }

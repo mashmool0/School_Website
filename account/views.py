@@ -1,9 +1,11 @@
+from urllib.parse import urlencode
 from django.contrib import messages
 from django.db import IntegrityError
+from django.http import Http404
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, logout
 from .models import WelcomeRegister, Otp
-from .forms import RegisterForm, LoginForm, UserStudent
+from .forms import RegisterForm, LoginForm, UserStudent, LoginOnlyWithPhone
 from django.contrib.auth.models import User
 from .decorators import un_authenticated
 from django.contrib.auth.decorators import login_required
@@ -11,6 +13,8 @@ from django.contrib.auth import authenticate
 from .send_otp_sms import send_otp
 import uuid
 import random
+
+from django.utils.crypto import get_random_string
 
 
 # Create your views here.
@@ -72,11 +76,67 @@ def user_logout(request):
     return redirect('home:home')
 
 
+@un_authenticated
 def user_login_with_phone(request):
     welcome_text = WelcomeRegister.objects.last()
+    form = LoginOnlyWithPhone()
     if request.method == "POST":
-        token_otp = uuid.uuid4()
-        phone_number = request.GET.get('phone_number')
-        Otp.objects.create(phone_number=phone_number, token=token_otp, code=random.randint(1000, 9999))
-        return redirect(reverse('account:phoneRegister' + f'?token={token_otp}'))
-    return render(request, 'account/Login_with_phone.html', context={'welcome_text': welcome_text})
+        form = LoginOnlyWithPhone(request.POST)
+        if form.is_valid():
+            code = random.randint(1000, 9999)
+            print(code)
+            token_otp = get_random_string(length=99)
+            phone_number = form.cleaned_data.get('phone_number')
+            if not Otp.objects.filter(phone_number=phone_number).exists():
+                if not User.objects.filter(username=phone_number).exists():
+                    form.add_error(None, "این شماره قبلا ثبت نام نکرده است")
+                else:
+                    Otp.objects.create(phone_number=phone_number, token=token_otp, code=code)
+                    try:
+                        # Changed: Redirect to the phone registration page with token as query parameter
+                        return redirect(
+                            reverse('account:phoneRegister') + '?' + urlencode(
+                                {'token': token_otp, 'phone': phone_number}))
+                    except Exception as e:
+                        Otp.delete(Otp.objects.get(token=token_otp))
+                        form.add_error(None, "مشکلی در سایت به وجود آماده است ، بعدا دوباره تلاش کنید")
+                        messages.error(request, f'خطایی رخ داده است: {str(e)}')
+                        return redirect("home:home")
+
+            else:
+                form.add_error(None, "لطفا کمی صبر کنید و دوباره تلاش کنید")
+
+        else:
+            print("invalid form for login with phone")
+            form.add_error(None, "شماره وارد شده ایراد دارد")
+
+    # Render the login page if it's a GET request or if form is invalid
+    return render(request, 'account/Login_with_phone.html', context={'welcome_text': welcome_text, "form": form})
+
+
+@un_authenticated
+def user_phone_register(request):
+    # if request.GET.get('access') == "false":
+    #     pass
+    errors = []
+    try:
+        if request.POST:
+            token_otp = request.GET.get('token')
+            code = request.POST.get('1') + request.POST.get('2') + request.POST.get('3') + request.POST.get('4')
+            print(code)
+            phone_number = request.GET.get('phone')
+            if Otp.objects.filter(token=token_otp, code=code).exists():
+                login(request, User.objects.get(username=phone_number))
+                Otp.delete(Otp.objects.get(token=token_otp))
+                return redirect('home:home')
+
+        return render(request, 'account/ForgotPassword.html', context={"errors": errors})
+    except Http404:
+        raise Http404("Page not found")  # Catch Http404 exception explicitly
+
+    except Exception as e:
+        print("An error occurred:", str(e))
+        if Otp.objects.filter(token=request.GET.get('token')).exists():
+            Otp.objects.get(
+                token=request.GET.get('token')).delete()
+        raise

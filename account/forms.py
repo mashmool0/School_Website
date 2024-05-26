@@ -29,7 +29,6 @@ class RegisterForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-
         password1 = cleaned_data.get('password1')
         password2 = cleaned_data.get('password2')
         if password1 and password2:
@@ -80,3 +79,17 @@ class LoginForm(forms.ModelForm):
 
 
 
+
+class LoginOnlyWithPhone(forms.Form):
+    phone_number = forms.CharField(
+        widget=forms.TextInput(attrs={"maxlength": "11", 'dir': 'rtl', 'placeholder': 'شماره تماس'}))
+
+    def clean_phone_number(self):
+        phone_number = self.cleaned_data.get('phone_number')
+        if not re.match(r'^(09|9)\d+$', phone_number):
+            raise forms.ValidationError("شماره موبایل با 09 یا 9 آغاز میشود")
+        if len(phone_number) < 10:
+            raise forms.ValidationError("شماره موبایل وارد شده صحیح نیست ")
+        if phone_number.startswith('0'):
+            phone_number = phone_number[1:]
+        return phone_number

@@ -25,3 +25,4 @@ class UserStudentAdmin(admin.ModelAdmin):
                                              ('sibling_education',)]}),
         ("دسترسی های کاربر", {"fields": ['super_student_user']}),
     ]
+
