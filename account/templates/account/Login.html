@@ -38,36 +38,33 @@
         <h1 class="font">ورود</h1>
         <form method="post">
             {% csrf_token %}
-            {{ form.errors }}
+
             {% if form.non_field_errors %}
-                <div class="non-field-errors">
-                    {% for error in form.non_field_errors %}
-                        <p>{{ error }}</p>
-                    {% endfor %}
-                </div>
+                <label>{{ form.non_field_errors }}</label>
             {% endif %}
-            <div class="form-group">
-                {{ form.email_or_phone }}
-                {% if form.email_or_phone.errors %}
-                    <div class="field-error">
-                        {% for error in form.email_or_phone.errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.password1 }}
-                {% if form.password1.errors %}
-                    <div class="field-error">
-                        {% for error in form.password1.errors %}
-                            <p>{{ error }}</p>
-                        {% endfor %}
-                    </div>
-                {% endif %}
-            </div>
-            <a href="" class="ForgotPass">رمز خود را <span>فراموش کردید</span>؟</a>
+
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+                <label>{{ form.phone_number.errors }}</label>
+            {% endif %}
+
+            {{ form.username }}
+            {% if form.username.errors %}
+                <label>{{ form.username.errors }}</label>
+            {% endif %}
+
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <label>{{ form.password1.errors }}</label>
+            {% endif %}
+
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <label>{{ form.password2.errors }}</label>
+            {% endif %}
+
             <button type="submit">ورود</button>
+            <a href="{% url 'account:login' %}" class="Login">رفتن به صفحه <span>ورود</span></a>
         </form>
         <a href="{% url 'account:register' %}" class="SignUp">اکانتی ندارید؟<span>ساخـت اکانـت</span></a>
     </div>

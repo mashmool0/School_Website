@@ -35,38 +35,33 @@
     </div>
     <div class="RightPart">
         <h1 class="font">ثبت نام</h1>
-        <form method="post" enctype="multipart/form-data">
+        <form method="post">
             {% csrf_token %}
+
             {% if form.non_field_errors %}
-                <div class="non-field-errors">
-                    {{ form.non_field_errors }}
-                </div>
+                <label>{{ form.non_field_errors }}</label>
             {% endif %}
-            <div class="form-group">
-                {{ form.phone_number }}
-                {% if form.phone_number.errors %}
-                    <div class="field-error">
-                        {{ form.phone_number.errors }}
-                    </div>
-                {% endif %}
-            </div>
-            <!-- Repeat for all other fields -->
-            <div class="form-group">
-                {{ form.password1 }}
-                {% if form.password1.errors %}
-                    <div class="field-error">
-                        {{ form.password1.errors }}
-                    </div>
-                {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.password2 }}
-                {% if form.password2.errors %}
-                    <div class="field-error">
-                        {{ form.password2.errors }}
-                    </div>
-                {% endif %}
-            </div>
+            {{ form.phone_number }}
+            {% if form.phone_number.errors %}
+                <label>{{ form.phone_number.errors }}</label>
+            {% endif %}
+
+            {{ form.username }}
+            {% if form.username.errors %}
+                <label>{{ form.username.errors }}</label>
+            {% endif %}
+
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <label>{{ form.password1.errors }}</label>
+            {% endif %}
+
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <label>{{ form.password2.errors }}</label>
+            {% endif %}
+
+
             <button type="submit">ورود</button>
             <a href="{% url 'account:login' %}" class="Login">رفتن به صفحه <span>ورود</span></a>
         </form>

@@ -52,7 +52,7 @@
   right: -66px;
   border-radius: 50%;
   display: grid;
-  gap: 0; 
+  gap: 0;
 }
 .dot1{
   width: 13px;
@@ -163,7 +163,7 @@ button:hover{
 .Login span{
   color: #a6d9d8;
   font-size: 26px;
-} 
+}
 .bottom-circle{
   border-radius: 50%;
   width: 70px;
@@ -221,7 +221,7 @@ button:hover{
  left: 20px;
  top: 0px;
  border-radius: 7px;
- transform: rotate(42.65deg); 
+ transform: rotate(42.65deg);
 }
 .Rectangle2{
   height: 150px;
@@ -252,7 +252,7 @@ button:hover{
   border-radius: 6px;
   background-color: #325269;
   z-index: -1;
-  
+
 }
 .Rectangle5{
   height: 300px;
@@ -262,7 +262,7 @@ button:hover{
   position: fixed;
   left: 138px;
   top: 345px;
-  background-color: white;  
+  background-color: white;
   z-index: 1;
 }
 .Rectangle6{
@@ -274,7 +274,7 @@ button:hover{
   transform: rotate(42.65deg);
   background-color: #73a3a8;
   border-radius: 6px;
-  
+
 }
 .Rectangle7{
   position: fixed;
@@ -314,7 +314,7 @@ button:hover{
 }
 @media screen and (max-width:932px) {
   .LeftPart{display: none;}
-  
+
 }
 @media screen and (max-width: 450px) {
   .RightPart form input , .RightPart form input::placeholder{
