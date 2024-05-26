@@ -46,6 +46,15 @@ container.onkeyup = function (e) {
     }
   }
 };
+var container = document.getElementsByClassName("number")[3];
+container.onkeyup = function (e) {
+  var target = e.srcElement;
+  var maxLength = parseInt(target.attributes["maxlength"].value, 10);
+  var myLength = target.value.length;
+  if (myLength >= maxLength) {
+    document.querySelector("form button").click();
+  }
+}
 let checker = false;
 function clickChecker() {
   if (checker == false) {

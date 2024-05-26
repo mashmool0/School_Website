@@ -199,7 +199,6 @@ nav button:hover {
 }
 
 .forgotPass input{
-  
   width: 6svw;
   height: 4svw;
   border-radius: 8px;
@@ -213,6 +212,27 @@ nav button:hover {
   border: 3.5px solid rgb(74, 74, 74);
   
 }
+form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+button{
+  margin-top: 20px;
+  font-family: "BYekan+";
+  background-color: whitesmoke;
+  border:none;
+  font-size: 20px;
+  width: 100px;
+  height: 40px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-bottom: -20px;
+}
+button:hover{
+  transform: scale(1.05);
+}
 .forgotPass h1{
   margin-bottom: 30px;
   font-family: "BYekan+";
@@ -220,9 +240,10 @@ nav button:hover {
   letter-spacing: 1.5px;
 }
 .forgotPass a{
+  margin-right: 3svw;
   margin-top: 50px;
   font-size: 20px;
-  margin-right: 5svw;
+  text-align: center;
   }
 .forgotPass a:hover::after{
   content: "";
@@ -255,5 +276,9 @@ nav button:hover {
   }
   .forgotPass h1{
     font-size: 4vw;
+  }
+  .forgotPass input{
+    width: 14svw;
+    height: 10svw;
   }
 }
