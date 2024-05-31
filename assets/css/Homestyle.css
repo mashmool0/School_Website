@@ -474,20 +474,30 @@ header nav:nth-of-type(3) button:hover {
   background-color: #f0f8ff;
   margin-bottom: 20px;
 }
-.slider button {
+.slider div:nth-of-type(2) button{
   border-radius: 50%;
-  height: 50px;
-  width: 50px;
+  height: 20%;
+  width: 20%;
   border: none;
   color: white;
   font-size: 30px;
   cursor: pointer;
   position: relative;
-  left: 48%;
-  bottom: 40px;
+  /* left: 24%; */
+  /* bottom: 40px; */
+  /* top: 45px; */
+  left: 50%;
+  top: 90%;
+  transform: translateX(-50%);
   font-family: "";
   background-image: url(../images/next.png);
   background-size: 100% 100%;
+}
+.SecondSlide{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 50px;
 }
 /* Slider End */
 @media screen and (max-width: 800px) {
@@ -515,7 +525,10 @@ header nav:nth-of-type(3) button:hover {
     /* width:; */
   }
   .card p {
-    font-size: 9px;
+    font-size: 14px;
+  }
+  .card{
+    
   }
 }
 @media screen and (max-width: 780px) {
@@ -559,16 +572,16 @@ header nav:nth-of-type(3) button:hover {
 }
 @media screen and (max-width: 400px) {
   .schoolScores {
-    height: 280px;
+    height: 350px;
   }
   .schoolScores h1 {
-    font-size: 12px;
+    font-size: 15px;
   }
   .schoolScores div div h1 {
-    font-size: 9px;
+    font-size: 14px;
   }
   .schoolScores div div h2 {
-    font-size: 9px;
+    font-size: 10px;
   }
 }
 @media screen and (max-width: 850px) {
@@ -660,6 +673,17 @@ header nav:nth-of-type(3) button:hover {
     font-size: 2.5svw;
   }
 }
+@media screen and (max-width:450px) {
+  .info div h1{
+    font-size: 15px;
+  }
+  .info div p{
+    font-size: 12px;
+  }
+  .info div button{
+    font-size: 10px;
+  }
+}
 @media screen and (max-width: 1300px) {
   .Slides {
     width: 80%;
@@ -692,6 +716,26 @@ header nav:nth-of-type(3) button:hover {
     left: 46svw;
     width: 6svw;
     height: 6svw;
+  }
+}
+@media screen and (max-width:600px) {
+  .JoiningQuiz button{
+    width: 80px;
+    height: 80px;
+    font-size: 14px;
+    border-radius: 50%;
+  }
+  .JoiningQuiz{
+    width: 100%;
+  }
+  .JoiningQuiz div img{
+    width: 100%;
+  }
+  .JoiningQuiz div:nth-of-type(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
 }
 @media screen and (max-width: 575px) {
@@ -739,5 +783,91 @@ header nav:nth-of-type(3) button:hover {
   }
   .SideLinks a{
     display: none;
+  }
+}
+@media screen and (max-width:500px) {
+  .Head h1{
+    font-size: 18px;
+  } 
+  .JoiningQuiz div div h1{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width:500px) {
+  .slider div:nth-of-type(2) button{
+    width: 30%;
+    height: 30%;
+  }
+  
+}
+
+@media screen and (max-width:400px) {
+  .slider div:nth-of-type(2) button{
+    width: 35%;
+    height: 35%;
+  }
+}
+@media screen and (max-width:) {
+  
+}
+footer{
+  background-color: #232323c7;
+  display: flex;
+  color: white;
+  font-family: "BYekan+";
+  flex-direction: column;
+  padding: 4svw;
+  margin-top: 50px;
+}
+footer div:first-of-type{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+}
+footer a{
+  font-family: "BYekan+";
+  text-decoration: none;
+  color: white;
+  border-left: 2px solid #0f66dc;
+  padding-left: 20px;
+  height: 50px;
+  margin-bottom: 30px;
+}
+.SocialLinks{
+  border-bottom: 1px solid white;
+  margin-bottom: 0;
+  padding: 10px;
+  padding-left: 2svw;
+  padding-right: 2svw;
+  padding-bottom: 0;
+}
+span{
+  color: rgb(232, 189, 88);
+}
+footer div div:nth-of-type(2) , footer div div:nth-of-type(3){
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+footer div div:nth-of-type(3){
+  margin-top: 10px;
+}
+footer div div:nth-of-type(3) span{
+  margin-left: 0.3svw;
+}
+footer div div:first-of-type{
+  margin-left: 2.5%;
+}
+@media screen and (max-width: 800px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 515px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 4svw;
   }
 }
