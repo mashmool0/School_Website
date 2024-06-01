@@ -30,6 +30,7 @@ nav {
   /* backdrop-filter: blur(5px); */
   display: block;
   margin-top: 20px;
+  z-index: 3;
 }
 .burger {
   margin-top: 25px;
@@ -583,6 +584,11 @@ header nav:nth-of-type(3) button:hover {
   .schoolScores div div h2 {
     font-size: 10px;
   }
+  .info div button{
+    width: 20svw;
+    height: 20svw;
+    border-radius: 50%;
+  }
 }
 @media screen and (max-width: 850px) {
   .headerContent h3:nth-of-type(2) {
@@ -780,9 +786,11 @@ header nav:nth-of-type(3) button:hover {
   .HamburgerMenu {
     display: block;
     background: none;
+    z-index: 3;
   }
   .SideLinks a{
     display: none;
+    
   }
 }
 @media screen and (max-width:500px) {
@@ -791,6 +799,11 @@ header nav:nth-of-type(3) button:hover {
   } 
   .JoiningQuiz div div h1{
     font-size: 20px;
+  }
+  .JoiningQuiz img{
+    margin-right: 10svw;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
   }
 }
 @media screen and (max-width:500px) {
