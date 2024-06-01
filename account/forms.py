@@ -2,7 +2,7 @@ import re
 from django.contrib.auth.password_validation import validate_password
 from django.contrib.auth.models import User
 from django import forms
-from .models import UserStudent, Otp
+from .models import UserStudent
 
 
 class RegisterForm(forms.ModelForm):
@@ -76,8 +76,6 @@ class LoginForm(forms.ModelForm):
         if data.startswith('0'):
             data = data[1:]
         return data
-
-
 
 
 class LoginOnlyWithPhone(forms.Form):

@@ -21,7 +21,5 @@ def send_otp(phone_number):
     response = requests.post("https://portal.amootsms.com/rest/SendQuickOTP", headers=headers, data=data)
     data_dict = ast.literal_eval(response.text)
 
-    return data_dict["Data"]["Code"]
-
-
+    return data_dict["Data"]["Code"], data_dict
 

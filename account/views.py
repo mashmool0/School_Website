@@ -5,15 +5,12 @@ from django.http import Http404
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, logout
 from .models import WelcomeRegister, Otp
-from .forms import RegisterForm, LoginForm, UserStudent, LoginOnlyWithPhone
+from .forms import RegisterForm, LoginForm, LoginOnlyWithPhone
 from django.contrib.auth.models import User
 from .decorators import un_authenticated
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from .send_otp_sms import send_otp
-import uuid
-import random
-
 from django.utils.crypto import get_random_string
 
 
@@ -83,9 +80,6 @@ def user_login_with_phone(request):
     if request.method == "POST":
         form = LoginOnlyWithPhone(request.POST)
         if form.is_valid():
-            # code = random.randint(1000, 9999)
-            # print(code)
-
             token_otp = get_random_string(length=99)
             phone_number = form.cleaned_data.get('phone_number')
 
@@ -93,19 +87,21 @@ def user_login_with_phone(request):
                 if not User.objects.filter(username=phone_number).exists():
                     form.add_error(None, "این شماره قبلا ثبت نام نکرده است")
                 else:
-                    code = send_otp(phone_number)
-                    Otp.objects.create(phone_number=phone_number, token=token_otp, code=code)
-                    try:
-                        # Changed: Redirect to the phone registration page with token as query parameter
-                        return redirect(
-                            reverse('account:phoneRegister') + '?' + urlencode(
-                                {'token': token_otp, 'phone': phone_number}))
-                    except Exception as e:
-                        Otp.delete(Otp.objects.get(token=token_otp))
-                        form.add_error(None, "مشکلی در سایت به وجود آماده است ، بعدا دوباره تلاش کنید")
-                        messages.error(request, f'خطایی رخ داده است: {str(e)}')
-                        return redirect("home:home")
-
+                    code, data = send_otp(phone_number)
+                    if data["Status"] == "Success":
+                        Otp.objects.create(phone_number=phone_number, token=token_otp, code=code)
+                        try:
+                            # Changed: Redirect to the phone registration page with token as query parameter
+                            return redirect(
+                                reverse('account:phoneRegister') + '?' + urlencode(
+                                    {'token': token_otp, 'phone': phone_number}))
+                        except Exception as e:
+                            Otp.delete(Otp.objects.get(token=token_otp))
+                            form.add_error(None, "مشکلی در سایت به وجود آماده است ، بعدا دوباره تلاش کنید")
+                            messages.error(request, f'خطایی رخ داده است: {str(e)}')
+                            return redirect("home:home")
+                    else:
+                        form.add_error(None, "مشکلی به وجود آمده لطفا دوباره تلاش کنید")
             else:
                 form.add_error(None, "لطفا کمی صبر کنید و دوباره تلاش کنید")
 
@@ -119,8 +115,6 @@ def user_login_with_phone(request):
 
 @un_authenticated
 def user_phone_register(request):
-    # if request.GET.get('access') == "false":
-    #     pass
     errors = []
     try:
         if request.POST:

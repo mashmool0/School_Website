@@ -1,9 +1,5 @@
-import datetime
-from time import sleep
-
 from django.db import models
 from django.contrib.auth.models import User
-from django.utils import timezone
 
 
 class WelcomeRegister(models.Model):
@@ -74,4 +70,3 @@ class Otp(models.Model):
     class Meta:
         verbose_name = "اعتبارسنجی کاربر"
         verbose_name_plural = "اعتبارسنجی کاربران"
-
