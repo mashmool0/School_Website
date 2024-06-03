@@ -43,7 +43,7 @@ class UserStudent(models.Model):
     father_serial_number = models.CharField(max_length=20, verbose_name="شماره شناسنامه پدر", blank=True, null=True)
     mother_serial_number = models.CharField(max_length=20, verbose_name="شماره شناسنامه مادر", blank=True, null=True)
     sibling_education = models.TextField(verbose_name="تحصیلات خواهر یا برادر", blank=True, null=True)
-
+    user_profile = models.ImageField(verbose_name="پروفایل", blank=True, null=True)
     super_student_user = models.BooleanField(default=False, verbose_name="قابلیت پرداخت و ثبت نام")
 
     def __str__(self):
@@ -60,9 +60,10 @@ class UserStudent(models.Model):
 
 class Otp(models.Model):
     token = models.CharField(max_length=100, unique=True)
-    phone_number = models.CharField(max_length=11)
+    phone_number = models.CharField(max_length=11, primary_key=True)
     code = models.CharField(max_length=4)
     expiration_date = models.DateTimeField(auto_now_add=True)
+
     # request_count = models.IntegerField(default=0)  # New field to track the number of requests
     # last_request_time = models.DateTimeField(auto_now_add=True)  # New field to track the last request time
 

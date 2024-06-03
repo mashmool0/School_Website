@@ -5,11 +5,11 @@
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="{% static "css/ForgotPass.css" %}"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>فراموشی</title>
+    <title>تایید صلاحیت</title>
 </head>
 <body>
 <div class="forgotPass" id="forgotPass">
-    <h1>کد فراموشی را وارد کنید</h1>
+    <h1>کد تایید صلاحیت را وارد کنید</h1>
 
     <form method="post">
         {% csrf_token %}
@@ -26,7 +26,7 @@
         <button type="submit">ورود</button>
 
     </form>
-    <a href="{% url 'account:loginPhone' %}">دوباره ارسال کنید</a>
+    <a href="{% url 'account:authenticatePhone' %}">دوباره ارسال کنید</a>
 </div>
 <script src="{% static 'JS/forgotPass.js' %}"></script>
 </body>
