@@ -547,6 +547,23 @@ header nav:nth-of-type(3) button:hover {
   .schoolScores div div h2 {
     font-size: 20px;
   }
+  .JoiningQuiz div div h1{
+    margin-top: 20px;
+  }
+  .JoiningQuiz div{
+    width: 90%;
+  }
+  .JoiningQuiz div {
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .JoiningQuiz div img{
+    width: 80%;
+    /* margin-left: -5%; */
+  }
+  .leftBTN{margin-right: 0;}
+  
 }
 
 @media screen and (max-width: 500px) {
@@ -668,7 +685,7 @@ header nav:nth-of-type(3) button:hover {
   .info,
   .info div {
     width: 80svw;
-    margin-left: 6svw;
+    margin-left: 7svw;
   }
   .info div h1 {
     font-size: 4svw;
@@ -734,8 +751,14 @@ header nav:nth-of-type(3) button:hover {
   .JoiningQuiz{
     width: 100%;
   }
-  .JoiningQuiz div img{
+  .JoiningQuiz div div p{
     width: 100%;
+  }
+  .JoiningQuiz{
+    width: 100%;
+  }
+  .JoiningQuiz div img{
+    /* width: 100%; */
   }
   .JoiningQuiz div:nth-of-type(2){
     display: flex;
