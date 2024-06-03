@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     # My Apps
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
+    'panel.apps.PanelConfig',
 
 ]
 

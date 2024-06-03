@@ -81,9 +81,16 @@
             <a href="Library.html">کتابخانه</a>
             <a href="Library.html">وبلاگ</a>
         </div>
-        <div>
-            <button type="button" onclick="redirectToLogin()">ورود/ثبت نام</button>
-        </div>
+        {% if request.user.is_authenticated %}
+            <div>
+                <button type="button" onclick="redirectTo_panel()">پنل کاربری</button>
+                <button type="button" style="background-color: pink" onclick="redirectTo_logout()">خروج</button>
+            </div>
+        {% else %}
+            <div>
+                <button type="button" onclick="redirectToLogin()">ورود/ثبت نام</button>
+            </div>
+        {% endif %}
     </nav>
     <div class="headerContent">
         <h3>مدرسه ی تمام هوشمند</h3>
@@ -224,6 +231,15 @@
     function redirectToLogin() {
         window.location.href = "{% url 'account:login' %}";
     }
+
+    function redirectTo_logout() {
+        window.location.href = "{% url 'account:logout' %}";
+    }
+
+    function redirectTo_panel() {
+        window.location.href = "{% url 'panel:course' %}"
+    }
+
 </script>
 </body>
 </html>

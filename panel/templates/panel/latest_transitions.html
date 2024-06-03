@@ -1,0 +1,233 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static '/css/LatestTransitions.css' %}">
+    <title>Panel</title>
+</head>
+<body>
+<div class="wrapper">
+    <nav dir="rtl">
+        <div dir="rtl" class="links">
+            <a href="">خانه</a>
+            <a href="">دوره ها</a>
+            <a href="">کتابخانه</a>
+        </div>
+
+        <div class="leftSide">
+            <div class="dropDown">
+                <button onclick="dropdown()" class="dropDownButton">
+                    لورم ایپسوم متن
+                </button>
+
+                <div><a href="" class="dropDownLinks">لورم ایپسوم</a></div>
+                <div><a href="" class="dropDownLinks">لورم ایپسوم</a></div>
+                <div><a href="" class="dropDownLinks">لورم ایپسوم</a></div>
+            </div>
+            <div class="notif">
+                <label class="container">
+                    <input type="checkbox" checked="checked"/>
+                    <svg
+                            class="bell-regular"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 448 512"
+                    >
+                        <path
+                                d="M224 0c-17.7 0-32 14.3-32 32V49.9C119.5 61.4 64 124.2 64 200v33.4c0 45.4-15.5 89.5-43.8 124.9L5.3 377c-5.8 7.2-6.9 17.1-2.9 25.4S14.8 416 24 416H424c9.2 0 17.6-5.3 21.6-13.6s2.9-18.2-2.9-25.4l-14.9-18.6C399.5 322.9 384 278.8 384 233.4V200c0-75.8-55.5-138.6-128-150.1V32c0-17.7-14.3-32-32-32zm0 96h8c57.4 0 104 46.6 104 104v33.4c0 47.9 13.9 94.6 39.7 134.6H72.3C98.1 328 112 281.3 112 233.4V200c0-57.4 46.6-104 104-104h8zm64 352H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7s18.7-28.3 18.7-45.3z"
+                        ></path>
+                    </svg>
+                    <svg
+                            class="bell-solid"
+                            xmlns="http://www.w3.org/2000/svg"
+                            height="1em"
+                            viewBox="0 0 448 512"
+                    >
+                        <path
+                                d="M224 0c-17.7 0-32 14.3-32 32V51.2C119 66 64 130.6 64 208v18.8c0 47-17.3 92.4-48.5 127.6l-7.4 8.3c-8.4 9.4-10.4 22.9-5.3 34.4S19.4 416 32 416H416c12.6 0 24-7.4 29.2-18.9s3.1-25-5.3-34.4l-7.4-8.3C401.3 319.2 384 273.9 384 226.8V208c0-77.4-55-142-128-156.8V32c0-17.7-14.3-32-32-32zm45.3 493.3c12-12 18.7-28.3 18.7-45.3H224 160c0 17 6.7 33.3 18.7 45.3s28.3 18.7 45.3 18.7s33.3-6.7 45.3-18.7z"
+                        ></path>
+                    </svg
+                    >
+                </label>
+            </div>
+        </div>
+        <div class="mob">
+            <button onclick="dropdown2()" class="dropDownButton">
+                پنل کاربری
+            </button>
+            <div>
+                <a href="{% url 'panel:course' %}" class="dropDownLinks">دوره ها</a>
+            </div>
+            <div>
+                <a href="{% url 'panel:lastOrder' %}" class="dropDownLinks"
+                >تراکنش های اخیر</a
+                >
+            </div>
+            <div><a href="{% url 'panel:basket' %}" class="dropDownLinks">سبد خرید</a></div>
+        </div>
+    </nav>
+    <aside>
+        <div>
+            <img src="{% static 'images/account.png' %}" alt=""/>
+            <h1>لورم ایپسوم</h1>
+            <a href="" class="change">ویرایش اکانت</a>
+            <div class="SideCard">
+                <a href="{% url 'panel:course' %}">دوره ها</a>
+            </div>
+            <div class="SideCard Active"><a href="{% url 'panel:lastOrder' %}">تراکنش های اخیر</a></div>
+            <div class="SideCard"><a href="{% url 'panel:basket' %}">سبد خرید</a></div>
+        </div>
+    </aside>
+    <main>
+        <div>
+            <h1>تراکنش های اخیر</h1>
+            <button>اردیبهشت</button>
+        </div>
+        <table dir="rtl">
+            <tr>
+                <th>مبلغ</th>
+                <th>وضعیت پرداخت</th>
+                <th>درگاه پرداخت</th>
+                <th>نام آیتم</th>
+                <th>تاریخ</th>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+            <tr>
+                <td>10میلیون تومان</td>
+                <td class="incomplete">
+                    <p>تکمیل نشده است </p>
+                    <div></div>
+                </td>
+                <!--  -->
+                <td>زرین پال</td>
+                <td>دوره فیزیک</td>
+                <td>03/03/1403</td>
+            </tr>
+        </table>
+    </main>
+</div>
+<script src="{% static 'JS/LatestTransitions.js' %}"></script>
+</body>
+</html>
