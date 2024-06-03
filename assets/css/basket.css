@@ -1,0 +1,396 @@
+@font-face {
+  font-family: "BYekan+";
+  src: url(../fonts/BYekan+.ttf);
+}
+@font-face {
+  font-family: "MyradArabic";
+  src: url(../fonts/MyriadArabicRegular.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: whitesmoke;
+}
+.wrapper {
+  width: 100svw;
+  height: 100svh;
+  background-color: whitesmoke;
+}
+.wrapper aside {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100svh;
+  width: 15svw;
+  border: none;
+  /* background-color: #0f66dc; */
+  background: rgb(43, 62, 177);
+  background: linear-gradient(
+    135deg,
+    rgba(43, 62, 177, 1) 0%,
+    rgba(35, 82, 198, 1) 53%,
+    rgba(15, 102, 220, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+}
+aside div {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.change {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-family: "BYekan+";
+  transition: 0.3s;
+  margin-bottom: 60px;
+}
+.change:hover{
+  transform: scale(1.08);
+}
+.SideCard {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: rgb(43, 62, 177);
+  background-color: white;
+  width: 85%;
+  text-align: center;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 4px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.SideCard:hover{
+  transform: scale(1.05);
+}
+.SideCard a {
+  color: white;
+  font-family: "BYekan+";
+}
+.SideCard{
+  background: none;
+}
+a {
+  text-decoration: none;
+}
+aside {
+  color: white;
+}
+aside div h1 {
+  color: white;
+  font-family: "BYekan+";
+}
+nav {
+  width: 85%;
+  background-color: white;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  content: "";
+  top: 0;
+  justify-content: space-between;
+}
+.links a {
+  color: black;
+  font-family: "BYekan+";
+  text-decoration: none;
+  margin-right: 6%;
+  margin-left: 10%;
+  font-size: 18px;
+  transition: 0.4s;
+}
+.links a:hover {
+  transform: scale(1.08);
+}
+.links{
+  width: 50%;
+}
+button{
+  cursor: pointer;
+}
+.dropDown , .mob{
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 120px; */
+  width: 200px;
+}
+.mob{
+  display: none;
+}
+.dropDownButton{
+  background-color: white;
+  border: none;
+  font-family: "BYekan+";
+  width: 100px;
+  height: 51px;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.dropDownButton:hover{
+  transform: scale(1.03);
+
+}
+.dropDownLinks{
+  color: black;
+  font-family: "BYekan+";
+  text-decoration: none;
+  font-size: 15px;
+}
+.mob .dropDownLinks:hover{
+  color: #2b3eb1;
+}
+.dropDown div , .mob div{
+  width: 100px;
+  border-bottom: 1px solid black;
+  background-color: rgba(245, 245, 245, 0.411);
+  height: 40px;
+  display: none;
+}
+.dropDown div:last-of-type ,.mob div:last-of-type{
+  border: none;
+}
+.dropDown div:first-of-type , .mob div:first-of-type{
+  border-top: 1px solid black;
+}
+.container {
+  margin-left: 0px;
+  margin-right: -150px;
+  /* margin-right: 45px; */
+  /* margin-bottom: 40px; */
+  --color: #020202;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+svg{
+  margin-top: 55px;
+}
+.container .bell-regular {
+  position: absolute;
+  animation: keyframes-fill .5s;
+}
+.container .bell-solid {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill .5s;
+}
+.container input:checked ~ .bell-regular {
+  display: none;
+}
+.container input:checked ~ .bell-solid {
+  display: block;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+nav{
+  box-shadow: 0 3px 6px 1px rgb(143, 143, 143);
+}
+@keyframes keyframes-fill {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+}
+.Active{
+  background-color: white;
+}
+.Active a{
+  color: #0f66dc;
+}
+.leftSide{
+  display: flex;
+  flex-direction: row;
+}
+main{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 60%;
+  margin-left: 12.5%;
+  text-align: center;
+}
+main div{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  height: 690px;
+  border-radius: 8px;
+}
+main div h1{
+  margin-left: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: "BYekan+";
+}
+main div table{
+  width: 90%;
+}
+table tr td , table tr th {
+  text-align: center;
+  height: 40px;
+}
+table tr td{
+  font-family: "BYekan+";
+}
+table{
+  margin-left: -1%;
+}
+tr{
+  border-bottom: 1px solid #787878;
+}
+tr:last-of-type , tr:first-of-type{
+  border-bottom: none;
+}
+table tr td:nth-of-type(2){
+  color: #fc811d;
+  font-weight: 600;
+}
+table tr td div{
+  margin-top: 45px;
+  margin-right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2b3eb1;
+}
+table tr th{
+  color: #787878;
+  font-family: "MyradArabic";
+}
+table{
+  border-collapse: collapse;
+}
+main div {
+  overflow: auto;
+}
+main div::-webkit-scrollbar{
+  display: block;
+  width: 5px;
+}
+main div::-webkit-scrollbar-track{
+  background-color: #ddd;
+  margin-block: 160px;
+  margin-inline: -100px;
+}
+main div::-webkit-scrollbar-thumb{
+  background-color: #2b3eb1;
+}
+.wrapper main button{
+  margin-top: 20px;
+  width: 160px;
+  height: 35px;
+  font-size: 20px;
+  font-family: "BYekan+";
+  color: white;
+  background-color: #94dbd4;
+  border: none;
+  border-radius: 8px;
+}
+@media screen and (max-width:810px) {
+    .wrapper aside{
+      width: 20svw;
+    }
+    .links{
+      width: 70%;
+    }
+    .links a:first-of-type{
+      margin-right: 25px;
+    }
+    nav{
+      width: 80svw;
+    }
+    main{
+      margin-left: 10svw;
+    }
+}
+@media screen and (max-width:630px) {
+    .leftSide{
+      display: none;
+      
+    }
+    .links{
+        width: 100%;
+    }
+    .wrapper aside{
+      width: 25svw;
+    }
+    nav{
+      width: 75svw;
+    }
+    main{
+      margin-left: 6svw;
+    }
+}
+@media screen and (max-width:570px) {
+    .wrapper aside{
+      display: none;
+    }
+    nav{
+      width: 100%;
+    }
+    main{
+      width: 90svw;
+      margin-left: 3.5svw;
+    }
+    .mob{
+      display: flex;
+      margin-top: 0px;
+    }
+    .mob div{
+      display: none;
+    }
+}
+@media screen and (max-width:425px) {
+  .links a{
+    font-size: 15px;
+  }
+  table tr td{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width:400px) {
+  .mob{
+    margin-left: -40px;
+  }
+}
