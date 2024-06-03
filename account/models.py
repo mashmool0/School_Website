@@ -63,6 +63,8 @@ class Otp(models.Model):
     phone_number = models.CharField(max_length=11)
     code = models.CharField(max_length=4)
     expiration_date = models.DateTimeField(auto_now_add=True)
+    # request_count = models.IntegerField(default=0)  # New field to track the number of requests
+    # last_request_time = models.DateTimeField(auto_now_add=True)  # New field to track the last request time
 
     def __str__(self):
         return self.phone_number

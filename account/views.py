@@ -7,11 +7,12 @@ from django.contrib.auth import login, logout
 from .models import WelcomeRegister, Otp
 from .forms import RegisterForm, LoginForm, LoginOnlyWithPhone
 from django.contrib.auth.models import User
-from .decorators import un_authenticated
+from .decorators import un_authenticated, exist_otp
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from .send_otp_sms import send_otp
 from django.utils.crypto import get_random_string
+from .tasks import delete_expired_otp
 
 
 # Create your views here.
@@ -30,6 +31,7 @@ def user_login(request):
                 return redirect('home:home')
             else:
                 form.add_error(None, "رمز ورود یا شماره تماس اشتباه میباشد")
+
     return render(request, 'account/Login.html', context={'welcome_text': welcome_text, 'form': form})
 
 
@@ -88,8 +90,11 @@ def user_login_with_phone(request):
                     form.add_error(None, "این شماره قبلا ثبت نام نکرده است")
                 else:
                     code, data = send_otp(phone_number)
+                    # check status of send message
                     if data["Status"] == "Success":
                         Otp.objects.create(phone_number=phone_number, token=token_otp, code=code)
+                        # delete this otp message after 5 minutes
+                        delete_expired_otp(token_otp)
                         try:
                             # Changed: Redirect to the phone registration page with token as query parameter
                             return redirect(
@@ -103,6 +108,7 @@ def user_login_with_phone(request):
                     else:
                         form.add_error(None, "مشکلی به وجود آمده لطفا دوباره تلاش کنید")
             else:
+                Otp.objects.filter(phone_number=phone_number).delete()
                 form.add_error(None, "لطفا کمی صبر کنید و دوباره تلاش کنید")
 
         else:
@@ -113,7 +119,7 @@ def user_login_with_phone(request):
     return render(request, 'account/Login_with_phone.html', context={'welcome_text': welcome_text, "form": form})
 
 
-@un_authenticated
+@exist_otp
 def user_phone_register(request):
     errors = []
     try:
