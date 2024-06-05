@@ -178,3 +178,8 @@ def phone_register(request):
         if Otp.objects.filter(phone_number=request.GET.get('phone')).exists():
             Otp.objects.filter(phone_number=request.GET.get('phone').delete())
         raise
+
+
+
+def contactUs(request):
+    return render(request,'account/contactUs.html',context={})

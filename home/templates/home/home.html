@@ -22,6 +22,7 @@
                 <a href="course.html">آموزشگاه</a>
                 <a href="Library.html">دوره ها</a>
                 <a href="Library.html">وبلاگ</a>
+                <a href="{% url 'account:contactUs' %}">ارتباط باما</a>
                 <a href="#" class="tab">
                     <svg
                             width="25"
@@ -80,6 +81,8 @@
             <a href="course.html">دوره ها</a>
             <a href="Library.html">کتابخانه</a>
             <a href="Library.html">وبلاگ</a>
+            <a href="{% url 'account:contactUs' %}">ارتباط باما</a>
+
         </div>
         {% if request.user.is_authenticated %}
             <div>
