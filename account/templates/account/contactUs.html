@@ -44,6 +44,11 @@
                                 </div>
                                 <div class="content">
                                     <form id="contact" action="" method="post">
+                                        {% csrf_token %}
+                                        {% for error in errors %}
+                                            <h1>{{ error }}</h1>
+                                        {% endfor %}
+
                                         <div class="row">
                                             <div class="col-md-6 col-sm-12">
                                                 <fieldset>
@@ -52,10 +57,6 @@
                                                 </fieldset>
                                             </div>
                                             <div class="col-md-6 col-sm-12">
-                                                <fieldset>
-                                                    <input name="email" type="text" id="email" placeholder="Your email"
-                                                           required="">
-                                                </fieldset>
                                             </div>
                                             <div class="col-md-12 col-sm-12">
                                                 <fieldset>
@@ -77,6 +78,10 @@
                                                 </fieldset>
                                             </div>
                                         </div>
+                                        {% if message.0 == "Successfully" %}
+                                            <h1 class="success text-success mt-3" style="font-size: 30px">موفقیت
+                                                آمیز بود </h1>
+                                        {% endif %}
                                     </form>
                                 </div>
                             </div>

@@ -34,3 +34,5 @@ def just_super_student(view_func):
             return redirect("home:home")
 
     return wrapper_func
+
+

@@ -107,3 +107,11 @@ class ContactUs(models.Model):
     class Meta:
         verbose_name = "ارتباط کاربر ها با مدیرمدرسه"
         verbose_name_plural = "ارتباط کاربر ها با مدیرمدرسه"
+
+    def __str__(self):
+        return self.name + "--" + self.phone_number
+
+
+class LimitContactUs(models.Model):
+    phone_number = models.CharField(max_length=11, verbose_name="شماره تماس")
+    date_set = models.DateTimeField(auto_now_add=True)
