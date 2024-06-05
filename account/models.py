@@ -35,7 +35,7 @@ class UserStudent(models.Model):
     ]
     # Required fields for registration
     phone_number = models.CharField(max_length=11, unique=True, verbose_name="شماره تلفن ثبت نام")
-    username = models.CharField(max_length=30, verbose_name="نام")
+    username = models.CharField(max_length=30, verbose_name="نام کاربری")
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_student", verbose_name="ارتباط با")
     # Required fields for authenticating school
     password1 = models.CharField(max_length=30, null=True, blank=True)

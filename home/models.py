@@ -11,7 +11,7 @@ class Course(models.Model):
     course_name = models.CharField(max_length=30, verbose_name="نام دوره")
     price = models.CharField(max_length=20, verbose_name="قیمت دوره")
     teacher = models.CharField(max_length=30, verbose_name="استاد دوره")
-    date_starter = models.DateTimeField(verbose_name="روز شروع دوره")
+    date_starter = models.DateField(verbose_name="روز شروع دوره")
     banner = models.ImageField(upload_to='media/', verbose_name="عکس دوره")
     course_type = models.CharField(max_length=30, choices=COURSE_TYPE_CHOICES, verbose_name="نوع دوره")
 

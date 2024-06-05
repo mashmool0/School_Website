@@ -22,9 +22,9 @@ def export_to_excel(modeladmin, request, queryset):
 
 @admin.register(UserStudent)
 class UserStudentAdmin(ModelAdminJalaliMixin, ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('phone_number', 'email', 'first_name', 'super_student_user')
+    list_display = ('phone_number', 'first_name', 'last_name', 'username', 'super_student_user')
     search_fields = ('phone_number', 'email', 'username')
-    list_filter = ('super_student_user',)
+    list_filter = ('super_student_user', 'grade', 'section', 'field_of_study')
     fieldsets = [
         ("اطلاعات کاربری", {"fields": [("phone_number", 'username', "email")]}),
         ("اطلاعات تکمیلی کاربر", {"fields": [('first_name', 'last_name'), ('birthday_date',
