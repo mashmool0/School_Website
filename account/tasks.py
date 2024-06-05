@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 
 def delete_expired_otp(otp_id):
     def delete_otp():
-        time.sleep(300)  # Sleep for 5 minutes
+        time.sleep(60)  # Sleep for 1 minutes
         try:
             otp = Otp.objects.filter(phone_number=otp_id)
             otp.delete()
@@ -25,7 +25,7 @@ def delete_expired_otp2(phone):
     print("hi")
 
     def delete_otp2():
-        time.sleep(30)  # Sleep for 5 minutes
+        time.sleep(60)  # Sleep for 1 minutes
         try:
             otp = Otp.objects.filter(phone_number=phone)
             if otp.exists():

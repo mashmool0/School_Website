@@ -5,13 +5,13 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'css/basket.css' %}"/>
-    <title>Document</title>
+    <title>سبد خرید </title>
 </head>
 <body>
 <div class="wrapper">
     <nav dir="rtl">
         <div dir="rtl" class="links">
-            <a href="">خانه</a>
+            <a href="{% url 'home:home' %}">خانه</a>
             <a href="">دوره ها</a>
             <a href="">کتابخانه</a>
         </div>
@@ -71,7 +71,11 @@
     <aside>
         <div>
             <img src="{% static 'images/account.png' %}" alt=""/>
-            <h1>لورم ایپسوم</h1>
+            {% if request.user.first_name %}
+                <h1>{{ request.user.first_name }}</h1>
+            {% else %}
+                <h1>{{ request.user.user_student.username }}</h1>
+            {% endif %}
             <a href="" class="change">ویرایش اکانت</a>
             <div class="SideCard">
                 <a href="{% url 'panel:course' %}">دوره ها</a>
@@ -80,6 +84,17 @@
                 <a href="{% url 'panel:lastOrder' %}">تراکنش های اخیر</a>
             </div>
             <div class="SideCard Active"><a href="{% url 'panel:basket' %}">سبد خرید</a></div>
+            {% if request.user.user_student.super_student_user %}
+                <div class="SideCard"><a href="">ثبت نام در مدرسه</a></div>
+                {% comment %}   todo --> change href and create panel for that
+                {% endcomment %}
+            {% endif %}
+                    <br>
+            <br>
+            <br>
+            <div class="SideCard Active" style="background-color: #ff3939"><a style="color: white;font-weight: bold"
+                                                                              href="{% url 'account:logout' %}">خروج</a>
+            </div>
         </div>
     </aside>
     <main>

@@ -13,6 +13,8 @@ from django.contrib.auth import authenticate
 from .send_otp_sms import send_otp
 from django.utils.crypto import get_random_string
 from .tasks import delete_expired_otp, delete_expired_otp2
+from django.contrib.auth.models import Group
+
 
 # Create your views here.
 @un_authenticated
@@ -44,14 +46,22 @@ def user_register(request):
             phone_number = form.cleaned_data.get("phone_number")
             if not User.objects.filter(username=phone_number).exists():
                 try:
+                    # save form with overwrite save method for check password and bug of in input
                     user_student, user = form.save()
+
+                    # Add user to a Group in this method add it to Student user
+                    Group.objects.get(name="Student").user_set.add(user)
                     token = get_random_string(99)
                     code, data = send_otp(phone_number)
+
+                    # check otp send it was Successful or not
                     if data.get("Status") == "Success":
                         Otp.objects.create(phone_number=phone_number, token=token, code=code)
+                        # run expired otp2 --> in this function if user don't log in will delete his account,otp message
                         delete_expired_otp2(phone_number)
                         return redirect(
-                            reverse('account:authenticatePhone') + '?' + urlencode({'token': token, 'phone': phone_number}))
+                            reverse('account:authenticatePhone') + '?' + urlencode(
+                                {'token': token, 'phone': phone_number}))
                     else:
                         user.delete()
                         messages.error(request, 'Failed to send OTP. Please try again.')
@@ -146,7 +156,7 @@ def user_phone_register(request):
 
 
 @exist_otp
-def user_phone_register(request):
+def phone_register(request):
     errors = []
     try:
         if request.POST:
@@ -156,6 +166,7 @@ def user_phone_register(request):
             if Otp.objects.filter(token=token_otp, code=code).exists():
                 login(request, User.objects.get(username=phone_number))
                 Otp.objects.filter(phone_number=phone_number).delete()
+                # todo redirect to fill information
                 return redirect('home:home')
 
         return render(request, 'account/phone_register.html', context={"errors": errors})

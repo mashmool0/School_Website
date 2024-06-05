@@ -22,3 +22,15 @@ def exist_otp(view_func):
             return redirect('account:login')
 
     return wrapper_func
+
+
+def just_super_student(view_func):
+    def wrapper_func(reqeust, *args, **kwargs):
+        if reqeust.user.user_student.super_student_user:
+            return view_func(reqeust, *args, **kwargs)
+        else:
+            # todo
+            # shoma be in safhe dstresi nadarid bayad az madrese ejaze vorood begirid
+            return redirect("home:home")
+
+    return wrapper_func

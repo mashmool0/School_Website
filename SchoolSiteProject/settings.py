@@ -45,6 +45,7 @@ INSTALLED_APPS = [
 
     # installed external app
     'jalali_date',
+    'import_export',
 
 ]
 # default settings (optional)

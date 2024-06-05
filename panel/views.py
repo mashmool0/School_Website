@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -11,6 +12,7 @@ def course_panel(request):
 
 @login_required(login_url="account:login")
 def basket_panel(request):
+    # print(request.user.user_student.super_student_user)
     return render(request, 'panel/basket.html', context={})
 
 

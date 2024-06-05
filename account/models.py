@@ -14,10 +14,29 @@ class WelcomeRegister(models.Model):
 
 
 class UserStudent(models.Model):
+    GRADE = [
+        ('nohom', 'نهم'),
+        ('dahom', 'دهم'),
+        ('yazdahom', 'یازدهم'),
+        ('davazdahom', 'دوازدهم'),
+    ]
+    SECTION = [
+        ("dabirestan", "دبیرستان دوره دوم"),
+        ("rahnamii", "دبیرستان دوره اول"),
+        ("dabestan", "دبستان"),
+    ]
+
+    STUDY = [
+        ("tajrobi", "تجربی"),
+        ("riazi", "ریاضی و فیزیک"),
+        ("ensani", "انسانی"),
+        ("honarestan", "هنرستان"),
+        ("noOne", "هیچکدام(پایه نهم هستم)"),
+    ]
     # Required fields for registration
     phone_number = models.CharField(max_length=11, unique=True, verbose_name="شماره تلفن ثبت نام")
     username = models.CharField(max_length=30, verbose_name="نام")
-    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name="user_student")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_student", verbose_name="ارتباط با")
     # Required fields for authenticating school
     password1 = models.CharField(max_length=30, null=True, blank=True)
     password2 = models.CharField(max_length=30, null=True, blank=True)
@@ -25,9 +44,10 @@ class UserStudent(models.Model):
     first_name = models.CharField(max_length=50, verbose_name="نام", blank=True, null=True)
     last_name = models.CharField(max_length=50, verbose_name="نام خانوادگی", blank=True, null=True)
     birthday_date = models.DateField(verbose_name="تاریخ تولد", blank=True, null=True)
-    section = models.CharField(max_length=30, verbose_name="مقطع تحصیلی", blank=True, null=True)
-    grade = models.CharField(max_length=30, verbose_name="پایه تحصیلی", blank=True, null=True)  # Added descriptive name
-    field_of_study = models.CharField(max_length=30, verbose_name="رشته تحصیلی", blank=True, null=True)
+    section = models.CharField(max_length=30, verbose_name="مقطع تحصیلی", blank=True, null=True, choices=SECTION)
+    grade = models.CharField(max_length=30, verbose_name="پایه تحصیلی", blank=True, null=True,
+                             choices=GRADE)  # Added descriptive name
+    field_of_study = models.CharField(max_length=30, verbose_name="رشته تحصیلی", blank=True, null=True, choices=STUDY)
     father_name = models.CharField(max_length=40, verbose_name="نام پدر", blank=True, null=True)
     mother_name = models.CharField(max_length=40, verbose_name="نام و نام خانوادگی مادر", blank=True, null=True)
     address = models.TextField(verbose_name="آدرس منزل", blank=True, null=True)
