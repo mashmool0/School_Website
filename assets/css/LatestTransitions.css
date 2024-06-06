@@ -156,7 +156,7 @@ button{
 .dropDown div , .mob div{
   width: 100px;
   border-bottom: 1px solid black;
-  background-color: rgba(245, 245, 245, 0.592);
+  background-color: rgba(245, 245, 245, 0.879);
   height: 40px;
   display: none;
 }

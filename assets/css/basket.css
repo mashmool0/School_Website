@@ -39,6 +39,7 @@ body {
   );
   display: flex;
   flex-direction: column;
+
 }
 aside div {
   margin-top: 50px;
@@ -245,8 +246,7 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 40%;
-  margin-left: 40px;
+  width: 50%;
   text-align: center;
   height: 600px;
   margin-left: 20px;
@@ -332,6 +332,7 @@ table tr td:nth-of-type(4) button:last-of-type{
   color: red;
   margin-right: 10px;
 }
+
 .Sabad{
   display: flex;
   flex-direction: column;
@@ -349,7 +350,7 @@ main{
   margin-right: 60px;
 }
 .Sabad div:first-of-type{
-  font-size: 14px;
+  font-size: 10px;
   font-family: "BYekan+";
   display: flex;
   align-items: center;
@@ -370,6 +371,7 @@ main{
 .Sabad div:nth-of-type(2) div{
   width: 50%;
   font-family: "BYekan+Bold";
+  font-size: 18px;
 }
 .Sabad div:last-of-type{
   display: flex;
@@ -413,71 +415,114 @@ main{
   flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
+  margin-right: 100px;
 }
-@media screen and (max-width:810px) {
-    .wrapper aside{
-      width: 20svw;
-    }
-    .links{
-      width: 70%;
-    }
-    .links a:first-of-type{
-      margin-right: 25px;
-    }
-    nav{
-      width: 80svw;
-    }
-    main{
-      margin-left: 10svw;
-    }
-}
-@media screen and (max-width:630px) {
-    .leftSide{
-      display: none;
-      
-    }
-    .links{
-        width: 100%;
-    }
-    .wrapper aside{
-      width: 25svw;
-    }
-    nav{
-      width: 75svw;
-    }
-    main{
-      margin-left: 6svw;
-    }
-}
-@media screen and (max-width:570px) {
-    .wrapper aside{
-      display: none;
-    }
-    nav{
-      width: 100%;
-    }
-    main{
-      width: 90svw;
-      margin-left: 3.5svw;
-    }
-    .mob{
-      display: flex;
-      margin-top: 0px;
-    }
-    .mob div{
-      display: none;
-    }
-}
-@media screen and (max-width:425px) {
-  .links a{
-    font-size: 15px;
+@media screen and (max-width: 1200px) {
+  main{
+    width: 600px;
   }
-  table tr td{
+  .MainContent{
+    margin-right: 60px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  main h1{
+    font-size: 23px;
+  }
+  main div table tr td{
+    font-size: 14px;
+  }
+  main button{
+    font-size: 6px;
+  }
+  .Sabad h1 {
+    font-size: 13px;
+  }
+  .sood p{
     font-size: 14px;
   }
 }
-@media screen and (max-width:400px) {
+@media screen and (max-width: 950px) {
+  aside div , aside{
+    display: none;
+    background-color: whitesmoke;
+  }
+  div aside{
+    background-color: #020202;
+  }
+  .wrapper aside:nth-of-type(1){
+    display: none;
+  }
+  nav{
+    width: 100svw;
+  }
+  .MainContent{
+    margin-right: 0;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50% , -50%  ); */
+    margin-right: 0;
+  }
+  main{
+    margin-right: -0.5svw;
+    width: 55svw;
+  }
+  .Sabad{
+    width: 30svw;
+  }
+  .leftSide{
+    display: none;
+  }
   .mob{
-    margin-left: -40px;
+    display: block;
+  }
+}
+@media screen and (max-width:650px) {
+  .MainContent{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  main{
+    width: 90svw;
+    margin: 0;
+  }
+  .Sabad{
+    width: 90svw;
+    height: 350px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+  .Sabad div:first-of-type{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 0.8svw;
+  }
+  .Sabad div:first-of-type span{
+      margin-right:35.8svw;
+  }
+  .Sabad div:nth-of-type(2){
+    height: 50px;
+  }
+}
+@media screen and (max-width:540px) {
+  .links{
+    width: 100%;
+  }
+  .mob{
+    margin-left: -50px;
+  }
+}
+@media screen and (max-width:380px) {
+  .links a{
+    font-size: 14px;
+  }
+  .mob button , .mob div a{
+    font-size: 14px;
   }
 }

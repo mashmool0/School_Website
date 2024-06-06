@@ -4,7 +4,7 @@
 }
 @font-face {
   font-family: "BYekan+Bold";
-  src: url(../fonts/BYekan+\ Bold.ttf);
+  src: url(../fonts/BYekan+Bold.ttf);
 }
 * {
   margin: 0;
@@ -867,7 +867,7 @@ footer a{
   font-family: "BYekan+";
   text-decoration: none;
   color: white;
-  border-left: 2px solid #0f66dc;
+  border-left: 2px solid #1275ff;
   padding-left: 20px;
   height: 50px;
   margin-bottom: 30px;
@@ -881,7 +881,7 @@ footer a{
   padding-bottom: 0;
 }
 span{
-  color: rgb(232, 189, 88);
+  color: #1275ffa2;
 }
 footer div div:nth-of-type(2) , footer div div:nth-of-type(3){
   display: flex;
