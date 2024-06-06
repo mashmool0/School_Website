@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="assets/JS/node_modules/persian-datepicker/dist/js/persian-datepicker.js"></script>
+    <script src="assets/JS/node_modules/jquery/dist/jquery.js"></script>
+    <script src="assets/JS/node_modules/persian-date/dist/persian-date.js"></script>
+    <link rel="stylesheet" href="assets/css/info.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav dir="rtl">
+        <div dir="rtl" class="links">
+          <a href="">خانه</a>
+          <a href="">دوره ها</a>
+          <a href="">کتابخانه</a>
+        </div>
+
+        <div class="leftSide">
+          <div class="dropDown">
+            اندیشه پارسیان
+          </div>
+        </div>
+        <div class="mob">
+          <button onclick="dropdown2()" class="dropDownButton">
+            پنل کاربری
+          </button>
+          <div>
+            <a href="BoughtCourses.html" class="dropDownLinks">دوره ها</a>
+          </div>
+          <div>
+            <a href="LatestTransitions.html" class="dropDownLinks"
+              >تراکنش های اخیر</a
+            >
+          </div>
+          <div><a href="basket.html" class="dropDownLinks">سبد خرید</a></div>
+        </div>
+      </nav>
+      <aside>
+        <div>
+          <img src="assets/images/account.png" alt="" />
+          <h1>لورم ایپسوم</h1>
+          <a href="" class="change">ویرایش اکانت</a>
+          <div class="SideCard Active">
+            <a href="BoughtCourses.html">دوره ها</a>
+          </div>
+          <div class="SideCard">
+            <a href="LatestTransitions.html">تراکنش های اخیر</a>
+          </div>
+          <div class="SideCard"><a href="basket.html">سبد خرید</a></div>
+        </div>
+      </aside>
+      <main >
+        <h1>اطلاعات کاربری خود را وارد کنید</h1>
+        <form>
+          <div>
+            <label for="name">نام</label>
+            <input type="text" id="name" name="name"/>
+            <label for="lastName">نام خانوادگی</label>
+            <input type="text" id="lastName" name="lastName"/>
+          </div>
+          <div>
+            <label for="BD">تاریخ تولد</label>
+            <input id="BD" type="date" class="date-input" name="BD" />
+            <label for="grade">مقطع تحصیلی</label>
+            <input type="text" id="grade" name="grade"/>
+          </div>
+          <div>
+            <label for="paye">پایه تحصیلی</label>
+            <select id="paye"  name="paye">
+              <option value="نهم">نهم</option>
+              <option value="دهم">دهم</option>
+              <option value="یازدهم">یازدهم</option>
+              <option value="دوازدهم">دوازدهم</option>
+            </select>
+            <label for="reshte">رشته تحصیلی</label>
+            <input type="text" id="reshte" name="reshte"/>
+          </div>
+          <div>
+            <label for="IDCode">کد ملی</label>
+            <input type="tel" name="IDCode" id="IDCode" >
+            <label for="babash">نام پدر</label>
+            <input type="text" name="babash" id="babash">
+          </div>
+          <div>
+            <label for="mamanesh">نام و نام خانوادگی مادر</label>
+            <input type="text" name="mamanesh" id="mamanesh">
+            <label for="Khoone">آدرس منزل</label>
+            <textarea name="Khoone" id="Khoone"></textarea>
+          </div>
+          <div>
+            <label for="babashPhone">شماره تلفن پدر</label>
+            <input type="text" name="babashPhone" id="babashPhone">
+            <label for="mamaneshPhone">شماره تلفن مادر</label>
+            <input type="text" name="mamaneshPhone" id="mamaneshPhone">
+          </div>
+          <div>
+            <label for="KarBabash">شغل پدر</label>
+            <input type="text" name="KarBabash" id="KarBabash">
+            <label for="KarMommy">شغل مادر</label>
+            <input type="text" name="KarMommy" id="KarMommy">
+          </div>
+          <div>
+            <label for="TahsilBabash">تحصیلات پدر</label>
+            <input type="text" name="TahsilBabash" id="TahsilBabash">
+            <label for="TahsilMommy">تحصیلات مادر</label>
+            <input type="text" name="TahsilMommy" id="TahsilMommy">
+          </div>
+          <div>
+            <label for="AddressBabash">آدرس شغل مادر</label>
+            <textarea name="AddressBabash" id="AddressBabash"></textarea>
+            <label for="AddressMommy">آدرس شغل پدر</label>
+            <textarea name="AddressMommy" id="AddressMommy"></textarea>
+          </div>
+          <div>
+            <label for="DarsBabash">شماره شناسنامه پدر:</label>
+            <input type="text" id="DarsBabash" name="DarsBabash">
+            <label for="DarsMommy">شماره شناسنامه مادر</label>
+            <input type="text" id="DarsMommy" name="DarsMommy">
+          </div>
+          <div>
+            <label for="DarsKharBeraresh">تحصیلات خواهر یا برادر</label>
+            <textarea name="DarsKharBeraresh" id="DarsKharBeraresh"></textarea>
+          </div>
+          <button type="submit">ثبت</button>          
+        </form>
+      </main>
+    </div>
+    <script src="assets/JS/info.js"></script>
+  </body>
+</html>

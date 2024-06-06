@@ -3,7 +3,7 @@
   src: url(../fonts/BYekan+.ttf);
 }
 @font-face {
-  font-family: "MyradArabic";
+  font-family: "myrad";
   src: url(../fonts/MyriadArabicRegular.ttf);
 }
 * {
@@ -103,7 +103,6 @@ nav {
   position: sticky;
   content: "";
   top: 0;
-  z-index: 2;
   justify-content: space-between;
 }
 .links a {
@@ -124,15 +123,11 @@ nav {
 button{
   cursor: pointer;
 }
-.dropDown , .mob{
+.dropDown ,.mob{
   display: flex;
   flex-direction: column;
   /* margin-top: 120px; */
   width: 200px;
-}
-
-.mob{
-  display: none;
 }
 .dropDownButton{
   background-color: white;
@@ -152,23 +147,23 @@ button{
   font-family: "BYekan+";
   text-decoration: none;
   font-size: 15px;
+
 }
 .dropDown div , .mob div{
   width: 100px;
   border-bottom: 1px solid black;
-  background-color: rgba(245, 245, 245, 0.592);
+  background-color: rgba(245, 245, 245, 0.411);
   height: 40px;
   display: none;
-}
-.mob div{
-  background-color: rgba(245, 245, 245, 0.875);
-  
 }
 .dropDown div:last-of-type , .mob div:last-of-type{
   border: none;
 }
 .dropDown div:first-of-type , .mob div:first-of-type{
   border-top: 1px solid black;
+}
+.mob{
+  display: none;
 }
 .container {
   margin-left: 0px;
@@ -231,125 +226,105 @@ nav{
     transform: rotate(15deg);
   }
 }
-.Active{
-  background-color: white;
-}
-.Active a{
-  color: #0f66dc;
-}
 .leftSide{
-  display: flex;
-  flex-direction: row;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* display: none; */
+  display: block;
+  font-family: "BYekan+";
+  font-size: 20px;
+}
+
+
+main form{
 }
 main{
+  box-sizing: border-box;
   margin-top: 50px;
-  width: 60%;
-  border-radius: 8px;
-  background-color: white;
-  height: 600px;
-  margin-left: 12.5%;
   display: flex;
   flex-direction: column;
-
-}
-main div{
-  display: flex;
-  flex-direction: row-reverse;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 20px;
-  margin-bottom: 40px;
-}
-main div h1{
-  margin-right: 40px;
-  font-family: "BYekan+";
-  font-size: 27px;
-}
-main div button{
-  margin-left: 15px;
-  width: 100px;
-  height: 30px;
-  border: none;
-  color: white;
-  background-color: #2b3eb1;
-  border-radius: 6px;
-  font-family: "BYekan+";
-}
-table tr td , table tr th {
-  text-align: center;
-  /* border-top: 5px solid white; */
-  height: 40px;
-}
-table tr td{
-  font-family: "BYekan+";
-  /* border-bottom: 1px solid black; */
-}
-table{
-  margin-right: 10px;
-  margin-left: 10px;
-}
-tr{
-  border-bottom: 1px solid black;
-}
-tr:last-of-type , tr:first-of-type{
-  border: none;
-}
-table tr td:nth-of-type(2){
-  color: #2b3eb1;
-  display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  font-weight: 600;
-}
-table tr td div{
-  margin-top: 45px;
-  margin-right: 10px;
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background-color: #2b3eb1;
-}
-.incomplete p{
-  color: #fc7100;
-}
-.incomplete div{
-  background-color: #fc7100;
-}
-table tr th{
-  color: #787878;
-  font-family: "MyradArabic";
-}
-table{
-  border-collapse: collapse;
-}
-main {
-  position: absolute;
-  overflow: auto;
+  width: calc(100% - 35%);
+  margin-left: 10%;
+  margin-top: 60px;
+  background-color: white;
+  border-radius: 6px;
+  box-shadow: 1px 1px 8px 5px gray;
+  margin-bottom: 200px;
+  overflow-x: auto;
+  height: 90svh;
+  overflow-y: auto;
+  padding-top:900px;
 }
 main::-webkit-scrollbar{
-  display: block;
   width: 5px;
 }
+
 main::-webkit-scrollbar-track{
   background-color: #ddd;
-  margin-block: 130px;
-  margin-inline: -100px;
 }
 main::-webkit-scrollbar-thumb{
   background-color: #2b3eb1;
 }
+main div{
+  display: flex;
+  flex-direction: row-reverse;
+  margin-bottom: 20px;
+  justify-content: space-around;
+  font-family: "myrad";
+  border-bottom: 2px solid rgb(170, 170, 170);
+  padding-bottom: 20px;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+}
+main h1{
+  margin-bottom: 50px;
+  font-family: "BYekan+";
+}
 
+main div input ,select{
+  /* margin-left: 10px; */
+  /* margin-right: 10px; */
+  width: 150px;
+  height: 30px;
+  box-sizing: border-box;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 2px 2px 2px gray ;
+  font-family: "BYekan+";
 
-
-
-
-
-
-
-
-
-
+}
+main div textarea{
+  width: 200px;
+  height: 180px;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 1px 2px 2px 2px gray ;
+  margin-left: 10px;
+  margin-right: 10px;
+  font-family: "BYekan+";
+}
+main form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main form button{
+  width: 180px;
+  height: 40px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: white;
+  background-color: #94dbd4;
+  border-radius: 8px;
+  border: none;
+  font-family: "BYekan+";
+  font-size: 20px;
+  justify-self: center;
+}
 
 @media screen and (max-width:810px) {
   .wrapper aside{
@@ -364,9 +339,6 @@ main::-webkit-scrollbar-thumb{
   nav{
     width: 80svw;
   }
-  main{
-    margin-left: 10svw;
-  }
 }
 @media screen and (max-width:630px) {
   .leftSide{
@@ -374,16 +346,13 @@ main::-webkit-scrollbar-thumb{
     
   }
   .links{
-      width: 100%;
+    width: 100%;
   }
   .wrapper aside{
     width: 25svw;
   }
   nav{
     width: 75svw;
-  }
-  main{
-    margin-left: 6svw;
   }
 }
 @media screen and (max-width:570px) {
@@ -393,10 +362,6 @@ main::-webkit-scrollbar-thumb{
   nav{
     width: 100%;
   }
-  main{
-    width: 90svw;
-    margin-left: 3.5svw;
-  }
   .mob{
     display: flex;
     margin-top: 0px;
@@ -404,28 +369,4 @@ main::-webkit-scrollbar-thumb{
   .mob div{
     display: none;
   }
-}
-@media screen and (max-width:425px) {
-.links a{
-  font-size: 15px;
-}
-table tr td{
-  font-size: 14px;
-}
-}
-@media screen and (max-width:400px) {
-.mob{
-  margin-left: -40px;
-}
-}
-@media screen and (max-width:400px) {
-  main div h1 {
-    font-size: 20px;
-  }
-}
-.mob , .dropDownLinks , .dropDown , .dropDownLinks a{
-  z-index: 1;
-}
-main , main table , main div{
-  z-index: 0;
 }
