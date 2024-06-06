@@ -6,6 +6,10 @@
   font-family: "MyradArabic";
   src: url(../fonts/MyriadArabicRegular.ttf);
 }
+@font-face {
+  font-family: "BYekan+Bold";
+  src: url("../fonts/BYekan+Bold.ttf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +22,7 @@ body {
   height: 100svh;
   background-color: whitesmoke;
 }
-.wrapper aside {
+.wrapper aside:first-of-type {
   position: fixed;
   right: 0;
   top: 0;
@@ -83,10 +87,10 @@ aside div {
 a {
   text-decoration: none;
 }
-aside {
+aside:first-of-type {
   color: white;
 }
-aside div h1 {
+aside:first-of-type div h1 {
   color: white;
   font-family: "BYekan+";
 }
@@ -241,9 +245,11 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  margin-left: 12.5%;
+  width: 40%;
+  margin-left: 40px;
   text-align: center;
+  height: 600px;
+  margin-left: 20px;
 }
 main div{
   background-color: white;
@@ -316,16 +322,97 @@ main div::-webkit-scrollbar-track{
 main div::-webkit-scrollbar-thumb{
   background-color: #2b3eb1;
 }
-.wrapper main button{
-  margin-top: 20px;
-  width: 160px;
-  height: 35px;
-  font-size: 20px;
-  font-family: "BYekan+";
-  color: white;
-  background-color: #94dbd4;
+  table tr td:nth-of-type(4) button{
+  color: #94dbd4;
+  background-color: white;
   border: none;
-  border-radius: 8px;
+  font-size: large;
+}
+table tr td:nth-of-type(4) button:last-of-type{
+  color: red;
+  margin-right: 10px;
+}
+.Sabad{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px; 
+  width: 25%;
+  height: 500px;
+  margin-top: 60px;
+}
+main{
+  margin-right: 10svw;
+}
+.Sabad div:first-of-type span{
+  display: inline-block;
+  margin-right: 60px;
+}
+.Sabad div:first-of-type{
+  font-size: 14px;
+  font-family: "BYekan+";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+.Sabad div:nth-of-type(2){
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c7daf6;
+  color: #0664f0;
+  font-size: 18px;
+  height: 80px;
+}
+.Sabad div:nth-of-type(2) div{
+  width: 50%;
+  font-family: "BYekan+Bold";
+}
+.Sabad div:last-of-type{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "BYekan+";
+}
+.Sabad div:last-of-type h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.Sabad div:last-of-type button{
+  margin-top: 20px;
+  width: 80%;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  font-family: "BYekan+";
+  border: none;
+  background-color: #0e66dc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.Sabad div:last-of-type input{
+  background-color: rgba(212, 211, 211, 0.437);
+  border: none;
+  height: 25px;
+  width: 120%;
+  font-family: "BYekan+";
+  text-align: center;
+}
+.Sabad div:last-of-type form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MainContent{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
 }
 @media screen and (max-width:810px) {
     .wrapper aside{
