@@ -235,9 +235,6 @@ nav{
   font-size: 20px;
 }
 
-
-main form{
-}
 main{
   box-sizing: border-box;
   margin-top: 50px;
@@ -255,7 +252,7 @@ main{
   overflow-x: auto;
   height: 90svh;
   overflow-y: auto;
-  padding-top:700px;
+  padding-top:400px;
 }
 main::-webkit-scrollbar{
   width: 5px;

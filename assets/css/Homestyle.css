@@ -1,10 +1,10 @@
 @font-face {
   font-family: "BYekan+";
-  src: url(../fonts/BYekan+.ttf);
+  src: url("../fonts/BYekan+.ttf");
 }
 @font-face {
   font-family: "BYekan+Bold";
-  src: url(../fonts/BYekan+Bold.ttf);
+  src: url("../fonts/BYekan+Bold.ttf");
 }
 * {
   margin: 0;
@@ -528,9 +528,6 @@ header nav:nth-of-type(3) button:hover {
   .card p {
     font-size: 14px;
   }
-  .card{
-    
-  }
 }
 @media screen and (max-width: 780px) {
   .schoolScores h1 {
@@ -757,9 +754,6 @@ header nav:nth-of-type(3) button:hover {
   .JoiningQuiz{
     width: 100%;
   }
-  .JoiningQuiz div img{
-    /* width: 100%; */
-  }
   .JoiningQuiz div:nth-of-type(2){
     display: flex;
     flex-direction: column;
@@ -842,9 +836,6 @@ header nav:nth-of-type(3) button:hover {
     width: 35%;
     height: 35%;
   }
-}
-@media screen and (max-width:) {
-  
 }
 footer{
   background-color: #232323c7;
