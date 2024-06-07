@@ -36,3 +36,5 @@ function dropdown2() {
     dropCheck2 = false;
   }
 }
+
+$('.date-input').persianDatepicker();

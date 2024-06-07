@@ -156,12 +156,12 @@ button{
 .dropDown div , .mob div{
   width: 100px;
   border-bottom: 1px solid black;
-  background-color: rgba(245, 245, 245, 0.879);
+  background-color: rgb(255, 255, 255);
   height: 40px;
   display: none;
 }
 .mob div{
-  background-color: rgba(245, 245, 245, 0.875);
+  background-color: rgb(255, 255, 255);
   
 }
 .dropDown div:last-of-type , .mob div:last-of-type{
