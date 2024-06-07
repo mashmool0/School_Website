@@ -1,14 +1,14 @@
 {% load static %}
-{% load jalali_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <script src="{% static 'JS/node_modules/persian-datepicker/dist/js/persian-datepicker.js' %}"></script>
-    <script src="assets/JS/node_modules/jquery/dist/jquery.js"></script>
-    <script src="assets/JS/node_modules/persian-date/dist/persian-date.js"></script>
     <link rel="stylesheet" href="{% static 'css/info.css' %}"/>
+    <script src="https://unpkg.com/persian-date@latest/dist/persian-date.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.css">
     <title>اطلاعات کاربری</title>
 </head>
 <body>
@@ -19,7 +19,6 @@
             <a href="">دوره ها</a>
             <a href="">کتابخانه</a>
         </div>
-
         <div class="leftSide">
             <div class="dropDown">
                 اندیشه پارسیان
@@ -81,9 +80,8 @@
                 <input type="text" id="lastName" name="lastName"/>
             </div>
             <div>
-                <p>{{ request.user.date_joined|to_jalali:'%y/%m/%d _ %H:%M:%S' }}</p>
                 <label for="BD">تاریخ تولد</label>
-                <input id="BD" type="date" class="date-input" name="BD"/>
+                <input id="BD" type="text" readonly class="date-input" name="BD"/>
                 <label for="grade">مقطع تحصیلی</label>
                 <select name="grade" id="grade">
                     <option value="">متوسطه اول</option>
@@ -156,5 +154,27 @@
     </main>
 </div>
 <script src="{% static 'JS/info.js' %}"></script>
+<script>
+    $(document).ready(function() {
+        function persianToEnglishNumber(str) {
+            var persianDigits = '۰۱۲۳۴۵۶۷۸۹';
+            var englishDigits = '0123456789';
+            var result = str.split('').map(function(char) {
+                var index = persianDigits.indexOf(char);
+                return index >= 0 ? englishDigits[index] : char;
+            }).join('');
+            return result;
+        }
+
+        $("#BD").persianDatepicker({
+            format: 'YYYY-MM-DD',
+            autoClose: true,
+            onSelect: function(unix) {
+                var date = new persianDate(unix).format('YYYY-MM-DD');
+                $("#BD").val(persianToEnglishNumber(date));
+            }
+        });
+    });
+</script>
 </body>
 </html>

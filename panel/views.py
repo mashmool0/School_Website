@@ -22,5 +22,4 @@ def last_order(request):
 
 @login_required(login_url="account:login")
 def user_info(request):
-    jalali_join = datetime2jalali(request.user.date_joined).strftime('%y/%m/%d')
-    return render(request, "panel/information.html", context={'jalali_join': jalali_join})
+    return render(request, "panel/information.html", context={})
