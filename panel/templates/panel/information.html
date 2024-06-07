@@ -68,7 +68,7 @@
         </div>
     </aside>
     <main>
-        <h1>اطلاعات کاربری خود را وارد کنید</h1>
+        <h1 style="margin-bottom: 40px">اطلاعات کاربری خود را وارد کنید</h1>
         <form method="post">
             <div>
                 <label for="name">نام</label>
@@ -80,7 +80,10 @@
                 <label for="BD">تاریخ تولد</label>
                 <input id="BD" type="date" class="date-input" name="BD"/>
                 <label for="grade">مقطع تحصیلی</label>
-                <input type="text" id="grade" name="grade"/>
+                <select name="grade" id="grade">
+                    <option value="">متوسطه اول</option>
+                    <option value="">متوسطه دوم</option>
+                </select>
             </div>
             <div>
                 <label for="paye">پایه تحصیلی</label>
@@ -91,7 +94,11 @@
                     <option value="دوازدهم">دوازدهم</option>
                 </select>
                 <label for="reshte">رشته تحصیلی</label>
-                <input type="text" id="reshte" name="reshte"/>
+                <select name="reshte" id="reshte">
+                    <option value="">ریاضی</option>
+                    <option value="">تجربی</option>
+                    <option value="">انسانی</option>
+                </select>
             </div>
             <div>
                 <label for="IDCode">کد ملی</label>
