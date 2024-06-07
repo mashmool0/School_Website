@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
+from jalali_date import datetime2jalali, date2jalali
 
 
 # Create your views here.
@@ -22,4 +22,5 @@ def last_order(request):
 
 @login_required(login_url="account:login")
 def user_info(request):
-    return render(request, "panel/information.html", context={})
+    jalali_join = datetime2jalali(request.user.date_joined).strftime('%y/%m/%d')
+    return render(request, "panel/information.html", context={'jalali_join': jalali_join})

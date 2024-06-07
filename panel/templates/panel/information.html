@@ -1,4 +1,5 @@
 {% load static %}
+{% load jalali_tags %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,13 +9,13 @@
     <script src="assets/JS/node_modules/jquery/dist/jquery.js"></script>
     <script src="assets/JS/node_modules/persian-date/dist/persian-date.js"></script>
     <link rel="stylesheet" href="{% static 'css/info.css' %}"/>
-    <title>Document</title>
+    <title>اطلاعات کاربری</title>
 </head>
 <body>
 <div class="wrapper">
     <nav dir="rtl">
         <div dir="rtl" class="links">
-            <a href="">خانه</a>
+            <a href="{% url 'home:home' %}">خانه</a>
             <a href="">دوره ها</a>
             <a href="">کتابخانه</a>
         </div>
@@ -29,20 +30,23 @@
                 پنل کاربری
             </button>
             <div>
-                <a href="BoughtCourses.html" class="dropDownLinks">دوره ها</a>
+                <a href="{% url 'panel:course' %}" class="dropDownLinks">دوره ها</a>
             </div>
             <div>
-                <a href="LatestTransitions.html" class="dropDownLinks"
-                >تراکنش های اخیر</a
-                >
+                <a href="{% url 'panel:lastOrder' %}" class="dropDownLinks"
+                >تراکنش های اخیر</a>
             </div>
-            <div><a href="basket.html" class="dropDownLinks">سبد خرید</a></div>
+            <div><a href="{% url 'panel:basket' %}" class="dropDownLinks">سبد خرید</a></div>
         </div>
     </nav>
     <aside>
         <div>
             <img src="{% static '/images/account.png' %}" alt=""/>
-            <h1>لورم ایپسوم</h1>
+            {% if request.user.first_name %}
+                <h1>{{ request.user.first_name }}</h1>
+            {% else %}
+                <h1>{{ request.user.user_student.username }}</h1>
+            {% endif %}
             <a href="" class="change">ویرایش اکانت</a>
             <div class="SideCard">
                 <a href="{% url 'panel:course' %}">دوره ها</a>
@@ -77,6 +81,7 @@
                 <input type="text" id="lastName" name="lastName"/>
             </div>
             <div>
+                <p>{{ request.user.date_joined|to_jalali:'%y/%m/%d _ %H:%M:%S' }}</p>
                 <label for="BD">تاریخ تولد</label>
                 <input id="BD" type="date" class="date-input" name="BD"/>
                 <label for="grade">مقطع تحصیلی</label>
