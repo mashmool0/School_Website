@@ -32,77 +32,12 @@ TemplateMo 551 Stand Blog
 https://templatemo.com/tm-551-stand-blog
 
 -->
-    <style>
-      @font-face {
-        font-family: "BYekan+";
-        src: url(../fonts/BYekan+.ttf);
-      }
-      nav {
-        position: sticky;
-        content: "";
-        top: 0;
-        height: 40px;
-        align-items: center;
-      }
-      nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-between;
-        align-items: center;
-        padding-top: 18px;
-        background-color: rgba(234, 234, 234, 0.2);
-      }
-      body {
-        background-color: white;
-      }
-      .links a {
-        color: rgb(0, 0, 0);
-        font-family: "BYekan+";
-        text-decoration: none;
-        margin-right: 6%;
-        margin-left: 10%;
-        font-size: 18px;
-        margin-bottom: 15px;
-      }
-      .links a:hover::after {
-        content: "";
-        border: 1px solid;
-        border-color: rgb(0, 0, 0);
-        display: block;
-        position: relative;
-        width: 100%;
-        margin-top: 5px;
-      }
-      .links a:hover {
-        transform: scale(1.1);
-      }
-      .links {
-        width: 50%;
-        display: flex;
-        flex-direction: row;
-      }
-      nav h1 {
-        font-family: "BYekan+";
-        margin-left: 60px;
-        margin-bottom: 10px;
-      }
-      nav h1 a {
-        font-size: 20px;
-        margin-bottom: 10px;
-        text-decoration: none;
-        color: black;
-        font-family: "BYekan+";
-      }
-    </style>
   </head>
   <body>
-    <nav dir="rtl">
-      <div dir="rtl" class="links">
-        <a href="">خانه</a>
-        <a href="">دوره ها</a>
-        <a href="">کتابخانه</a>
-      </div>
-      <h1><a href="Home.html">اندیشه پارسیان</a></h1>
+    <nav dir="rtl" class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-link text-dark ml-5 mr-3 font-weight-bold" href="Home.html">خانه</a>
+      <a class="navbar-link text-dark ml-5 mr-3 mr-lg-5 font-weight-bold" href="#">دوره ها</a>
+      <a class="navbar-link text-dark ml-4 mr-3 mr-lg-5 font-weight-bold" href="#">کتابخانه</a>
     </nav>
     <section class="contact-us">
       <div class="container">
@@ -212,5 +147,12 @@ https://templatemo.com/tm-551-stand-blog
         </div>
       </div>
     </section>
+    <footer dir="rtl" class="bg-secondary d-flex">
+      <div class="row w-100 d-flex flex-row justify-content-around vh-8">
+        <a class="text-white border-left vh-90 pl-3 border-primary" href="">توییتر</a>
+        <a class="text-white border-left vh-4 pl-3 border-primary" href="">اینستاگرام</a>
+        <a class="text-white border-left vh-4 pl-3 border-primary" href="">تلگرام</a>
+      </div>
+    </footer>
   </body>
 </html>

@@ -75,9 +75,9 @@ main div:first-of-type{
   padding-top: 20px;
   width: 40svw;
   margin-top: 40px;
-  margin-left: 20svw;
+  margin-left: 10svw;
 }
-main div:first-of-type h1{
+main .left h1{
   font-size: 18px;
   border-bottom: 1px solid rgba(128, 128, 128, 0.208);
   padding-bottom: 10px;
@@ -90,10 +90,14 @@ main div form {
 }
 main div form div:first-of-type{
   flex-direction: row;
-  justify-content:center;
-  justify-self: center;
+  /* justify-content:space-evenly; */
+  /* justify-self: center; */
   align-items: center;
-  margin-right: 16.6svw;
+  justify-content: space-between;
+  /* margin-right: 16.6svw; */
+  /* margin-right: 103px; */
+  width: 40svw;
+  margin-right: 10svw;
 }
 main div form div:nth-of-type(2){
   display: flex;
@@ -109,23 +113,73 @@ form input , form textarea{
   border: 1px solid rgba(128, 128, 128, 0.208);
 }
 form div:first-of-type input{
-  width: 220px;
+  width: 15svw;
   height: 40px;
-  margin-right: 50px;
+  
 }
 form input{
-  width: 500px;
+  width: 40svw;
   height: 40px;
+  text-align: end;
+  padding-right: 10px;
 }
 form textarea{
-  width: 500px;
+  text-align: end;
+  width: 40svw;
+  padding-right: 10px;
   height: 150px;
 }
-
-
-
-
-
+form button{
+  width: 80px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  background-color: #f48840;
+  color: white;
+  align-self: flex-start;
+  margin-left: 0px;
+}
+main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+main div:last-of-type{
+  width: 20svw;
+  font-family: "BYekan+";
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.etelaat{
+  border-bottom: 1px solid rgba(128, 128, 128, 0.208);
+}
+main div:last-of-type div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.208);
+  text-align: center;
+}
+main .right div{
+  width: 300px;
+}
+main .right div h1{
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+main .right div h2{
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 10px;
+  text-align: center;
+}
+main .right div:first-of-type{
+  margin-left: 0;
+}
 
 
 
@@ -189,4 +243,70 @@ footer div div:first-of-type{
   footer div:nth-of-type(2) h2{
     font-size: 4svw;
   }
+}
+@media screen and (max-width:980px) {
+  main{
+    margin-left: -90px;
+  }
+}
+@media screen and (max-width:880px) {
+  main{
+    flex-direction: column;
+  }
+  .right{
+    margin-left: 10svw;
+  }
+  .left form div , .left textarea{
+    width: 80svw;
+    margin-right: 20svw;
+  }
+  .left form div input{
+    width: 80svw; 
+    margin-right: 20svw;
+  }
+  .left form div:first-of-type input{
+    width: 30vw;
+  }
+  .left form div:first-of-type {
+    margin-right: 35svw;
+  }
+  form{
+    width: 90svw;
+  }
+  main div form div:first-of-type{
+    width: 90svw;
+  }
+}
+@media screen and (max-width:675px) {
+  .left form div:first-of-type {
+    /* margin-right:   35svw; */
+    margin-left: 5svw;
+  }
+}
+@media screen and (max-width:550px) {
+  .left form div:first-of-type {
+    margin-left: 0;
+  } 
+  nav h1{
+    font-size: 18px;
+    text-align: center;
+    margin-left: 10px;
+  }
+  .links{
+    width: 100%;
+  }
+  .links a{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width:400px) {
+ main{
+  margin-right: 10px;
+ } 
+ .left form div:first-of-type input{
+  margin-left: -10px;
+ }
+ .left form div:first-of-type{
+  margin-left: 6svw;
+ }
 }
