@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     'home.apps.HomeConfig',
     'account.apps.AccountConfig',
     'panel.apps.PanelConfig',
-
+    'contactus.apps.ContactusConfig',
     # installed external app
     'jalali_date',
     'import_export',
