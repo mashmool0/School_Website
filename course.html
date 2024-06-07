@@ -7,6 +7,311 @@
     <link rel="stylesheet" href="assets/css/course.css" />
   </head>
   <body>
-    
+    <header>
+      <nav dir="rtl">
+        <div class="HamburgerMenu">
+          <label for="burger" class="burger">
+            <input onclick="clickChecker()" id="burger" type="checkbox" />
+            <span></span>
+            <span></span>
+            <span></span>
+          </label>
+          <div class="SideLinks">
+            <a href="Home.html">خانه</a>
+            <a href="course.html">آموزشگاه</a>
+            <a href="Library.html">دوره ها</a>
+            <a href="Library.html">وبلاگ</a>
+            <a href="Library.html">ارتباط با ما</a>
+              <a href="#" class="tab">
+                <svg
+                  width="25"
+                  height="25"
+                  viewBox="0 0 104 100"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect
+                    x="21.5"
+                    y="3.5"
+                    width="60"
+                    height="60"
+                    rx="30"
+                    stroke="black"
+                    stroke-width="7"
+                  ></rect>
+                  <g clip-path="url(#clip0_41_27)">
+                    <mask
+                      id="mask0_41_27"
+                      style="mask-type:luminance"
+                      maskUnits="userSpaceOnUse"
+                      x="0"
+                      y="61"
+                      width="104"
+                      height="52"
+                    >
+                      <path
+                        d="M0 113C0 84.2812 23.4071 61 52.1259 61C80.706 61 104 84.4199 104 113H0Z"
+                        fill="white"
+                      ></path>
+                    </mask>
+                    <g mask="url(#mask0_41_27)">
+                      <path
+                        d="M-7 113C-7 80.4152 19.4152 54 52 54H52.2512C84.6973 54 111 80.3027 111 112.749H97C97 88.0347 76.9653 68 52.2512 68H52C27.1472 68 7 88.1472 7 113H-7ZM-7 113C-7 80.4152 19.4152 54 52 54V68C27.1472 68 7 88.1472 7 113H-7ZM52.2512 54C84.6973 54 111 80.3027 111 112.749V113H97V112.749C97 88.0347 76.9653 68 52.2512 68V54Z"
+                        fill="black"
+                      ></path>
+                    </g>
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_41_27">
+                      <rect
+                        width="104"
+                        height="39"
+                        fill="white"
+                        transform="translate(0 61)"
+                      ></rect>
+                    </clipPath>
+                  </defs>
+                </svg>
+              </a>            
+          </div>  
+        </div>
+        <div class="links">
+          <a href="Home.html">خانه</a>
+          <a href="course.html">دوره ها</a>
+          <a href="Library.html">کتابخانه</a>
+          <a href="Library.html">وبلاگ</a>
+          <a href="Library.html">ارتباط با ما</a>
+        </div>
+        <div>
+          <button>ورود/ثبت نام</button>
+          <!-- <button>پنل کاربری</button> -->
+        </div>
+      </nav>
+      <div>
+        <h1>دوره ها</h1>
+        <div class="rectangle1"></div>
+        <div class="rectangle2"></div>
+        <div class="rectangle3"></div>
+        <div class="rectangle4"></div>
+        <div class="rectangle5"></div>
+      </div>
+    </header>
+    <main>
+      <div dir="rtl" class="SearchBar">
+        <form id="search" class="form">
+          <label for="search">
+            <input
+              required=""
+              autocomplete="off"
+              placeholder=""
+              id="search"
+              type="text"
+            />
+            <div class="icon">
+              <svg
+                stroke-width="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="swap-on"
+              >
+                <path
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                ></path>
+              </svg>
+              <svg
+                stroke-width="2"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+                class="swap-off"
+              >
+                <path
+                  d="M10 19l-7-7m0 0l7-7m-7 7h18"
+                  stroke-linejoin="round"
+                  stroke-linecap="round"
+                ></path>
+              </svg>
+            </div>
+            <button type="reset" class="close-btn">
+              <svg
+                viewBox="0 0 20 20"
+                class="h-5 w-5"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  clip-rule="evenodd"
+                  d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
+                  fill-rule="evenodd"
+                ></path>
+              </svg>
+            </button>
+          </label>
+        </form>
+        <div>
+          <button class="jozve">جزوه</button>
+          <button class="dore">دوره</button>
+        </div>
+      </div>
+      <div class="container">
+        <div class="Cards">
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <img src="assets/images/course.jpg" alt="" />
+            <div>
+              <h1>دوره فیزیک</h1>
+              <div>
+                <div>
+                  <p>تاریخ شروع</p>
+                  <p>03/02/01</p>
+                </div>
+                <h2>استاد فلانی</h2>
+              </div>
+              <div>
+                <h2>599,000</h2>
+                <button></button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer>
+      <div class="SocialLinks">
+        <a href="" class="telegram">تلگرام</a>
+        <a href="" class="instagram">اینستاگرام</a>
+        <a href="" class="twitter">توییتر</a>
+      </div>
+      <div>
+        <div class="ManagerInformation">
+          <h2 class="ManagerName">نام مدیر: <span>لورم ایپسوم</span></h2>
+          <h2 class="SchoolPhoneNumber">شماره تماس : <span>09999999999</span></h2>
+        </div>
+        <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</span></div>
+        <div class="CopyRight">COPYRIGHT 2024 <span> Amir Mashayekhi </span></div>
+      </div>
+    </footer>
   </body>
 </html>
