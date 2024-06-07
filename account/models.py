@@ -21,17 +21,14 @@ class UserStudent(models.Model):
         ('davazdahom', 'دوازدهم'),
     ]
     SECTION = [
-        ("dabirestan", "دبیرستان دوره دوم"),
-        ("rahnamii", "دبیرستان دوره اول"),
-        ("dabestan", "دبستان"),
+        ("dabirestan", "متوسطه اول"),
+        ("rahnamii", "متوسطه دوم"),
     ]
 
     STUDY = [
-        ("tajrobi", "تجربی"),
-        ("riazi", "ریاضی و فیزیک"),
+        ("tajrobi", "ریاضی"),
+        ("riazi", "تجربی"),
         ("ensani", "انسانی"),
-        ("honarestan", "هنرستان"),
-        ("noOne", "هیچکدام(پایه نهم هستم)"),
     ]
     # Required fields for registration
     phone_number = models.CharField(max_length=11, unique=True, verbose_name="شماره تلفن ثبت نام")
