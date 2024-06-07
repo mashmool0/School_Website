@@ -152,7 +152,7 @@ button{
 .dropDown div , .mob div{
   width: 100px;
   border-bottom: 1px solid black;
-  background-color: rgba(245, 245, 245, 0.411);
+  background-color: rgba(245, 245, 245, 0.879);
   height: 40px;
   display: none;
 }
@@ -255,7 +255,7 @@ main{
   overflow-x: auto;
   height: 90svh;
   overflow-y: auto;
-  padding-top:900px;
+  padding-top:700px;
 }
 main::-webkit-scrollbar{
   width: 5px;
@@ -280,7 +280,7 @@ main div{
   width: 100%;
 }
 main h1{
-  margin-bottom: 50px;
+  margin-bottom: 10px;
   font-family: "BYekan+";
 }
 
@@ -298,7 +298,7 @@ main div input ,select{
 }
 main div textarea{
   width: 200px;
-  height: 180px;
+  height: 6 0px;
   border-radius: 5px;
   border: none;
   box-shadow: 1px 2px 2px 2px gray ;
@@ -326,7 +326,7 @@ main form button{
   justify-self: center;
 }
 
-@media screen and (max-width:810px) {
+/* @media screen and (max-width:810px) {
   .wrapper aside{
     width: 20svw;
   }
@@ -339,7 +339,7 @@ main form button{
   nav{
     width: 80svw;
   }
-}
+} */
 @media screen and (max-width:630px) {
   .leftSide{
     display: none;
@@ -349,11 +349,14 @@ main form button{
     width: 100%;
   }
   .wrapper aside{
-    width: 25svw;
+    text-align: center;
+  }
+  /* .wrapper aside{
+    width: 20svw;
   }
   nav{
-    width: 75svw;
-  }
+    width: 80svw;
+  } */
 }
 @media screen and (max-width:570px) {
   .wrapper aside{
@@ -368,5 +371,43 @@ main form button{
   }
   .mob div{
     display: none;
+  }
+}
+@media screen and (max-width: 850px) {
+  main{
+    width: 75svw;
+    margin-left: 4svw;
+  }
+  .wrapper aside{
+    text-align: center;
+  }
+}
+@media screen and (max-width:570px) {
+  main{
+    text-align: center;
+    width: 95svw;
+    margin-left: 2.5svw;
+  }
+  main h1{
+    font-size: 25px;
+  }
+  main {
+    padding-top:910px;
+  }
+  main form div{
+    display: flex;
+    flex-direction: column;
+  }
+  main form div input ,main form div select ,main form div textarea{
+    margin-bottom: 6px;
+  }
+}
+@media screen and (max-width:405px) {
+  .links a{
+    font-size: 14px;
+  }
+  .mob{
+    margin-left: -25px;
+    font-size: 13px;
   }
 }

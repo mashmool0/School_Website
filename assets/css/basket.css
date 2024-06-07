@@ -6,6 +6,10 @@
   font-family: "MyradArabic";
   src: url(../fonts/MyriadArabicRegular.ttf);
 }
+@font-face {
+  font-family: "BYekan+Bold";
+  src: url("../fonts/BYekan+Bold.ttf");
+}
 * {
   margin: 0;
   padding: 0;
@@ -18,7 +22,7 @@ body {
   height: 100svh;
   background-color: whitesmoke;
 }
-.wrapper aside {
+.wrapper aside:first-of-type {
   position: fixed;
   right: 0;
   top: 0;
@@ -35,6 +39,7 @@ body {
   );
   display: flex;
   flex-direction: column;
+
 }
 aside div {
   margin-top: 50px;
@@ -83,10 +88,10 @@ aside div {
 a {
   text-decoration: none;
 }
-aside {
+aside:first-of-type {
   color: white;
 }
-aside div h1 {
+aside:first-of-type div h1 {
   color: white;
   font-family: "BYekan+";
 }
@@ -241,9 +246,10 @@ main{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 60%;
-  margin-left: 12.5%;
+  width: 50%;
   text-align: center;
+  height: 600px;
+  margin-left: 20px;
 }
 main div{
   background-color: white;
@@ -316,81 +322,207 @@ main div::-webkit-scrollbar-track{
 main div::-webkit-scrollbar-thumb{
   background-color: #2b3eb1;
 }
-.wrapper main button{
-  margin-top: 20px;
-  width: 160px;
-  height: 35px;
-  font-size: 20px;
-  font-family: "BYekan+";
-  color: white;
-  background-color: #94dbd4;
+  table tr td:nth-of-type(4) button{
+  color: #94dbd4;
+  background-color: white;
   border: none;
-  border-radius: 8px;
+  font-size: large;
 }
-@media screen and (max-width:810px) {
-    .wrapper aside{
-      width: 20svw;
-    }
-    .links{
-      width: 70%;
-    }
-    .links a:first-of-type{
-      margin-right: 25px;
-    }
-    nav{
-      width: 80svw;
-    }
-    main{
-      margin-left: 10svw;
-    }
+table tr td:nth-of-type(4) button:last-of-type{
+  color: red;
+  margin-right: 10px;
 }
-@media screen and (max-width:630px) {
-    .leftSide{
-      display: none;
-      
-    }
-    .links{
-        width: 100%;
-    }
-    .wrapper aside{
-      width: 25svw;
-    }
-    nav{
-      width: 75svw;
-    }
-    main{
-      margin-left: 6svw;
-    }
+
+.Sabad{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px; 
+  width: 25%;
+  height: 500px;
+  margin-top: 60px;
 }
-@media screen and (max-width:570px) {
-    .wrapper aside{
-      display: none;
-    }
-    nav{
-      width: 100%;
-    }
-    main{
-      width: 90svw;
-      margin-left: 3.5svw;
-    }
-    .mob{
-      display: flex;
-      margin-top: 0px;
-    }
-    .mob div{
-      display: none;
-    }
+main{
+  margin-right: 10svw;
 }
-@media screen and (max-width:425px) {
-  .links a{
-    font-size: 15px;
+.Sabad div:first-of-type span{
+  display: inline-block;
+  margin-right: 60px;
+}
+.Sabad div:first-of-type{
+  font-size: 10px;
+  font-family: "BYekan+";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+.Sabad div:nth-of-type(2){
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c7daf6;
+  color: #0664f0;
+  font-size: 18px;
+  height: 80px;
+}
+.Sabad div:nth-of-type(2) div{
+  width: 50%;
+  font-family: "BYekan+Bold";
+  font-size: 18px;
+}
+.Sabad div:last-of-type{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "BYekan+";
+}
+.Sabad div:last-of-type h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.Sabad div:last-of-type button{
+  margin-top: 20px;
+  width: 80%;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  font-family: "BYekan+";
+  border: none;
+  background-color: #0e66dc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.Sabad div:last-of-type input{
+  background-color: rgba(212, 211, 211, 0.437);
+  border: none;
+  height: 25px;
+  width: 120%;
+  font-family: "BYekan+";
+  text-align: center;
+}
+.Sabad div:last-of-type form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MainContent{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+}
+@media screen and (max-width: 1200px) {
+  main{
+    width: 600px;
   }
-  table tr td{
+  .MainContent{
+    margin-right: 60px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  main h1{
+    font-size: 23px;
+  }
+  main div table tr td{
+    font-size: 14px;
+  }
+  main button{
+    font-size: 6px;
+  }
+  .Sabad h1 {
+    font-size: 13px;
+  }
+  .sood p{
     font-size: 14px;
   }
 }
-@media screen and (max-width:400px) {
+@media screen and (max-width: 950px) {
+  aside div , aside{
+    display: none;
+    background-color: whitesmoke;
+  }
+  div aside{
+    background-color: #020202;
+  }
+  .wrapper aside:nth-of-type(1){
+    display: none;
+  }
+  nav{
+    width: 100svw;
+  }
+  .MainContent{
+    margin-right: 0;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50% , -50%  ); */
+    margin-right: 0;
+  }
+  main{
+    margin-right: -0.5svw;
+    width: 55svw;
+  }
+  .Sabad{
+    width: 30svw;
+  }
+  .leftSide{
+    display: none;
+  }
   .mob{
-    margin-left: -40px;
+    display: block;
+  }
+}
+@media screen and (max-width:650px) {
+  .MainContent{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  main{
+    width: 90svw;
+    margin: 0;
+  }
+  .Sabad{
+    width: 90svw;
+    height: 350px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+  .Sabad div:first-of-type{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 0.8svw;
+  }
+  .Sabad div:first-of-type span{
+      margin-right:35.8svw;
+  }
+  .Sabad div:nth-of-type(2){
+    height: 50px;
+  }
+}
+@media screen and (max-width:540px) {
+  .links{
+    width: 100%;
+  }
+  .mob{
+    margin-left: -50px;
+  }
+}
+@media screen and (max-width:380px) {
+  .links a{
+    font-size: 14px;
+  }
+  .mob button , .mob div a{
+    font-size: 14px;
   }
 }

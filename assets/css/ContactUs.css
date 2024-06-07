@@ -1,0 +1,312 @@
+@font-face {
+  font-family: "BYekan+";
+  src: url(../fonts/BYekan+.ttf);
+}
+@font-face {
+  font-family: "BYekan+Bold";
+  src: url(../fonts/BYekan+Bold.ttf);
+}
+*{
+  padding: 0;
+  margin: 0;
+}
+main div:first-of-type{
+  display: flex;
+  flex-direction: column;
+}
+nav {
+  position: sticky;
+  content: "";
+  top: 0;
+  height: 40px;
+  align-items: center;
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  background-color: rgba(234, 234, 234, 0.2);
+}
+body{
+  background-color: white;
+}
+.links a{
+  color: rgb(0, 0, 0);
+  font-family: "BYekan+";
+  text-decoration: none;
+  margin-right: 6%;
+  margin-left: 10%;
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+.links a:hover::after {
+  content: "";
+  border: 1px solid;
+  border-color: rgb(0, 0, 0);
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+}
+.links a:hover {
+  transform: scale(1.1);
+}
+.links {
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+}
+nav h1 {
+  font-family: "BYekan+";
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+nav h1 a{
+  text-decoration: none;
+  color: black;
+}
+main{
+  background-color: white;
+  height: 500px;
+}
+main div:first-of-type{
+  padding-top: 20px;
+  width: 40svw;
+  margin-top: 40px;
+  margin-left: 10svw;
+}
+main .left h1{
+  font-size: 18px;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.208);
+  padding-bottom: 10px;
+}
+main div form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+main div form div:first-of-type{
+  flex-direction: row;
+  /* justify-content:space-evenly; */
+  /* justify-self: center; */
+  align-items: center;
+  justify-content: space-between;
+  /* margin-right: 16.6svw; */
+  /* margin-right: 103px; */
+  width: 40svw;
+  margin-right: 10svw;
+}
+main div form div:nth-of-type(2){
+  display: flex;
+  justify-self: center;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+form input , form textarea{
+  margin-top: 15px;  
+  margin-bottom: 15px;
+  border-radius: 2px;
+  border: 1px solid rgba(128, 128, 128, 0.208);
+}
+form div:first-of-type input{
+  width: 15svw;
+  height: 40px;
+  
+}
+form input{
+  width: 40svw;
+  height: 40px;
+  text-align: end;
+  padding-right: 10px;
+}
+form textarea{
+  text-align: end;
+  width: 40svw;
+  padding-right: 10px;
+  height: 150px;
+}
+form button{
+  width: 80px;
+  height: 40px;
+  border: none;
+  font-size: 16px;
+  background-color: #f48840;
+  color: white;
+  align-self: flex-start;
+  margin-left: 0px;
+}
+main{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+}
+main div:last-of-type{
+  width: 20svw;
+  font-family: "BYekan+";
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.etelaat{
+  border-bottom: 1px solid rgba(128, 128, 128, 0.208);
+}
+main div:last-of-type div{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-bottom: 1px solid rgba(128, 128, 128, 0.208);
+  text-align: center;
+}
+main .right div{
+  width: 300px;
+}
+main .right div h1{
+  font-size: 18px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+main .right div h2{
+  font-size: 13px;
+  color: #aaa;
+  margin-bottom: 10px;
+  text-align: center;
+}
+main .right div:first-of-type{
+  margin-left: 0;
+}
+
+
+
+footer{
+  background-color: #232323c7;
+  display: flex;
+  color: white;
+  font-family: "BYekan+";
+  flex-direction: column;
+  padding: 4svw;
+  margin-top: 50px;
+}
+footer div:first-of-type{
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: space-between;
+  margin-bottom: 30px;
+
+}
+footer a{
+  font-family: "BYekan+";
+  text-decoration: none;
+  color: white;
+  border-left: 2px solid #1275ff;
+  padding-left: 20px;
+  height: 50px;
+  margin-bottom: 30px;
+}
+.SocialLinks{
+  border-bottom: 1px solid white;
+  margin-bottom: 0;
+  padding: 10px;
+  padding-left: 2svw;
+  padding-right: 2svw;
+  padding-bottom: 0;
+}
+span{
+  color: #1275ffa2;
+}
+footer div div:nth-of-type(2) , footer div div:nth-of-type(3){
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+footer div div:nth-of-type(3){
+  margin-top: 10px;
+}
+footer div div:nth-of-type(3) span{
+  margin-left: 0.3svw;
+}
+footer div div:first-of-type{
+  margin-left: 2.5%;
+}
+@media screen and (max-width: 800px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 515px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 4svw;
+  }
+}
+@media screen and (max-width:980px) {
+  main{
+    margin-left: -90px;
+  }
+}
+@media screen and (max-width:880px) {
+  main{
+    flex-direction: column;
+  }
+  .right{
+    margin-left: 10svw;
+  }
+  .left form div , .left textarea{
+    width: 80svw;
+    margin-right: 20svw;
+  }
+  .left form div input{
+    width: 80svw; 
+    margin-right: 20svw;
+  }
+  .left form div:first-of-type input{
+    width: 30vw;
+  }
+  .left form div:first-of-type {
+    margin-right: 35svw;
+  }
+  form{
+    width: 90svw;
+  }
+  main div form div:first-of-type{
+    width: 90svw;
+  }
+}
+@media screen and (max-width:675px) {
+  .left form div:first-of-type {
+    /* margin-right:   35svw; */
+    margin-left: 5svw;
+  }
+}
+@media screen and (max-width:550px) {
+  .left form div:first-of-type {
+    margin-left: 0;
+  } 
+  nav h1{
+    font-size: 18px;
+    text-align: center;
+    margin-left: 10px;
+  }
+  .links{
+    width: 100%;
+  }
+  .links a{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width:400px) {
+ main{
+  margin-right: 10px;
+ } 
+ .left form div:first-of-type input{
+  margin-left: -10px;
+ }
+ .left form div:first-of-type{
+  margin-left: 6svw;
+ }
+}
