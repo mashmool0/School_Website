@@ -21,13 +21,13 @@ class UserStudent(models.Model):
         ('davazdahom', 'دوازدهم'),
     ]
     SECTION = [
-        ("dabirestan", "متوسطه اول"),
-        ("rahnamii", "متوسطه دوم"),
+        ("rahnamii", "متوسطه اول"),
+        ("dabirestan", "متوسطه دوم"),
     ]
 
     STUDY = [
-        ("tajrobi", "ریاضی"),
-        ("riazi", "تجربی"),
+        ("riazi", "ریاضی"),
+        ("tajrobi", "تجربی"),
         ("ensani", "انسانی"),
     ]
     # Required fields for registration
@@ -62,6 +62,9 @@ class UserStudent(models.Model):
     sibling_education = models.TextField(verbose_name="تحصیلات خواهر یا برادر", blank=True, null=True)
     user_profile = models.ImageField(verbose_name="پروفایل", blank=True, null=True)
     super_student_user = models.BooleanField(default=False, verbose_name="قابلیت پرداخت و ثبت نام")
+
+    is_information_submited = models.BooleanField(default=False,
+                                                  verbose_name="کاربر اطلاعات شخصی خود را کامل کرده است")
 
     def __str__(self):
         full_name = f"{self.first_name or ''} {self.last_name or ''}".strip()

@@ -73,81 +73,86 @@
     <main>
         <h1 style="margin-bottom: 40px">اطلاعات کاربری خود را وارد کنید</h1>
         <form method="post">
+            {% csrf_token %}
+            <h2 style="background-color: #4bff00;margin-bottom: 20px;color: white;font-weight: bold;">{{ message }}</h2>
+            <h2 style="background-color: #ff2727;margin-bottom: 20px;color: white;font-weight: bold;">{{ error }}</h2>
             <div>
                 <label for="name">نام</label>
-                <input type="text" id="name" name="name"/>
+                <input type="text" id="name" name="name" dir="rtl" required/>
                 <label for="lastName">نام خانوادگی</label>
-                <input type="text" id="lastName" name="lastName"/>
+                <input type="text" dir="rtl" id="lastName" name="lastName"/>
             </div>
             <div>
                 <label for="BD">تاریخ تولد</label>
-                <input id="BD" type="text" readonly class="date-input" name="BD"/>
-                <label for="grade">مقطع تحصیلی</label>
-                <select name="grade" id="grade">
-                    <option value="">متوسطه اول</option>
-                    <option value="">متوسطه دوم</option>
+                <input id="BD" dir="rtl" type="text" readonly class="date-input" name="BD" required/>
+                <label for="grade"> مقطع تحصیلی</label>
+                <select name="grade" id="grade" required>
+                    <option value="dabirestan">متوسطه دوم</option>
+                    <option value="rahnamii">متوسطه اول</option>
                 </select>
             </div>
             <div>
                 <label for="paye">پایه تحصیلی</label>
-                <select id="paye" name="paye">
-                    <option value="نهم">نهم</option>
-                    <option value="دهم">دهم</option>
-                    <option value="یازدهم">یازدهم</option>
-                    <option value="دوازدهم">دوازدهم</option>
+                <select id="paye" name="paye" required>
+                    <option value="nohom">نهم</option>
+                    <option value="dahom">دهم</option>
+                    <option value="yazdahom">یازدهم</option>
+                    <option value="davazdahom">دوازدهم</option>
                 </select>
                 <label for="reshte">رشته تحصیلی</label>
-                <select name="reshte" id="reshte">
-                    <option value="">ریاضی</option>
-                    <option value="">تجربی</option>
-                    <option value="">انسانی</option>
+                <select name="reshte" id="reshte" required>
+                    <option value="riazi">ریاضی</option>
+                    <option value="tajrobi">تجربی</option>
+                    <option value="ensani">انسانی</option>
                 </select>
             </div>
             <div>
                 <label for="IDCode">کد ملی</label>
-                <input type="tel" name="IDCode" id="IDCode">
-                <label for="babash">نام پدر</label>
-                <input type="text" name="babash" id="babash">
+                <input type="tel" pattern="[0-9]*" dir="rtl" required name="IDCode" maxlength="10" id="IDCode">
+                <label for="babash">نام ونام خانوادگی پدر</label>
+                <input type="text" dir="rtl" required name="babash" id="babash">
             </div>
             <div>
                 <label for="mamanesh">نام و نام خانوادگی مادر</label>
-                <input type="text" name="mamanesh" id="mamanesh">
+                <input type="text" dir="rtl" required name="mamanesh" id="mamanesh">
                 <label for="Khoone">آدرس منزل</label>
-                <textarea name="Khoone" id="Khoone"></textarea>
+                <textarea name="Khoone" dir="rtl" required id="Khoone"></textarea>
             </div>
             <div>
                 <label for="babashPhone">شماره تلفن پدر</label>
-                <input type="text" name="babashPhone" id="babashPhone">
+                <input type="tel" pattern="[0-9]*" dir="rtl" maxlength="11" required name="babashPhone"
+                       id="babashPhone">
                 <label for="mamaneshPhone">شماره تلفن مادر</label>
-                <input type="text" name="mamaneshPhone" id="mamaneshPhone">
+                <input type="tel" pattern="[0-9]*" dir="rtl" maxlength="11" required name="mamaneshPhone"
+                       id="mamaneshPhone">
             </div>
             <div>
                 <label for="KarBabash">شغل پدر</label>
-                <input type="text" name="KarBabash" id="KarBabash">
+                <input type="text" dir="rtl" required name="KarBabash" id="KarBabash">
                 <label for="KarMommy">شغل مادر</label>
-                <input type="text" name="KarMommy" id="KarMommy">
+                <input type="text" dir="rtl" required name="KarMommy" id="KarMommy">
             </div>
             <div>
                 <label for="TahsilBabash">تحصیلات پدر</label>
-                <input type="text" name="TahsilBabash" id="TahsilBabash">
+                <input type="text" dir="rtl" required name="TahsilBabash" id="TahsilBabash">
                 <label for="TahsilMommy">تحصیلات مادر</label>
-                <input type="text" name="TahsilMommy" id="TahsilMommy">
+                <input type="text" dir="rtl" required name="TahsilMommy" id="TahsilMommy">
             </div>
             <div>
                 <label for="AddressBabash">آدرس شغل مادر</label>
-                <textarea name="AddressBabash" id="AddressBabash"></textarea>
+                <textarea name="AddressBabash" dir="rtl" required id="AddressBabash"></textarea>
                 <label for="AddressMommy">آدرس شغل پدر</label>
-                <textarea name="AddressMommy" id="AddressMommy"></textarea>
+                <textarea name="AddressMommy" dir="rtl" required id="AddressMommy"></textarea>
             </div>
             <div>
                 <label for="DarsBabash">شماره شناسنامه پدر:</label>
-                <input type="text" id="DarsBabash" name="DarsBabash">
+                <input type="text" dir="rtl" required id="DarsBabash" name="DarsBabash" maxlength="15">
                 <label for="DarsMommy">شماره شناسنامه مادر</label>
-                <input type="text" id="DarsMommy" name="DarsMommy">
+                <input type="text" dir="rtl" required id="DarsMommy" name="DarsMommy" maxlength="15">
             </div>
             <div>
                 <label for="DarsKharBeraresh">تحصیلات خواهر یا برادر</label>
-                <textarea name="DarsKharBeraresh" id="DarsKharBeraresh"></textarea>
+                <textarea name="DarsKharBeraresh" dir="rtl" id="DarsKharBeraresh"></textarea>
             </div>
             <button type="submit">ثبت</button>
         </form>
@@ -155,11 +160,11 @@
 </div>
 <script src="{% static 'JS/info.js' %}"></script>
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         function persianToEnglishNumber(str) {
             var persianDigits = '۰۱۲۳۴۵۶۷۸۹';
             var englishDigits = '0123456789';
-            var result = str.split('').map(function(char) {
+            var result = str.split('').map(function (char) {
                 var index = persianDigits.indexOf(char);
                 return index >= 0 ? englishDigits[index] : char;
             }).join('');
@@ -169,7 +174,7 @@
         $("#BD").persianDatepicker({
             format: 'YYYY-MM-DD',
             autoClose: true,
-            onSelect: function(unix) {
+            onSelect: function (unix) {
                 var date = new persianDate(unix).format('YYYY-MM-DD');
                 $("#BD").val(persianToEnglishNumber(date));
             }

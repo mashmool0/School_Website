@@ -10,6 +10,7 @@ admin.site.register(WelcomeRegister)
 admin.site.register(Otp)
 
 
+# Add this function for export user information
 @admin.action(description='Export selected students to Excel')
 def export_to_excel(modeladmin, request, queryset):
     resource = modeladmin.get_export_resource_class()
@@ -21,10 +22,11 @@ def export_to_excel(modeladmin, request, queryset):
 
 
 @admin.register(UserStudent)
-class UserStudentAdmin(ModelAdminJalaliMixin, ImportExportModelAdmin, admin.ModelAdmin):
-    list_display = ('phone_number', 'first_name', 'last_name', 'username', 'super_student_user')
+class UserStudentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
+    list_display = (
+        'phone_number', 'first_name', 'last_name', 'username', 'super_student_user', 'is_information_submited')
     search_fields = ('phone_number', 'email', 'username')
-    list_filter = ('super_student_user', 'grade', 'section', 'field_of_study')
+    list_filter = ('super_student_user', 'grade', 'section', 'field_of_study', 'is_information_submited')
     fieldsets = [
         ("اطلاعات کاربری", {"fields": [("phone_number", 'username', "email")]}),
         ("اطلاعات تکمیلی کاربر", {"fields": [('first_name', 'last_name'), ('birthday_date',
@@ -37,11 +39,8 @@ class UserStudentAdmin(ModelAdminJalaliMixin, ImportExportModelAdmin, admin.Mode
                                                                                         'job_mother_address'),
                                              ('father_serial_number', 'mother_serial_number'),
                                              ('sibling_education',)]}),
-        ("دسترسی های کاربر", {"fields": ['super_student_user', 'user']}),
+        ("دسترسی های کاربر", {"fields": ['super_student_user', 'user', "is_information_submited"]}),
     ]
     readonly_fields = ('user',)
     actions = [export_to_excel]
 
-    @admin.display(description='تاریخ ایجاد', ordering='created')
-    def get_created_jalali(self, obj):
-        return datetime2jalali(obj.created).strftime('%a, %d %b %Y %H:%M:%S')
