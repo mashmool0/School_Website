@@ -160,91 +160,95 @@
     </div>
     <div class="container">
         <div class="Cards">
-            <div class="card">
-                <img src="{% static 'images/course.jpg' %}" alt=""/>
+            {% for course in courses %}
+                        <div class="card">
+                <img src="{{ course.banner.url }}" alt=""/>
                 <div>
-                    <h1>دوره فیزیک</h1>
+                    <h1>{{ course.course_name }}</h1>
                     <div>
                         <div>
                             <p>تاریخ شروع</p>
-                            <p>03/02/01</p>
+                            <p>{{ course.date_starter }}</p>
                         </div>
-                        <h2>استاد فلانی</h2>
+                        <h2>استاد:{{ course.teacher }} </h2>
                     </div>
                     <div>
-                        <h2>599,000</h2>
+                        <h2>{{ course.price }}</h2>
                         <button></button>
                     </div>
                 </div>
             </div>
-            <div class="card">
-                <img src="{% static 'images/course.jpg' %}" alt=""/>
-                <div>
-                    <h1>دوره فیزیک</h1>
-                    <div>
-                        <div>
-                            <p>تاریخ شروع</p>
-                            <p>03/02/01</p>
-                        </div>
-                        <h2>استاد فلانی</h2>
-                    </div>
-                    <div>
-                        <h2>599,000</h2>
-                        <button></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{% static 'images/course.jpg' %}" alt=""/>
-                <div>
-                    <h1>دوره فیزیک</h1>
-                    <div>
-                        <div>
-                            <p>تاریخ شروع</p>
-                            <p>03/02/01</p>
-                        </div>
-                        <h2>استاد فلانی</h2>
-                    </div>
-                    <div>
-                        <h2>599,000</h2>
-                        <button></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src='{% static 'images/course.jpg' %}' alt=""/>
-                <div>
-                    <h1>دوره فیزیک</h1>
-                    <div>
-                        <div>
-                            <p>تاریخ شروع</p>
-                            <p>03/02/01</p>
-                        </div>
-                        <h2>استاد فلانی</h2>
-                    </div>
-                    <div>
-                        <h2>599,000</h2>
-                        <button></button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="{% static 'images/course.jpg' %}" alt=""/>
-                <div>
-                    <h1>دوره فیزیک</h1>
-                    <div>
-                        <div>
-                            <p>تاریخ شروع</p>
-                            <p>03/02/01</p>
-                        </div>
-                        <h2>استاد فلانی</h2>
-                    </div>
-                    <div>
-                        <h2>599,000</h2>
-                        <button></button>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
+
+
+{#            <div class="card">#}
+{#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
+{#                <div>#}
+{#                    <h1>دوره فیزیک</h1>#}
+{#                    <div>#}
+{#                        <div>#}
+{#                            <p>تاریخ شروع</p>#}
+{#                            <p>03/02/01</p>#}
+{#                        </div>#}
+{#                        <h2>استاد فلانی</h2>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        <h2>599,000</h2>#}
+{#                        <button></button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="card">#}
+{#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
+{#                <div>#}
+{#                    <h1>دوره فیزیک</h1>#}
+{#                    <div>#}
+{#                        <div>#}
+{#                            <p>تاریخ شروع</p>#}
+{#                            <p>03/02/01</p>#}
+{#                        </div>#}
+{#                        <h2>استاد فلانی</h2>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        <h2>599,000</h2>#}
+{#                        <button></button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="card">#}
+{#                <img src='{% static 'images/course.jpg' %}' alt=""/>#}
+{#                <div>#}
+{#                    <h1>دوره فیزیک</h1>#}
+{#                    <div>#}
+{#                        <div>#}
+{#                            <p>تاریخ شروع</p>#}
+{#                            <p>03/02/01</p>#}
+{#                        </div>#}
+{#                        <h2>استاد فلانی</h2>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        <h2>599,000</h2>#}
+{#                        <button></button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#            <div class="card">#}
+{#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
+{#                <div>#}
+{#                    <h1>دوره فیزیک</h1>#}
+{#                    <div>#}
+{#                        <div>#}
+{#                            <p>تاریخ شروع</p>#}
+{#                            <p>03/02/01</p>#}
+{#                        </div>#}
+{#                        <h2>استاد فلانی</h2>#}
+{#                    </div>#}
+{#                    <div>#}
+{#                        <h2>599,000</h2>#}
+{#                        <button></button>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
 
         </div>
     </div>
