@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'account.apps.AccountConfig',
     'panel.apps.PanelConfig',
     'contactus.apps.ContactusConfig',
+    'course.apps.CourseConfig',
+
     # installed external app
     'jalali_date',
     'import_export',
