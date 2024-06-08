@@ -2,6 +2,10 @@
   font-family: "BYekan+";
   src: url("../fonts/BYekan+.ttf");
 }
+@font-face {
+  font-family: "Sahel";
+  src: url("../fonts/Sahel-SemiBold.ttf");
+}
 * {
   margin: 0px;
   padding: 0px;
@@ -159,14 +163,14 @@ body {
   display: flex;
   flex-direction: column;
   text-align: center;
-  width: 300px;
+  width: 250px;
   background-color: white;
   border-radius: 8px;
   padding-bottom: 10px;
 }
 .card img{
-  width: 300px;
-  height: 300px;
+  width: 250px;
+  height: 250px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
@@ -233,14 +237,14 @@ button:hover{
   margin: 0;
 }
 .Cards{
-  margin-bottom: 100px;
+  margin-bottom: 50px;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   gap: 40px 30px;
   width: max-content;
 }
 /* Cards End */
-
+/* Header */
 
 
 nav {
@@ -253,19 +257,19 @@ nav {
   width: 80%;
   position: fixed;
   top: 0px;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgb(0, 0, 0);
   height: 300svh;
   z-index: 3;
 }
 .SideLinks a {
   margin-right: 4svw;
-  /* backdrop-filter: blur(5px); */
   display: block;
   margin-top: 20px;
   z-index: 3;
+  color: white;
 }
 .burger {
-  margin-top: 25px;
+  margin-top: 15px;
   margin-right: 4svw;
   position: relative;
   width: 40px;
@@ -284,7 +288,7 @@ nav {
   position: absolute;
   height: 4px;
   width: 100%;
-  background: #d4d4d4;
+  background: #080808a2;
   border-radius: 9px;
   opacity: 1;
   left: 0;
@@ -333,6 +337,7 @@ nav {
   padding-top: 18px;
   background-color: white;
   padding-bottom: 18px;
+  z-index: 3;
 }  
 header a {
   color: black;
@@ -384,4 +389,239 @@ header nav button{
   /* padding-left: -5px; */
   height: fit-content;
   right: 60%;
+}
+.HeaderContent{
+  height: 250px;
+  width: 98.93svw;
+  background-color: #2769C0;
+  color: white;
+  font-family: "Sahel";
+  text-align: right;
+  position: relative;
+  overflow-y: hidden  ;
+  z-index: -1;
+}
+.HeaderContent h1{
+  font-size: 85px;
+  margin-right: 10svw;
+  padding-top: 5svh;
+  z-index: 1;
+  display: inline-block;
+}
+.rectangle1{
+  background-color: #327ECC;
+  width: 718px;
+  position: relative;
+  left: -310px;
+  bottom: 0;
+  height: 60px;
+  border-radius: 8px;
+  z-index: -1;
+  transform: rotate(-42.65deg);
+}
+.rectangle2{
+  transform: rotate(-42.65deg);
+  width: 300px;
+  background-color: #327ECC;
+  height: 90px;
+  position: relative;
+  left: 70px;
+  bottom: 50px;
+  border-radius: 8px;
+  z-index: -1;
+}
+.rectangle3{
+  border-radius: 8px;
+  background-color: #327ECC;
+  transform: rotate(-42.65deg);
+  position: relative;
+  width: 800px;
+  height: 40px;
+  bottom: 100px;
+  left: -158px;
+  z-index: -1;
+}
+.rectangle4{
+  border-radius: 8px;
+  background-color: #72B3CF;
+  transform: rotate(-42.65deg);
+  position: relative;
+  width: 280px;
+  height: 30px;
+  bottom: 160px;
+  left: 200px;
+  z-index: -1;
+}
+.rectangle5{
+  background-color: #327ECC;
+  border-radius: 8px;
+  transform: rotate(-42.65deg);
+  position: relative;
+  width: 450px;
+  height: 90px;
+  bottom: 200px;
+  left: 200px;
+  z-index: -1;
+}
+@media screen and (max-width:650px) {
+  .SearchBar div button {
+    width: 100px;
+  }
+  .HeaderContent h1{
+    font-size: 70px;
+  }
+}
+@media screen and (max-width:570px) {
+  .SearchBar div button{
+    width: 65px;
+  }
+}
+@media screen and (max-width:450px) {
+  .SearchBar div:last-of-type {
+    /* display: flex; */
+    /* flex-direction: column; */
+    /* margin-top: 20px; */
+  }
+  .SearchBar{
+    height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+  }
+}
+@media screen and (max-width:1280px) {
+  .Cards{
+    grid-template-columns: 33% 33% 33%;
+  }
+}
+@media screen and (max-width:950px) {
+  .Cards{
+    grid-template-columns: 50% 50%;
+  }
+  .card{
+    width: 300px;
+  }
+  .card img{
+    width: 300px;
+  }
+}
+@media screen and (max-width:740px) {
+  .card{
+    width: 250px;
+  }
+  .card img{
+    width: 250px;
+  } 
+}
+@media screen and (max-width:580px) {
+  .Cards{
+    grid-template-columns: 100%;
+  }
+  .card{
+    width: 300px;
+  }
+  .card img{
+    width: 300px;
+  }
+}
+@media screen and (max-width:350px) {
+  .card{
+    width: 250px;
+  }
+  .card img{
+    width: 250px;
+  }
+}
+@media screen and (max-width: 740px) {
+  .links,
+  .links a,
+  header nav div:nth-of-type(3) button {
+    display: none;
+  }
+  .HamburgerMenu {
+    display: block;
+    background: none;
+    z-index: 3;
+  }
+  .SideLinks a{
+    display: none;
+    
+  }
+}
+footer{
+  background-color: #242424;
+  display: flex;
+  color: white;
+  font-family: "BYekan+";
+  flex-direction: column;
+  padding: 4svw;
+  padding-top: 40px;
+}
+footer a{
+  font-family: "BYekan+";
+  text-decoration: none;
+  color: white;
+  margin: 0;
+  /* margin-bottom: 8px; */
+}
+.SocialLinks{
+  display: flex;
+  width: 90svw;
+  flex-direction: row;
+  border-bottom: 1px solid white;
+  justify-content: space-around;
+  padding-bottom: 40px;
+  padding-top: 0;
+  margin-top: 0;
+  align-items: center;
+  height: max-content;
+}
+.SocialLinks div{
+  border-left: 2px solid #6C90B4;
+  padding-left: 15px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+}
+span{
+  color: #6C90B4;
+}
+footer div:nth-of-type(2) div:nth-of-type(2) , footer div:nth-of-type(2) div:nth-of-type(3){
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+footer div div:nth-of-type(3){
+  margin-top: 10px;
+}
+footer div div:nth-of-type(3) span{
+  margin-left: 9px;
+  display: inline-block;
+}
+footer div:nth-of-type(2) div:first-of-type{
+  margin-right: 2.5%;
+  margin-left: 1.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 800px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 515px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 4svw;
+  }
+}
+@media screen and (max-width:460px) {
+  footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
+    font-size: 12px;
+  }
 }

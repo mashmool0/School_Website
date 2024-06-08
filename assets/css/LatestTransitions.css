@@ -287,6 +287,7 @@ table tr td{
 table{
   margin-right: 10px;
   margin-left: 10px;
+  width: 895px;
 }
 tr{
   border-bottom: 1px solid black;
@@ -330,11 +331,16 @@ main {
 main::-webkit-scrollbar{
   display: block;
   width: 5px;
+  height: 5px;
 }
 main::-webkit-scrollbar-track{
   background-color: #ddd;
   margin-block: 130px;
   margin-inline: -100px;
+}
+main::-webkit-scrollbar-track:horizontal{
+  margin-inline: 0;
+  margin-block: 0;
 }
 main::-webkit-scrollbar-thumb{
   background-color: #2b3eb1;
