@@ -1,4 +1,5 @@
 {% load static %}
+{% load money_converter %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -161,94 +162,94 @@
     <div class="container">
         <div class="Cards">
             {% for course in courses %}
-                        <div class="card">
-                <img src="{{ course.banner.url }}" alt=""/>
-                <div>
-                    <h1>{{ course.course_name }}</h1>
+                <div class="card">
+                    <img src="{{ course.banner.url }}" alt=""/>
                     <div>
+                        <h1>{{ course.course_name }}</h1>
                         <div>
-                            <p>تاریخ شروع</p>
-                            <p>{{ course.date_starter }}</p>
+                            <div>
+                                <p>تاریخ شروع</p>
+                                <p>{{ course.jalali_date_starter }}</p>
+                            </div>
+                            <h2>استاد:{{ course.teacher }} </h2>
                         </div>
-                        <h2>استاد:{{ course.teacher }} </h2>
-                    </div>
-                    <div>
-                        <h2>{{ course.price }}</h2>
-                        <button></button>
+                        <div>
+                            <h2>  {{ course.price|money }}   تومان </h2>
+                            <button type="submit" name="basket"></button>
+                        </div>
                     </div>
                 </div>
-            </div>
             {% endfor %}
 
 
-{#            <div class="card">#}
-{#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
-{#                <div>#}
-{#                    <h1>دوره فیزیک</h1>#}
-{#                    <div>#}
-{#                        <div>#}
-{#                            <p>تاریخ شروع</p>#}
-{#                            <p>03/02/01</p>#}
-{#                        </div>#}
-{#                        <h2>استاد فلانی</h2>#}
-{#                    </div>#}
-{#                    <div>#}
-{#                        <h2>599,000</h2>#}
-{#                        <button></button>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="card">#}
-{#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
-{#                <div>#}
-{#                    <h1>دوره فیزیک</h1>#}
-{#                    <div>#}
-{#                        <div>#}
-{#                            <p>تاریخ شروع</p>#}
-{#                            <p>03/02/01</p>#}
-{#                        </div>#}
-{#                        <h2>استاد فلانی</h2>#}
-{#                    </div>#}
-{#                    <div>#}
-{#                        <h2>599,000</h2>#}
-{#                        <button></button>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="card">#}
-{#                <img src='{% static 'images/course.jpg' %}' alt=""/>#}
-{#                <div>#}
-{#                    <h1>دوره فیزیک</h1>#}
-{#                    <div>#}
-{#                        <div>#}
-{#                            <p>تاریخ شروع</p>#}
-{#                            <p>03/02/01</p>#}
-{#                        </div>#}
-{#                        <h2>استاد فلانی</h2>#}
-{#                    </div>#}
-{#                    <div>#}
-{#                        <h2>599,000</h2>#}
-{#                        <button></button>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="card">#}
-{#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
-{#                <div>#}
-{#                    <h1>دوره فیزیک</h1>#}
-{#                    <div>#}
-{#                        <div>#}
-{#                            <p>تاریخ شروع</p>#}
-{#                            <p>03/02/01</p>#}
-{#                        </div>#}
-{#                        <h2>استاد فلانی</h2>#}
-{#                    </div>#}
-{#                    <div>#}
-{#                        <h2>599,000</h2>#}
-{#                        <button></button>#}
-{#                    </div>#}
-{#                </div>#}
-{#            </div>#}
+            {#            <div class="card">#}
+            {#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
+            {#                <div>#}
+            {#                    <h1>دوره فیزیک</h1>#}
+            {#                    <div>#}
+            {#                        <div>#}
+            {#                            <p>تاریخ شروع</p>#}
+            {#                            <p>03/02/01</p>#}
+            {#                        </div>#}
+            {#                        <h2>استاد فلانی</h2>#}
+            {#                    </div>#}
+            {#                    <div>#}
+            {#                        <h2>599,000</h2>#}
+            {#                        <button></button>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="card">#}
+            {#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
+            {#                <div>#}
+            {#                    <h1>دوره فیزیک</h1>#}
+            {#                    <div>#}
+            {#                        <div>#}
+            {#                            <p>تاریخ شروع</p>#}
+            {#                            <p>03/02/01</p>#}
+            {#                        </div>#}
+            {#                        <h2>استاد فلانی</h2>#}
+            {#                    </div>#}
+            {#                    <div>#}
+            {#                        <h2>599,000</h2>#}
+            {#                        <button></button>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="card">#}
+            {#                <img src='{% static 'images/course.jpg' %}' alt=""/>#}
+            {#                <div>#}
+            {#                    <h1>دوره فیزیک</h1>#}
+            {#                    <div>#}
+            {#                        <div>#}
+            {#                            <p>تاریخ شروع</p>#}
+            {#                            <p>03/02/01</p>#}
+            {#                        </div>#}
+            {#                        <h2>استاد فلانی</h2>#}
+            {#                    </div>#}
+            {#                    <div>#}
+            {#                        <h2>599,000</h2>#}
+            {#                        <button></button>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
+            {#            <div class="card">#}
+            {#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
+            {#                <div>#}
+            {#                    <h1>دوره فیزیک</h1>#}
+            {#                    <div>#}
+            {#                        <div>#}
+            {#                            <p>تاریخ شروع</p>#}
+            {#                            <p>03/02/01</p>#}
+            {#                        </div>#}
+            {#                        <h2>استاد فلانی</h2>#}
+            {#                    </div>#}
+            {#                    <div>#}
+            {#                        <h2>599,000</h2>#}
+            {#                        <button></button>#}
+            {#                    </div>#}
+            {#                </div>#}
+            {#            </div>#}
 
         </div>
     </div>
