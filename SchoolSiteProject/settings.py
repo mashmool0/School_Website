@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     # installed external app
     'jalali_date',
     'import_export',
+    'django_cleanup.apps.CleanupConfig',
 
 ]
 # default settings (optional)
