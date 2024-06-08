@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>دوره ها </title>
     <link rel="stylesheet" href="{% static 'css/course.css' %}"/>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 <header>
@@ -204,29 +205,29 @@
     </div>
 </footer>
 <script>
-    $(document).ready(function () {
-        $('.basket-button').click(function () {
-            const courseId = $(this).data('course-id');
-            $.ajax({
-                type: 'POST',
-                url: '',
-                data: {
-                    'course_id': courseId,
-                    'csrfmiddlewaretoken': '{{ csrf_token }}'
-                },
-                success: function (response) {
-                    if (response.status === 'success') {
-                        alert(response.message);
-                    } else {
-                        alert(response.message);
-                    }
-                },
-                error: function () {
-                    alert('مشکلی پیش آمده ، لطفا دوباره تلاش کنید.');
+$(document).ready(function () {
+    $('.basket-button').click(function () {
+        const courseId = $(this).data('course-id');
+        $.ajax({
+            type: 'POST',
+            url: '{% url "panel:add_to_basket" %}',  // Use  template tag to generate the URL
+            data: {
+                'course_id': courseId,
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function (response) {
+                if (response.status === 'success') {
+                    alert(response.message);
+                } else {
+                    alert(response.message);
                 }
-            });
+            },
+            error: function () {
+                alert('مشکلی پیش آمده ، لطفا دوباره تلاش کنید.');
+            }
         });
     });
+});
 </script>
 </body>
 </html>

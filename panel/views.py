@@ -1,6 +1,10 @@
+from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
+
 from account.models import UserStudent
+from course.models import Course
 from .decorators import show_information
 
 
@@ -58,3 +62,20 @@ def user_info(request):
         context = {}
 
     return render(request, "panel/information.html", context)
+
+
+@csrf_exempt  # Temporarily disable CSRF protection for simplicity
+def add_to_basket(request):
+    if request.method == 'POST':
+        course_id = request.POST.get('course_id')
+        try:
+            course_user = Course.objects.get(id=course_id)
+            # Update the model as needed, for example, add the course to a user's basket
+            # user.basket.add(course)  # Assuming you have a basket field in your user model
+            response = {'status': 'success', 'message': 'Course added to basket'}
+        except Course.DoesNotExist:
+            response = {'status': 'error', 'message': 'Course not found'}
+    else:
+        response = {'status': 'error', 'message': 'Invalid request'}
+
+    return JsonResponse(response)
