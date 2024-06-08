@@ -8,6 +8,7 @@ from .models import Course
 @admin.register(Course)
 class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
     list_display = ['course_name', 'price', "teacher", "date_starter", "course_type", 'get_created_jalali']
+    readonly_fields = ('price_with_off',)
 
     @admin.display(description='تاریخ شروع دوره')
     def get_jalali_date_starter(self, obj):

@@ -8,8 +8,8 @@ class Course(models.Model):
         ('teacher', 'آموزش'),
     ]
     course_name = models.CharField(max_length=30, verbose_name="نام دوره")
-    price = models.CharField(max_length=20, verbose_name="قیمت دوره",
-                             help_text="حتما قیمت دوره را به تومان و بدون هیچ علائم نگارشی اضافه ای وارد کنید ")
+    price = models.IntegerField(verbose_name="قیمت دوره",
+                                help_text="حتما قیمت دوره را به تومان و بدون هیچ علائم نگارشی اضافه ای وارد کنید ")
     teacher = models.CharField(max_length=30, verbose_name="استاد دوره",
                                help_text="فقط اسم و فامیل استاد را بنویسید نیاز به نوشتن کلمه استاد قبل از اسم اساتید "
                                          "نیست ")
@@ -19,11 +19,20 @@ class Course(models.Model):
     banner = models.ImageField(upload_to='media/', verbose_name="عکس دوره")
     course_type = models.CharField(max_length=30, choices=COURSE_TYPE_CHOICES, verbose_name="نوع دوره")
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
-    off = models.CharField(max_length=30, null=True, blank=True, verbose_name="درصد تخفیف",
-                           help_text="لطفا فقط عدد وارد کنید")
+    off = models.IntegerField(null=True, blank=True, verbose_name="درصد تخفیف",
+                              help_text="لطفا فقط عدد وارد کنید،لطفا عدد وارد شده بین 1 تا 100 باشد")
+    price_with_off = models.IntegerField(null=True, blank=True, verbose_name="قیمت با تخفیف ")
 
     def __str__(self):
         return self.course_name
+
+    def set_price_with_off(self):
+        if self.off is not None:
+            self.price_with_off = (self.price * (100 - self.off)) / 100
+
+    def save(self, *args, **kwargs):
+        self.set_price_with_off()
+        super().save(*args, **kwargs)
 
     class Meta:
         verbose_name = "دوره"
