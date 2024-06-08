@@ -19,6 +19,8 @@ class Course(models.Model):
     banner = models.ImageField(upload_to='media/', verbose_name="عکس دوره")
     course_type = models.CharField(max_length=30, choices=COURSE_TYPE_CHOICES, verbose_name="نوع دوره")
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
+    off = models.CharField(max_length=30, null=True, blank=True, verbose_name="درصد تخفیف",
+                           help_text="لطفا فقط عدد وارد کنید")
 
     def __str__(self):
         return self.course_name

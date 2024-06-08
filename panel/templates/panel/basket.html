@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="stylesheet" href="{% static 'css/basket.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/basket2.css' %}"/>
     <title>سبد خرید </title>
 </head>
 <body>
@@ -66,7 +66,6 @@
                 {% endcomment %}
             {% endif %}
 
-
             <br>
             <br>
             <br>
@@ -81,38 +80,39 @@
                 <h1>سبد خرید</h1>
                 <table dir="rtl">
                     <tr>
-                        <th>تاریخ ثبت</th>
-                        <th>قیمت</th>
+                        <th>تصویر</th>
                         <th>نام آیتم</th>
-                        <th></th>
+                        <th>قیمت اصلی</th>
+                        <th>قیمت با تخفیف</th>
+                        <th>تعداد</th>
+                        <th>عملیات</th>
                     </tr>
                     <tr>
-                        <td>03/03/1403</td>
-                        <td>1 میلیون تومان</td>
-                        <td>جمع بندی فیزیک</td>
-                        <td>
-                            <button>+</button>
-                            <button>-</button>
+                        <td><img src="{{ MEDIA_URL }}media/course.jpg" alt="course image" class="course-image">
                         </td>
-                    </tr>                    <tr>
-                        <td>03/03/1403</td>
-                        <td>1 میلیون تومان</td>
                         <td>جمع بندی فیزیک</td>
+                        <td>2 میلیون تومان</td>
+                        <td>1 میلیون تومان</td>
+                        <td>1</td>
                         <td>
-                            <button>+</button>
-                            <button>-</button>
+                            <button class="add-btn">+</button>
+                            <button class="remove-btn">-</button>
+                            <button class="delete-btn">حذف</button>
                         </td>
                     </tr>
                     <tr>
-                        <td>03/03/1403</td>
+                        <td><img src="{% static 'images/course_image.jpg' %}" alt="course image" class="course-image">
+                        </td>
+                        <td>جمع بندی شیمی</td>
+                        <td>2 میلیون تومان</td>
                         <td>1 میلیون تومان</td>
-                        <td>جمع بندی فیزیک</td>
+                        <td>1</td>
                         <td>
-                            <button>+</button>
-                            <button>-</button>
+                            <button class="add-btn">+</button>
+                            <button class="remove-btn">-</button>
+                            <button class="delete-btn">حذف</button>
                         </td>
                     </tr>
-
                 </table>
             </div>
         </main>
@@ -137,5 +137,50 @@
     </div>
 </div>
 <script src="{% static 'JS/basket.js' %}"></script>
+<script>
+    // Function to increase the count of a course
+    function increaseCount(btn) {
+        // Get the parent row of the button
+        const row = btn.closest("tr");
+        // Find the count element within the row
+        const countElement = row.querySelector(".count");
+        // Get the current count value
+        let count = parseInt(countElement.textContent);
+        // Increase the count by 1
+        count++;
+        // Update the count element with the new value
+        countElement.textContent = count;
+    }
+
+    // Function to decrease the count of a course
+    function decreaseCount(btn) {
+        // Get the parent row of the button
+        const row = btn.closest("tr");
+        // Find the count element within the row
+        const countElement = row.querySelector(".count");
+        // Get the current count value
+        let count = parseInt(countElement.textContent);
+        // Ensure count is greater than 0 before decreasing
+        if (count > 0) {
+            // Decrease the count by 1
+            count--;
+            // Update the count element with the new value
+            countElement.textContent = count;
+        }
+    }
+
+    // Add event listeners to the buttons
+    document.querySelectorAll(".add-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            increaseCount(this);
+        });
+    });
+
+    document.querySelectorAll(".remove-btn").forEach(button => {
+        button.addEventListener("click", function() {
+            decreaseCount(this);
+        });
+    });
+</script>
 </body>
 </html>

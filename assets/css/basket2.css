@@ -1,0 +1,676 @@
+@font-face {
+  font-family: "BYekan+";
+  src: url(../fonts/BYekan+.ttf);
+}
+@font-face {
+  font-family: "MyradArabic";
+  src: url(../fonts/MyriadArabicRegular.ttf);
+}
+@font-face {
+  font-family: "BYekan+Bold";
+  src: url("../fonts/BYekan+Bold.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  background-color: whitesmoke;
+}
+.wrapper {
+  width: 100svw;
+  height: 100svh;
+  background-color: whitesmoke;
+}
+.wrapper aside:first-of-type {
+  position: fixed;
+  right: 0;
+  top: 0;
+  height: 100svh;
+  width: 15svw;
+  border: none;
+  /* background-color: #0f66dc; */
+  background: rgb(43, 62, 177);
+  background: linear-gradient(
+    135deg,
+    rgba(43, 62, 177, 1) 0%,
+    rgba(35, 82, 198, 1) 53%,
+    rgba(15, 102, 220, 1) 100%
+  );
+  display: flex;
+  flex-direction: column;
+
+}
+aside div {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+.change {
+  color: white;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  font-family: "BYekan+";
+  transition: 0.3s;
+  margin-bottom: 60px;
+}
+.change:hover{
+  transform: scale(1.08);
+}
+.SideCard {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  color: rgb(43, 62, 177);
+  background-color: white;
+  width: 85%;
+  text-align: center;
+  height: 35px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 4px;
+  transition: 0.4s;
+  cursor: pointer;
+}
+.SideCard:hover{
+  transform: scale(1.05);
+}
+.SideCard a {
+  color: white;
+  font-family: "BYekan+";
+}
+.SideCard{
+  background: none;
+}
+a {
+  text-decoration: none;
+}
+aside:first-of-type {
+  color: white;
+}
+aside:first-of-type div h1 {
+  color: white;
+  font-family: "BYekan+";
+}
+nav {
+  width: 85%;
+  background-color: white;
+  height: 50px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  position: sticky;
+  content: "";
+  top: 0;
+  justify-content: space-between;
+}
+.links a {
+  color: black;
+  font-family: "BYekan+";
+  text-decoration: none;
+  margin-right: 6%;
+  margin-left: 10%;
+  font-size: 18px;
+  transition: 0.4s;
+}
+.links a:hover {
+  transform: scale(1.08);
+}
+.links{
+  width: 50%;
+}
+button{
+  cursor: pointer;
+}
+.dropDown , .mob{
+  display: flex;
+  flex-direction: column;
+  /* margin-top: 120px; */
+  width: 200px;
+}
+.mob{
+  display: none;
+}
+.dropDownButton{
+  background-color: white;
+  border: none;
+  font-family: "BYekan+";
+  width: 100px;
+  height: 51px;
+  font-size: 16px;
+  transition: 0.4s;
+}
+.dropDownButton:hover{
+  transform: scale(1.03);
+
+}
+.dropDownLinks{
+  color: black;
+  font-family: "BYekan+";
+  text-decoration: none;
+  font-size: 15px;
+}
+.mob .dropDownLinks:hover{
+  color: #2b3eb1;
+}
+.dropDown div , .mob div{
+  width: 100px;
+  border-bottom: 1px solid black;
+  background-color: rgba(245, 245, 245, 0.411);
+  height: 40px;
+  display: none;
+}
+.dropDown div:last-of-type ,.mob div:last-of-type{
+  border: none;
+}
+.dropDown div:first-of-type , .mob div:first-of-type{
+  border-top: 1px solid black;
+}
+.container {
+  margin-left: 0px;
+  margin-right: -150px;
+  /* margin-right: 45px; */
+  /* margin-bottom: 40px; */
+  --color: #020202;
+  --size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  cursor: pointer;
+  font-size: var(--size);
+  user-select: none;
+  fill: var(--color);
+}
+svg{
+  margin-top: 55px;
+}
+.container .bell-regular {
+  position: absolute;
+  animation: keyframes-fill .5s;
+}
+.container .bell-solid {
+  position: absolute;
+  display: none;
+  animation: keyframes-fill .5s;
+}
+.container input:checked ~ .bell-regular {
+  display: none;
+}
+.container input:checked ~ .bell-solid {
+  display: block;
+}
+.container input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+nav{
+  box-shadow: 0 3px 6px 1px rgb(143, 143, 143);
+}
+@keyframes keyframes-fill {
+  0% {
+    opacity: 0;
+  }
+
+  25% {
+    transform: rotate(25deg);
+  }
+
+  50% {
+    transform: rotate(-20deg) scale(1.2);
+  }
+
+  75% {
+    transform: rotate(15deg);
+  }
+}
+.Active{
+  background-color: white;
+}
+.Active a{
+  color: #0f66dc;
+}
+.leftSide{
+  display: flex;
+  flex-direction: row;
+}
+main{
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  text-align: center;
+  height: 600px;
+  margin-left: 20px;
+}
+main div{
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  height: 690px;
+  border-radius: 8px;
+}
+main div h1{
+  margin-left: 15px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: "BYekan+";
+}
+main div table{
+  width: 90%;
+}
+table tr td , table tr th {
+  text-align: center;
+  height: 40px;
+}
+table tr td{
+  font-family: "BYekan+";
+}
+table{
+  margin-left: -1%;
+}
+tr{
+  border-bottom: 1px solid #787878;
+}
+tr:last-of-type , tr:first-of-type{
+  border-bottom: none;
+}
+table tr td:nth-of-type(2){
+  color: #fc811d;
+  font-weight: 600;
+}
+table tr td div{
+  margin-top: 45px;
+  margin-right: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #2b3eb1;
+}
+table tr th{
+  color: #787878;
+  font-family: "MyradArabic";
+}
+table{
+  border-collapse: collapse;
+}
+main div {
+  overflow: auto;
+}
+main div::-webkit-scrollbar{
+  display: block;
+  width: 5px;
+}
+main div::-webkit-scrollbar-track{
+  background-color: #ddd;
+  margin-block: 160px;
+  margin-inline: -100px;
+}
+main div::-webkit-scrollbar-thumb{
+  background-color: #2b3eb1;
+}
+  table tr td:nth-of-type(4) button{
+  color: #94dbd4;
+  background-color: white;
+  border: none;
+  font-size: large;
+}
+table tr td:nth-of-type(4) button:last-of-type{
+  color: red;
+  margin-right: 10px;
+}
+
+.Sabad{
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 8px;
+  width: 25%;
+  height: 500px;
+  margin-top: 60px;
+}
+main{
+  margin-right: 10svw;
+}
+.Sabad div:first-of-type span{
+  display: inline-block;
+  margin-right: 60px;
+}
+.Sabad div:first-of-type{
+  font-size: 10px;
+  font-family: "BYekan+";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+}
+.Sabad div:nth-of-type(2){
+  display: flex;
+  flex-direction: row-reverse;
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  background-color: #c7daf6;
+  color: #0664f0;
+  font-size: 18px;
+  height: 80px;
+}
+.Sabad div:nth-of-type(2) div{
+  width: 50%;
+  font-family: "BYekan+Bold";
+  font-size: 18px;
+}
+.Sabad div:last-of-type{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: "BYekan+";
+}
+.Sabad div:last-of-type h1{
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+.Sabad div:last-of-type button{
+  margin-top: 20px;
+  width: 80%;
+  height: 40px;
+  font-size: 16px;
+  color: white;
+  font-family: "BYekan+";
+  border: none;
+  background-color: #0e66dc;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+.Sabad div:last-of-type input{
+  background-color: rgba(212, 211, 211, 0.437);
+  border: none;
+  height: 25px;
+  width: 120%;
+  font-family: "BYekan+";
+  text-align: center;
+}
+.Sabad div:last-of-type form{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.MainContent{
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: center;
+  margin-right: 100px;
+}
+@media screen and (max-width: 1200px) {
+  main{
+    width: 600px;
+  }
+  .MainContent{
+    margin-right: 60px;
+  }
+}
+@media screen and (max-width: 1050px) {
+  main h1{
+    font-size: 23px;
+  }
+  main div table tr td{
+    font-size: 14px;
+  }
+  main button{
+    font-size: 6px;
+  }
+  .Sabad h1 {
+    font-size: 13px;
+  }
+  .sood p{
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 950px) {
+  aside div , aside{
+    display: none;
+    background-color: whitesmoke;
+  }
+  div aside{
+    background-color: #020202;
+  }
+  .wrapper aside:nth-of-type(1){
+    display: none;
+  }
+  nav{
+    width: 100svw;
+  }
+  .MainContent{
+    margin-right: 0;
+    /* position: absolute; */
+    /* top: 50%; */
+    /* left: 50%; */
+    /* transform: translate(-50% , -50%  ); */
+    margin-right: 0;
+  }
+  main{
+    margin-right: -0.5svw;
+    width: 55svw;
+  }
+  .Sabad{
+    width: 30svw;
+  }
+  .leftSide{
+    display: none;
+  }
+  .mob{
+    display: block;
+  }
+}
+@media screen and (max-width:650px) {
+  .MainContent{
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  main{
+    width: 90svw;
+    margin: 0;
+  }
+  .Sabad{
+    width: 90svw;
+    height: 350px;
+    margin-bottom: 30px;
+    padding-bottom: 10px;
+  }
+  .Sabad div:first-of-type{
+    height: 50px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding-left: 0.8svw;
+  }
+  .Sabad div:first-of-type span{
+      margin-right:35.8svw;
+  }
+  .Sabad div:nth-of-type(2){
+    height: 50px;
+  }
+}
+@media screen and (max-width:540px) {
+  .links{
+    width: 100%;
+  }
+  .mob{
+    margin-left: -50px;
+  }
+}
+@media screen and (max-width:380px) {
+  .links a{
+    font-size: 14px;
+  }
+  .mob button , .mob div a{
+    font-size: 14px;
+  }
+}
+
+
+
+/* Add this part to your existing CSS */
+
+/* Your existing CSS code goes here */
+
+/* Add this part to your existing CSS */
+
+/* MainContent section */
+.MainContent {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.MainContent table {
+  width: 70%;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.MainContent table tr th,
+.MainContent table tr td {
+  padding: 15px;
+}
+
+.MainContent table tr td:last-child {
+  display: flex;
+  justify-content: space-between;
+}
+
+.MainContent table tr td:last-child button {
+  padding: 8px 16px; /* Adjust as needed */
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.MainContent table tr td:last-child button:hover {
+  background-color: #ff6666; /* Change color as needed */
+}
+
+/* Sabad section */
+.Sabad {
+  width: 30%;
+  margin-left: 50px; /* Adjust as needed */
+  padding: 20px;
+  background-color: #f9f9f9; /* Change color as needed */
+  border-radius: 8px;
+}
+
+.Sabad div {
+  margin-bottom: 15px;
+}
+
+.Sabad h1 {
+  font-size: 20px; /* Adjust as needed */
+}
+
+.Sabad h2 {
+  font-size: 24px;
+  color: #2b3eb1; /* Change color as needed */
+}
+
+.Sabad form {
+  margin-top: 20px;
+}
+
+.Sabad form button {
+  padding: 10px 20px; /* Adjust as needed */
+  background-color: #2b3eb1; /* Change color as needed */
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.Sabad form button:hover {
+  background-color: #1c2677; /* Change color as needed */
+}
+
+.Sabad form input {
+  padding: 8px;
+  margin-left: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+/* Media Queries - Adjust as needed */
+@media screen and (max-width: 950px) {
+  .MainContent {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .MainContent table {
+    width: 100%;
+    margin-top: 20px; /* Adjust as needed */
+  }
+
+  .Sabad {
+    width: 100%;
+    margin-left: 0; /* Adjust as needed */
+    margin-top: 20px; /* Adjust as needed */
+  }
+}
+
+@media screen and (max-width: 650px) {
+  .MainContent table tr th,
+  .MainContent table tr td {
+    padding: 10px;
+  }
+
+  .MainContent table tr td:last-child button {
+    padding: 5px 10px; /* Adjust as needed */
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .Sabad {
+    padding: 15px;
+  }
+
+  .Sabad div {
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .MainContent table tr th,
+  .MainContent table tr td {
+    padding: 8px;
+  }
+
+  .MainContent table tr td:last-child button {
+    padding: 5px; /* Adjust as needed */
+  }
+
+  .Sabad {
+    padding: 10px;
+  }
+
+  .Sabad div {
+    margin-bottom: 5px;
+  }
+}
