@@ -174,82 +174,12 @@
                             <h2>استاد:{{ course.teacher }} </h2>
                         </div>
                         <div>
-                            <h2>  {{ course.price|money }}   تومان </h2>
-                            <button type="submit" name="basket"></button>
+                            <h2>  {{ course.price|money }} تومان </h2>
+                            <button type="button" class="basket-button" data-course-id="{{ course.id }}"></button>
                         </div>
                     </div>
                 </div>
             {% endfor %}
-
-
-            {#            <div class="card">#}
-            {#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
-            {#                <div>#}
-            {#                    <h1>دوره فیزیک</h1>#}
-            {#                    <div>#}
-            {#                        <div>#}
-            {#                            <p>تاریخ شروع</p>#}
-            {#                            <p>03/02/01</p>#}
-            {#                        </div>#}
-            {#                        <h2>استاد فلانی</h2>#}
-            {#                    </div>#}
-            {#                    <div>#}
-            {#                        <h2>599,000</h2>#}
-            {#                        <button></button>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
-            {#            <div class="card">#}
-            {#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
-            {#                <div>#}
-            {#                    <h1>دوره فیزیک</h1>#}
-            {#                    <div>#}
-            {#                        <div>#}
-            {#                            <p>تاریخ شروع</p>#}
-            {#                            <p>03/02/01</p>#}
-            {#                        </div>#}
-            {#                        <h2>استاد فلانی</h2>#}
-            {#                    </div>#}
-            {#                    <div>#}
-            {#                        <h2>599,000</h2>#}
-            {#                        <button></button>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
-            {#            <div class="card">#}
-            {#                <img src='{% static 'images/course.jpg' %}' alt=""/>#}
-            {#                <div>#}
-            {#                    <h1>دوره فیزیک</h1>#}
-            {#                    <div>#}
-            {#                        <div>#}
-            {#                            <p>تاریخ شروع</p>#}
-            {#                            <p>03/02/01</p>#}
-            {#                        </div>#}
-            {#                        <h2>استاد فلانی</h2>#}
-            {#                    </div>#}
-            {#                    <div>#}
-            {#                        <h2>599,000</h2>#}
-            {#                        <button></button>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
-            {#            <div class="card">#}
-            {#                <img src="{% static 'images/course.jpg' %}" alt=""/>#}
-            {#                <div>#}
-            {#                    <h1>دوره فیزیک</h1>#}
-            {#                    <div>#}
-            {#                        <div>#}
-            {#                            <p>تاریخ شروع</p>#}
-            {#                            <p>03/02/01</p>#}
-            {#                        </div>#}
-            {#                        <h2>استاد فلانی</h2>#}
-            {#                    </div>#}
-            {#                    <div>#}
-            {#                        <h2>599,000</h2>#}
-            {#                        <button></button>#}
-            {#                    </div>#}
-            {#                </div>#}
-            {#            </div>#}
 
         </div>
     </div>
@@ -267,8 +197,33 @@
         </div>
         <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</span>
         </div>
-        <div class="CopyRight">COPYRIGHT 2024 <span> Amir Mashayekhi </span></div>
+        <div class="CopyRight">COPYRIGHT 2024 <span> Amirmahdi Mashayekhi </span></div>
     </div>
 </footer>
+<script>
+    $(document).ready(function () {
+        $('.basket-button').click(function () {
+            const courseId = $(this).data('course-id');
+            $.ajax({
+                type: 'POST',
+                url: '',
+                data: {
+                    'course_id': courseId,
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function (response) {
+                    if (response.status === 'success') {
+                        alert(response.message);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function () {
+                    alert('مشکلی پیش آمده ، لطفا دوباره تلاش کنید.');
+                }
+            });
+        });
+    });
+</script>
 </body>
 </html>
