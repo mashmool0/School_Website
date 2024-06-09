@@ -850,43 +850,47 @@ header nav:nth-of-type(3) button:hover {
   }
 }
 footer{
-  background-color: #232323c7;
+  margin-top: 50px;
+  background-color: #242424;
   display: flex;
   color: white;
   font-family: "BYekan+";
   flex-direction: column;
   padding: 4svw;
-  margin-top: 50px;
-}
-footer div:first-of-type{
-  display: flex;
-  flex-direction: row;
-  width: 95%;
-  justify-content: space-between;
-  margin-bottom: 30px;
-
+  padding-top: 40px;
 }
 footer a{
   font-family: "BYekan+";
   text-decoration: none;
   color: white;
-  border-left: 2px solid #1275ff;
-  padding-left: 20px;
-  height: 50px;
-  margin-bottom: 30px;
+  margin: 0;
+  /* margin-bottom: 8px; */
 }
 .SocialLinks{
+  display: flex;
+  width: 90svw;
+  flex-direction: row;
   border-bottom: 1px solid white;
-  margin-bottom: 0;
-  padding: 10px;
-  padding-left: 2svw;
-  padding-right: 2svw;
-  padding-bottom: 0;
+  justify-content: space-around;
+  padding-bottom: 40px;
+  padding-top: 0;
+  margin-top: 0;
+  align-items: center;
+  height: max-content;
+}
+.SocialLinks div{
+  border-left: 2px solid #6C90B4;
+  padding-left: 15px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
 }
 span{
-  color: #1275ffa2;
+  color: #6C90B4;
 }
-footer div div:nth-of-type(2) , footer div div:nth-of-type(3){
+footer div:nth-of-type(2) div:nth-of-type(2) , footer div:nth-of-type(2) div:nth-of-type(3){
   display: flex;
   justify-content: center;
   text-align: center;
@@ -895,10 +899,17 @@ footer div div:nth-of-type(3){
   margin-top: 10px;
 }
 footer div div:nth-of-type(3) span{
-  margin-left: 0.3svw;
+  margin-left: 9px;
+  display: inline-block;
 }
-footer div div:first-of-type{
-  margin-left: 2.5%;
+footer div:nth-of-type(2) div:first-of-type{
+  margin-right: 2.5%;
+  margin-left: 1.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 @media screen and (max-width: 800px) {
   footer div:nth-of-type(2) h2{
@@ -908,5 +919,20 @@ footer div div:first-of-type{
 @media screen and (max-width: 515px) {
   footer div:nth-of-type(2) h2{
     font-size: 4svw;
+  }
+}
+@media screen and (max-width:460px) {
+  footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
+    font-size: 12px;
+  }
+}
+@media screen and (max-width:350px) {
+  footer div:last-of-type div:nth-of-type(2){
+    font-size: 10px;
+  }
+}
+@media screen and (max-width:280px) {
+  footer div:last-of-type div:nth-of-type(2){
+    font-size: 8px;
   }
 }
