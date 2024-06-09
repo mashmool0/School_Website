@@ -291,9 +291,9 @@ main div input ,select{
   border: none;
   box-shadow: 1px 2px 2px 2px gray ;
   font-family: "BYekan+";
+  text-align: center;
 }
-
-main div input,main div textarea{
+main div textarea{
   text-align: right;
 } 
 main div textarea{
