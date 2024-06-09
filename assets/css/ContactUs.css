@@ -291,6 +291,7 @@ footer div div:first-of-type{
     font-size: 18px;
     text-align: center;
     margin-left: 10px;
+    width: 150px;
   }
   .links{
     width: 100%;
@@ -309,4 +310,13 @@ footer div div:first-of-type{
  .left form div:first-of-type{
   margin-left: 6svw;
  }
+}
+@media screen and (max-width:490px) {
+  
+  nav h1{
+    font-size: 15px;
+    text-align: center;
+    margin-left: 10px;
+    width: 150px;
+  }
 }

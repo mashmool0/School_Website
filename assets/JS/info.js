@@ -38,3 +38,6 @@ function dropdown2() {
 }
 
 $('.date-input').persianDatepicker();
+function chooseFile(){
+  document.getElementById("file").click();
+}
