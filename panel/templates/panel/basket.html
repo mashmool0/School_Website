@@ -1,10 +1,12 @@
 {% load static %}
+{% load money_converter %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'css/basket2.css' %}"/>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <title>سبد خرید </title>
 </head>
 <body>
@@ -80,7 +82,6 @@
                 <h1>سبد خرید</h1>
                 <table dir="rtl">
                     <tr>
-                        <th>تصویر</th>
                         <th>نام آیتم</th>
                         <th>نام استاد</th>
                         <th>قیمت اصلی</th>
@@ -88,34 +89,23 @@
                         <th>تعداد</th>
                         <th>عملیات</th>
                     </tr>
-                    <tr>
-                        <td><img src="{{ MEDIA_URL }}media/course.jpg" alt="course image" class="course-image">
-                        </td>
-                        <td>جمع بندی فیزیک</td>
-                        <td>علی محمدی</td>
-                        <td>2 میلیون تومان</td>
-                        <td>1 میلیون تومان</td>
-                        <td>1</td>
-                        <td>
-                            <button class="add-btn">+</button>
-                            <button class="remove-btn">-</button>
-                            <button class="delete-btn">حذف</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td><img src="{% static 'images/course_image.jpg' %}" alt="course image" class="course-image">
-                        </td>
-                        <td>جمع بندی شیمی</td>
-                        <td>علی محمدی</td>
-                        <td>2 میلیون تومان</td>
-                        <td>1 میلیون تومان</td>
-                        <td>1</td>
-                        <td>
-                            <button class="add-btn">+</button>
-                            <button class="remove-btn">-</button>
-                            <button class="delete-btn">حذف</button>
-                        </td>
-                    </tr>
+                    {% for basket in baskets %}
+                        <tr>
+                            </td>
+                            <td>{{ basket.course_name }}</td>
+                            <td>{{ basket.teacher }}</td>
+                            <td>{{ basket.price|money }}</td>
+                            <td>{{ basket.price_with_off|money }}</td>
+                            <td>1</td>
+                            <td>
+                                <button class="add-btn">+</button>
+                                <button class="remove-btn">-</button>
+                                <button class="delete-btn">حذف</button>
+                            </td>
+                        </tr>
+                    {% endfor %}
+
+
                 </table>
             </div>
         </main>
@@ -174,13 +164,13 @@
 
     // Add event listeners to the buttons
     document.querySelectorAll(".add-btn").forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             increaseCount(this);
         });
     });
 
     document.querySelectorAll(".remove-btn").forEach(button => {
-        button.addEventListener("click", function() {
+        button.addEventListener("click", function () {
             decreaseCount(this);
         });
     });

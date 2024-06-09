@@ -18,7 +18,8 @@ def course_panel(request):
 
 @login_required(login_url="account:login")
 def basket_panel(request):
-    return render(request, 'panel/basket.html', context={})
+    baskets = Basket.objects.filter(basket_user=request.user)
+    return render(request, 'panel/basket.html', context={'baskets': baskets})
 
 
 @login_required(login_url="account:login")
@@ -72,7 +73,7 @@ def add_to_basket(request):
         try:
             course_user = Course.objects.get(id=course_id)
             if Basket.objects.filter(course_name=course_user.course_name, teacher=course_user.teacher,
-                                     banner=course_user.banner).exists():
+                                     banner=course_user.banner, basket_user=request.user).exists():
                 response = {'status': 'error', 'message': 'این دوره قبلا اضافه شده است'}
             else:
                 basket = Basket.objects.create(course_name=course_user.course_name, teacher=course_user.teacher,
