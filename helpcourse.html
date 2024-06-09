@@ -23,7 +23,7 @@
                 <a href="{% url 'home:home' %}">خانه</a>
                 <a href="course.html">آموزشگاه</a>
                 <a href="{% url 'course:course' %}">دوره ها</a>
-                <a href="#">وبلاگ</a>
+                <a href="Library.html">وبلاگ</a>
                 <a href="{% url "contactUs:contactus" %}">ارتباط با ما</a>
                 <a href="#" class="tab">
                     <svg
@@ -87,13 +87,14 @@
         </div>
         <div>
             {% if request.user.is_authenticated %}
-                <button onclick="redirectToPanel()">پنل کاربری</button>
+                <button>پنل کاربری</button>
             {% else %}
-                <button onclick="redirectTologin()">ورود/ثبت نام</button>
+                <button>ورود/ثبت نام</button>
+
             {% endif %}
         </div>
     </nav>
-    <div class="HeaderContent">
+    <div>
         <h1>دوره ها</h1>
         <div class="rectangle1"></div>
         <div class="rectangle2"></div>
@@ -231,16 +232,6 @@
             });
         });
     });
-</script>
-
-<script>
-    function redirectToPanel() {
-        window.location.href = "{% url 'panel:basket' %}"; // todo
-    }
-
-    function redirectToLogin() {
-        window.location.href = "{% url 'account:login' %}";
-    }
 </script>
 </body>
 </html>

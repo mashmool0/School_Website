@@ -73,11 +73,11 @@ def add_to_basket(request):
         try:
             course_user = Course.objects.get(id=course_id)
             if Basket.objects.filter(course_name=course_user.course_name, teacher=course_user.teacher,
-                                     banner=course_user.banner, basket_user=request.user).exists():
+                                     basket_user=request.user).exists():
                 response = {'status': 'error', 'message': 'این دوره قبلا اضافه شده است'}
             else:
                 basket = Basket.objects.create(course_name=course_user.course_name, teacher=course_user.teacher,
-                                               price=course_user.price, banner=course_user.banner,
+                                               price=course_user.price,
                                                basket_user=request.user,
                                                price_with_off=course_user.price_with_off)
                 basket.save()
