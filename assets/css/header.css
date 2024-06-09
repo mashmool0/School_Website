@@ -1,0 +1,143 @@
+nav {
+  position: sticky;
+  content: "";
+  top: 0;
+}
+.HamburgerMenu {
+  display: none;
+  width: 80%;
+  position: fixed;
+  top: 0px;
+  background-color: rgb(0, 0, 0);
+  height: 300svh;
+  z-index: 3;
+}
+.SideLinks a {
+  margin-right: 4svw;
+  display: block;
+  margin-top: 20px;
+  z-index: 3;
+  color: white;
+}
+.burger {
+  margin-top: 15px;
+  margin-right: 4svw;
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #080808a2;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-50%);
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
+  top: 0;
+  left: 5px;
+  transform: rotate(405deg);
+}
+
+.burger input:checked ~ span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
+  top: 28px;
+  left: 5px;
+  transform: rotate(-405deg);
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+  background-color: white;
+  padding-bottom: 18px;
+  z-index: 3;
+}  
+header a {
+  color: black;
+  font-family: "BYekan+";
+  text-decoration: none;
+  margin-right: 6%;
+  margin-left: 2%;
+  font-size: 18px;
+}
+.links a:hover::after {
+  content: "";
+  border: 1px solid;
+  border-color: black;
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+}
+.links a:hover {
+  transform: scale(1.1);
+}
+.links {
+  width: 60%;
+  display: flex;
+  flex-direction: row;
+}
+header nav:nth-of-type(3) button:hover {
+  transform: scale(1.08);
+}
+header nav button{
+  margin-left: 20px;
+  width: 100px;
+  height: 40px;
+  border: none;
+  border-radius: 16px;
+  background-color: #0f66dc;
+  color: white;
+  font-family: "BYekan+";
+}
+.tab {
+  position: fixed;
+  top: 0px;
+  /* right: 25svw; */
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-right: 4px;
+  /* padding-left: -5px; */
+  height: fit-content;
+  right: 60%;
+}
