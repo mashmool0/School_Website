@@ -5,7 +5,7 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'css/ShowInfo.css' %}"/>
-    <title>Document</title>
+    <title>اطلاعات کاربر</title>
 </head>
 <body>
 <div class="wrapper">
@@ -72,68 +72,97 @@
         <form method="post">
             <div>
                 <label for="name">نام</label>
-                <input readonly type="text" id="name" value="احمد" name="name"/>
+                <input readonly type="text" id="name" value="{{ user_student.first_name }}" name="name"/>
                 <label for="lastName">نام خانوادگی</label>
-                <input readonly type="text" id="lastName" value="احمدی" name="lastName"/>
+                <input readonly type="text" id="lastName" value="{{ user_student.last_name }}" name="lastName"/>
             </div>
             <div>
                 <label for="BD">تاریخ تولد</label>
-                <input readonly id="BD" type="text" value="1400/03/03" name="BD"/>
+                <input readonly id="BD" type="text" value="{{ user_student.birthday_date }}" name="BD"/>
                 <label for="grade">مقطع تحصیلی</label>
-                <input readonly name="grade" value="متوسطه اول" id="grade">
+                {% for maghta in user_student.SECTION %}
+                    {% if user_student.section == maghta.0 %}
+                        <input readonly name="grade" value="{{ maghta.1 }}" id="grade">
 
+                    {% endif %}
+                {% endfor %}
             </div>
             <div>
                 <label for="paye">پایه تحصیلی</label>
-                <input id="paye" name="paye" value="نهم"></input>
+                {% for paye in user_student.GRADE %}
+                    {% if user_student.grade == paye.0 %}
+                        <input id="paye" name="paye" value="{{ paye.1 }}"></input>
+                    {% endif %}
+                {% endfor %}
+
+
                 <label for="reshte">رشته تحصیلی</label>
-                <input readonly name="reshte" id="reshte" value="تجربی"></input>
+                {% for reshte in user_student.STUDY %}
+                    {% if user_student.field_of_study == reshte.0 %}
+                        <input readonly name="reshte" id="reshte" value="{{ reshte.1 }}"></input>
+
+                    {% endif %}
+                {% endfor %}
+
             </div>
             <div>
                 <label for="IDCode">کد ملی</label>
-                <input readonly type="tel" name="IDCode" value="402243087" id="IDCode">
+                <input readonly type="tel" name="IDCode" value="{{ user_student.student_code_id }}" id="IDCode">
                 <label for="babash">نام پدر</label>
-                <input readonly type="text" name="babash" value="حسن" id="babash">
+                <input readonly type="text" name="babash" value="{{ user_student.father_name }}" id="babash">
             </div>
             <div>
                 <label for="mamanesh">نام و نام خانوادگی مادر</label>
-                <input readonly type="text" name="mamanesh" value="احمد احمدی" id="mamanesh">
+                <input readonly type="text" name="mamanesh" value="{{ user_student.mother_name }}" id="mamanesh">
                 <label for="Khoone">آدرس منزل</label>
-                <textarea readonly name="Khoone" id="Khoone"></textarea>
+                <textarea readonly name="Khoone" id="Khoone">{{ user_student.address }}</textarea>
             </div>
             <div>
                 <label for="babashPhone">شماره تلفن پدر</label>
-                <input readonly type="text" name="babashPhone" value="09999999999" id="babashPhone">
+                <input readonly type="text" name="babashPhone" value="{{ user_student.father_phone }}" id="babashPhone">
                 <label for="mamaneshPhone">شماره تلفن مادر</label>
-                <input readonly type="text" name="mamaneshPhone" value="09999999999" id="mamaneshPhone">
+                <input readonly type="text" name="mamaneshPhone" value="{{ user_student.mother_phone }}"
+                       id="mamaneshPhone">
             </div>
             <div>
                 <label for="KarBabash">شغل پدر</label>
-                <input readonly type="text" name="KarBabash" value="کسکش" id="KarBabash">
+                <input readonly type="text" name="KarBabash" value="{{ user_student.father_job }}" id="KarBabash">
                 <label for="KarMommy">شغل مادر</label>
-                <input readonly type="text" name="KarMommy" value="جنده پولی" id="KarMommy">
+                <input readonly type="text" name="KarMommy" value="{{ user_student.mother_job }}" id="KarMommy">
             </div>
             <div>
                 <label for="TahsilBabash">تحصیلات پدر</label>
-                <input readonly type="text" name="TahsilBabash" value="سیکل" id="TahsilBabash">
+                <input readonly type="text" name="TahsilBabash" value="{{ user_student.father_education }}"
+                       id="TahsilBabash">
                 <label for="TahsilMommy">تحصیلات مادر</label>
-                <input readonly type="text" name="TahsilMommy" value="سیکل" id="TahsilMommy">
+                <input readonly type="text" name="TahsilMommy" value="{{ user_student.mother_education }}"
+                       id="TahsilMommy">
             </div>
             <div>
                 <label for="AddressBabash">آدرس شغل مادر</label>
-                <textarea readonly name="AddressBabash" id="AddressBabash"></textarea>
+                <textarea readonly name="AddressBabash"
+                          id="AddressBabash">{{ user_student.job_mother_address }}</textarea>
                 <label for="AddressMommy">آدرس شغل پدر</label>
-                <textarea readonly name="AddressMommy" id="AddressMommy"></textarea>
+                <textarea readonly name="AddressMommy"
+                          id="AddressMommy">{{ user_student.job_father_address }}</textarea>
             </div>
             <div>
                 <label for="DarsBabash">شماره شناسنامه پدر:</label>
-                <input readonly type="text" value="402243087" id="DarsBabash" name="DarsBabash">
+                <input readonly type="text" value="{{ user_student.father_serial_number }}" id="DarsBabash"
+                       name="DarsBabash">
                 <label for="DarsMommy">شماره شناسنامه مادر</label>
-                <input readonly type="text" id="DarsMommy" value="402243087" name="DarsMommy">
+                <input readonly type="text" id="DarsMommy" value="{{ user_student.mother_serial_number }}"
+                       name="DarsMommy">
             </div>
             <div>
                 <label for="DarsKharBeraresh">تحصیلات خواهر یا برادر</label>
-                <textarea readonly name="DarsKharBeraresh" id="DarsKharBeraresh"></textarea>
+                {% if user_student.sibling_education %}
+                    <textarea readonly name="DarsKharBeraresh"
+                              id="DarsKharBeraresh">{{ user_student.sibling_education }}</textarea>
+                {% else %}
+                    <textarea readonly name="DarsKharBeraresh" id="DarsKharBeraresh">اطلاعاتی وجود ندارد</textarea>
+
+                {% endif %}
             </div>
 
         </form>

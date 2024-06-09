@@ -2,8 +2,6 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
-from time import sleep
-from django.shortcuts import redirect
 
 from .models import Basket
 from account.models import UserStudent
@@ -31,6 +29,10 @@ def last_order(request):
 
 @show_information_to_submit_user
 def show_user_info(request):
+    if UserStudent.objects.filter(phone_number=request.user.username).exists():
+        user_student = UserStudent.objects.filter(phone_number=request.user.username).last()
+        return render(request, 'panel/show_info.html', context={"user_student": user_student})
+
     return render(request, 'panel/show_info.html', context={})
 
 
@@ -59,6 +61,8 @@ def user_info(request):
             user_student.job_mother_address = request.POST.get("AddressBabash")
             user_student.job_father_address = request.POST.get("AddressMommy")
             user_student.sibling_education = request.POST.get("DarsKharBeraresh")
+            user_student.father_serial_number = request.POST.get("DarsBabash")
+            user_student.mother_serial_number = request.POST.get("DarsMommy")
             user_student.is_information_submited = True
             user_student.save()  # Save the changes to the database
             context = {
