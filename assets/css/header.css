@@ -1,3 +1,4 @@
+/* Header And Side Bar*/
 nav {
   position: sticky;
   content: "";
@@ -141,3 +142,13 @@ header nav button{
   height: fit-content;
   right: 60%;
 }
+@media screen and (max-width:405px) {
+  .links a{
+    font-size: 14px;
+  }
+  .mob{
+    margin-left: -25px;
+    font-size: 13px;
+  }
+}
+/* Header And Side Bar End*/
