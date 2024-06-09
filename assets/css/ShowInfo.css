@@ -295,8 +295,6 @@ main div input ,select{
 }
 main div textarea{
   text-align: right;
-} 
-main div textarea{
   width: 200px;
   height: 6 0px;
   border-radius: 5px;
