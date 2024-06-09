@@ -27,6 +27,10 @@ def last_order(request):
     return render(request, 'panel/latest_transitions.html', context={})
 
 
+def show_user_info(request):
+    return render(request, 'panel/show_info.html', context={})
+
+
 @login_required(login_url="account:login")
 @show_information
 def user_info(request):

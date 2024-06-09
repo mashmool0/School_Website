@@ -32,7 +32,7 @@
             </div>
             <div><a href="{% url 'panel:basket' %}" class="dropDownLinks">سبد خرید</a></div>
             {% if request.user.user_student.is_information_submited %}
-                <div class="SideCard"><a href="{% url 'home:home' %}">اطلاعات کاربر</a></div>
+                <div class="SideCard"><a href="{% url 'panel:showInfo' %}">اطلاعات کاربر</a></div>
             {% else %}
                 <div class="SideCard"><a href="{% url 'panel:userInfo' %}">تکمیل اطلاعات کاربری</a></div>
             {% endif %}
@@ -56,7 +56,7 @@
             </div>
             <div class="SideCard"><a href="{% url 'panel:basket' %}">سبد خرید</a></div>
             {% if request.user.user_student.is_information_submited %}
-                <div class="SideCard"><a href="{% url 'home:home' %}">اطلاعات کاربر</a></div>
+                <div class="SideCard"><a href="{% url 'panel:showInfo' %}">اطلاعات کاربر</a></div>
             {% else %}
                 <div class="SideCard"><a href="{% url 'panel:userInfo' %}">تکمیل اطلاعات کاربری</a></div>
             {% endif %}

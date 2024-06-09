@@ -1,0 +1,144 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="stylesheet" href="{% static 'css/ShowInfo.css' %}"/>
+    <title>Document</title>
+</head>
+<body>
+<div class="wrapper">
+    <nav dir="rtl">
+        <div dir="rtl" class="links">
+            <a href="">خانه</a>
+            <a href="">دوره ها</a>
+            <a href="">کتابخانه</a>
+        </div>
+
+        <div class="leftSide">
+            <div class="dropDown">
+                اندیشه پارسیان
+            </div>
+        </div>
+        <div class="mob">
+            <button onclick="dropdown2()" class="dropDownButton">
+                پنل کاربری
+            </button>
+            <div>
+                <a href="{% url 'panel:course' %}" class="dropDownLinks">دوره ها</a>
+            </div>
+            <div>
+                <a href="{% url 'panel:lastOrder' %}" class="dropDownLinks"
+                >تراکنش های اخیر</a>
+            </div>
+            <div><a href="{% url 'panel:basket' %}" class="dropDownLinks">سبد خرید</a></div>
+        </div>
+    </nav>
+    <aside>
+        <div>
+            <img src="{% static '/images/account.png' %}" alt=""/>
+            {% if request.user.first_name %}
+                <h1>{{ request.user.first_name }}</h1>
+            {% else %}
+                <h1>{{ request.user.user_student.username }}</h1>
+            {% endif %}
+            <a href="" class="change">ویرایش اکانت</a>
+            <div class="SideCard">
+                <a href="{% url 'panel:course' %}">دوره ها</a>
+            </div>
+            <div class="SideCard">
+                <a href="{% url 'panel:lastOrder' %}">تراکنش های اخیر</a>
+            </div>
+            <div class="SideCard"><a href="{% url 'panel:basket' %}">سبد خرید</a></div>
+            <div class="SideCard Active" style="background-color: white"><a style="color: rgb(43, 62, 177);"
+                                                                            href="{% url 'panel:userInfo' %}">اطلاعات
+                کاربر</a></div>
+            {% if request.user.user_student.super_student_user %}
+                <div class="SideCard"><a href="">ثبت نام در مدرسه</a></div>
+                {% comment %}   todo --> change href and create panel for that
+                {% endcomment %}
+            {% endif %}
+            <br>
+            <br>
+            <br>
+            <div class="SideCard Active" style="background-color: #ff3939"><a style="color: white;font-weight: bold"
+                                                                              href="{% url 'account:logout' %}">خروج</a>
+            </div>
+        </div>
+    </aside>
+    <main>
+        <h1 style="margin-bottom: 40px">اطلاعات کاربری دانش آموز</h1>
+        <form method="post">
+            <div>
+                <label for="name">نام</label>
+                <input readonly type="text" id="name" value="احمد" name="name"/>
+                <label for="lastName">نام خانوادگی</label>
+                <input readonly type="text" id="lastName" value="احمدی" name="lastName"/>
+            </div>
+            <div>
+                <label for="BD">تاریخ تولد</label>
+                <input readonly id="BD" type="text" value="1400/03/03" name="BD"/>
+                <label for="grade">مقطع تحصیلی</label>
+                <input readonly name="grade" value="متوسطه اول" id="grade">
+
+            </div>
+            <div>
+                <label for="paye">پایه تحصیلی</label>
+                <input id="paye" name="paye" value="نهم"></input>
+                <label for="reshte">رشته تحصیلی</label>
+                <input readonly name="reshte" id="reshte" value="تجربی"></input>
+            </div>
+            <div>
+                <label for="IDCode">کد ملی</label>
+                <input readonly type="tel" name="IDCode" value="402243087" id="IDCode">
+                <label for="babash">نام پدر</label>
+                <input readonly type="text" name="babash" value="حسن" id="babash">
+            </div>
+            <div>
+                <label for="mamanesh">نام و نام خانوادگی مادر</label>
+                <input readonly type="text" name="mamanesh" value="احمد احمدی" id="mamanesh">
+                <label for="Khoone">آدرس منزل</label>
+                <textarea readonly name="Khoone" id="Khoone"></textarea>
+            </div>
+            <div>
+                <label for="babashPhone">شماره تلفن پدر</label>
+                <input readonly type="text" name="babashPhone" value="09999999999" id="babashPhone">
+                <label for="mamaneshPhone">شماره تلفن مادر</label>
+                <input readonly type="text" name="mamaneshPhone" value="09999999999" id="mamaneshPhone">
+            </div>
+            <div>
+                <label for="KarBabash">شغل پدر</label>
+                <input readonly type="text" name="KarBabash" value="کسکش" id="KarBabash">
+                <label for="KarMommy">شغل مادر</label>
+                <input readonly type="text" name="KarMommy" value="جنده پولی" id="KarMommy">
+            </div>
+            <div>
+                <label for="TahsilBabash">تحصیلات پدر</label>
+                <input readonly type="text" name="TahsilBabash" value="سیکل" id="TahsilBabash">
+                <label for="TahsilMommy">تحصیلات مادر</label>
+                <input readonly type="text" name="TahsilMommy" value="سیکل" id="TahsilMommy">
+            </div>
+            <div>
+                <label for="AddressBabash">آدرس شغل مادر</label>
+                <textarea readonly name="AddressBabash" id="AddressBabash"></textarea>
+                <label for="AddressMommy">آدرس شغل پدر</label>
+                <textarea readonly name="AddressMommy" id="AddressMommy"></textarea>
+            </div>
+            <div>
+                <label for="DarsBabash">شماره شناسنامه پدر:</label>
+                <input readonly type="text" value="402243087" id="DarsBabash" name="DarsBabash">
+                <label for="DarsMommy">شماره شناسنامه مادر</label>
+                <input readonly type="text" id="DarsMommy" value="402243087" name="DarsMommy">
+            </div>
+            <div>
+                <label for="DarsKharBeraresh">تحصیلات خواهر یا برادر</label>
+                <textarea readonly name="DarsKharBeraresh" id="DarsKharBeraresh"></textarea>
+            </div>
+
+        </form>
+    </main>
+</div>
+<script src="{% static 'JS/showInfo.js' %}"></script>
+</body>
+</html>
