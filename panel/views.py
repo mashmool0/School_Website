@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 
+from .models import Basket
 from account.models import UserStudent
 from course.models import Course
 from .decorators import show_information
@@ -70,12 +71,19 @@ def add_to_basket(request):
         course_id = request.POST.get('course_id')
         try:
             course_user = Course.objects.get(id=course_id)
-            # Update the model as needed, for example, add the course to a user's basket
-            # user.basket.add(course)  # Assuming you have a basket field in your user model
-            response = {'status': 'success', 'message': 'Course added to basket'}
+            if Basket.objects.filter(course_name=course_user.course_name, teacher=course_user.teacher,
+                                     banner=course_user.banner).exists():
+                response = {'status': 'error', 'message': 'این دوره قبلا اضافه شده است'}
+            else:
+                basket = Basket.objects.create(course_name=course_user.course_name, teacher=course_user.teacher,
+                                               price=course_user.price, banner=course_user.banner,
+                                               basket_user=request.user,
+                                               price_with_off=course_user.price_with_off)
+                basket.save()
+                response = {'status': 'success', 'message': 'دوره به سبد خرید اضافه شد'}
         except Course.DoesNotExist:
-            response = {'status': 'error', 'message': 'Course not found'}
+            response = {'status': 'error', 'message': 'دوره یافت نشد'}
     else:
-        response = {'status': 'error', 'message': 'Invalid request'}
+        response = {'status': 'error', 'message': 'درخواست نامعتبر'}
 
     return JsonResponse(response)

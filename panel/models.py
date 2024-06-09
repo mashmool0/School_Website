@@ -7,10 +7,10 @@ from django.contrib.auth.models import User
 class Basket(models.Model):
     course_name = models.CharField(max_length=40, verbose_name="نام آیتم")
     teacher = models.CharField(max_length=40, verbose_name="استاد")
-    price = models.CharField(max_length=20, verbose_name="قیمت")
+    price = models.IntegerField(verbose_name="قیمت")
     banner = models.ImageField(upload_to='media', verbose_name="عکس دوره")
     basket_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="ارتباط با")
-
+    price_with_off = models.IntegerField(null=True, blank=True, verbose_name="قیمت با تخفیف ")
     # when user add to basket add this item
 
     def set_basket_user(self, user):

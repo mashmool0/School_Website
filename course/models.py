@@ -29,6 +29,8 @@ class Course(models.Model):
     def set_price_with_off(self):
         if self.off is not None:
             self.price_with_off = (self.price * (100 - self.off)) / 100
+        else:
+            self.price_with_off = self.price
 
     def save(self, *args, **kwargs):
         self.set_price_with_off()
