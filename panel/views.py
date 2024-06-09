@@ -2,11 +2,13 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from time import sleep
+from django.shortcuts import redirect
 
 from .models import Basket
 from account.models import UserStudent
 from course.models import Course
-from .decorators import show_information
+from .decorators import show_information, show_information_to_submit_user
 
 
 # Create your views here.
@@ -27,6 +29,7 @@ def last_order(request):
     return render(request, 'panel/latest_transitions.html', context={})
 
 
+@show_information_to_submit_user
 def show_user_info(request):
     return render(request, 'panel/show_info.html', context={})
 
