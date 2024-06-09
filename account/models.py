@@ -98,3 +98,21 @@ class Otp(models.Model):
 class LimitContactUs(models.Model):
     phone_number = models.CharField(max_length=11, verbose_name="شماره تماس")
     date_set = models.DateTimeField(auto_now_add=True)
+
+
+class Footer(models.Model):
+    boss_name = models.CharField(max_length=40, verbose_name="نام مدیر")
+    phone_number = models.CharField(max_length=11, verbose_name="شماره تلفن مدرسه ")
+    school_address = models.TextField(verbose_name="آدرس مدرسه")
+    roubica = models.URLField(max_length=200, verbose_name="لینک کانال یا راه ارتباطی روبیکا شما")
+    instagram = models.URLField(max_length=200, verbose_name="لینک کانال یا راه ارتباطی اینستاگرام شما")
+    soroosh = models.URLField(max_length=200, verbose_name="لینک کانال یا راه ارتباطی سروش شما")
+
+    class Meta:
+        verbose_name = "فوتر سایت"
+        verbose_name_plural = "فوتر سایت"
+
+    def __str__(self):
+        return self.boss_name + "   ---   " + self.school_address
+
+

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WelcomeRegister, UserStudent, Otp, LimitContactUs
+from .models import WelcomeRegister, UserStudent, Otp, Footer
 from jalali_date.admin import ModelAdminJalaliMixin
 from jalali_date import datetime2jalali
 from import_export.admin import ImportExportModelAdmin
@@ -8,6 +8,7 @@ from import_export.formats.base_formats import XLSX
 
 admin.site.register(WelcomeRegister)
 admin.site.register(Otp)
+admin.site.register(Footer)
 
 
 # Add this function for export user information
@@ -43,4 +44,3 @@ class UserStudentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     ]
     readonly_fields = ('user',)
     actions = [export_to_excel]
-

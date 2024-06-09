@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>خانه</title>
     <link rel="stylesheet" href="{% static '/css/Homestyle.css' %}"/>
+    <link rel="stylesheet" href="{% static 'css/footer.css' %}">
 </head>
 <body>
 <header>
@@ -19,9 +20,9 @@
             </label>
             <div class="SideLinks">
                 <a href="{% url 'home:home' %}">خانه</a>
-                <a href="course.html">آموزشگاه</a>
+                <a href="">آموزشگاه</a>
                 <a href="{% url 'course:course' %}">دوره ها</a>
-                <a href="Library.html">وبلاگ</a>
+                <a href="">وبلاگ</a>
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
                 {% endif %}
@@ -84,9 +85,9 @@
         </div>
         <div class="links">
             <a href="{% url 'home:home' %}">خانه</a>
-                <a href="{% url 'course:course' %}">دوره ها</a>
-            <a href="Library.html">کتابخانه</a>
-            <a href="Library.html">وبلاگ</a>
+            <a href="">آموزشگاه</a> 
+            <a href="{% url 'course:course' %}">دوره ها</a>
+            <a href="">وبلاگ</a>
             {% if request.user.is_authenticated %}
                 <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
             {% endif %}
@@ -95,7 +96,6 @@
         {% if request.user.is_authenticated %}
             <div>
                 <button type="button" onclick="redirectTo_panel()">پنل کاربری</button>
-                <button type="button" style="background-color: pink" onclick="redirectTo_logout()">خروج</button>
             </div>
         {% else %}
             <div>
@@ -223,16 +223,16 @@
 </div>
 <footer>
     <div class="SocialLinks">
-        <a href="" class="telegram">تلگرام</a>
-        <a href="" class="instagram">اینستاگرام</a>
-        <a href="" class="twitter">توییتر</a>
+        <a href="{{ footer.roubica }}" class="telegram" target="_blank">روبیکا</a>
+        <a href="{{ footer.instagram }}" class="instagram" target="_blank">اینستاگرام</a>
+        <a href="{{ footer.soroosh }}" class="twitter" target="_blank">سروش</a>
     </div>
     <div>
         <div class="ManagerInformation">
-            <h2 class="ManagerName">نام مدیر: <span>لورم ایپسوم</span></h2>
-            <h2 class="SchoolPhoneNumber">شماره تماس : <span>09999999999</span></h2>
+            <h2 class="ManagerName">نام مدیر: <span>{{ footer.boss_name }}</span></h2>
+            <h2 class="SchoolPhoneNumber">شماره تماس : <span>{{ footer.phone_number }}</span></h2>
         </div>
-        <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</span>
+        <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>{{ footer.school_address }}</span>
         </div>
         <div class="CopyRight">COPYRIGHT 2024 <span> Amirmahdi Mashayekhi </span></div>
     </div>

@@ -193,9 +193,16 @@
 </main>
 <footer>
     <div class="SocialLinks">
-        <a href="" class="telegram">تلگرام</a>
-        <a href="" class="instagram">اینستاگرام</a>
-        <a href="" class="twitter">توییتر</a>
+        <div>
+            <a href="{{ footer.roubica }}" class="telegram" target="_blank">روبیکا</a>
+
+        </div>
+        <div>
+            <a href="{{ footer.instagram }}" class="instagram" target="_blank">اینستاگرام</a>
+        </div>
+        <div>
+            <a href="{{ footer.soroosh }}" class="twitterf" target="_blank">سروش</a>
+        </div>
     </div>
     <div>
         <div class="ManagerInformation">
@@ -204,7 +211,7 @@
         </div>
         <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از</span>
         </div>
-        <div class="CopyRight">COPYRIGHT 2024 <span> Amirmahdi Mashayekhi </span></div>
+        <div class="CopyRight ">COPYRIGHT 2024 <span> Amir Mashayekhi </span></div>
     </div>
 </footer>
 <script>
@@ -242,5 +249,6 @@
         window.location.href = "{% url 'account:login' %}";
     }
 </script>
+<script src="{% static 'JS/course.js' %}"></script>
 </body>
 </html>
