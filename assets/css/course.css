@@ -134,7 +134,9 @@ body {
   height: 40px;
   border-radius: 6px;
 }
-
+.all{
+  margin-right: 5px;
+}
 .jozve {
   background-color: white;
   border: 3px solid rgba(189, 189, 189, 0.451);
@@ -142,6 +144,7 @@ body {
 }
 
 .dore {
+  margin-right: 5px;
   background-color: #0f66dc;
   border: none;
   color: white;
@@ -182,6 +185,9 @@ body {
   font-family: "BYekan+";
   justify-content: center;
 }
+.card div div:last-of-type{
+  margin-right: -2.5%;
+}
 .card div div div{
   display: flex;
   flex-direction: column;
@@ -191,13 +197,10 @@ body {
   color: rgba(128, 128, 128, 0.812);
   font-size: 15px;
 }
-.card div div:last-of-type {
-  margin-left: 7%;
-}
 .card div div {
   align-items: center;
   width: 95%;
-  margin-left: 2.5%;
+  margin-left: -2%;
   height: 80px;
   justify-content: space-between;
   display: flex;
@@ -623,5 +626,21 @@ footer div:nth-of-type(2) div:first-of-type{
 @media screen and (max-width:460px) {
   footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
     font-size: 12px;
+  }
+}
+.all{
+  border: none;
+  background-color: #72B3CF;
+  font-family: "BYekan+";
+  color: white;
+}
+@media screen and (max-width:350px) {
+  footer div:last-of-type div:nth-of-type(2){
+    font-size: 10px;
+  }
+}
+@media screen and (max-width:280px) {
+  footer div:last-of-type div:nth-of-type(2){
+    font-size: 8px;
   }
 }
