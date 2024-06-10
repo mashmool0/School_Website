@@ -15,6 +15,8 @@ class WelcomeRegister(models.Model):
 
 class UserStudent(models.Model):
     GRADE = [
+        ('haftom', 'هفتم'),
+        ('hashtom', 'هشتم'),
         ('nohom', 'نهم'),
         ('dahom', 'دهم'),
         ('yazdahom', 'یازدهم'),

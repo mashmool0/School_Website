@@ -14,9 +14,13 @@
                     <h2>استاد:{{ course.teacher }} </h2>
                 </div>
                 <div>
-                    <h2>  {{ course.price|money }} تومان </h2>
+                    <div class="OnSale"></div>
+
                     {% if course.price_with_off != course.price and course.price_with_off %}
+                        <h2 class="takhfif">  {{ course.price|money }} تومان </h2>
                         <h2>  {{ course.price_with_off|money }} تومان </h2>
+                    {% else %}
+                        <h2>  {{ course.price|money }} تومان </h2>
                     {% endif %}
                     <button type="button" class="basket-button" data-course-id="{{ course.id }}"></button>
                 </div>
