@@ -98,9 +98,9 @@
             </label>
         </form>
         <div>
-            <button class="filter-button jozve" data-type="book">جزوه</button>
-            <button class="filter-button dore" data-type="teacher">دوره</button>
-            <button class="filter-button all" data-type="all">همه</button>
+            <button class="filter-button jozve button" id="" data-type="book">جزوه</button>
+            <button class="filter-button dore button" id="" data-type="teacher">دوره</button>
+            <button class="filter-button all button" id="active" data-type="all">همه</button>
         </div>
     </div>
     <div class="container" id="course-container">
@@ -150,6 +150,11 @@
         });
 
         $('.filter-button').click(function () {
+            // Remove active id from all filter buttons
+            $('.filter-button').removeAttr('id');
+            // Add active id to the clicked filter button
+            $(this).attr('id', 'active');
+
             const type = $(this).data('type');
             fetch(`/course/filter/?type=${type}`)
                 .then(response => response.text())

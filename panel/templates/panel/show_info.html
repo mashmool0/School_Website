@@ -5,6 +5,10 @@
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <link rel="stylesheet" href="{% static 'css/ShowInfo.css' %}"/>
+    <script src="https://unpkg.com/persian-date@latest/dist/persian-date.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://unpkg.com/persian-datepicker@latest/dist/js/persian-datepicker.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/persian-datepicker@latest/dist/css/persian-datepicker.css">
     <title>اطلاعات کاربر</title>
 </head>
 <body>
@@ -78,7 +82,7 @@
             </div>
             <div>
                 <label for="BD">تاریخ تولد</label>
-                <input readonly id="BD" type="text" value="{{ user_student.birthday_date }}" name="BD"/>
+                <input readonly id="BD" type="text" value="{{ user_student.user_birthday_date }}" name="BD"/>
                 <label for="grade">مقطع تحصیلی</label>
                 {% for maghta in user_student.SECTION %}
                     {% if user_student.section == maghta.0 %}

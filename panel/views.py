@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.password_validation import validate_password
+from jalali_date import date2jalali
 
 from .models import Basket
 from account.models import UserStudent
@@ -33,6 +34,7 @@ def last_order(request):
 def show_user_info(request):
     if UserStudent.objects.filter(phone_number=request.user.username).exists():
         user_student = UserStudent.objects.filter(phone_number=request.user.username).last()
+        user_student.user_birthday_date = str(user_student.birthday_date)
         return render(request, 'panel/show_info.html', context={"user_student": user_student})
 
     return render(request, 'panel/show_info.html', context={})
@@ -68,7 +70,8 @@ def user_info(request):
             user_student.is_information_submited = True
             user_student.save()  # Save the changes to the database
             context = {
-                "message": "اطلاعات با موفقیت ذخیره شد.اگر با اطلاعات ثبت شده مشکلی دارید برای ویرایش با مدرسه تماس "
+                "message": "اطلاعات با موفقیت ذخیره شد.برای دیدن اطلاعات شخصی خود صفحه را رفرش کنید .اگر با اطلاعات "
+                           "ثبت شده مشکلی دارید برای ویرایش با مدرسه تماس"
                            "بگیرید"}
         except UserStudent.DoesNotExist:
             context = {"error": "کاربر یافت نشد."}
