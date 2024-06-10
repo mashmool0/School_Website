@@ -175,7 +175,7 @@ body {
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-.card div {
+.card div:not(.OnSale){
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -183,10 +183,10 @@ body {
   font-family: "BYekan+";
   justify-content: center;
 }
-.card div div:last-of-type{
+.card div div:last-of-type:not(.OnSale){
   margin-right: -2.5%;
 }
-.card div div div{
+.card div div div:not(.OnSale){
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -195,7 +195,7 @@ body {
   color: rgba(128, 128, 128, 0.812);
   font-size: 15px;
 }
-.card div div {
+.card div div:not(.OnSale) {
   align-items: center;
   width: 95%;
   margin-left: -2%;
@@ -227,6 +227,31 @@ button:hover{
   font-size: 15px;
   width: 50%;
   display: inline-block;
+}
+
+.price{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  align-items: center;
+}
+.OnSale{
+  color: black;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* margin-right: 10%; */
+  width: 125px;
+}
+.takhfif{
+  text-decoration: line-through;
+  text-decoration-color: red;
+  text-decoration-thickness: 2px;
+  color: gray;
+  text-decoration-style: solid;
+  width: 150%;
 }
 /* card End*/
 /* Cards */
