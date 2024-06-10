@@ -37,7 +37,10 @@
             {% else %}
                 <div class="SideCard"><a href="{% url 'panel:userInfo' %}">تکمیل اطلاعات کاربری</a></div>
             {% endif %}
-
+            <a href="{% url 'panel:changePassword' %}" class="change">ویرایش رمز عبور</a>
+            <div class="SideCard Active" style="background-color: #ff3939"><a style="color: white;font-weight: bold"
+                                                                              href="{% url 'account:logout' %}">خروج</a>
+            </div>
         </div>
     </nav>
     <aside>
@@ -48,7 +51,8 @@
             {% else %}
                 <h1>{{ request.user.user_student.username }}</h1>
             {% endif %}
-            <a href="" class="change">ویرایش اکانت</a>
+            <a href="{% url 'panel:changePassword' %}" class="change">ویرایش رمز عبور</a>
+
             <div class="SideCard">
                 <a href="{% url 'panel:course' %}">دوره ها</a>
             </div>

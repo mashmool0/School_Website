@@ -2,6 +2,8 @@ from django.http import JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth import authenticate, update_session_auth_hash
+from django.contrib.auth.password_validation import validate_password
 
 from .models import Basket
 from account.models import UserStudent
@@ -99,3 +101,29 @@ def add_to_basket(request):
         response = {'status': 'error', 'message': 'درخواست نامعتبر'}
 
     return JsonResponse(response)
+
+
+@login_required(login_url="account:login")
+def change_password(request):
+    if request.method == "POST":
+        phone = request.POST.get('phone')
+        if phone.startswith("0"):
+            phone = phone[1:]
+        current_pass = request.POST.get('current_pass')
+        new_pass = request.POST.get('new_pass')
+        if len(new_pass) < 8:
+            error = 'تعداد ارقام رمز جدید بسیار کم است ، لطفا رمز عبور دیگری انتخاب کنید '
+            return render(request, 'panel/change_password.html', context={"error": error})
+        user = authenticate(username=phone, password=current_pass)
+
+        if user is not None and user == request.user:
+            user.set_password(new_pass)
+            user.save()
+            update_session_auth_hash(request, user)
+            message = "عملیات موفقیت آمیز بود"
+            return render(request, 'panel/change_password.html', context={"message": message})
+        else:
+            error = 'خطا در انجام عملیات '
+            return render(request, 'panel/change_password.html', context={"error": error})
+
+    return render(request, 'panel/change_password.html', context={})

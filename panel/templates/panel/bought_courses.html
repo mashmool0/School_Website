@@ -47,7 +47,7 @@
             {% else %}
                 <h1>{{ request.user.user_student.username }}</h1>
             {% endif %}
-            <a href="" class="change">ویرایش اکانت</a>
+            <a href="{% url 'panel:changePassword' %}" class="change">ویرایش رمز عبور</a>
             <div class="SideCard Active">
                 <a href="#">دوره ها</a>
             </div>
