@@ -249,6 +249,7 @@ main{
   width: 50%;
   text-align: center;
   height: 600px;
+  overflow: auto;
   margin-left: 20px;
 }
 main div{
@@ -268,9 +269,6 @@ main div h1{
   margin-bottom: 50px;
   text-align: center;
   font-family: "BYekan+";
-}
-main div table{
-  width: 90%;
 }
 table tr td , table tr th {
   text-align: center;
@@ -304,8 +302,9 @@ table tr th{
   color: #787878;
   font-family: "MyradArabic";
 }
-table{
+main div table{
   border-collapse: collapse;
+  width: 550px;
 }
 main div {
   overflow: auto;
@@ -313,11 +312,15 @@ main div {
 main div::-webkit-scrollbar{
   display: block;
   width: 5px;
+  height: 5px;
 }
 main div::-webkit-scrollbar-track{
   background-color: #ddd;
   margin-block: 160px;
   margin-inline: -100px;
+}
+main div::-webkit-scrollbar-track:horizontal{
+  margin-inline: 15px; 
 }
 main div::-webkit-scrollbar-thumb{
   background-color: #2b3eb1;
@@ -325,22 +328,33 @@ main div::-webkit-scrollbar-thumb{
 table tr td:nth-of-type(4) p{
   margin-right: 4px;
 }
-table tr td:nth-of-type(4){
+table tr td:nth-of-type(6){
   display: flex;
-  width: 40px;
   flex-direction: row;
   justify-content: center;
-  align-items: end;
+  align-items: center;
+  background-color: whitesmoke;
 }
-table tr td:nth-of-type(4) button{
+table tr td:nth-of-type(6) button:last-of-type{
+  color: black;
+  font-family: "BYekan+";
+  font-size: 15px;
+  background: none;
+  border: none;
+}
+table tr td:nth-of-type(6) button:first-of-type{
   color: #94dbd4;
-  background-color: white;
   border: none;
   font-size: large;
+  background: none;
 }
-table tr td:nth-of-type(4) button:nth-of-type(2){
+table tr td:nth-of-type(6) button:nth-of-type(2){
   color: red;
+  background: none;
   margin-right: 8px;
+  font-size: large;
+  border: none;
+  margin-left: 8px;
 }
 
 .Sabad{
@@ -466,6 +480,9 @@ main{
   nav{
     width: 100svw;
   }
+  main div table{
+    margin-left: 30%;
+  }
   .MainContent{
     margin-right: 0;
     /* position: absolute; */
@@ -486,6 +503,19 @@ main{
   }
   .mob{
     display: block;
+  }
+  .mob div{
+     background-color: rgb(245, 245, 245);
+  }
+}
+@media screen and (Max-width:790px) {
+  main div table{
+    margin-left: 50%;
+  }
+}
+@media screen and (Max-width:790px) {
+  main div table{
+    margin-left: 60%;
   }
 }
 @media screen and (max-width:650px) {
@@ -519,6 +549,9 @@ main{
   .Sabad div:nth-of-type(2){
     height: 50px;
   }
+  main div table{
+    margin-left: 0;
+  }
 }
 @media screen and (max-width:540px) {
   .links{
@@ -534,5 +567,50 @@ main{
   }
   .mob button , .mob div a{
     font-size: 14px;
+  }
+}
+@media screen and (max-width:630px) {
+  main div table {
+    margin-left: 30px;
+  }
+}
+@media screen and (max-width:600px) {
+  main div table{
+    margin-left: 20%;
+  }
+}
+@media screen  and (max-width:530px){
+  main div table{
+    margin-left: 40%;
+  }
+}
+
+@media screen  and (max-width:455px){
+  main div table{
+    margin-left: 60%;
+  }
+}
+
+@media screen  and (max-width:395px){
+  main div table{
+    margin-left: 80%;
+  }
+}
+
+@media screen  and (max-width:350px){
+  main div table{
+    margin-left: 100%;
+  }
+}
+
+@media screen  and (max-width:315px){
+  main div table{
+    margin-left: 130%;
+  }
+}
+
+@media screen  and (max-width:290px){
+  main div table{
+    margin-left: 140%;
   }
 }
