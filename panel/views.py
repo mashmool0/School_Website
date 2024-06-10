@@ -109,8 +109,8 @@ def change_password(request):
         phone = request.POST.get('phone')
         if phone.startswith("0"):
             phone = phone[1:]
-        current_pass = request.POST.get('current_pass')
-        new_pass = request.POST.get('new_pass')
+        current_pass = request.POST.get('current_pass').strip()
+        new_pass = request.POST.get('new_pass').strip()
         if len(new_pass) < 8:
             error = 'تعداد ارقام رمز جدید بسیار کم است ، لطفا رمز عبور دیگری انتخاب کنید '
             return render(request, 'panel/change_password.html', context={"error": error})
@@ -123,7 +123,7 @@ def change_password(request):
             message = "عملیات موفقیت آمیز بود"
             return render(request, 'panel/change_password.html', context={"message": message})
         else:
-            error = 'خطا در انجام عملیات '
+            error = 'رمز عبور اشتباه است'
             return render(request, 'panel/change_password.html', context={"error": error})
 
     return render(request, 'panel/change_password.html', context={})
