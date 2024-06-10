@@ -472,17 +472,17 @@ header nav button{
     font-size: 70px;
   }
 }
-@media screen and (max-width:570px) {
+@media screen and (max-width:675px) {
   .SearchBar div button{
-    width: 65px;
+    width: 80px;
   }
 }
-@media screen and (max-width:450px) {
-  .SearchBar div:last-of-type {
-    /* display: flex; */
-    /* flex-direction: column; */
-    /* margin-top: 20px; */
+@media screen and (max-width:315px) {
+  .SearchBar div button{
+    width: 70px;
   }
+}
+@media screen and (max-width:587px) {
   .SearchBar{
     height: 120px;
     display: flex;

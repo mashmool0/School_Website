@@ -11,7 +11,6 @@ function clickChecker(){
   }
 
   else{
-    
     document.querySelector(".HamburgerMenu").style.background = "none";
     let links = document.querySelectorAll(".SideLinks a");
     for(let a=0 ; a<links.length ; a++){
@@ -23,8 +22,6 @@ function clickChecker(){
 btn = document.querySelectorAll(".button");
 
 btn.forEach(elem => {
-  console.log(elem);
-
   elem.addEventListener("click" , function(){
     btn.forEach(newElem=>{
       newElem.removeAttribute('id');
