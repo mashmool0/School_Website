@@ -128,22 +128,20 @@ body {
   transform: scale(1);
   transition: 0s;
 }
-
-.SearchBar div button {
-  width: 130px;
-  height: 40px;
-  border-radius: 6px;
-}
 .all{
   margin-right: 5px;
 }
-.jozve {
+.button {
+  width: 130px;
+  height: 40px;
+  border-radius: 6px;
   background-color: white;
   border: 3px solid rgba(189, 189, 189, 0.451);
   font-family: "BYekan+";
+  cursor: pointer;
+  font-size: 15px;
 }
-
-.dore {
+#active{
   margin-right: 5px;
   background-color: #0f66dc;
   border: none;
@@ -627,12 +625,6 @@ footer div:nth-of-type(2) div:first-of-type{
   footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
     font-size: 12px;
   }
-}
-.all{
-  border: none;
-  background-color: #72B3CF;
-  font-family: "BYekan+";
-  color: white;
 }
 @media screen and (max-width:350px) {
   footer div:last-of-type div:nth-of-type(2){

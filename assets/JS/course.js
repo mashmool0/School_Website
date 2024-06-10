@@ -20,3 +20,15 @@ function clickChecker(){
     checker = false;
   }
 }
+btn = document.querySelectorAll(".button");
+
+btn.forEach(elem => {
+  console.log(elem);
+
+  elem.addEventListener("click" , function(){
+    btn.forEach(newElem=>{
+      newElem.removeAttribute('id');
+    })
+    elem.setAttribute('id' , 'active');
+  })
+});
