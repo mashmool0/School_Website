@@ -24,3 +24,15 @@ function clickChecker(){
     checker = false;
   }
 }
+document.querySelector(".SecondSlide button").addEventListener("click" , function(){
+  
+  if(document.querySelector(".FirstSlide").previousElementSibling == undefined){
+    console.log("null")
+  }
+  document.querySelector(".FirstSlide").previousElementSibling.setAttribute('class' , 'slide FirstSlide');
+  document.querySelectorAll(".FirstSlide")[1].setAttribute('class' , 'slide')
+  document.querySelector(".SecondSlide").previousElementSibling.setAttribute('class' , 'slide SecondSlide');
+  document.querySelectorAll(".SecondSlide")[1].setAttribute('class' ,'SecondSlide');
+  document.querySelector(".ThirdSlide").previousElementSibling.setAttribute('class' , ' slide ThirdSlide');
+  document.querySelectorAll(".ThirdSlide")[1].setAttribute("class" , 'slide');
+})
