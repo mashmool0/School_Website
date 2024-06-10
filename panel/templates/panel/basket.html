@@ -15,11 +15,13 @@
         <div dir="rtl" class="links">
             <a href="{% url 'home:home' %}">خانه</a>
             <a href="{% url 'course:course' %}">دوره ها</a>
-            <a href="">کتابخانه</a>
+            <a href="#">آموزشگاه</a>
         </div>
 
         <div class="leftSide">
-            اندیشه پارسیان
+            <div class="dropDown">
+                اندیشه پارسیان
+            </div>
         </div>
         <div class="mob">
             <button onclick="dropdown2()" class="dropDownButton">
@@ -30,18 +32,9 @@
             </div>
             <div>
                 <a href="{% url 'panel:lastOrder' %}" class="dropDownLinks"
-                >تراکنش های اخیر</a
-                >
+                >تراکنش های اخیر</a>
             </div>
             <div><a href="{% url 'panel:basket' %}" class="dropDownLinks">سبد خرید</a></div>
-            {% if request.user.user_student.is_information_submited %}
-                <div class="SideCard"><a href="{% url 'panel:showInfo' %}">اطلاعات کاربر</a></div>
-            {% else %}
-                <div class="SideCard"><a href="{% url 'panel:userInfo' %}">تکمیل اطلاعات کاربری</a></div>
-            {% endif %}
-                    <div class="SideCard Active" style="background-color: #ff3939"><a style="color: white;font-weight: bold"
-                                                                              href="{% url 'account:logout' %}">خروج</a>
-            </div>
         </div>
     </nav>
     <aside>
