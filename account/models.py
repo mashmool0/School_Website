@@ -118,3 +118,17 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.boss_name + "   ---   " + self.school_address
+
+
+class SetPriceForSchool(models.Model):
+    price_for_rahnamaee = models.PositiveIntegerField(verbose_name="شهریه مقطع راهنمایی",
+                                                      help_text="قیمت را به تومان و بدون علائم نگارشی وارد کنید ")
+    price_for_dabirestan = models.PositiveIntegerField(verbose_name="شهریه مقطع دبیرستان",
+                                                       help_text="قیمت را به تومان و بدون علائم نگارشی وارد کنید "  )
+
+    def __str__(self):
+        return f"rahnamaee ---> {self.price_for_rahnamaee}  and  dabirestan ---> {self.price_for_dabirestan}"
+
+    class Meta:
+        verbose_name = "تنظیم شهریه مدرسه"
+        verbose_name_plural = "تنظیم شهریه مدرسه"
