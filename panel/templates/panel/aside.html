@@ -1,36 +1,43 @@
 {% load static %}
 <aside>
-        <div>
-            <img src="{% static 'images/account.png' %}" alt=""/>
-            {% if request.user.first_name %}
-                <h1>{{ request.user.first_name }}</h1>
-            {% else %}
-                <h1>{{ request.user.user_student.username }}</h1>
-            {% endif %}
-            <a href="{% url 'panel:changePassword' %}" class="change">ویرایش رمز عبور</a>
+    <div>
+        <img src="{% static 'images/account.png' %}" alt=""/>
+        {% if request.user.first_name %}
+            <h1>{{ request.user.first_name }}</h1>
+        {% else %}
+            <h1>{{ request.user.user_student.username }}</h1>
+        {% endif %}
+        <a href="{% url 'panel:changePassword' %}" class="change">ویرایش رمز عبور</a>
 
-            <div class="SideCard">
-                <a href="{% url 'panel:course' %}">دوره ها</a>
-            </div>
-            <div class="SideCard Active"><a href="{% url 'panel:lastOrder' %}">تراکنش های اخیر</a></div>
-            <div class="SideCard"><a href="{% url 'panel:basket' %}">سبد خرید</a></div>
-            {% if request.user.user_student.is_information_submited %}
-                <div class="SideCard"><a href="{% url 'panel:showInfo' %}">اطلاعات کاربر</a></div>
-            {% else %}
-                <div class="SideCard"><a href="{% url 'panel:userInfo' %}">تکمیل اطلاعات کاربری</a></div>
-            {% endif %}
-
-            {% if request.user.user_student.super_student_user %}
-                <div class="SideCard"><a href="">ثبت نام در مدرسه</a></div>
-                {% comment %}   todo --> change href and create panel for that
-                {% endcomment %}
-            {% endif %}
-            <br>
-            <br>
-            <br>
-            <div class="SideCard Active" style="background-color: #ff3939"><a style="color: white;font-weight: bold"
-                                                                              href="{% url 'account:logout' %}">خروج</a>
-            </div>
-
+        <div class="SideCard {% if request.path == '/panel/course/' %}Active{% endif %}">
+            <a href="{% url 'panel:course' %}">دوره ها</a>
         </div>
-    </aside>
+        <div class="SideCard {% if request.path == '/panel/order/' %}Active{% endif %}">
+            <a href="{% url 'panel:lastOrder' %}">تراکنش های اخیر</a>
+        </div>
+        <div class="SideCard {% if request.path == '/panel/basket/' %}Active{% endif %}">
+            <a href="{% url 'panel:basket' %}">سبد خرید</a>
+        </div>
+        {% if request.user.user_student.is_information_submited %}
+            <div class="SideCard {% if request.path == '/panel/showinfo/' %}Active{% endif %}">
+                <a href="{% url 'panel:showInfo' %}">اطلاعات کاربر</a>
+            </div>
+        {% else %}
+            <div class="SideCard {% if request.path == '/panel/userInfo/' %}Active{% endif %}">
+                <a href="{% url 'panel:userInfo' %}">تکمیل اطلاعات کاربری</a>
+            </div>
+        {% endif %}
+
+        {% if request.user.user_student.super_student_user %}
+            <div class="SideCard"><a href="">ثبت نام در مدرسه</a></div>
+            {% comment %}   todo --> change href and create panel for that
+            {% endcomment %}
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <div class="SideCard" style="background-color: #ff3939">
+            <a style="color: white; font-weight: bold" href="{% url 'account:logout' %}">خروج</a>
+        </div>
+    </div>
+</aside>
