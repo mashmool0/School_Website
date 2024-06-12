@@ -53,10 +53,11 @@
             {% endif %}
 
             <button type="submit">ورود</button>
+            <a href="{% url 'account:loginPhone' %}" class="ForgotPass">رمز خود را <span>فراموش کردید</span></a>
+            <a href="{% url 'account:register' %}" class="SignUp">اکانتی ندارید؟<span>ساخـت اکانـت</span></a>
         </form>
 
-        <a href="{% url 'account:loginPhone' %}" class="ForgotPass">رمز خود را <span>فراموش کردید</span></a>
-        <a href="{% url 'account:register' %}" class="SignUp">اکانتی ندارید؟<span>ساخـت اکانـت</span></a>
+
     </div>
 </div>
 </body>

@@ -25,7 +25,7 @@ function dropdown2() {
     for (let a = 0; a < links.length; a++) {
       links[a].style.display = "block";
     }
-    document.querySelector(".mob").style.marginTop = "120px";
+    document.querySelector(".mob").style.marginTop = "240px";
     dropCheck2 = true;
   } else {
     let links = document.querySelectorAll(".mob div");
