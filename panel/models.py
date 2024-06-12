@@ -45,7 +45,7 @@ class UserCourse(models.Model):
 class UserTransactions(models.Model):
     STATUS_CHOICES = [
         ('Full', 'تکمیل شده'),
-        ('Not Full', 'تکمیل نشده است'),
+        ('Not Full', 'تکمیل نشده'),
     ]
 
     pay = models.CharField(max_length=20, verbose_name='پرداخت شده')
@@ -64,3 +64,5 @@ class UserTransactions(models.Model):
     class Meta:
         verbose_name = "پرداخت های اخیر کاربر"
         verbose_name_plural = "پرداخت های اخیر کاربران"
+
+

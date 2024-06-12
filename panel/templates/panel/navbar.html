@@ -1,0 +1,44 @@
+{% load static %}
+<nav dir="rtl">
+    <div dir="rtl" class="links">
+        <a href="{% url 'home:home' %}">خانه</a>
+        <a href="{% url 'course:course' %}">فروشگاه</a>
+        <a href="#">آموزشگاه</a>
+    </div>
+
+    <div class="leftSide">
+        <div class="dropDown">
+            <button onclick="dropdown()" class="dropDownButton">
+                لورم ایپسوم متن
+            </button>
+
+            <div><a href="" class="dropDownLinks">لورم ایپسوم</a></div>
+            <div><a href="" class="dropDownLinks">لورم ایپسوم</a></div>
+            <div><a href="" class="dropDownLinks">لورم ایپسوم</a></div>
+        </div>
+    </div>
+    <div class="mob">
+        <button onclick="dropdown2()" class="dropDownButton">
+            پنل کاربری
+        </button>
+        <div>
+            <a href="{% url 'panel:course' %}" class="dropDownLinks">دوره های من</a>
+        </div>
+        <div>
+            <a href="{% url 'panel:lastOrder' %}" class="dropDownLinks"
+            >تراکنش های اخیر</a>
+        </div>
+        <div><a href="{% url 'panel:basket' %}" class="dropDownLinks">سبد خرید</a></div>
+        {% if request.user.user_student.is_information_submited %}
+            <div><a href="{% url 'panel:showInfo' %}" class="dropDownLinks">اطلاعات کاربر</a></div>
+        {% else %}
+            <div><a href="{% url 'panel:userInfo' %}" class="dropDownLinks">تکمیل اطلاعات کاربری</a></div>
+        {% endif %}
+
+        <div style="background-color: lightskyblue"><a href="{% url 'panel:changePassword' %}" class="dropDownLinks" style="color: black">ویرایش رمز عبور</a></div>
+        <div class="dropDownLinks" style="background-color: #ff3939"><a style="color: white;font-weight: bold"
+                                                                        href="{% url 'account:logout' %}">خروج</a>
+        </div>
+
+    </div>
+</nav>

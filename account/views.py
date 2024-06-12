@@ -12,8 +12,12 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from .send_otp_sms import send_otp
 from django.utils.crypto import get_random_string
-from .tasks import delete_expired_otp, delete_expired_otp2
+from .tasks import delete_expired_otp2, delete_expired_otp2_1, delete_expired_otp, delete_expired_otp_1
 from django.contrib.auth.models import Group
+from django.views.decorators.csrf import csrf_exempt
+from django.http import JsonResponse
+import json
+from time import sleep
 
 
 # Create your views here.
@@ -46,28 +50,36 @@ def user_register(request):
             phone_number = form.cleaned_data.get("phone_number")
             if not User.objects.filter(username=phone_number).exists():
                 try:
-                    # save form with overwrite save method for check password and bug of in input
-                    user_student, user = form.save()
+                    if not Otp.objects.filter(phone_number=phone_number).exists():
+                        # save form with overwrite save method for check password and bug of in input
+                        user_student, user = form.save()
 
-                    # Add user to a Group in this method add it to Student user
-                    Group.objects.get(name="Student").user_set.add(user)
-                    token = get_random_string(99)
-                    code, data = send_otp(phone_number)
+                        # Add user to a Group in this method add it to Student user
+                        Group.objects.get(name="Student").user_set.add(user)
+                        token = get_random_string(99)
+                        code, data = send_otp(phone_number)
 
-                    # check otp send it was Successful or not
-                    if data.get("Status") == "Success":
-                        Otp.objects.create(phone_number=phone_number, token=token, code=code)
-                        # run expired otp2 --> in this function if user don't log in will delete his account,otp message
-                        delete_expired_otp2(phone_number)
-                        return redirect(
-                            reverse('account:authenticatePhone') + '?' + urlencode(
-                                {'token': token, 'phone': phone_number}))
+                        # check otp send it was Successful or not
+                        if data.get("Status") == "Success":
+                            Otp.objects.create(phone_number=phone_number, token=token, code=code)
+                            # run expired otp2 --> in this function if user don't log in will delete his account,
+                            # otp message
+                            delete_expired_otp2(phone_number)
+                            request.session['otp_verified'] = True
+                            return redirect(
+                                reverse('account:authenticatePhone') + '?' + urlencode(
+                                    {'token': token, 'phone': phone_number}))
+                        else:
+                            user.delete()
+                            form.add_error(None, "در ارسال پیامک مشکلی ایجاد شده است لطفا با پشتیبانی سایت تماس بگیرید")
+                            messages.error(request, 'Failed to send OTP. Please try again.')
+                            return redirect('account:register')
                     else:
-                        user.delete()
-                        messages.error(request, 'Failed to send OTP. Please try again.')
-                        return redirect('account:register')
+                        form.add_error(None, "لطفا یک دقیقه صبر کنید و دوباره تلاش کنید")
+                        delete_expired_otp2_1(phone_number)
                 except IntegrityError as e:
                     if 'phone_number' in str(e):
+                        print("Integerity error")
                         form.add_error('phone_number',
                                        'این شماره تلفن قبلاً ثبت شده است. لطفاً شماره دیگری انتخاب کنید.')
                     else:
@@ -78,7 +90,11 @@ def user_register(request):
                         User.objects.filter(username=username).delete()
                     messages.error(request, f'خطایی رخ داده است: {str(e)}')
             else:
-                form.add_error(None, 'این شماره قبلاً ثبت شده است')
+                if Otp.objects.filter(phone_number=phone_number).exists():
+                    form.add_error(None, "لطفا یک دقیقه صبر کنید و دوباره تلاش کنید")
+                    delete_expired_otp2_1(phone_number)
+                else:
+                    form.add_error(None, 'این شماره قبلاً ثبت شده است')
     return render(request, 'account/Signup.html', context={'welcome_text': welcome_text, 'form': form})
 
 
@@ -114,15 +130,16 @@ def user_login_with_phone(request):
                                 reverse('account:phoneRegister') + '?' + urlencode(
                                     {'token': token_otp, 'phone': phone_number}))
                         except Exception as e:
-                            Otp.delete(Otp.objects.get(token=token_otp))
+                            Otp.objects.get(token=token_otp).delete()
                             form.add_error(None, "مشکلی در سایت به وجود آماده است ، بعدا دوباره تلاش کنید")
                             messages.error(request, f'خطایی رخ داده است: {str(e)}')
                             return redirect("home:home")
                     else:
+                        delete_expired_otp_1(phone_number)
                         form.add_error(None, "مشکلی به وجود آمده لطفا دوباره تلاش کنید")
             else:
-                Otp.objects.filter(phone_number=phone_number).delete()
-                form.add_error(None, "لطفا کمی صبر کنید و دوباره تلاش کنید")
+                form.add_error(None, "لطفا یک دقیقه صبر کنید و دوباره تلاش کنید")
+                delete_expired_otp_1(phone_number)
 
         else:
             form.add_error(None, "شماره وارد شده ایراد دارد")
@@ -140,10 +157,12 @@ def user_phone_register(request):
             code = request.POST.get('1') + request.POST.get('2') + request.POST.get('3') + request.POST.get('4')
             phone_number = request.GET.get('phone')
             if Otp.objects.filter(token=token_otp, code=code).exists():
-                login(request, User.objects.get(username=phone_number))
-                Otp.objects.filter(phone_number=phone_number).delete()
-                return redirect('home:home')
-
+                if User.objects.filter(username=phone_number).exists():
+                    login(request, User.objects.get(username=phone_number))
+                    Otp.objects.filter(phone_number=phone_number).delete()
+                    return redirect('home:home')
+            else:
+                return redirect("account:loginPhone")
         return render(request, 'account/ForgotPassword.html', context={"errors": errors})
     except Http404:
         raise Http404("Page not found")  # Catch Http404 exception explicitly
@@ -159,6 +178,7 @@ def user_phone_register(request):
 def phone_register(request):
     errors = []
     try:
+        request.session['otp_verified'] = True
         if request.POST:
             token_otp = request.GET.get('token')
             code = request.POST.get('1') + request.POST.get('2') + request.POST.get('3') + request.POST.get('4')
@@ -168,7 +188,8 @@ def phone_register(request):
                 Otp.objects.filter(phone_number=phone_number).delete()
                 # todo redirect to fill information
                 return redirect('home:home')
-
+            else:
+                return redirect("account:register")
         return render(request, 'account/phone_register.html', context={"errors": errors})
     except Http404:
         raise Http404("Page not found")  # Catch Http404 exception explicitly
@@ -176,5 +197,32 @@ def phone_register(request):
     except Exception as e:
         print("An error occurred:", str(e))
         if Otp.objects.filter(phone_number=request.GET.get('phone')).exists():
-            Otp.objects.filter(phone_number=request.GET.get('phone').delete())
+            Otp.objects.filter(phone_number=request.GET.get('phone')).delete()
         raise
+
+
+# if user exit from register phone function
+
+@csrf_exempt
+def handle_exit(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            phone_number = data.get('phone')
+
+            # Ensure the phone number starts without zero
+            if phone_number and phone_number.startswith("0"):
+                phone_number = phone_number[1:]
+
+            # Only delete the user if OTP verification is not completed
+            if request.session.get('otp_verified', False):
+                if User.objects.filter(username=phone_number).exists():
+                    User.objects.get(username=phone_number).delete()
+
+            return JsonResponse({'status': 'success'})
+        except json.JSONDecodeError:
+            return JsonResponse({'status': 'failed', 'error': 'Invalid JSON'}, status=400)
+        except Exception as e:
+            return JsonResponse({'status': 'failed', 'error': str(e)}, status=400)
+
+    return JsonResponse({'status': 'failed', 'error': 'Invalid request method'}, status=400)

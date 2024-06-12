@@ -71,8 +71,8 @@ def user_info(request):
             user_student.save()  # Save the changes to the database
             context = {
                 "message": "اطلاعات با موفقیت ذخیره شد.برای دیدن اطلاعات شخصی خود صفحه را رفرش کنید .اگر با اطلاعات "
-                           "ثبت شده مشکلی دارید برای ویرایش با مدرسه تماس"
-                           "بگیرید"}
+                           "ثبت شده مشکلی دارید برای ویرایش با مدرسه تماس "
+                           " بگیرید "}
         except UserStudent.DoesNotExist:
             context = {"error": "کاربر یافت نشد."}
 
@@ -130,3 +130,22 @@ def change_password(request):
             return render(request, 'panel/change_password.html', context={"error": error})
 
     return render(request, 'panel/change_password.html', context={})
+
+
+@csrf_exempt
+@login_required(login_url="account:login")
+def delete_form_basket(request):
+    if request.method == "POST":
+        basket_id = request.POST.get('basket_id')
+
+        try:
+            basket_item = Basket.objects.filter(id=basket_id, basket_user=request.user)
+            basket_item.delete()
+            response = {"status": "success", "message": "آیتم با موفقیت حذف شد"}
+        except Basket.DoesNotExist:
+            response = {"status": "error", "message": "آیتم مورد نظر در سبد خرید یافت نشد"}
+
+    else:
+        response = {"status": "error", "message": "درخواست نامعتبر"}
+
+    return JsonResponse(response)

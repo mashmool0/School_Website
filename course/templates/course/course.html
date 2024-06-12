@@ -149,19 +149,19 @@
             });
         });
 
-        $('.filter-button').click(function () {
-            // Remove active id from all filter buttons
-            $('.filter-button').removeAttr('id');
-            // Add active id to the clicked filter button
-            $(this).attr('id', 'active');
-
-            const type = $(this).data('type');
-            fetch(`/course/filter/?type=${type}`)
-                .then(response => response.text())
-                .then(html => {
-                    $('#course-container').html(html);
-                });
-        });
+        {#$('.filter-button').click(function () {#}
+        {#    // Remove active id from all filter buttons#}
+        {#    $('.filter-button').removeAttr('id');#}
+        {#    // Add active id to the clicked filter button#}
+        {#    $(this).attr('id', 'active');#}
+        {##}
+        {#    const type = $(this).data('type');#}
+        {#    fetch(`/course/filter/?type=${type}`)#}
+        {#        .then(response => response.text())#}
+        {#        .then(html => {#}
+        {#            $('#course-container').html(html);#}
+        {#        });#}
+        {#});#}
     });
 
     function redirectToPanel() {
