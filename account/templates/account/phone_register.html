@@ -29,5 +29,16 @@
     <a href="{% url 'account:register' %}">دوباره ارسال کنید</a>
 </div>
 <script src="{% static 'JS/forgotPass.js' %}"></script>
+{#<script>#}
+{#    window.addEventListener('beforeunload', function (e) {#}
+{#        var phone = '{{ request.GET.phone|default_if_none:"" }}';#}
+{##}
+{#        // Ensure phone number is correctly passed#}
+{#        if (phone) {#}
+{#            navigator.sendBeacon('/account/handle_exit/', new Blob([JSON.stringify({phone: phone})], {type: 'application/json'}));#}
+{#        }#}
+{#    });#}
+{#</script>#}
+
 </body>
 </html>

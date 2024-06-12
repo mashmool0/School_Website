@@ -10,4 +10,5 @@ urlpatterns = [
     path('showinfo/', views.show_user_info, name='showInfo'),
     path('changePassword/', views.change_password, name='changePassword'),
     path('add_to_basket/', views.add_to_basket, name="add_to_basket"),
+    path('delete_from_basket/', views.delete_form_basket, name="delete_from_basket"),
 ]

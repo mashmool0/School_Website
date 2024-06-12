@@ -115,6 +115,7 @@ header a {
   margin-right: 4%;
   margin-left: 5%;
   font-size: 18px;
+
 }
 .links a:hover::after {
   content: "";
@@ -460,7 +461,7 @@ header nav:nth-of-type(3) button:hover {
   border: none;
 }
 .Slides {
-  transition: 04.s;
+  transition: 0.4s;
   display: flex;
   flex-direction: row;
   width: 60%;

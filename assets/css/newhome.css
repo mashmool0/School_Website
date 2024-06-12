@@ -1,0 +1,950 @@
+@font-face {
+  font-family: "BYekan+";
+  src: url("../fonts/BYekan+.ttf");
+}
+@font-face {
+  font-family: "BYekan+Bold";
+  src: url("../fonts/BYekan+Bold.ttf");
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+/* Header Start */
+nav {
+  position: sticky;
+  content: "";
+  top: 0;
+}
+.HamburgerMenu {
+  display: none;
+  width: 80%;
+  position: fixed;
+  top: 0px;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 300svh;
+  z-index: 3;
+}
+.SideLinks a {
+  margin-right: 4svw;
+  /* backdrop-filter: blur(5px); */
+  display: block;
+  margin-top: 20px;
+  z-index: 3;
+}
+.burger {
+  margin-top: 25px;
+  margin-right: 4svw;
+  position: relative;
+  width: 40px;
+  height: 30px;
+  background: transparent;
+  cursor: pointer;
+  display: block;
+}
+
+.burger input {
+  display: none;
+}
+
+.burger span {
+  display: block;
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  background: #d4d4d4;
+  border-radius: 9px;
+  opacity: 1;
+  left: 0;
+  transform: rotate(0deg);
+  transition: 0.25s ease-in-out;
+}
+
+.burger span:nth-of-type(1) {
+  top: 0px;
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(2) {
+  top: 50%;
+  transform: translateY(-50%);
+  transform-origin: left center;
+}
+
+.burger span:nth-of-type(3) {
+  top: 100%;
+  transform-origin: left center;
+  transform: translateY(-50%);
+}
+
+.burger input:checked ~ span:nth-of-type(1) {
+  top: 0;
+  left: 5px;
+  transform: rotate(405deg);
+}
+
+.burger input:checked ~ span:nth-of-type(2) {
+  width: 0%;
+  opacity: 0;
+}
+
+.burger input:checked ~ span:nth-of-type(3) {
+  top: 28px;
+  left: 5px;
+  transform: rotate(-405deg);
+}
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 18px;
+}
+header {
+  background-image: url("../images/RoundedRectangle2.png");
+  height: 100svh;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  background-blend-mode: color-burn;
+  width: 100svw;
+}
+header a {
+  color: white;
+  font-family: "BYekan+";
+  text-decoration: none;
+  margin-right: 4%;
+  margin-left: 5%;
+  font-size: 18px;
+
+}
+.links a:hover::after {
+  content: "";
+  border: 1px solid;
+  border-color: white;
+  display: block;
+  position: relative;
+  width: 100%;
+  margin-top: 5px;
+}
+.links a:hover {
+  transform: scale(1.1);
+}
+.links {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+}
+header nav div:nth-of-type(3) button {
+  width: 7svw;
+  height: 5.6svh;
+  border-radius: 18px;
+  margin-left: 20px;
+  font-family: "BYekan+Bold";
+  font-size: 1vw;
+  text-align: center;
+  color: #0f66dc;
+  cursor: pointer;
+  border: none;
+}
+header nav:nth-of-type(3) button:hover {
+  transform: scale(1.08);
+}
+.tab {
+  position: fixed;
+  top: 0px;
+  /* right: 25svw; */
+  background-color: white;
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  padding-right: 4px;
+  /* padding-left: -5px; */
+  height: fit-content;
+  right: 60%;
+}
+
+.headerContent {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-family: "BYekan+Bold";
+}
+.headerContent h1:nth-of-type(2) {
+  font-size: 40px;
+}
+.headerContent h3 {
+  font-size: 13px;
+}
+.headerContent h3:nth-of-type(2) {
+  width: 60%;
+  margin-top: 0.5%;
+  margin-bottom: 4%;
+}
+.headerContent button {
+  width: 110px;
+  height: 40px;
+  border-radius: 24px;
+  margin-left: 3%;
+  font-family: "BYekan+Bold";
+  font-size: 13px;
+  text-align: center;
+  color: #0f66dc;
+  cursor: pointer;
+  border: none;
+  margin-right: 3%;
+}
+.headerContent button:hover {
+  scale: 1.08;
+}
+/* Header End */
+/* Cards Start */
+.cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: relative;
+  top: -80px;
+  width: 100svw;
+  z-index: 1;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  width: 260px;
+  height: 260px;
+  margin-bottom: 10px;
+  border: none;
+  box-shadow: 0px 5px 4px 4px #a3a3a3;
+  border-radius: 8px;
+  padding: 15px;
+  align-items: center;
+  text-align: center;
+  font-family: "BYekan+";
+}
+.card h1 {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  color: black;
+  font-size: 20px;
+}
+.card p {
+  color: #b9b9b9;
+}
+.card a {
+  margin-top: 15px;
+  text-decoration: none;
+  color: #0f66dc;
+}
+.card img {
+  width: 80px;
+  height: 80px;
+}
+.mainCard {
+  background-color: #0f66dc;
+  color: white;
+  margin-top: -40px;
+}
+.mainCard a,
+.mainCard h1,
+.mainCard p {
+  color: white;
+}
+/* Cards End */
+/* Scores Start */
+.schoolScores {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100svw;
+  height: 70svh;
+  background-color: #f0f8ff;
+  text-align: center;
+  padding-top: -200px;
+}
+.schoolScores div {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100svw;
+  text-align: center;
+}
+.schoolScores div div {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.schoolScores div div:last-child {
+  margin-left: -100px;
+}
+.schoolScores div div:first-child {
+  margin-right: -100px;
+}
+.schoolScores div div h1 {
+  font-size: 60px;
+  color: #0f66dc;
+}
+.schoolScores h1 {
+  font-family: "BYekan+";
+  width: 40%;
+  margin-top: 50px;
+}
+.schoolScores div div h2 {
+  font-family: "BYekan+";
+}
+/* Scores End */
+/* Quiz Start */
+.JoiningQuiz {
+  margin-top: 60px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: 100svw;
+}
+.JoiningQuiz div img {
+  object-fit: contain;
+  width: 80%;
+}
+.JoiningQuiz div {
+  width: 50%;
+}
+.JoiningQuiz div div {
+  width: 80%;
+  text-align: right;
+  font-family: "BYekan+";
+}
+.JoiningQuiz div div h1 {
+  text-align: center;
+}
+.JoiningQuiz div div p {
+  width: 65%;
+  font-family: "BYekan+";
+  line-height: 40px;
+  margin-top: 20px;
+  font-size: 15px;
+  position: relative;
+  right: -190px;
+}
+.leftBTN {
+  width: 30%;
+  margin-right: 5%;
+  height: 7.5svh;
+  margin-top: 30px;
+  border: none;
+  border-radius: 30px;
+  color: white;
+  font-family: "BYekan+";
+  font-size: 16px;
+  background-color: #0f66dc;
+  cursor: pointer;
+  transition: 0.6s;
+}
+.rightBTN {
+  width: 30%;
+  height: 7.5svh;
+  font-family: "BYekan+";
+  font-size: 16px;
+  border-radius: 30px;
+  border: none;
+  background-color: #f0f8ff;
+  color: #0f66dc;
+  cursor: pointer;
+  transition: 0.6s;
+}
+.leftBTN:hover {
+  transform: scale(1.1);
+  background-color: #f0f8ff;
+  color: #0f66dc;
+}
+.rightBTN:hover {
+  transform: scale(1.1);
+  background-color: #0f66dc;
+  color: white;
+}
+/* Quiz End */
+/* Information Start */
+.info {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: row;
+  height: 33.75svw;
+}
+.info div {
+  width: 50%;
+}
+.info div img {
+  width: 100%;
+  object-fit: contain;
+}
+.info div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f0f8ff;
+  justify-content: center;
+}
+.info div p {
+  width: 64%;
+  text-align: center;
+  font-size: 1.3svw;
+  font-family: "BYekan+";
+  margin-bottom: 30px;
+}
+.info div h1 {
+  font-family: "BYekan+";
+  color: #0f66dc;
+  margin-bottom: 20px;
+}
+.info div button {
+  width: 16%;
+  height: 45px;
+  border: none;
+  border-radius: 25px;
+  background-color: #0f66dc;
+  color: white;
+  font-family: "BYekan+";
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.6s;
+}
+.info div button:hover {
+  background-color: #1170f69a;
+  transform: scale(1.06);
+}
+/* Information End */
+/* Slider Start */
+.Head{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+}
+.slider div p {
+  width: 50%;
+}
+.slide {
+  width: 250px;
+  height: 250px;
+  border-radius: 6px;
+  display: none;
+  transition: 0.4s;
+}
+.FirstSlide img , .SecondSlide img, .ThirdSlide img{
+  width: 100%;
+  display: block;
+  height: 100%;
+}
+.FirstSlide,
+.SecondSlide,
+.ThirdSlide {
+  display: inline-block;
+}
+.FirstSlide button,
+.SecondSlide button,
+.ThirdSlide button{
+  display: block;
+}
+.centerSlide {
+  background-color: #f0f8ff;
+  border: none;
+}
+.Slides {
+  transition: 0.4s;
+  display: flex;
+  flex-direction: row;
+  width: 60%;
+  overflow: hidden;
+  margin-left: 20%;
+  margin-top: 60px;
+  justify-content: space-between;
+  align-items: center;
+}
+.slider h1 {
+  margin-top: 40px;
+  font-family: "BYekan+Bold";
+  color: #464646;
+}
+.slider p {
+  margin-top: 20px;
+  font-size: 13.7px;
+  font-family: "BYekan+";
+  color: #8593a1;
+}
+.SecondSlide {
+  border: none;
+  background-color: #f0f8ff;
+  margin-bottom: 20px;
+}
+.slider div button{
+  z-index: 2;
+  border-radius: 50%;
+  height: 20%;
+  width: 20%;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+  position: relative;
+  left: 50%;
+  bottom: 9%;
+  transform: translateX(-50%);
+  background-image: url(../images/next.png);
+  background-size: 100% 100%;
+}
+
+.slide button{
+  display: none;
+}
+.SecondSlide button{
+  display: block;
+}
+.SecondSlide{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-bottom: 50px;
+}
+/* Slider End */
+@media screen and (max-width: 800px) {
+  .card p {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 950px) {
+  .cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .mainCard {
+    margin-top: 40px;
+  }
+  .card {
+    margin-top: 40px;
+    text-align: center;
+    /* width:; */
+  }
+  .card p {
+    font-size: 14px;
+  }
+}
+@media screen and (max-width: 780px) {
+  .schoolScores h1 {
+    font-size: 20px;
+  }
+  .schoolScores {
+    height: 60svh;
+  }
+}
+@media screen and (max-width: 600px) {
+  .schoolScores div div h1 {
+    font-size: 40px;
+  }
+  .schoolScores div div h2 {
+    font-size: 20px;
+  }
+  .JoiningQuiz div div h1{
+    margin-top: 20px;
+  }
+  .JoiningQuiz div{
+    width: 90%;
+  }
+  .JoiningQuiz div {
+    margin-left: 5%;
+    justify-content: center;
+    align-items: center;
+  }
+  .JoiningQuiz div img{
+    width: 80%;
+    /* margin-left: -5%; */
+  }
+  .leftBTN{margin-right: 0;}
+
+}
+
+@media screen and (max-width: 500px) {
+  .schoolScores div div h1 {
+    font-size: 30px;
+  }
+  .schoolScores div div h2 {
+    font-size: 18px;
+  }
+}
+@media screen and (max-width: 450px) {
+  .schoolScores {
+    height: 350px;
+  }
+  .schoolScores h1 {
+    font-size: 15px;
+  }
+  .schoolScores div div h1 {
+    font-size: 20px;
+  }
+  .schoolScores div div h2 {
+    font-size: 13px;
+  }
+}
+@media screen and (max-width: 400px) {
+  .schoolScores {
+    height: 350px;
+  }
+  .schoolScores h1 {
+    font-size: 15px;
+  }
+  .schoolScores div div h1 {
+    font-size: 25px;
+  }
+  .schoolScores div div h2 {
+    font-size: 15px;
+  }
+  .info div button{
+    width: 20svw;
+    height: 20svw;
+    border-radius: 50%;
+  }
+  .schoolScores div div:first-of-type{
+    margin-right: 10px;
+    margin-left: 1px;
+  }
+  .schoolScores div div:nth-of-type(2){
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+  .schoolScores div div:last-of-type{
+    margin-left: 10px;
+    margin-right: 1px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .headerContent h3:nth-of-type(2) {
+    margin-top: 20px;
+    width: 100%;
+    margin-bottom: 30px;
+  }
+  /* header nav button{
+    font-size: 8px;
+  }    */
+}
+@media screen and (max-width: 1250px) {
+  /* header nav button{
+    font-size: 8px;
+  }    */
+}
+@media screen and (max-width: 850px) {
+  .JoiningQuiz {
+    flex-direction: column;
+    margin-left: 4svw;
+  }
+  .JoiningQuiz div div p {
+    right: -100px;
+  }
+  .rightBTN,
+  .leftBTN {
+    font-size: 1.5svw;
+    margin-bottom: 20px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .JoiningQuiz div div p {
+    right: 0;
+    position: static;
+    text-align: center;
+  }
+  .JoiningQuiz div div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 500px) {
+  .JoiningQuiz div div h1 {
+    font-size: 10svw;
+  }
+}
+@media screen and (max-width: 1050px) {
+  .info div button {
+    margin-bottom: 10px;
+  }
+}
+@media screen and (max-width: 850px) {
+  .info {
+    display: flex;
+    flex-direction: column-reverse;
+    /* margin-top: 40svh; */
+    justify-content: center;
+    align-items: center;
+    margin-top: 200px;
+    margin-bottom: 150px;
+  }
+  .info div:last-of-type {
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .info div img {
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  }
+  .info div button {
+    font-size: 2svw;
+  }
+}
+@media screen and (max-width: 620px) {
+  .info,
+  .info div {
+    width: 80svw;
+    margin-left: 7svw;
+  }
+  .info div h1 {
+    font-size: 4svw;
+    margin-top: 10px;
+  }
+
+  .info div button {
+    font-size: 2.5svw;
+  }
+}
+@media screen and (max-width:450px) {
+  .info div h1{
+    font-size: 15px;
+  }
+  .info div p{
+    font-size: 12px;
+  }
+  .info div button{
+    font-size: 10px;
+  }
+}
+@media screen and (max-width: 1300px) {
+  .Slides {
+    width: 80%;
+    margin-left: 10%;
+    /* justify-content: space-between; */
+  }
+}
+@media screen and (max-width: 1100px) {
+  .Slides {
+    width: 90%;
+    margin-left: 5%;
+  }
+}
+@media screen and (max-width: 950px) {
+  .Slides {
+    width: 95%;
+    margin-left: 2.5%;
+  }
+}
+@media screen and (max-width: 860px) {
+  .Slides {
+    width: 100%;
+    margin-left: 0;
+  }
+  .slide {
+    width: 25svw;
+    height: 25svw;
+  }
+  .slider button {
+    left: 46svw;
+    width: 6svw;
+    height: 6svw;
+  }
+}
+@media screen and (max-width:600px) {
+  .JoiningQuiz button{
+    width: 80px;
+    height: 80px;
+    font-size: 14px;
+    border-radius: 50%;
+  }
+  .JoiningQuiz{
+    width: 100%;
+  }
+  .JoiningQuiz div div p{
+    width: 100%;
+  }
+  .JoiningQuiz{
+    width: 100%;
+  }
+  .JoiningQuiz div:nth-of-type(2){
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 575px) {
+  .slider button {
+    bottom: 7svw;
+  }
+}
+@media screen and (max-width: 475px) {
+  .slider button {
+    left: 45.5svw;
+    bottom: 6.5svw;
+  }
+}
+@media screen and (max-width: 400px) {
+  .slider button {
+    left: 45svw;
+    bottom: 7svw;
+  }
+}
+@media screen and (max-width: 360px) {
+  .slider button {
+    bottom: 9svw;
+  }
+}
+@media screen and (max-width: 300px) {
+  .slider button {
+    bottom: 10svw;
+    left: 44.5svw;
+  }
+}
+@media screen and (max-width: 280px) {
+  .slider button {
+    bottom: 12svw;
+  }
+}
+@media screen and (max-width: 740px) {
+  .links,
+  .links a,
+  header nav div:nth-of-type(3) button {
+    display: none;
+  }
+  .HamburgerMenu {
+    display: block;
+    background: none;
+    z-index: 3;
+  }
+  .SideLinks a{
+    display: none;
+
+  }
+}
+@media screen and (max-width:500px) {
+  .Head h1{
+    font-size: 18px;
+  }
+  .JoiningQuiz div div h1{
+    font-size: 20px;
+  }
+  .JoiningQuiz img{
+    margin-right: 10svw;
+    border-bottom-right-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+}
+@media screen and (max-width:500px) {
+  .slider div:nth-of-type(2) button{
+    width: 30%;
+    height: 30%;
+  }
+
+}
+
+@media screen and (max-width:400px) {
+  .slider div:nth-of-type(2) button{
+    width: 35%;
+    height: 35%;
+  }
+}
+footer{
+  margin-top: 50px;
+  background-color: #242424;
+  display: flex;
+  color: white;
+  font-family: "BYekan+";
+  flex-direction: column;
+  padding: 4svw;
+  padding-top: 40px;
+}
+footer a{
+  font-family: "BYekan+";
+  text-decoration: none;
+  color: white;
+  margin: 0;
+  /* margin-bottom: 8px; */
+}
+.SocialLinks{
+  display: flex;
+  width: 90svw;
+  flex-direction: row;
+  border-bottom: 1px solid white;
+  justify-content: space-around;
+  padding-bottom: 40px;
+  padding-top: 0;
+  margin-top: 0;
+  align-items: center;
+  height: max-content;
+}
+.SocialLinks div{
+  border-left: 2px solid #6C90B4;
+  padding-left: 15px;
+  height: 50px;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  padding-top: 0;
+}
+span{
+  color: #6C90B4;
+}
+footer div:nth-of-type(2) div:nth-of-type(2) , footer div:nth-of-type(2) div:nth-of-type(3){
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+footer div div:nth-of-type(3){
+  margin-top: 10px;
+}
+footer div div:nth-of-type(3) span{
+  margin-left: 9px;
+  display: inline-block;
+}
+footer div:nth-of-type(2) div:first-of-type{
+  margin-right: 2.5%;
+  margin-left: 1.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+@media screen and (max-width: 800px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 20px;
+  }
+}
+@media screen and (max-width: 515px) {
+  footer div:nth-of-type(2) h2{
+    font-size: 4svw;
+  }
+}
+@media screen and (max-width:460px) {
+  footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
+    font-size: 12px;
+  }
+}
+@media screen and (max-width:350px) {
+  footer div:last-of-type div:nth-of-type(2){
+    font-size: 10px;
+  }
+}
+@media screen and (max-width:280px) {
+  footer div:last-of-type div:nth-of-type(2){
+    font-size: 8px;
+  }
+}

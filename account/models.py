@@ -15,6 +15,8 @@ class WelcomeRegister(models.Model):
 
 class UserStudent(models.Model):
     GRADE = [
+        ('haftom', 'هفتم'),
+        ('hashtom', 'هشتم'),
         ('nohom', 'نهم'),
         ('dahom', 'دهم'),
         ('yazdahom', 'یازدهم'),
@@ -37,10 +39,12 @@ class UserStudent(models.Model):
     # Required fields for authenticating school
     password1 = models.CharField(max_length=30, null=True, blank=True)
     password2 = models.CharField(max_length=30, null=True, blank=True)
-    email = models.EmailField(verbose_name="آدرس ایمیل")
+    email = models.EmailField(verbose_name="آدرس ایمیل", null=True, blank=True)
     first_name = models.CharField(max_length=50, verbose_name="نام", blank=True, null=True)
     last_name = models.CharField(max_length=50, verbose_name="نام خانوادگی", blank=True, null=True)
     birthday_date = models.DateField(verbose_name="تاریخ تولد", blank=True, null=True)
+    user_birthday_date = models.CharField(max_length=20, blank=True,
+                                          null=True)  # user cant see this its just for save birthday in string
     section = models.CharField(max_length=30, verbose_name="مقطع تحصیلی", blank=True, null=True, choices=SECTION)
     grade = models.CharField(max_length=30, verbose_name="پایه تحصیلی", blank=True, null=True,
                              choices=GRADE)  # Added descriptive name
@@ -114,5 +118,3 @@ class Footer(models.Model):
 
     def __str__(self):
         return self.boss_name + "   ---   " + self.school_address
-
-

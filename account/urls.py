@@ -8,5 +8,6 @@ urlpatterns = [
     path('withPhone/', views.user_login_with_phone, name='loginPhone'),
     path('phoneRegister/', views.user_phone_register, name='phoneRegister'),
     path('authenticatePhone/', views.phone_register, name='authenticatePhone'),
+    path('handle_exit/', views.handle_exit, name='handle_exit'),
     path('logout/', views.user_logout, name='logout'),
 ]
