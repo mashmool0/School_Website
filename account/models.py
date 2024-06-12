@@ -124,7 +124,7 @@ class SetPriceForSchool(models.Model):
     price_for_rahnamaee = models.PositiveIntegerField(verbose_name="شهریه مقطع راهنمایی",
                                                       help_text="قیمت را به تومان و بدون علائم نگارشی وارد کنید ")
     price_for_dabirestan = models.PositiveIntegerField(verbose_name="شهریه مقطع دبیرستان",
-                                                       help_text="قیمت را به تومان و بدون علائم نگارشی وارد کنید "  )
+                                                       help_text="قیمت را به تومان و بدون علائم نگارشی وارد کنید ")
 
     def __str__(self):
         return f"rahnamaee ---> {self.price_for_rahnamaee}  and  dabirestan ---> {self.price_for_dabirestan}"
@@ -132,3 +132,31 @@ class SetPriceForSchool(models.Model):
     class Meta:
         verbose_name = "تنظیم شهریه مدرسه"
         verbose_name_plural = "تنظیم شهریه مدرسه"
+
+
+class PriceUserForSchool(models.Model):
+    pardakht_shode = models.PositiveIntegerField(verbose_name="مبلغ پرداخت شده", blank=True, null=True)
+    baghimonde = models.PositiveIntegerField(verbose_name="مبلغ باقی مانده", blank=True, null=True)
+    user_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="نام و نام خانوادگی کاربر")
+    user_phone = models.CharField(max_length=12, blank=True, null=True, verbose_name="شماره کاربر")
+    # check detial
+    # first check
+    price_check = models.PositiveIntegerField(verbose_name=" قیمت چک اول", blank=True, null=True)
+    check_serial = models.CharField(max_length=20, verbose_name="شماره سریال چک", blank=True, null=True)
+    check_date = models.CharField(max_length=20, verbose_name="تاریخ چک", help_text="مثل 1402/02/02")
+
+    # second check
+    price_check2 = models.PositiveIntegerField(verbose_name="قیمت چک دوم", blank=True, null=True)
+    check_serial2 = models.CharField(max_length=20, verbose_name="شماره سریال چک دوم", blank=True, null=True)
+    check_date2 = models.CharField(max_length=20, verbose_name="تاریخ چک", help_text="مثل 1402/02/02", blank=True,
+                                   null=True)
+
+    # third check
+    price_check3 = models.PositiveIntegerField(verbose_name="قیمت چک سوم", blank=True, null=True)
+    check_serial3 = models.CharField(max_length=20, verbose_name="شماره سریال چک سوم", blank=True, null=True)
+    check_date3 = models.CharField(max_length=20, verbose_name="تاریخ چک", help_text="مثل 1402/02/02", blank=True,
+                                   null=True)
+
+    class Meta:
+        verbose_name = "چک های دانش آموزان"
+        verbose_name_plural = "چک های دانش اموزان"
