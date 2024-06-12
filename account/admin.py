@@ -27,7 +27,7 @@ def export_to_excel(modeladmin, request, queryset):
 class UserStudentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = (
         'phone_number', 'first_name', 'last_name', 'username', 'super_student_user', 'is_information_submited')
-    search_fields = ('phone_number', 'email', 'username', 'first_name', 'last_name')
+    search_fields = ('phone_number', 'email', 'username', 'first_name', 'last_name', 'student_code_id')
     list_filter = ('super_student_user', 'grade', 'section', 'field_of_study', 'is_information_submited')
     fieldsets = [
         ("اطلاعات کاربری", {"fields": [("phone_number", 'username', "email")]}),
