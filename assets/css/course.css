@@ -10,6 +10,9 @@
   margin: 0px;
   padding: 0px;
 }
+button {
+  cursor: pointer;
+}
 body {
   background-color: whitesmoke;
 }
@@ -128,7 +131,7 @@ body {
   transform: scale(1);
   transition: 0s;
 }
-.all{
+.all {
   margin-right: 5px;
 }
 .button {
@@ -141,7 +144,7 @@ body {
   cursor: pointer;
   font-size: 15px;
 }
-#active{
+#active {
   margin-right: 5px;
   background-color: #0f66dc;
   border: none;
@@ -169,13 +172,13 @@ body {
   border-radius: 8px;
   padding-bottom: 10px;
 }
-.card img{
+.card img {
   width: 250px;
   height: 250px;
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 }
-.card div:not(.OnSale){
+.card div:not(.OnSale) {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -183,10 +186,10 @@ body {
   font-family: "BYekan+";
   justify-content: center;
 }
-.card div div:last-of-type:not(.OnSale){
+.card div div:last-of-type:not(.OnSale) {
   margin-right: -2.5%;
 }
-.card div div div:not(.OnSale){
+.card div div div:not(.OnSale) {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -217,26 +220,26 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-button:hover{
+button:hover {
   transform: scale(1.08);
 }
-.card h1{
+.card h1 {
   font-size: 23px;
 }
-.card div div h2{
+.card div div h2 {
   font-size: 15px;
   width: 50%;
   display: inline-block;
 }
 
-.price{
+.price {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
   align-items: center;
 }
-.OnSale{
+.OnSale {
   color: black;
   display: flex;
   flex-direction: column;
@@ -245,7 +248,7 @@ button:hover{
   /* margin-right: 10%; */
   width: 125px;
 }
-.takhfif{
+.takhfif {
   text-decoration: line-through;
   text-decoration-color: red;
   text-decoration-thickness: 2px;
@@ -255,23 +258,23 @@ button:hover{
 }
 /* card End*/
 /* Cards */
-.container{
+.container {
   width: 96vw;
   display: flex;
   justify-content: center;
   padding: 0;
   margin: 0;
 }
-.Cards{
+.Cards {
   margin-bottom: 50px;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
   gap: 40px 30px;
-  width: max-content;
+  width: 100%;
+  margin-left: auto;
 }
 /* Cards End */
 /* Header */
-
 
 nav {
   position: sticky;
@@ -364,7 +367,7 @@ nav {
   background-color: white;
   padding-bottom: 18px;
   z-index: 3;
-}  
+}
 header a {
   color: black;
   font-family: "BYekan+";
@@ -393,7 +396,7 @@ header a {
 header nav:nth-of-type(3) button:hover {
   transform: scale(1.08);
 }
-header nav button{
+header nav button {
   margin-left: 20px;
   width: 100px;
   height: 40px;
@@ -416,26 +419,26 @@ header nav button{
   height: fit-content;
   right: 60%;
 }
-.HeaderContent{
+.HeaderContent {
   height: 250px;
   width: 98.93svw;
-  background-color: #2769C0;
+  background-color: #2769c0;
   color: white;
   font-family: "Sahel";
   text-align: right;
   position: relative;
-  overflow-y: hidden  ;
+  overflow-y: hidden;
   z-index: -1;
 }
-.HeaderContent h1{
+.HeaderContent h1 {
   font-size: 85px;
   margin-right: 10svw;
   padding-top: 5svh;
   z-index: 1;
   display: inline-block;
 }
-.rectangle1{
-  background-color: #327ECC;
+.rectangle1 {
+  background-color: #327ecc;
   width: 718px;
   position: relative;
   left: -310px;
@@ -445,10 +448,10 @@ header nav button{
   z-index: -1;
   transform: rotate(-42.65deg);
 }
-.rectangle2{
+.rectangle2 {
   transform: rotate(-42.65deg);
   width: 300px;
-  background-color: #327ECC;
+  background-color: #327ecc;
   height: 90px;
   position: relative;
   left: 70px;
@@ -456,9 +459,9 @@ header nav button{
   border-radius: 8px;
   z-index: -1;
 }
-.rectangle3{
+.rectangle3 {
   border-radius: 8px;
-  background-color: #327ECC;
+  background-color: #327ecc;
   transform: rotate(-42.65deg);
   position: relative;
   width: 800px;
@@ -467,9 +470,9 @@ header nav button{
   left: -158px;
   z-index: -1;
 }
-.rectangle4{
+.rectangle4 {
   border-radius: 8px;
-  background-color: #72B3CF;
+  background-color: #72b3cf;
   transform: rotate(-42.65deg);
   position: relative;
   width: 280px;
@@ -478,8 +481,8 @@ header nav button{
   left: 200px;
   z-index: -1;
 }
-.rectangle5{
-  background-color: #327ECC;
+.rectangle5 {
+  background-color: #327ecc;
   border-radius: 8px;
   transform: rotate(-42.65deg);
   position: relative;
@@ -489,26 +492,26 @@ header nav button{
   left: 200px;
   z-index: -1;
 }
-@media screen and (max-width:650px) {
+@media screen and (max-width: 650px) {
   .SearchBar div button {
     width: 100px;
   }
-  .HeaderContent h1{
+  .HeaderContent h1 {
     font-size: 70px;
   }
 }
-@media screen and (max-width:675px) {
-  .SearchBar div button{
+@media screen and (max-width: 675px) {
+  .SearchBar div button {
     width: 80px;
   }
 }
-@media screen and (max-width:315px) {
-  .SearchBar div button{
+@media screen and (max-width: 315px) {
+  .SearchBar div button {
     width: 70px;
   }
 }
-@media screen and (max-width:587px) {
-  .SearchBar{
+@media screen and (max-width: 587px) {
+  .SearchBar {
     height: 120px;
     display: flex;
     flex-direction: column;
@@ -516,47 +519,58 @@ header nav button{
     align-items: center;
   }
 }
-@media screen and (max-width:1280px) {
-  .Cards{
+@media screen and (max-width: 1280px) {
+  .Cards {
     grid-template-columns: 33% 33% 33%;
   }
 }
-@media screen and (max-width:950px) {
-  .Cards{
+@media screen and (max-width: 950px) {
+  .Cards {
     grid-template-columns: 50% 50%;
   }
-  .card{
+  .card {
     width: 300px;
   }
-  .card img{
+  .card img {
     width: 300px;
   }
 }
-@media screen and (max-width:740px) {
-  .card{
+@media screen and (max-width: 740px) {
+  .card {
     width: 250px;
   }
-  .card img{
+  .card img {
     width: 250px;
-  } 
+  }
 }
-@media screen and (max-width:580px) {
-  .Cards{
+@media screen and (max-width: 580px) {
+  .Cards {
     grid-template-columns: 100%;
+    position: relative;
+    left: 40%;
+    transform: translateX(-50%);
   }
-  .card{
+  .card {
     width: 300px;
   }
-  .card img{
+  .card img {
     width: 300px;
   }
 }
-@media screen and (max-width:350px) {
-  .card{
+@media screen and (max-width: 350px) {
+  .card {
     width: 250px;
   }
-  .card img{
+  .card img {
     width: 250px;
+  }
+  .Cards {
+    left: 45%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .Cards {
+    left: 50%;
   }
 }
 @media screen and (max-width: 740px) {
@@ -570,12 +584,11 @@ header nav button{
     background: none;
     z-index: 3;
   }
-  .SideLinks a{
+  .SideLinks a {
     display: none;
-    
   }
 }
-footer{
+footer {
   background-color: #242424;
   display: flex;
   color: white;
@@ -584,14 +597,14 @@ footer{
   padding: 4svw;
   padding-top: 40px;
 }
-footer a{
+footer a {
   font-family: "BYekan+";
   text-decoration: none;
   color: white;
   margin: 0;
   /* margin-bottom: 8px; */
 }
-.SocialLinks{
+.SocialLinks {
   display: flex;
   width: 90svw;
   flex-direction: row;
@@ -603,8 +616,8 @@ footer a{
   align-items: center;
   height: max-content;
 }
-.SocialLinks div{
-  border-left: 2px solid #6C90B4;
+.SocialLinks div {
+  border-left: 2px solid #6c90b4;
   padding-left: 15px;
   height: 50px;
   text-align: center;
@@ -612,22 +625,23 @@ footer a{
   align-items: center;
   padding-top: 0;
 }
-span{
-  color: #6C90B4;
+span {
+  color: #6c90b4;
 }
-footer div:nth-of-type(2) div:nth-of-type(2) , footer div:nth-of-type(2) div:nth-of-type(3){
+footer div:nth-of-type(2) div:nth-of-type(2),
+footer div:nth-of-type(2) div:nth-of-type(3) {
   display: flex;
   justify-content: center;
   text-align: center;
 }
-footer div div:nth-of-type(3){
+footer div div:nth-of-type(3) {
   margin-top: 10px;
 }
-footer div div:nth-of-type(3) span{
+footer div div:nth-of-type(3) span {
   margin-left: 9px;
   display: inline-block;
 }
-footer div:nth-of-type(2) div:first-of-type{
+footer div:nth-of-type(2) div:first-of-type {
   margin-right: 2.5%;
   margin-left: 1.5%;
   display: flex;
@@ -637,27 +651,28 @@ footer div:nth-of-type(2) div:first-of-type{
   margin-top: 20px;
 }
 @media screen and (max-width: 800px) {
-  footer div:nth-of-type(2) h2{
+  footer div:nth-of-type(2) h2 {
     font-size: 20px;
   }
 }
 @media screen and (max-width: 515px) {
-  footer div:nth-of-type(2) h2{
+  footer div:nth-of-type(2) h2 {
     font-size: 4svw;
   }
 }
-@media screen and (max-width:460px) {
-  footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
+@media screen and (max-width: 460px) {
+  footer div:last-of-type div:last-of-type,
+  footer div:last-of-type div:nth-of-type(2) {
     font-size: 12px;
   }
 }
-@media screen and (max-width:350px) {
-  footer div:last-of-type div:nth-of-type(2){
+@media screen and (max-width: 350px) {
+  footer div:last-of-type div:nth-of-type(2) {
     font-size: 10px;
   }
 }
-@media screen and (max-width:280px) {
-  footer div:last-of-type div:nth-of-type(2){
+@media screen and (max-width: 280px) {
+  footer div:last-of-type div:nth-of-type(2) {
     font-size: 8px;
   }
 }

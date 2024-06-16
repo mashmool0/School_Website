@@ -115,7 +115,6 @@ header a {
   margin-right: 4%;
   margin-left: 5%;
   font-size: 18px;
-
 }
 .links a:hover::after {
   content: "";
@@ -135,12 +134,12 @@ header a {
   flex-direction: row;
 }
 header nav div:nth-of-type(3) button {
-  width: 7svw;
-  height: 5.6svh;
+  width: 90px;
+  height: 40px;
   border-radius: 18px;
   margin-left: 20px;
   font-family: "BYekan+Bold";
-  font-size: 1vw;
+  font-size: 12px;
   text-align: center;
   color: #0f66dc;
   cursor: pointer;
@@ -425,7 +424,7 @@ header nav:nth-of-type(3) button:hover {
 }
 /* Information End */
 /* Slider Start */
-.Head{
+.Head {
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -442,7 +441,9 @@ header nav:nth-of-type(3) button:hover {
   display: none;
   transition: 0.4s;
 }
-.FirstSlide img , .SecondSlide img, .ThirdSlide img{
+.FirstSlide img,
+.SecondSlide img,
+.ThirdSlide img {
   width: 100%;
   display: block;
   height: 100%;
@@ -454,7 +455,7 @@ header nav:nth-of-type(3) button:hover {
 }
 .FirstSlide button,
 .SecondSlide button,
-.ThirdSlide button{
+.ThirdSlide button {
   display: block;
 }
 .centerSlide {
@@ -488,7 +489,7 @@ header nav:nth-of-type(3) button:hover {
   background-color: #f0f8ff;
   margin-bottom: 20px;
 }
-.slider div button{
+.slider div button {
   z-index: 2;
   border-radius: 50%;
   height: 20%;
@@ -505,13 +506,13 @@ header nav:nth-of-type(3) button:hover {
   background-size: 100% 100%;
 }
 
-.slide button{
+.slide button {
   display: none;
 }
-.SecondSlide button{
+.SecondSlide button {
   display: block;
 }
-.SecondSlide{
+.SecondSlide {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
@@ -557,10 +558,10 @@ header nav:nth-of-type(3) button:hover {
   .schoolScores div div h2 {
     font-size: 20px;
   }
-  .JoiningQuiz div div h1{
+  .JoiningQuiz div div h1 {
     margin-top: 20px;
   }
-  .JoiningQuiz div{
+  .JoiningQuiz div {
     width: 90%;
   }
   .JoiningQuiz div {
@@ -568,12 +569,13 @@ header nav:nth-of-type(3) button:hover {
     justify-content: center;
     align-items: center;
   }
-  .JoiningQuiz div img{
+  .JoiningQuiz div img {
     width: 80%;
     /* margin-left: -5%; */
   }
-  .leftBTN{margin-right: 0;}
-
+  .leftBTN {
+    margin-right: 0;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -611,20 +613,20 @@ header nav:nth-of-type(3) button:hover {
   .schoolScores div div h2 {
     font-size: 15px;
   }
-  .info div button{
+  .info div button {
     width: 20svw;
     height: 20svw;
     border-radius: 50%;
   }
-  .schoolScores div div:first-of-type{
+  .schoolScores div div:first-of-type {
     margin-right: 10px;
     margin-left: 1px;
   }
-  .schoolScores div div:nth-of-type(2){
+  .schoolScores div div:nth-of-type(2) {
     margin-left: 10px;
     margin-right: 10px;
   }
-  .schoolScores div div:last-of-type{
+  .schoolScores div div:last-of-type {
     margin-left: 10px;
     margin-right: 1px;
   }
@@ -721,14 +723,14 @@ header nav:nth-of-type(3) button:hover {
     margin-bottom: 200px;
   }
 }
-@media screen and (max-width:450px) {
-  .info div h1{
+@media screen and (max-width: 450px) {
+  .info div h1 {
     font-size: 15px;
   }
-  .info div p{
+  .info div p {
     font-size: 12px;
   }
-  .info div button{
+  .info div button {
     font-size: 10px;
   }
 }
@@ -766,23 +768,23 @@ header nav:nth-of-type(3) button:hover {
     height: 6svw;
   }
 }
-@media screen and (max-width:600px) {
-  .JoiningQuiz button{
+@media screen and (max-width: 600px) {
+  .JoiningQuiz button {
     width: 80px;
     height: 80px;
     font-size: 14px;
     border-radius: 50%;
   }
-  .JoiningQuiz{
+  .JoiningQuiz {
     width: 100%;
   }
-  .JoiningQuiz div div p{
+  .JoiningQuiz div div p {
     width: 100%;
   }
-  .JoiningQuiz{
+  .JoiningQuiz {
     width: 100%;
   }
-  .JoiningQuiz div:nth-of-type(2){
+  .JoiningQuiz div:nth-of-type(2) {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -823,9 +825,7 @@ header nav:nth-of-type(3) button:hover {
   }
 }
 @media screen and (max-width: 740px) {
-  .links,
-  .links a,
-  header nav div:nth-of-type(3) button {
+  .links a {
     display: none;
   }
   .HamburgerMenu {
@@ -833,39 +833,37 @@ header nav:nth-of-type(3) button:hover {
     background: none;
     z-index: 3;
   }
-  .SideLinks a{
+  .SideLinks a {
     display: none;
-
   }
 }
-@media screen and (max-width:500px) {
-  .Head h1{
+@media screen and (max-width: 500px) {
+  .Head h1 {
     font-size: 18px;
   }
-  .JoiningQuiz div div h1{
+  .JoiningQuiz div div h1 {
     font-size: 20px;
   }
-  .JoiningQuiz img{
+  .JoiningQuiz img {
     margin-right: 10svw;
     border-bottom-right-radius: 6px;
     border-bottom-left-radius: 6px;
   }
 }
-@media screen and (max-width:500px) {
-  .slider div:nth-of-type(2) button{
+@media screen and (max-width: 500px) {
+  .slider div:nth-of-type(2) button {
     width: 30%;
     height: 30%;
   }
-
 }
 
-@media screen and (max-width:400px) {
-  .slider div:nth-of-type(2) button{
+@media screen and (max-width: 400px) {
+  .slider div:nth-of-type(2) button {
     width: 35%;
     height: 35%;
   }
 }
-footer{
+footer {
   margin-top: 50px;
   background-color: #242424;
   display: flex;
@@ -875,14 +873,14 @@ footer{
   padding: 4svw;
   padding-top: 40px;
 }
-footer a{
+footer a {
   font-family: "BYekan+";
   text-decoration: none;
   color: white;
   margin: 0;
   /* margin-bottom: 8px; */
 }
-.SocialLinks{
+.SocialLinks {
   display: flex;
   width: 90svw;
   flex-direction: row;
@@ -894,8 +892,8 @@ footer a{
   align-items: center;
   height: max-content;
 }
-.SocialLinks div{
-  border-left: 2px solid #6C90B4;
+.SocialLinks div {
+  border-left: 2px solid #6c90b4;
   padding-left: 15px;
   height: 50px;
   text-align: center;
@@ -903,22 +901,23 @@ footer a{
   align-items: center;
   padding-top: 0;
 }
-span{
-  color: #6C90B4;
+span {
+  color: #6c90b4;
 }
-footer div:nth-of-type(2) div:nth-of-type(2) , footer div:nth-of-type(2) div:nth-of-type(3){
+footer div:nth-of-type(2) div:nth-of-type(2),
+footer div:nth-of-type(2) div:nth-of-type(3) {
   display: flex;
   justify-content: center;
   text-align: center;
 }
-footer div div:nth-of-type(3){
+footer div div:nth-of-type(3) {
   margin-top: 10px;
 }
-footer div div:nth-of-type(3) span{
+footer div div:nth-of-type(3) span {
   margin-left: 9px;
   display: inline-block;
 }
-footer div:nth-of-type(2) div:first-of-type{
+footer div:nth-of-type(2) div:first-of-type {
   margin-right: 2.5%;
   margin-left: 1.5%;
   display: flex;
@@ -928,27 +927,28 @@ footer div:nth-of-type(2) div:first-of-type{
   margin-top: 20px;
 }
 @media screen and (max-width: 800px) {
-  footer div:nth-of-type(2) h2{
+  footer div:nth-of-type(2) h2 {
     font-size: 20px;
   }
 }
 @media screen and (max-width: 515px) {
-  footer div:nth-of-type(2) h2{
+  footer div:nth-of-type(2) h2 {
     font-size: 4svw;
   }
 }
-@media screen and (max-width:460px) {
-  footer div:last-of-type div:last-of-type , footer div:last-of-type div:nth-of-type(2){
+@media screen and (max-width: 460px) {
+  footer div:last-of-type div:last-of-type,
+  footer div:last-of-type div:nth-of-type(2) {
     font-size: 12px;
   }
 }
-@media screen and (max-width:350px) {
-  footer div:last-of-type div:nth-of-type(2){
+@media screen and (max-width: 350px) {
+  footer div:last-of-type div:nth-of-type(2) {
     font-size: 10px;
   }
 }
-@media screen and (max-width:280px) {
-  footer div:last-of-type div:nth-of-type(2){
+@media screen and (max-width: 280px) {
+  footer div:last-of-type div:nth-of-type(2) {
     font-size: 8px;
   }
 }
