@@ -614,3 +614,8 @@ main{
     margin-left: 140%;
   }
 }
+@media screen and (max-width:300px){
+  .links a {
+    fonts-size:10px;
+  }
+}
