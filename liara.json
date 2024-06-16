@@ -1,12 +1,12 @@
 {
-  "disk": [
+  "disks": [
     {
       "name": "database",
       "mountTo": "database"
     },
     {
-      "name": "media",
-      "mountTo": "media"
+      "name": "medias",
+      "mountTo": "medias"
     }
   ],
   "app": "andisheh"

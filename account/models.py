@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.exceptions import ValidationError
 
 
 class WelcomeRegister(models.Model):
@@ -35,7 +36,9 @@ class UserStudent(models.Model):
     # Required fields for registration
     phone_number = models.CharField(max_length=11, unique=True, verbose_name="شماره تلفن ثبت نام")
     username = models.CharField(max_length=30, verbose_name="نام کاربری")
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_student", verbose_name="ارتباط با")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="user_student", verbose_name="ارتباط با",
+                                blank=True, null=True)
+
     # Required fields for authenticating school
     password1 = models.CharField(max_length=30, null=True, blank=True)
     password2 = models.CharField(max_length=30, null=True, blank=True)
@@ -76,6 +79,11 @@ class UserStudent(models.Model):
 
     def set_user(self, user):
         self.user = user
+
+    # def save(self, *args, **kwargs):
+    #     if self.user and UserStudent.objects.filter(user=self.user).exists():
+    #         raise ValidationError("Each user can only have one UserStudent associated with them.")
+    #     super(UserStudent, self).save(*args, **kwargs)
 
     class Meta:
         verbose_name = "دانش آموز"
@@ -137,13 +145,14 @@ class SetPriceForSchool(models.Model):
 class PriceUserForSchool(models.Model):
     pardakht_shode = models.PositiveIntegerField(verbose_name="مبلغ پرداخت شده", blank=True, null=True)
     baghimonde = models.PositiveIntegerField(verbose_name="مبلغ باقی مانده", blank=True, null=True)
-    user_name = models.CharField(max_length=100, blank=True, null=True, verbose_name="نام و نام خانوادگی کاربر")
-    user_phone = models.CharField(max_length=12, blank=True, null=True, verbose_name="شماره کاربر")
-    # check detial
+    user_name = models.CharField(max_length=100, verbose_name="نام و نام خانوادگی کاربر")
+    user_phone = models.CharField(max_length=12, verbose_name="شماره کاربر")
+    # check detail
     # first check
     price_check = models.PositiveIntegerField(verbose_name=" قیمت چک اول", blank=True, null=True)
     check_serial = models.CharField(max_length=20, verbose_name="شماره سریال چک", blank=True, null=True)
-    check_date = models.CharField(max_length=20, verbose_name="تاریخ چک", help_text="مثل 1402/02/02")
+    check_date = models.CharField(max_length=20, verbose_name="تاریخ چک", help_text="مثل 1402/02/02", blank=True,
+                                  null=True)
 
     # second check
     price_check2 = models.PositiveIntegerField(verbose_name="قیمت چک دوم", blank=True, null=True)
