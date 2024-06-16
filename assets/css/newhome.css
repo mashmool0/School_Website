@@ -378,6 +378,7 @@ header nav:nth-of-type(3) button:hover {
   display: flex;
   flex-direction: row;
   height: 33.75svw;
+  margin-bottom: 200px;
 }
 .info div {
   width: 50%;
@@ -717,6 +718,9 @@ header nav:nth-of-type(3) button:hover {
 
   .info div button {
     font-size: 2.5svw;
+  }
+  .info{
+    margin-bottom: 200px;
   }
 }
 @media screen and (max-width: 450px) {

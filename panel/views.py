@@ -85,6 +85,9 @@ def user_info(request):
 @csrf_exempt  # Temporarily disable CSRF protection for simplicity
 def add_to_basket(request):
     if request.method == 'POST':
+        if not request.user.is_authenticated:
+            response = {"status": "error", "message": "لطفا اول در سایت ثبت نام کنید"}
+            return JsonResponse(response)
         course_id = request.POST.get('course_id')
         try:
             course_user = Course.objects.get(id=course_id)

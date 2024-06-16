@@ -318,7 +318,7 @@ button:hover{
 @media screen and (max-width:932px) {
   .LeftPart{display: none;}
   .SignUp{
-    bottom: 55%;
+    bottom: 45%;
   }
 
 }

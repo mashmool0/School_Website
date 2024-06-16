@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import WelcomeRegister, UserStudent, Otp, Footer
+from .models import WelcomeRegister, UserStudent, Otp, Footer, SetPriceForSchool, PriceUserForSchool
 from jalali_date.admin import ModelAdminJalaliMixin
 from jalali_date import datetime2jalali
 from import_export.admin import ImportExportModelAdmin
@@ -9,6 +9,7 @@ from import_export.formats.base_formats import XLSX
 admin.site.register(WelcomeRegister)
 admin.site.register(Otp)
 admin.site.register(Footer)
+admin.site.register(SetPriceForSchool)
 
 
 # Add this function for export user information
@@ -22,11 +23,22 @@ def export_to_excel(modeladmin, request, queryset):
     return response
 
 
+@admin.register(PriceUserForSchool)
+class PriceForSchoolAdmin(admin.ModelAdmin):
+    search_fields = ('user_phone', 'user_name')
+
+    fieldsets = [("اطلاعات کاربر", {"fields": [("user_name", "user_phone")]}),
+                 ("اطلاعات راجب قیمت ها", {"fields": [("pardakht_shode", "baghimonde")]}),
+                 ("اطلاعات چک ها", {"fields": [("price_check", "check_serial", "check_date"),
+                                               ("price_check2", "check_serial2", "check_date2"),
+                                               ("price_check3", "check_serial3", "check_date3")]})]
+
+
 @admin.register(UserStudent)
 class UserStudentAdmin(ImportExportModelAdmin, admin.ModelAdmin):
     list_display = (
         'phone_number', 'first_name', 'last_name', 'username', 'super_student_user', 'is_information_submited')
-    search_fields = ('phone_number', 'email', 'username', 'first_name', 'last_name')
+    search_fields = ('phone_number', 'email', 'username', 'first_name', 'last_name', 'student_code_id')
     list_filter = ('super_student_user', 'grade', 'section', 'field_of_study', 'is_information_submited')
     fieldsets = [
         ("اطلاعات کاربری", {"fields": [("phone_number", 'username', "email")]}),

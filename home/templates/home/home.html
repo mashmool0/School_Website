@@ -20,7 +20,7 @@
             <div class="SideLinks">
                 <a href="{% url 'home:home' %}">خانه</a>
                 <a href="">آموزشگاه</a>
-                <a href="{% url 'course:course' %}">دوره ها</a>
+                <a href="{% url 'course:course' %}">فروشگاه</a>
                 <a href="">وبلاگ</a>
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
@@ -85,7 +85,7 @@
         <div class="links">
             <a href="{% url 'home:home' %}">خانه</a>
             <a href="">آموزشگاه</a>
-            <a href="{% url 'course:course' %}">دوره ها</a>
+            <a href="{% url 'course:course' %}">فروشگاه</a>
             <a href="">وبلاگ</a>
             {% if request.user.is_authenticated %}
                 <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
@@ -198,28 +198,28 @@
         <button>دکمه</button>
     </div>
 </div>
-<div class="slider">
-    <div class="Head">
-        <h1>لورم ایپسوم متن ساختگی با تولید</h1>
-        <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
-            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در
-            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و
-            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی
-            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می
-            طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی
-            الخصوص طراحان
-        </p>
-    </div>
-    <div class="Slides">
-        <div class="slide FirstSlide"></div>
-        <div class="slide SecondSlide">
-            <button></button>
-        </div>
-        <div class="slide ThirdSlide"></div>
-        <div class="slide"></div>
-    </div>
-</div>
+{#<div class="slider">#}
+{#    <div class="Head">#}
+{#        <h1>لورم ایپسوم متن ساختگی با تولید</h1>#}
+{#        <p>#}
+{#            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با#}
+{#            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در#}
+{#            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و#}
+{#            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی#}
+{#            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می#}
+{#            طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی#}
+{#            الخصوص طراحان#}
+{#        </p>#}
+{#    </div>#}
+{#    <div class="Slides">#}
+{#        <div class="slide FirstSlide"></div>#}
+{#        <div class="slide SecondSlide">#}
+{#            <button></button>#}
+{#        </div>#}
+{#        <div class="slide ThirdSlide"></div>#}
+{#        <div class="slide"></div>#}
+{#    </div>#}
+{#</div>#}
 <footer>
     <div class="SocialLinks">
         <a href="{{ footer.roubica }}" class="telegram" target="_blank">روبیکا</a>
