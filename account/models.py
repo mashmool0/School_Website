@@ -169,3 +169,7 @@ class PriceUserForSchool(models.Model):
     class Meta:
         verbose_name = "چک های دانش آموزان"
         verbose_name_plural = "چک های دانش اموزان"
+
+
+class Storage(models.Model):
+    my_file = models.FileField()

@@ -4,7 +4,6 @@ from jalali_date import date2jalali
 from account.models import Footer
 
 
-
 def course_view(request):
     footer = Footer.objects.last()
     courses = Course.objects.all()
