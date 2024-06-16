@@ -10,6 +10,9 @@
   margin: 0px;
   padding: 0px;
 }
+button {
+  cursor: pointer;
+}
 body {
   background-color: whitesmoke;
 }
@@ -266,7 +269,7 @@ button:hover {
   margin-bottom: 50px;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  gap: 40px 40px;
+  gap: 40px 30px;
   width: 100%;
   margin-left: auto;
 }
@@ -543,6 +546,9 @@ header nav button {
 @media screen and (max-width: 580px) {
   .Cards {
     grid-template-columns: 100%;
+    position: relative;
+    left: 40%;
+    transform: translateX(-50%);
   }
   .card {
     width: 300px;
@@ -557,6 +563,14 @@ header nav button {
   }
   .card img {
     width: 250px;
+  }
+  .Cards {
+    left: 45%;
+  }
+}
+@media screen and (max-width: 300px) {
+  .Cards {
+    left: 50%;
   }
 }
 @media screen and (max-width: 740px) {
