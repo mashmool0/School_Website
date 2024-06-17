@@ -129,8 +129,8 @@ DATABASES = {
         'NAME': 'andisheh-db',
         'USER': 'root',
         'PASSWORD': 'sp075kpaoB8l9RiScdOXNEdn',
-        'HOST': 'andisheh-db',
-        'PORT': '5432',
+        'HOST': 'bromo.liara.cloud',
+        'PORT': '32386',
     }
 }
 
