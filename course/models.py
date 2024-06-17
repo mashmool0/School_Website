@@ -16,7 +16,7 @@ class Course(models.Model):
     date_starter = models.DateField(verbose_name="روز شروع دوره",
                                     help_text="اگر روز شروع خاصی مد نظرتون نیست یا شروع خاصی ندارد تاریخ امروز را "
                                               "وارد کنید")
-    banner = models.FileField(upload_to='media/', verbose_name="عکس دوره",null=True,blank=True)
+    banner = models.FileField(upload_to='course_banners/', verbose_name="عکس دوره", null=True, blank=True)
     course_type = models.CharField(max_length=30, choices=COURSE_TYPE_CHOICES, verbose_name="نوع دوره")
     created = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ایجاد")
     off = models.IntegerField(null=True, blank=True, verbose_name="درصد تخفیف",
