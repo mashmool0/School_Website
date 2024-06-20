@@ -11,6 +11,7 @@
   padding: 0;
 }
 body {
+  overflow-x: hidden;
   background-color: whitesmoke;
 }
 .wrapper {
@@ -54,7 +55,7 @@ aside div {
   transition: 0.3s;
   margin-bottom: 60px;
 }
-.change:hover{
+.change:hover {
   transform: scale(1.08);
 }
 .SideCard {
@@ -73,14 +74,14 @@ aside div {
   transition: 0.4s;
   cursor: pointer;
 }
-.SideCard:hover{
+.SideCard:hover {
   transform: scale(1.05);
 }
 .SideCard a {
   color: white;
   font-family: "BYekan+";
 }
-.SideCard{
+.SideCard {
   background: none;
 }
 a {
@@ -117,19 +118,20 @@ nav {
 .links a:hover {
   transform: scale(1.08);
 }
-.links{
+.links {
   width: 50%;
 }
-button{
+button {
   cursor: pointer;
 }
-.dropDown ,.mob{
+.dropDown,
+.mob {
   display: flex;
   flex-direction: column;
   /* margin-top: 120px; */
   width: 200px;
 }
-.dropDownButton{
+.dropDownButton {
   background-color: white;
   border: none;
   font-family: "BYekan+";
@@ -138,31 +140,32 @@ button{
   font-size: 16px;
   transition: 0.4s;
 }
-.dropDownButton:hover{
+.dropDownButton:hover {
   transform: scale(1.03);
-
 }
-.dropDownLinks{
+.dropDownLinks {
   color: black;
   font-family: "BYekan+";
   text-decoration: none;
   font-size: 15px;
-
 }
-.dropDown div , .mob div{
+.dropDown div,
+.mob div {
   width: 100px;
   border-bottom: 1px solid black;
   background-color: rgba(245, 245, 245, 0.879);
   height: 40px;
   display: none;
 }
-.dropDown div:last-of-type , .mob div:last-of-type{
+.dropDown div:last-of-type,
+.mob div:last-of-type {
   border: none;
 }
-.dropDown div:first-of-type , .mob div:first-of-type{
+.dropDown div:first-of-type,
+.mob div:first-of-type {
   border-top: 1px solid black;
 }
-.mob{
+.mob {
   display: none;
 }
 .container {
@@ -181,17 +184,17 @@ button{
   user-select: none;
   fill: var(--color);
 }
-svg{
+svg {
   margin-top: 55px;
 }
 .container .bell-regular {
   position: absolute;
-  animation: keyframes-fill .5s;
+  animation: keyframes-fill 0.5s;
 }
 .container .bell-solid {
   position: absolute;
   display: none;
-  animation: keyframes-fill .5s;
+  animation: keyframes-fill 0.5s;
 }
 .container input:checked ~ .bell-regular {
   display: none;
@@ -206,7 +209,7 @@ svg{
   height: 0;
   width: 0;
 }
-nav{
+nav {
   box-shadow: 0 3px 6px 1px rgb(143, 143, 143);
 }
 @keyframes keyframes-fill {
@@ -226,7 +229,7 @@ nav{
     transform: rotate(15deg);
   }
 }
-.leftSide{
+.leftSide {
   /* display: flex; */
   /* flex-direction: row; */
   /* display: none; */
@@ -235,7 +238,7 @@ nav{
   font-size: 20px;
 }
 
-main{
+main {
   box-sizing: border-box;
   margin-top: 50px;
   display: flex;
@@ -252,19 +255,19 @@ main{
   overflow-x: auto;
   height: 90svh;
   overflow-y: auto;
-  padding-top:400px;
+  padding-top: 400px;
 }
-main::-webkit-scrollbar{
+main::-webkit-scrollbar {
   width: 5px;
 }
 
-main::-webkit-scrollbar-track{
+main::-webkit-scrollbar-track {
   background-color: #ddd;
 }
-main::-webkit-scrollbar-thumb{
+main::-webkit-scrollbar-thumb {
   background-color: #2b3eb1;
 }
-main div{
+main div {
   display: flex;
   flex-direction: row-reverse;
   margin-bottom: 20px;
@@ -276,12 +279,13 @@ main div{
   align-items: center;
   width: 100%;
 }
-main h1{
+main h1 {
   margin-bottom: 10px;
   font-family: "BYekan+";
 }
 
-main div input ,select{
+main div input,
+select {
   /* margin-left: 10px; */
   /* margin-right: 10px; */
   width: 150px;
@@ -289,30 +293,31 @@ main div input ,select{
   box-sizing: border-box;
   border-radius: 5px;
   border: none;
-  box-shadow: 1px 2px 2px 2px gray ;
+  box-shadow: 1px 2px 2px 2px gray;
   font-family: "BYekan+";
 }
 
-main div input,main div textarea{
+main div input,
+main div textarea {
   text-align: right;
-} 
-main div textarea{
+}
+main div textarea {
   width: 200px;
   height: 6 0px;
   border-radius: 5px;
   border: none;
-  box-shadow: 1px 2px 2px 2px gray ;
+  box-shadow: 1px 2px 2px 2px gray;
   margin-left: 10px;
   margin-right: 10px;
   font-family: "BYekan+";
 }
-main form{
+main form {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-main form button{
+main form button {
   width: 180px;
   height: 40px;
   margin-bottom: 20px;
@@ -325,23 +330,23 @@ main form button{
   font-size: 20px;
   justify-self: center;
 }
-form input[type="file"]::file-selector-button{
+form input[type="file"]::file-selector-button {
   background-color: white;
   color: black;
   font-family: "BYekan+";
   border-radius: 4px;
-  width: 100px;  
+  width: 100px;
   height: 40px;
   border: none;
-  box-shadow: 1px 2px 2px 2px gray ;
+  box-shadow: 1px 2px 2px 2px gray;
   justify-content: space-around;
   margin-right: 35%;
   margin-left: 20%;
 }
-form input[type="file"]{
+form input[type="file"] {
   display: flex;
   flex-direction: row;
-  justify-content: center ;
+  justify-content: center;
   box-shadow: none;
   border: none;
   width: 100%;
@@ -349,10 +354,10 @@ form input[type="file"]{
   border-radius: 0;
   box-sizing: none;
   display: none;
-  
 }
 
-main div input ,select{
+main div input,
+select {
   /* margin-left: 10px; */
   /* margin-right: 10px; */
   width: 150px;
@@ -360,9 +365,8 @@ main div input ,select{
   box-sizing: border-box;
   border-radius: 5px;
   border: none;
-  box-shadow: 1px 2px 2px 2px gray ;
+  box-shadow: 1px 2px 2px 2px gray;
   font-family: "BYekan+";
-
 }
 /* @media screen and (max-width:810px) {
   .wrapper aside{
@@ -378,15 +382,14 @@ main div input ,select{
     width: 80svw;
   }
 } */
-@media screen and (max-width:630px) {
-  .leftSide{
+@media screen and (max-width: 630px) {
+  .leftSide {
     display: none;
-    
   }
-  .links{
+  .links {
     width: 100%;
   }
-  .wrapper aside{
+  .wrapper aside {
     text-align: center;
   }
   /* .wrapper aside{
@@ -396,55 +399,57 @@ main div input ,select{
     width: 80svw;
   } */
 }
-@media screen and (max-width:570px) {
-  .wrapper aside{
+@media screen and (max-width: 570px) {
+  .wrapper aside {
     display: none;
   }
-  nav{
+  nav {
     width: 100%;
   }
-  .mob{
+  .mob {
     display: flex;
     margin-top: 0px;
   }
-  .mob div{
+  .mob div {
     display: none;
   }
 }
 @media screen and (max-width: 850px) {
-  main{
+  main {
     width: 75svw;
     margin-left: 4svw;
   }
-  .wrapper aside{
+  .wrapper aside {
     text-align: center;
   }
 }
-@media screen and (max-width:570px) {
-  main{
+@media screen and (max-width: 570px) {
+  main {
     text-align: center;
     width: 95svw;
     margin-left: 2.5svw;
   }
-  main h1{
+  main h1 {
     font-size: 25px;
   }
   main {
-    padding-top:910px;
+    padding-top: 910px;
   }
-  main form div{
+  main form div {
     display: flex;
     flex-direction: column;
   }
-  main form div input ,main form div select ,main form div textarea{
+  main form div input,
+  main form div select,
+  main form div textarea {
     margin-bottom: 6px;
   }
 }
-@media screen and (max-width:405px) {
-  .links a{
+@media screen and (max-width: 405px) {
+  .links a {
     font-size: 14px;
   }
-  .mob{
+  .mob {
     margin-left: -25px;
     font-size: 13px;
   }

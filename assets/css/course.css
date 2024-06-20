@@ -171,6 +171,7 @@ body {
   background-color: white;
   border-radius: 8px;
   padding-bottom: 10px;
+  margin: 0;
 }
 .card img {
   width: 250px;
@@ -269,9 +270,9 @@ button:hover {
   margin-bottom: 50px;
   display: grid;
   grid-template-columns: 25% 25% 25% 25%;
-  gap: 40px 30px;
-  width: 100%;
-  margin-left: auto;
+  gap: 40px 40px;
+  width: max-content;
+  margin-left: 10%;
 }
 /* Cards End */
 /* Header */

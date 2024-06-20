@@ -10,6 +10,9 @@
   margin: 0;
   padding: 0;
 }
+body {
+  overflow-x: hidden;
+}
 /* Header Start */
 nav {
   position: sticky;
@@ -719,7 +722,7 @@ header nav:nth-of-type(3) button:hover {
   .info div button {
     font-size: 2.5svw;
   }
-  .info{
+  .info {
     margin-bottom: 200px;
   }
 }

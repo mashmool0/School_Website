@@ -25,6 +25,10 @@ nav {
   height: 300svh;
   z-index: 3;
 }
+body {
+  overflow-x: hidden;
+  width: 100svw;
+}
 .SideLinks a {
   margin-right: 4svw;
   /* backdrop-filter: blur(5px); */
