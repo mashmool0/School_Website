@@ -42,8 +42,8 @@
                 <label>{{ form.non_field_errors }}</label>
             {% endif %}
             {{ form.phone_number }}
-            {% if form.phone_number.errors %}
-                <label>{{ form.phone_number.errors }}</label>
+            {% if "دانش آموز با" not in form.phone_number.errors.0 %}
+                <label>{{ form.phone_number.errors.0 }}</label>
             {% endif %}
 
             {{ form.username }}

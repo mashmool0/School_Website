@@ -60,8 +60,8 @@ def delete_expired_otp2(phone):
 
 def delete_expired_otp2_1(phone):
     def delete_otp2_1():
-        print("delete otp2 run")  # Sleep for 1 minutes
-        time.sleep(360)
+        print("delete otp2_1 run")  # Sleep for 1 minutes
+        time.sleep(60)
         try:
             if Otp.objects.filter(phone_number=phone).exists():
                 otp = Otp.objects.filter(phone_number=phone)

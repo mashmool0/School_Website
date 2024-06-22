@@ -1,13 +1,12 @@
 from django.contrib import admin
 from jalali_date import datetime2jalali, date2jalali
-from jalali_date.admin import ModelAdminJalaliMixin, StackedInlineJalaliMixin, TabularInlineJalaliMixin
+from jalali_date.admin import ModelAdminJalaliMixin
 from .models import Course
 
 
-# Register your models here.
 @admin.register(Course)
-class FirstModelAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):
-    list_display = ['course_name', 'price', "teacher", "date_starter", "course_type", 'get_created_jalali']
+class CourseAdmin(ModelAdminJalaliMixin, admin.ModelAdmin):  # Changed FirstModelAdmin to CourseAdmin
+    list_display = ['course_name', 'price', 'teacher', 'date_starter', 'course_type', 'get_created_jalali']
     readonly_fields = ('price_with_off',)
 
     @admin.display(description='تاریخ شروع دوره')

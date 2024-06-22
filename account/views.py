@@ -4,7 +4,7 @@ from django.db import IntegrityError
 from django.http import Http404
 from django.shortcuts import render, redirect, reverse
 from django.contrib.auth import login, logout
-from .models import WelcomeRegister, Otp
+from .models import WelcomeRegister, Otp, UserStudent
 from .forms import RegisterForm, LoginForm, LoginOnlyWithPhone
 from django.contrib.auth.models import User
 from .decorators import un_authenticated, exist_otp, just_super_student
@@ -46,7 +46,17 @@ def user_register(request):
     form = RegisterForm()
     if request.method == "POST":
         form = RegisterForm(request.POST)
-        if form.is_valid():
+        phone_number = form.data.get("phone_number")  # Get phone number from POST data
+        if phone_number.startswith("0"):
+            phone_number = phone_number[1:]
+
+        if User.objects.filter(username=phone_number).exists() and Otp.objects.filter(
+                phone_number=phone_number).exists():
+            # If user already exists, start the delete_expired_otp2_1 function
+            delete_expired_otp2_1(phone_number)
+            form.add_error(None, "لطفا یک دقیقه صبر کنید و دوباره تلاش کنید")
+
+        elif form.is_valid():
             phone_number = form.cleaned_data.get("phone_number")
             if not User.objects.filter(username=phone_number).exists():
                 try:
@@ -71,9 +81,11 @@ def user_register(request):
                                     {'token': token, 'phone': phone_number}))
                         else:
                             user.delete()
-                            form.add_error(None, "در ارسال پیامک مشکلی ایجاد شده است لطفا با پشتیبانی سایت تماس بگیرید")
+                            form.add_error(None,
+                                           "در ارسال پیامک مشکلی ایجاد شده است لطفا با پشتیبانی سایت تماس بگیرید")
                             messages.error(request, 'Failed to send OTP. Please try again.')
                             return redirect('account:register')
+
                     else:
                         form.add_error(None, "لطفا یک دقیقه صبر کنید و دوباره تلاش کنید")
                         delete_expired_otp2_1(phone_number)
@@ -95,6 +107,8 @@ def user_register(request):
                     delete_expired_otp2_1(phone_number)
                 else:
                     form.add_error(None, 'این شماره قبلاً ثبت شده است')
+        else:
+            delete_expired_otp_1(phone_number)
     return render(request, 'account/Signup.html', context={'welcome_text': welcome_text, 'form': form})
 
 

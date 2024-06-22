@@ -1,9 +1,13 @@
 {% load static %}
 {% load money_converter %}
-<div class="Cards">
+<div dir="rtl" class="Cards">
     {% for course in courses %}
         <div class="card">
-            <img src="{{ course.banner.url }}" alt=""/>
+            {% if course.banner %}
+                <img src="{{ course.banner.url }}" alt="{{ course.course_name }}"/>
+            {% else %}
+                <p>No image available</p>
+            {% endif %}
             <div>
                 <h1>{{ course.course_name }}</h1>
                 <div>
