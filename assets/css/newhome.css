@@ -551,7 +551,7 @@ header nav:nth-of-type(3) button:hover {
     font-size: 20px;
   }
   .schoolScores {
-    height: 60svh;
+    height: 110svh;
   }
 }
 @media screen and (max-width: 600px) {

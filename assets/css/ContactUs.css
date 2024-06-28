@@ -313,6 +313,12 @@ footer div div:first-of-type {
   main {
     margin-right: 10px;
   }
+  .right {
+    margin-left: 30svw;
+  }
+  main div:first-of-type {
+    margin-left: 20svw;
+  }
   .left form div:first-of-type input {
     margin-left: -10px;
   }
