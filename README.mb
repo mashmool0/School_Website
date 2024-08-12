@@ -1,7 +1,10 @@
+Here's a well-structured README for your intelligent school project on GitHub:
 
-# School_Website School Project
+---
 
-Welcome to the School_Website School Project! This is a comprehensive web application designed to manage various aspects of a school, including course management, user dashboards, and administrative functionalities.
+# Intelligent School Project
+
+Welcome to the Intelligent School Project! This is a comprehensive web application designed to manage various aspects of a school, including course management, user dashboards, and administrative functionalities.
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -29,8 +32,8 @@ Follow these steps to set up the project on your local machine:
 1. **Clone the repository:**
 
    ```bash
-   git clone https://github.com/yourusername/School_Website.git
-   cd School_Website
+   git clone https://github.com/yourusername/intelligent-school.git
+   cd intelligent-school
    ```
 
 2. **Create and activate a virtual environment (optional but recommended):**
@@ -116,7 +119,8 @@ By default, the project is configured to use PostgreSQL. If you'd like to switch
 
 ## Contact
 
-If you have any questions or need further assistance, feel free to contact the school administration via the [ap4games2017@gmail.com](#) page.
+If you have any questions or need further assistance, feel free to contact the school administration via the [Contact Us](#) page.
 
+---
 
-
+This README provides clear instructions for setting up the project, highlights the features available for both users and admins, and ensures that any potential user can easily get started with the project.
