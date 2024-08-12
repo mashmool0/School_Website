@@ -1,6 +1,10 @@
 # Intelligent School Project
 
 Welcome to the Intelligent School Project! This is a comprehensive web application designed to manage various aspects of a school, including course management, user dashboards, and administrative functionalities.
+# Website link
+  -http://andishehparsianjiroft.ir
+
+
 
 ## Table of Contents
 - [Getting Started](#getting-started)
@@ -112,3 +116,9 @@ By default, the project is configured to use PostgreSQL. If you'd like to switch
 - **User Export:** Admins can export user data to Excel with specific filters such as class, educational level, and field of study.
 - **Payment Management:** Admins can add and manage installment payments for students.
 - **Dynamic Content Management:** Admins can dynamically change the text content across the site.
+
+
+
+
+
+
