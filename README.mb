@@ -1,1 +1,125 @@
-# School_Website
+Here's a well-structured README for your School_Website school project on GitHub:
+
+---
+
+# School_Website School Project
+
+Welcome to the School_Website School Project! This is a comprehensive web application designed to manage various aspects of a school, including course management, user dashboards, and administrative functionalities.
+
+## Table of Contents
+- [Getting Started](#getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Database Configuration](#database-configuration)
+- [Features](#features)
+  - [User Features](#user-features)
+  - [Admin Features](#admin-features)
+- [Contact](#contact)
+
+## Getting Started
+
+### Prerequisites
+
+Before you begin, ensure you have the following installed on your system:
+
+- Python 3.x
+- Git
+
+### Installation
+
+Follow these steps to set up the project on your local machine:
+
+1. **Clone the repository:**
+
+   ```bash
+   git clone https://github.com/yourusername/School_Website.git
+   cd School_Website
+   ```
+
+2. **Create and activate a virtual environment (optional but recommended):**
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # On Windows: venv\Scripts\activate
+   ```
+
+3. **Install the required dependencies:**
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Migrate the database:**
+
+   ```bash
+   python manage.py migrate
+   ```
+
+5. **Run the development server:**
+
+   ```bash
+   python manage.py runserver
+   ```
+
+   Now, you should be able to access the application at `http://localhost:8000/`.
+
+### Database Configuration
+
+By default, the project is configured to use PostgreSQL. If you'd like to switch to SQLite for local development, follow these steps:
+
+1. Open the project settings file (`settings.py`).
+2. Locate the `DATABASES` section.
+3. Comment out the PostgreSQL configuration and uncomment the SQLite3 configuration:
+
+   ```python
+   # PostgreSQL (default)
+   # DATABASES = {
+   #     'default': {
+   #         'ENGINE': 'django.db.backends.postgresql',
+   #         'NAME': 'your_db_name',
+   #         'USER': 'your_db_user',
+   #         'PASSWORD': 'your_db_password',
+   #         'HOST': 'localhost',
+   #         'PORT': '5432',
+   #     }
+   # }
+
+   # SQLite3 (for local development)
+   DATABASES = {
+       'default': {
+           'ENGINE': 'django.db.backends.sqlite3',
+           'NAME': BASE_DIR / "db.sqlite3",
+       }
+   }
+   ```
+
+4. Save the changes and rerun the migration command:
+
+   ```bash
+   python manage.py migrate
+   ```
+
+## Features
+
+### User Features
+
+- **Course Purchase:** Users can browse and purchase courses offered by the school.
+- **Dashboard:** Each user has a personal dashboard where they can view their courses, transactions, and other activities.
+- **Basket:** Users can view and manage the courses they intend to purchase.
+- **Course Management:** Users can track their enrolled courses.
+- **Payments and Transactions:** Users can view their payment history and transactions.
+- **Contact Us Page:** A dedicated page allows users to contact the school administration directly.
+
+### Admin Features
+
+- **Course Management:** Admins can create, update, and delete courses offered by the school.
+- **User Export:** Admins can export user data to Excel with specific filters such as class, educational level, and field of study.
+- **Payment Management:** Admins can add and manage installment payments for students.
+- **Dynamic Content Management:** Admins can dynamically change the text content across the site.
+
+## Contact
+
+If you have any questions or need further assistance, feel free to contact the school administration via the [ap4games2017@gmail.com](#) page.
+
+
+
