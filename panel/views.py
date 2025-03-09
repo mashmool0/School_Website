@@ -1,11 +1,12 @@
+from django.contrib import messages
 from django.http import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.password_validation import validate_password
 
-from .models import Basket
+from .models import Basket, UserPayment
 from account.models import UserStudent
 from course.models import Course
 from .decorators import show_information, show_information_to_submit_user
@@ -157,6 +158,44 @@ def delete_form_basket(request):
 def payment_view(request):
     baskets = Basket.objects.filter(basket_user=request.user)
     total_sum = sum(item.price for item in baskets)
-    if request.method == "POST":
 
-    return render(request, 'panel/payment.html', context={'baskets': baskets, 'total_sum': total_sum})
+    if request.method == "POST":
+        # دریافت کد تخفیف اگر وجود داشته باشد
+        discount_code = request.POST.get('codeTakhfif', '0')
+
+        # بررسی اعتبار کد تخفیف (این قسمت نیاز به پیاده‌سازی کامل دارد)
+        discount_amount = 0
+        # اگر کد تخفیف معتبر باشد، مقدار تخفیف را محاسبه کنید
+
+        # مبلغ نهایی پس از اعمال تخفیف
+        final_amount = total_sum - discount_amount
+
+        # بررسی اینکه آیا تصویر رسید آپلود شده است
+        if 'receipt_image' in request.FILES:
+            # ایجاد یک مورد جدید در مدل UserPayment
+            payment = UserPayment(
+                user=request.user,
+                amount=final_amount,
+                receipt_image=request.FILES['receipt_image'],
+                status='pending'
+            )
+            payment.save()
+
+            # پیام موفقیت‌آمیز به کاربر نشان داده شود
+            messages.success(request, 'رسید پرداخت شما با موفقیت آپلود شد و در انتظار تایید است.')
+
+            # پاک کردن سبد خرید پس از ثبت موفق پرداخت
+            # این بخش اختیاری است و بستگی به منطق برنامه دارد
+            # baskets.delete()
+
+            # انتقال به صفحه وضعیت پرداخت یا داشبورد
+            return redirect('panel:payment_status')
+        else:
+            # اگر تصویر آپلود نشده باشد، پیام خطا نشان داده شود
+            messages.error(request, 'لطفاً تصویر رسید پرداخت خود را آپلود کنید.')
+
+    # اگر درخواست از نوع GET باشد یا فرم POST ناموفق باشد
+    return render(request, 'panel/payment.html', context={
+        'baskets': baskets,
+        'total_sum': total_sum
+    })
