@@ -190,25 +190,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # pip install python-dotenv
 
 
-# S3 Settings
-LIARA_ENDPOINT = os.getenv("LIARA_ENDPOINT")
-LIARA_BUCKET_NAME = os.getenv("LIARA_BUCKET_NAME")
-LIARA_ACCESS_KEY = os.getenv("LIARA_ACCESS_KEY")
-LIARA_SECRET_KEY = os.getenv("LIARA_SECRET_KEY")
+# # S3 Settings
+# LIARA_ENDPOINT = os.getenv("LIARA_ENDPOINT")
+# LIARA_BUCKET_NAME = os.getenv("LIARA_BUCKET_NAME")
+# LIARA_ACCESS_KEY = os.getenv("LIARA_ACCESS_KEY")
+# LIARA_SECRET_KEY = os.getenv("LIARA_SECRET_KEY")
+#
+# # S3 Settings Based on AWS (optional)
+# AWS_ACCESS_KEY_ID = LIARA_ACCESS_KEY
+# AWS_SECRET_ACCESS_KEY = LIARA_SECRET_KEY
+# AWS_STORAGE_BUCKET_NAME = LIARA_BUCKET_NAME
+# AWS_S3_ENDPOINT_URL = LIARA_ENDPOINT
+# AWS_S3_REGION_NAME = 'us-east-1'
 
-# S3 Settings Based on AWS (optional)
-AWS_ACCESS_KEY_ID = LIARA_ACCESS_KEY
-AWS_SECRET_ACCESS_KEY = LIARA_SECRET_KEY
-AWS_STORAGE_BUCKET_NAME = LIARA_BUCKET_NAME
-AWS_S3_ENDPOINT_URL = LIARA_ENDPOINT
-AWS_S3_REGION_NAME = 'us-east-1'
-
-# Django-storages configuration
-STORAGES = {
-    "default": {
-        "BACKEND": "storages.backends.s3.S3Storage",
-    },
-    "staticfiles": {
-        "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
-    },
-}
+# # Django-storages configuration
+# STORAGES = {
+#     "default": {
+#         "BACKEND": "storages.backends.s3.S3Storage",
+#     },
+#     "staticfiles": {
+#         "BACKEND": "django.contrib.staticfiles.storage.StaticFilesStorage",
+#     },
+# }

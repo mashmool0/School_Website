@@ -1,17 +1,607 @@
-{% load static %}
 {% load money_converter %}
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>دوره ها</title>
-    <link rel="stylesheet" href="{% static 'css/course.css' %}"/>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vazirmatn/33.0.3/Vazirmatn-font-face.min.css"/>
+    <style>
+        :root {
+            --primary-color: #3490dc;
+            --primary-hover: #2779bd;
+            --secondary-color: #f6ad55;
+            --dark-color: #2d3748;
+            --light-color: #f7fafc;
+            --success-color: #48bb78;
+            --danger-color: #e53e3e;
+            --gray-color: #cbd5e0;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --border-radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazirmatn', sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            cursor: pointer;
+            border: none;
+            outline: none;
+            font-family: inherit;
+        }
+
+        /* Header Styles */
+        header {
+            position: relative;
+            background: linear-gradient(135deg, #4776E6, #8E54E9);
+            color: white;
+            overflow: hidden;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            z-index: 100;
+        }
+
+        .links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .links a {
+            position: relative;
+            padding: 0.5rem 0;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .links a::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: var(--transition);
+        }
+
+        .links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+
+        nav button {
+            background-color: var(--secondary-color);
+            color: var(--dark-color);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+        }
+
+        nav button:hover {
+            background-color: #e69c38;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        .HamburgerMenu {
+            display: none;
+        }
+
+        .HeaderContent {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 5rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .HeaderContent h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-subtitle {
+            font-size: 1.25rem;
+            max-width: 600px;
+            margin-bottom: 2rem;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .header-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            opacity: 0.15;
+            background: white;
+        }
+
+        .shape-1 {
+            top: 20%;
+            left: 10%;
+            width: 300px;
+            height: 300px;
+            animation: float 10s ease-in-out infinite;
+        }
+
+        .shape-2 {
+            top: 50%;
+            right: 15%;
+            width: 200px;
+            height: 200px;
+            animation: float 8s ease-in-out infinite 1s;
+        }
+
+        .shape-3 {
+            bottom: 10%;
+            left: 35%;
+            width: 150px;
+            height: 150px;
+            animation: float 7s ease-in-out infinite 0.5s;
+        }
+
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 2rem;
+            max-width: 1280px;
+            margin: 0 auto;
+            position: relative;
+            margin-top: -50px;
+        }
+
+        .SearchBar {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .filter-section {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .filter-button {
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            background-color: var(--light-color);
+        }
+
+        .filter-button:hover {
+            background-color: var(--gray-color);
+        }
+
+        .filter-button#active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .form {
+            width: 100%;
+        }
+
+        .form label {
+            position: relative;
+            width: 100%;
+            display: block;
+        }
+
+        .form input {
+            width: 100%;
+            padding: 1rem 3rem 1rem 1rem;
+            border: 2px solid var(--gray-color);
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(52, 144, 220, 0.25);
+            outline: none;
+        }
+
+        .form input::placeholder {
+            color: var(--gray-color);
+        }
+
+        .icon {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .close-btn {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-color);
+            background: none;
+            opacity: 0.5;
+            width: 1.5rem;
+            height: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            transition: var(--transition);
+        }
+
+        .close-btn:hover {
+            opacity: 1;
+            background-color: rgba(0, 0, 0, 0.05);
+        }
+
+        .swap-on {
+            display: block;
+        }
+
+        .swap-off {
+            display: none;
+        }
+
+        /* Course Cards Grid */
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .course-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .course-image {
+            width: 100%;
+            height: 200px;
+            background-color: var(--primary-color);
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .course-type {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .course-content {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .course-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--dark-color);
+            line-height: 1.4;
+        }
+
+        .course-instructor {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+            color: #4a5568;
+            font-size: 0.875rem;
+        }
+
+        .course-price {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-color);
+        }
+
+        .price-value {
+            font-weight: 700;
+            font-size: 1.25rem;
+            color: var(--dark-color);
+        }
+
+        .add-to-basket {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: var(--border-radius);
+            font-weight: 500;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .add-to-basket:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 3rem 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .footer-section {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+        .footer-title::after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--primary-color);
+        }
+
+        .SocialLinks {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            transition: var(--transition);
+            padding: 0.5rem;
+            border-radius: var(--border-radius);
+        }
+
+        .social-icon:hover {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            color: rgba(255, 255, 255, 0.8);
+        }
+
+        .CopyRight {
+            text-align: center;
+            padding-top: 2rem;
+            margin-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .links {
+                display: none;
+            }
+
+            .HamburgerMenu {
+                display: block;
+                position: relative;
+                z-index: 999;
+            }
+
+            .burger {
+                display: flex;
+                flex-direction: column;
+                width: 30px;
+                cursor: pointer;
+            }
+
+            .burger span {
+                background-color: white;
+                border-radius: 10px;
+                height: 3px;
+                margin: 3px 0;
+                transition: .4s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+            }
+
+            .burger span:nth-of-type(1) {
+                width: 50%;
+            }
+
+            .burger span:nth-of-type(2) {
+                width: 100%;
+            }
+
+            .burger span:nth-of-type(3) {
+                width: 75%;
+            }
+
+            .burger input[type="checkbox"] {
+                display: none;
+            }
+
+            .burger input[type="checkbox"]:checked ~ span:nth-of-type(1) {
+                transform-origin: bottom;
+                transform: rotatez(45deg) translate(6px, 0px);
+            }
+
+            .burger input[type="checkbox"]:checked ~ span:nth-of-type(2) {
+                transform-origin: top;
+                transform: rotatez(-45deg);
+            }
+
+            .burger input[type="checkbox"]:checked ~ span:nth-of-type(3) {
+                transform-origin: bottom;
+                width: 50%;
+                transform: translate(13px, -8px) rotatez(45deg);
+            }
+
+            .SideLinks {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 250px;
+                height: 100vh;
+                background-color: var(--dark-color);
+                display: flex;
+                flex-direction: column;
+                padding: 6rem 2rem 2rem;
+                transition: var(--transition);
+                z-index: 998;
+            }
+
+            .SideLinks.active {
+                right: 0;
+            }
+
+            .SideLinks a {
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                font-weight: 500;
+                transition: var(--transition);
+            }
+
+            .SideLinks a:hover {
+                padding-right: 0.5rem;
+                color: var(--secondary-color);
+            }
+
+            .HeaderContent h1 {
+                font-size: 2.5rem;
+            }
+
+            .SearchBar {
+                flex-direction: column;
+            }
+
+            .filter-section {
+                justify-content: center;
+            }
+
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+    </style>
 </head>
 <body>
 <header>
-    <nav dir="rtl">
+    <nav>
         <div class="HamburgerMenu">
             <label for="burger" class="burger">
                 <input onclick="clickChecker()" id="burger" type="checkbox"/>
@@ -23,37 +613,45 @@
                 <a href="{% url 'home:home' %}">خانه</a>
                 <a href="">آموزشگاه</a>
                 <a href="{% url 'course:course' %}">فروشگاه</a>
-                <a href="{% url "contactUs:contactus" %}">ارتباط با ما</a>
+                <a href="{% url 'contactUs:contactus' %}">ارتباط با ما</a>
             </div>
         </div>
         <div class="links">
             <a href="{% url 'home:home' %}">خانه</a>
             <a href="">آموزشگاه</a>
             <a href="{% url 'course:course' %}">فروشگاه</a>
-            <a href="{% url "contactUs:contactus" %}">ارتباط با ما</a>
+            <a href="{% url 'contactUs:contactus' %}">ارتباط با ما</a>
         </div>
         <div>
             {% if request.user.is_authenticated %}
-                <button onclick="redirectToPanel()">پنل کاربری</button>
+                <button onclick="redirectToPanel()">
+                    <i class="fas fa-user-circle"></i>
+                    پنل کاربری
+                </button>
             {% else %}
-                <button onclick="redirectToLogin()">ورود/ثبت نام</button>
+                <button onclick="redirectToLogin()">
+                    <i class="fas fa-sign-in-alt"></i>
+                    ورود/ثبت نام
+                </button>
             {% endif %}
         </div>
     </nav>
     <div class="HeaderContent">
-        <h1>فروشگاه</h1>
-        <div class="rectangle1"></div>
-        <div class="rectangle2"></div>
-        <div class="rectangle3"></div>
-        <div class="rectangle4"></div>
-        <div class="rectangle5"></div>
+        <h1>فروشگاه دوره های آموزشی</h1>
+        <p class="header-subtitle">مسیر یادگیری و موفقیت خود را با دوره‌های آموزشی ما آغاز کنید</p>
+        <div class="header-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+        </div>
     </div>
 </header>
 <main>
-    <div dir="rtl" class="SearchBar">
+    <div class="SearchBar">
         <form id="searchForm" class="form">
             <label for="searchInput">
-                <input required autocomplete="off" placeholder="" id="searchInput" type="text"/>
+                <input required autocomplete="off" placeholder="جستجوی دوره‌ها و جزوات آموزشی..." id="searchInput"
+                       type="text"/>
                 <div class="icon">
                     <svg stroke-width="2" stroke="currentColor" viewBox="0 0 24 24" fill="none"
                          xmlns="http://www.w3.org/2000/svg" class="swap-on">
@@ -74,74 +672,257 @@
                 </button>
             </label>
         </form>
-        <div>
-            <button class="filter-button jozve button" id="" data-type="book">جزوه</button>
-            <button class="filter-button dore button" id="" data-type="teacher">دوره</button>
-            <button class="filter-button all button" id="active" data-type="all">همه</button>
+        <div class="filter-section">
+            <button class="filter-button jozve" data-type="book">جزوه</button>
+            <button class="filter-button dore" data-type="teacher">دوره</button>
+            <button class="filter-button all" id="active" data-type="all">همه</button>
         </div>
     </div>
-    <div class="container" id="course-container">
-        {% include 'course/course_cards.html' %}
-    </div>
-
+    <div class="container" id="course-container">{% for course in courses %}
+        <div class="course-card">
+            <div class="course-image"
+                 {% if course.banner and course.banner.url %}style="background-image: url('{{ course.banner.url }}')"
+                 {% else %}style="background-image: url('/api/placeholder/400/200')"{% endif %}>
+                <span class="course-type">دوره</span>
+            </div>
+            <div class="course-content">
+                <h3 class="course-title">{{ course.course_name }}</h3>
+                <div class="course-instructor">
+                    <i class="fas fa-chalkboard-teacher"></i>
+                    <span>استاد: {{ course.teacher }}</span>
+                </div>
+                <div class="course-date">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>تاریخ شروع: {{ course.jalali_date_starter }}</span>
+                </div>
+                <div class="course-price">
+                    {% if course.price_with_off != course.price and course.price_with_off %}
+                        <div class="OnSale">
+                            <span class="original-price">{{ course.price|money }} تومان</span>
+                            <span class="price-value">{{ course.price_with_off|money }} تومان</span>
+                        </div>
+                    {% else %}
+                        <span class="price-value">{{ course.price|money }} تومان</span>
+                    {% endif %}
+                    <button class="add-to-basket basket-button" data-course-id="{{ course.id }}">
+                        <i class="fas fa-shopping-cart"></i>
+                        افزودن
+                    </button>
+                </div>
+            </div>
+        </div>
+    {% endfor %}
 </main>
 <footer>
-    <div class="SocialLinks">
-        <div>
-            <a href="{{ footer.roubica }}" class="telegram" target="_blank">روبیکا</a>
+    <div class="footer-container">
+        <div class="footer-section">
+            <h3 class="footer-title">درباره ما</h3>
+            <p>ما با هدف ارائه آموزش‌های با کیفیت و کاربردی، تلاش می‌کنیم تا مسیر یادگیری شما را هموارتر کنیم. با تیمی
+                از اساتید مجرب و محتوای غنی، همراه شما در مسیر موفقیت هستیم.</p>
         </div>
-        <div>
-            <a href="{{ footer.instagram }}" class="instagram" target="_blank">اینستاگرام</a>
+        <div class="footer-section">
+            <h3 class="footer-title">اطلاعات تماس</h3>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-user"></i>
+                    <span>نام مدیر: <span>{{ footer.boss_name }}</span></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <span>شماره تماس: <span>{{ footer.phone_number }}</span></span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>آدرس: <span>{{ footer.school_address }}</span></span>
+                </div>
+            </div>
         </div>
-        <div>
-            <a href="{{ footer.soroosh }}" class="twitterf" target="_blank">سروش</a>
+        <div class="footer-section">
+            <h3 class="footer-title">شبکه‌های اجتماعی</h3>
+            <div class="SocialLinks">
+                <a href="{{ footer.roubica }}" class="social-icon" target="_blank">
+                    <i class="fas fa-comment"></i>
+                    <span>روبیکا</span>
+                </a>
+                <a href="{{ footer.instagram }}" class="social-icon" target="_blank">
+                    <i class="fab fa-instagram"></i>
+                    <span>اینستاگرام</span>
+                </a>
+                <a href="{{ footer.soroosh }}" class="social-icon" target="_blank">
+                    <i class="fas fa-paper-plane"></i>
+                    <span>سروش</span>
+                </a>
+            </div>
         </div>
     </div>
-    <div>
-        <div class="ManagerInformation">
-            <h2 class="ManagerName">نام مدیر: <span>{{ footer.boss_name }}</span></h2>
-            <h2 class="SchoolPhoneNumber">شماره تماس : <span>{{ footer.phone_number }}</span></h2>
-        </div>
-        <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>{{ footer.school_address }}</span>
-        </div>
-        <div class="CopyRight">COPYRIGHT 2024 <span> Amirmahdi Mashayekhi </span></div>
-    </div>
+    <div class="CopyRight">© تمامی حقوق محفوظ است ۲۰۲۴ <span>Amirmahdi Mashayekhi</span></div>
 </footer>
-<script src="{% static 'JS/course.js' %}"></script>
-<script>
-    $(document).ready(function () {
-        $('.basket-button').click(function () {
-            const courseId = $(this).data('course-id');
-            $.ajax({
-                type: 'POST',
-                url: '{% url "panel:add_to_basket" %}',
-                data: {
-                    'course_id': courseId,
-                    'csrfmiddlewaretoken': '{{ csrf_token }}'
-                },
-                success: function (response) {
-                    alert(response.message);
-                },
-                error: function () {
-                    alert('مشکلی پیش آمده، لطفا دوباره تلاش کنید.');
-                }
-            });
-        }); 
 
-        {#$('.filter-button').click(function () {#}
-        {#    // Remove active id from all filter buttons#}
-        {#    $('.filter-button').removeAttr('id');#}
-        {#    // Add active id to the clicked filter button#}
-        {#    $(this).attr('id', 'active');#}
-        {##}
-        {#    const type = $(this).data('type');#}
-        {#    fetch(`/course/filter/?type=${type}`)#}
-        {#        .then(response => response.text())#}
-        {#        .then(html => {#}
-        {#            $('#course-container').html(html);#}
-        {#        });#}
+<script>
+    // Handle mobile menu toggle
+    function clickChecker() {
+        const checkbox = document.getElementById('burger');
+        const sideLinks = document.querySelector('.SideLinks');
+
+        if (checkbox.checked) {
+            sideLinks.classList.add('active');
+        } else {
+            sideLinks.classList.remove('active');
+        }
+    }
+
+    // Initialize the page
+    document.addEventListener('DOMContentLoaded', function () {
+        // Handle search form reset button
+        const searchForm = document.getElementById('searchForm');
+        const searchInput = document.getElementById('searchInput');
+        const closeBtn = document.querySelector('.close-btn');
+
+        closeBtn.addEventListener('click', function () {
+            searchInput.value = '';
+            searchInput.focus();
+        });
+
+        // Handle filter buttons
+        const filterButtons = document.querySelectorAll('.filter-button');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                // Remove active id from all filter buttons
+                filterButtons.forEach(btn => btn.removeAttribute('id'));
+
+                // Add active id to the clicked filter button
+                this.setAttribute('id', 'active');
+
+                const type = this.getAttribute('data-type');
+                fetch(`/course/filter/?type=${type}`)
+                    .then(response => response.text())
+                    .then(html => {
+                        document.getElementById('course-container').innerHTML = html;
+                        // Reinitialize basket buttons after content update
+                        initializeBasketButtons();
+                    });
+            });
+        });
+
+        // Initialize basket buttons
+        initializeBasketButtons();
     });
 
+    // Initialize basket buttons
+    function initializeBasketButtons() {
+        const basketButtons = document.querySelectorAll('.basket-button');
+
+        basketButtons.forEach(button => {
+            button.addEventListener('click', function () {
+                const courseId = this.getAttribute('data-course-id');
+
+                // Show adding animation
+                const originalText = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> درحال افزودن';
+                this.disabled = true;
+
+                $.ajax({
+                    type: 'POST',
+                    url: '{% url "panel:add_to_basket" %}',
+                    data: {
+                        'course_id': courseId,
+                        'csrfmiddlewaretoken': '{{ csrf_token }}'
+                    },
+                    success: function (response) {
+                        // Show success notification
+                        showNotification(response.message, 'success');
+
+                        // Reset button after success
+                        button.innerHTML = '<i class="fas fa-check"></i> افزوده شد';
+                        setTimeout(function () {
+                            button.innerHTML = originalText;
+                            button.disabled = false;
+                        }, 2000);
+                    },
+                    error: function () {
+                        // Show error notification
+                        showNotification('مشکلی پیش آمده، لطفا دوباره تلاش کنید.', 'error');
+
+                        // Reset button after error
+                        button.innerHTML = originalText;
+                        button.disabled = false;
+                    }
+                });
+            });
+        });
+    }
+
+    // Show notification
+    function showNotification(message, type) {
+        // Create notification element
+        const notification = document.createElement('div');
+        notification.className = `notification ${type}`;
+        notification.innerHTML = `
+        <div class="notification-content">
+            <i class="fas fa-${type === 'success' ? 'check-circle' : 'exclamation-circle'}"></i>
+            <span>${message}</span>
+        </div>
+        <button class="notification-close"><i class="fas fa-times"></i></button>
+    `;
+
+        // Add styles to notification
+        Object.assign(notification.style, {
+            position: 'fixed',
+            bottom: '20px',
+            right: '20px',
+            backgroundColor: type === 'success' ? '#48bb78' : '#e53e3e',
+            color: 'white',
+            padding: '1rem',
+            borderRadius: '8px',
+            boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
+            zIndex: '9999',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            minWidth: '300px',
+            maxWidth: '90%',
+            animation: 'slideIn 0.3s ease forwards'
+        });
+
+        // Add animation styles
+        const style = document.createElement('style');
+        style.innerHTML = `
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+        document.head.appendChild(style);
+
+        // Add notification to body
+        document.body.appendChild(notification);
+
+        // Add event listener to close button
+        const closeButton = notification.querySelector('.notification-close');
+        closeButton.addEventListener('click', function () {
+            notification.style.animation = 'slideOut 0.3s ease forwards';
+            setTimeout(function () {
+                notification.remove();
+            }, 300);
+        });
+
+        // Auto close after 5 seconds
+        setTimeout(function () {
+            if (document.body.contains(notification)) {
+                notification.style.animation = 'slideOut 0.3s ease forwards';
+                setTimeout(function () {
+                    notification.remove();
+                }, 300);
+            }
+        }, 5000);
+    }
+
+    // Redirect functions
     function redirectToPanel() {
         window.location.href = "{% url 'panel:basket' %}";
     }
@@ -149,6 +930,7 @@
     function redirectToLogin() {
         window.location.href = "{% url 'account:login' %}";
     }
+
 </script>
 </body>
 </html>
