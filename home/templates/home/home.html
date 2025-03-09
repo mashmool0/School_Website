@@ -4,12 +4,1010 @@
 <head>
     <meta charset="UTF-8"/>
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>خانه</title>
-    <link rel="stylesheet" href="{% static 'css/newhome.css' %}"/>
+    <title>مجتمع علمی آموزشی اندیشه پارسیان</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot');
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot?#iefix') format('embedded-opentype'),
+            url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff2') format('woff2'),
+            url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff') format('woff'),
+            url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', sans-serif;
+        }
+
+        :root {
+            --primary: #3498db;
+            --secondary: #2ecc71;
+            --accent: #f39c12;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+            --danger: #e74c3c;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            direction: rtl;
+            text-align: right;
+            overflow-x: hidden;
+            background-color: #f9f9f9;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(52, 152, 219, 0.9)), url('{% static "images/school-bg.jpg" %}');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.3);
+            z-index: 1;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            padding: 15px 5%;
+        }
+
+        nav.scrolled a {
+            color: var(--dark);
+        }
+
+        nav.scrolled button {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            letter-spacing: 1px;
+        }
+
+        .logo img {
+            width: 40px;
+            margin-left: 10px;
+        }
+
+        .links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .links a {
+            color: white;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .links a:hover {
+            color: var(--accent);
+        }
+
+        .links a::after {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .links a:hover::after {
+            width: 100%;
+        }
+
+        nav button {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        nav button:hover {
+            background-color: white;
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .headerContent {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            padding: 0 5%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .headerContent h3:first-child {
+            font-size: 24px;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .headerContent h1 {
+            font-size: 80px;
+            line-height: 1;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            margin-bottom: 10px;
+        }
+
+        .headerContent h1:nth-child(2) {
+            animation: fadeIn 1.5s ease;
+        }
+
+        .headerContent h1:nth-child(3) {
+            animation: fadeIn 2s ease;
+            color: var(--accent);
+            margin-bottom: 30px;
+        }
+
+        .headerContent h3:last-of-type {
+            max-width: 700px;
+            margin-bottom: 40px;
+            line-height: 1.6;
+            animation: fadeInUp 1s ease;
+        }
+
+        .headerContent button {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .headerContent button:hover {
+            background-color: white;
+            color: var(--accent);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Hamburger Menu */
+        .HamburgerMenu {
+            display: none;
+        }
+
+        .burger {
+            display: none;
+        }
+
+        /* Cards Section */
+        .cards {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: -60px auto 80px;
+            padding: 0 5%;
+            position: relative;
+            z-index: 3;
+        }
+
+        .card {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover::before {
+            width: 100%;
+            opacity: 0.05;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .mainCard {
+            transform: translateY(-20px);
+            border-top: 5px solid var(--accent);
+        }
+
+        .mainCard::before {
+            background-color: var(--accent);
+        }
+
+        .card img {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover img {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .card h1 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .card a {
+            display: inline-block;
+            padding: 10px 25px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .mainCard a {
+            background-color: var(--accent);
+        }
+
+        .card a:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* School Scores Section */
+        .schoolScores {
+            padding: 80px 5%;
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+
+        .schoolScores h1 {
+            max-width: 900px;
+            margin: 0 auto 50px;
+            font-size: 36px;
+            line-height: 1.4;
+        }
+
+        .schoolScores > div {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .schoolScores > div > div {
+            flex: 1;
+            min-width: 200px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 40px 20px;
+            transition: all 0.3s ease;
+        }
+
+        .schoolScores > div > div:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-10px);
+        }
+
+        .schoolScores h1 + div div h1 {
+            font-size: 60px;
+            margin-bottom: 10px;
+            color: var(--accent);
+        }
+
+        .schoolScores h2 {
+            font-size: 18px;
+            font-weight: normal;
+        }
+
+        /* Joining Quiz Section */
+        .JoiningQuiz {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 80px 5%;
+            background-color: #f5f5f5;
+        }
+
+        .JoiningQuiz > div {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .JoiningQuiz > div:first-child {
+            padding-right: 50px;
+        }
+
+        .JoiningQuiz h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .JoiningQuiz p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .JoiningQuiz img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 10px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .JoiningQuiz img:hover {
+            transform: scale(1.03) rotate(1deg);
+        }
+
+        .JoiningQuiz button {
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-right: 15px;
+            border: none;
+        }
+
+        .JoiningQuiz .leftBTN {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .JoiningQuiz .rightBTN {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .JoiningQuiz button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .JoiningQuiz .leftBTN:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .JoiningQuiz .rightBTN:hover {
+            background-color: var(--accent);
+        }
+
+        /* Info Section */
+        .info {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            padding: 80px 5%;
+            background-color: white;
+        }
+
+        .info > div {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info > div:first-child {
+            text-align: center;
+        }
+
+        .info > div:last-child {
+            padding-right: 50px;
+        }
+
+        .info img {
+            width: 80%;
+            max-width: 400px;
+            border-radius: 20px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+        }
+
+        .info img:hover {
+            transform: translateY(-10px);
+        }
+
+        .info h1 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        .info p {
+            font-size: 18px;
+            line-height: 1.6;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .info button {
+            padding: 15px 40px;
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .info button:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Education Programs */
+        .education-programs {
+            padding: 80px 5%;
+            background-color: #f9f9f9;
+            text-align: center;
+        }
+
+        .education-programs h1 {
+            font-size: 36px;
+            margin-bottom: 50px;
+            color: var(--dark);
+        }
+
+        .programs-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .program {
+            background-color: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            flex: 1;
+            min-width: 280px;
+            max-width: 350px;
+            transition: all 0.3s ease;
+        }
+
+        .program:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .program-header {
+            background-color: var(--primary);
+            color: white;
+            padding: 20px;
+        }
+
+        .program:nth-child(2) .program-header {
+            background-color: var(--accent);
+        }
+
+        .program:nth-child(3) .program-header {
+            background-color: var(--secondary);
+        }
+
+        .program-header h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .program-header p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        .program-content {
+            padding: 30px;
+        }
+
+        .program-content ul {
+            list-style: none;
+            text-align: right;
+            margin-bottom: 25px;
+        }
+
+        .program-content ul li {
+            margin-bottom: 15px;
+            padding-right: 30px;
+            position: relative;
+            font-size: 16px;
+            color: #555;
+        }
+
+        .program-content ul li::before {
+            content: "\f00c";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            color: var(--secondary);
+            position: absolute;
+            right: 0;
+        }
+
+        .program-content button {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 50px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .program:nth-child(2) .program-content button {
+            background-color: var(--accent);
+        }
+
+        .program:nth-child(3) .program-content button {
+            background-color: var(--secondary);
+        }
+
+        .program-content button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 5% 30px;
+        }
+
+        footer > div {
+            margin-bottom: 30px;
+        }
+
+        .SocialLinks {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .SocialLinks a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .SocialLinks a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+
+        .SocialLinks a::before {
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 10px;
+        }
+
+        .SocialLinks .telegram::before {
+            content: "\f2c6";
+        }
+
+        .SocialLinks .instagram::before {
+            content: "\f16d";
+        }
+
+        .SocialLinks .twitter::before {
+            content: "\f099";
+        }
+
+        .ManagerInformation {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .ManagerInformation h2, .SchoolAddress {
+            font-size: 16px;
+            font-weight: normal;
+        }
+
+        .ManagerInformation span, .SchoolAddress span {
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        .SchoolAddress {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .CopyRight {
+            text-align: center;
+            font-size: 14px;
+            color: #aaa;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+        }
+
+        .CopyRight span {
+            color: var(--accent);
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(243, 156, 18, 0.7);
+            }
+
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(243, 156, 18, 0);
+            }
+
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(243, 156, 18, 0);
+            }
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 999;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .preloader.fade-out {
+            opacity: 0;
+        }
+
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid #f3f3f3;
+            border-top: 5px solid var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .headerContent h1 {
+                font-size: 60px;
+            }
+
+            .JoiningQuiz > div:first-child,
+            .info > div:last-child {
+                padding-right: 0;
+            }
+
+            .info > div:first-child {
+                margin-bottom: 30px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+            .links, nav > div:last-child {
+                display: none;
+            }
+
+            .HamburgerMenu {
+                display: block;
+            }
+
+            .burger {
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+                width: 30px;
+                height: 22px;
+                cursor: pointer;
+                position: relative;
+                z-index: 1001;
+            }
+
+            .burger span {
+                display: block;
+                height: 3px;
+                width: 100%;
+                background-color: white;
+                border-radius: 3px;
+                transition: all 0.3s ease;
+            }
+
+            nav.scrolled .burger span {
+                background-color: var(--dark);
+            }
+
+            .burger input {
+                display: none;
+            }
+
+            .burger input:checked ~ span:nth-child(2) {
+                transform: translateY(9px) rotate(45deg);
+            }
+
+            .burger input:checked ~ span:nth-child(3) {
+                opacity: 0;
+            }
+
+            .burger input:checked ~ span:nth-child(4) {
+                transform: translateY(-9px) rotate(-45deg);
+            }
+
+            .SideLinks {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 70%;
+                height: 100vh;
+                background-color: white;
+                z-index: 1000;
+                display: flex;
+                flex-direction: column;
+                padding: 100px 30px;
+                transition: all 0.4s ease;
+                box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+            }
+
+            .SideLinks.active {
+                right: 0;
+            }
+
+            .SideLinks a {
+                color: var(--dark);
+                text-decoration: none;
+                font-size: 18px;
+                margin-bottom: 20px;
+                padding-bottom: 10px;
+                border-bottom: 1px solid #eee;
+                transition: all 0.3s ease;
+            }
+
+            .SideLinks a:hover {
+                color: var(--primary);
+                transform: translateX(-10px);
+            }
+
+            .headerContent h1 {
+                font-size: 48px;
+            }
+
+            .headerContent h3:first-child {
+                font-size: 20px;
+            }
+
+            .headerContent h3:last-of-type {
+                font-size: 16px;
+            }
+
+            .schoolScores h1 {
+                font-size: 28px;
+            }
+
+            .JoiningQuiz h1, .info h1, .education-programs h1 {
+                font-size: 28px;
+            }
+
+            .JoiningQuiz p, .info p {
+                font-size: 16px;
+            }
+
+            .JoiningQuiz > div {
+                flex: 100%;
+                margin-bottom: 30px;
+            }
+
+            .info > div {
+                flex: 100%;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .headerContent h1 {
+                font-size: 36px;
+            }
+
+            .headerContent button {
+                padding: 12px 30px;
+                font-size: 16px;
+            }
+
+            .card, .program {
+                min-width: 100%;
+            }
+
+            .schoolScores > div > div {
+                flex: 100%;
+            }
+
+            .SocialLinks {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
 </head>
 <body>
+<!-- Preloader -->
+<div class="preloader">
+    <div class="loader"></div>
+</div>
+
+<!-- Back to Top Button -->
+<div class="back-to-top">
+    <i class="fas fa-arrow-up"></i>
+</div>
+
 <header>
     <nav dir="rtl">
+        <a href="#" class="logo">اندیشه پارسیان</a>
+
         <div class="HamburgerMenu">
             <label for="burger" class="burger">
                 <input onclick="clickChecker()" id="burger" type="checkbox"/>
@@ -30,55 +1028,7 @@
                 {% endif %}
 
                 <a href="{% url 'panel:basket' %}" class="tab">
-                    <svg
-                            width="25"
-                            height="25"
-                            viewBox="0 0 104 100"
-                            fill="none"
-                            xmlns="http://www.w3.org/2000/svg"
-                    >
-                        <rect
-                                x="21.5"
-                                y="3.5"
-                                width="60"
-                                height="60"
-                                rx="30"
-                                stroke="black"
-                                stroke-width="7"
-                        ></rect>
-                        <g clip-path="url(#clip0_41_27)">
-                            <mask
-                                    id="mask0_41_27"
-                                    style="mask-type:luminance"
-                                    maskUnits="userSpaceOnUse"
-                                    x="0"
-                                    y="61"
-                                    width="104"
-                                    height="52"
-                            >
-                                <path
-                                        d="M0 113C0 84.2812 23.4071 61 52.1259 61C80.706 61 104 84.4199 104 113H0Z"
-                                        fill="white"
-                                ></path>
-                            </mask>
-                            <g mask="url(#mask0_41_27)">
-                                <path
-                                        d="M-7 113C-7 80.4152 19.4152 54 52 54H52.2512C84.6973 54 111 80.3027 111 112.749H97C97 88.0347 76.9653 68 52.2512 68H52C27.1472 68 7 88.1472 7 113H-7ZM-7 113C-7 80.4152 19.4152 54 52 54V68C27.1472 68 7 88.1472 7 113H-7ZM52.2512 54C84.6973 54 111 80.3027 111 112.749V113H97V112.749C97 88.0347 76.9653 68 52.2512 68V54Z"
-                                        fill="black"
-                                ></path>
-                            </g>
-                        </g>
-                        <defs>
-                            <clipPath id="clip0_41_27">
-                                <rect
-                                        width="104"
-                                        height="39"
-                                        fill="white"
-                                        transform="translate(0 61)"
-                                ></rect>
-                            </clipPath>
-                        </defs>
-                    </svg>
+                    <i class="fas fa-shopping-cart"></i> سبد خرید
                 </a>
             </div>
         </div>
@@ -90,7 +1040,6 @@
             {% if request.user.is_authenticated %}
                 <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
             {% endif %}
-
         </div>
         {% if request.user.is_authenticated %}
             <div>
@@ -103,153 +1052,212 @@
         {% endif %}
     </nav>
     <div class="headerContent">
-        <h3>مدرسه ی تمام هوشمند</h3>
-        <h1>اندیشه</h1>
-        <h1>پارسیان</h1>
-        <h3>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-            از طراحان گرافیک است. چاپگر ها و متون بلکه روزنامه و مجله در ستون و
-            سطر آنچنان که لازم است و برای شرایط فعلی
-        </h3>
-        <button>بیشتر بدانید</button>
+        <h3>به دنیای آموزش خوش آمدید</h3>
+        <h1>مجتمع آموزشی</h1>
+        <h1>اندیشه پارسیان</h1>
+        <h3>یادگیری را با ما تجربه کنید. ما به کیفیت آموزش در کنار پرورش مهارت‌های زندگی اهمیت می‌دهیم.</h3>
+        <button onclick="redirectToLogin()">همین حالا شروع کنید</button>
     </div>
 </header>
-<div class="cards">
-    <div class="card">
-        <img src="{% static 'images/open-book.png' %}" alt=""/>
-        <h1>لورم</h1>
-        <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با تولید
-            سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
-            ومتون بلکه روزنامه و
-        </p>
-        <a href="">بیشتر بدانید</a>
+
+<section class="cards">
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+        <img src="{% static 'images/elementary.png' %}" alt="دبستان">
+        <h1>دوره ابتدایی</h1>
+        <p>پایه‌گذاری صحیح آموزش‌های اولیه برای کودکان با روش‌های نوین و خلاق</p>
+        <a href="#">مشاهده جزئیات</a>
     </div>
-    <div class="card mainCard">
-        <img src="{% static 'images/school.png' %}" alt=""/>
-        <h1>لورم</h1>
-        <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با تولید
-            سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
-            ومتون بلکه روزنامه و
-        </p>
-        <a href="">بیشتر بدانید</a>
+    <div class="card mainCard" data-aos="fade-up" data-aos-delay="200">
+        <img src="{% static 'images/highschool.png' %}" alt="دبیرستان">
+        <h1>دوره متوسطه</h1>
+        <p>آموزش عمیق و کاربردی مفاهیم علمی همراه با آمادگی برای کنکور</p>
+        <a href="#">مشاهده جزئیات</a>
     </div>
-    <div class="card">
-        <img src="{% static '/images/teacher.png' %}" alt=""/>
-        <h1>لورم</h1>
-        <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با تولید
-            سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. چاپگرها
-            ومتون بلکه روزنامه و
-        </p>
-        <a href="">بیشتر بدانید</a>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+        <img src="{% static 'images/courses.png' %}" alt="دوره‌ها">
+        <h1>دوره‌های تخصصی</h1>
+        <p>آموزش مهارت‌های نوین و تخصصی برای ورود به بازار کار</p>
+        <a href="#">مشاهده جزئیات</a>
     </div>
-</div>
-<div class="schoolScores">
-    <h1 dir="rtl">
-        لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-        از طراحان گرافیک است.
-    </h1>
+</section>
+
+<section class="schoolScores">
+    <h1 data-aos="fade-up">کیفیت آموزش ما در آمار موفقیت دانش‌آموزان ما مشهود است</h1>
     <div>
-        <div>
-            <h1>20+</h1>
-            <h2>سابقه ی مدرسه</h2>
+        <div data-aos="zoom-in" data-aos-delay="100">
+            <h1>95%</h1>
+            <h2>قبولی در دانشگاه‌های برتر</h2>
         </div>
-        <div>
-            <h1>120</h1>
-            <h2>لورم ایپسوم</h2>
+        <div data-aos="zoom-in" data-aos-delay="200">
+            <h1>25+</h1>
+            <h2>سال سابقه آموزشی</h2>
         </div>
-        <div>
-            <h1>70+</h1>
-            <h2>تعداد دانش آموزان</h2>
+        <div data-aos="zoom-in" data-aos-delay="300">
+            <h1>85%</h1>
+            <h2>رضایت والدین</h2>
         </div>
     </div>
-</div>
-<div class="JoiningQuiz">
-    <div>
-        <div>
-            <h1>شرکت در آزمون ها</h1>
-            <p>
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ وبا
-                استفاده از طراحان گرافیک است. چاپگر ها و متون بلکه روزنامه و مجله در
-                ستون و سطر آنچنان که لازم است و بیشتر برای شرایط
-            </p>
-            <button class="leftBTN">بیشتر بدانید</button>
-            <button class="rightBTN">شرکت در آزمون</button>
+</section>
+
+<section class="JoiningQuiz">
+    <div data-aos="fade-right">
+        <h1>آزمون ورودی آموزشگاه</h1>
+        <p>برای ارزیابی سطح علمی دانش‌آموزان و همچنین آشنایی بیشتر با نقاط قوت و ضعف آن‌ها، آزمون ورودی برگزار می‌شود.
+            این آزمون به صورت رایگان و غیرحضوری (آنلاین) برگزار خواهد شد.</p>
+        <button class="leftBTN">اطلاعات بیشتر</button>
+        <button class="rightBTN">ثبت نام در آزمون</button>
+    </div>
+    <div data-aos="fade-left">
+        <img src="{% static 'images/quiz.jpg' %}" alt="آزمون ورودی">
+    </div>
+</section>
+
+<section class="info">
+    <div data-aos="fade-right">
+        <img src="{% static 'images/school.jpg' %}" alt="آموزشگاه">
+    </div>
+    <div data-aos="fade-left">
+        <h1>چرا اندیشه پارسیان؟</h1>
+        <p>آموزشگاه اندیشه پارسیان با بیش از 25 سال سابقه آموزشی، محیطی امن و پویا را برای رشد علمی و شخصیتی دانش‌آموزان
+            فراهم کرده است. ما با بهره‌گیری از مدرسین مجرب و امکانات آموزشی پیشرفته، به دنبال پرورش نسلی توانمند و خلاق
+            هستیم.</p>
+        <button>درباره ما بیشتر بدانید</button>
+    </div>
+</section>
+
+<section class="education-programs">
+    <h1 data-aos="fade-up">برنامه‌های آموزشی ما</h1>
+    <div class="programs-container">
+        <div class="program" data-aos="fade-up" data-aos-delay="100">
+            <div class="program-header">
+                <h2>دوره ابتدایی</h2>
+                <p>پایه‌های اول تا ششم</p>
+            </div>
+            <div class="program-content">
+                <ul>
+                    <li>آموزش مفاهیم پایه با روش‌های خلاق</li>
+                    <li>تقویت مهارت‌های زبانی و ریاضی</li>
+                    <li>کلاس‌های فوق برنامه هنری و ورزشی</li>
+                    <li>استفاده از تکنولوژی آموزشی نوین</li>
+                </ul>
+                <button>مشاهده جزئیات</button>
+            </div>
+        </div>
+
+        <div class="program" data-aos="fade-up" data-aos-delay="200">
+            <div class="program-header">
+                <h2>دوره متوسطه اول</h2>
+                <p>پایه‌های هفتم تا نهم</p>
+            </div>
+            <div class="program-content">
+                <ul>
+                    <li>تقویت مفاهیم پایه علوم و ریاضیات</li>
+                    <li>آشنایی با مهارت‌های پژوهشی</li>
+                    <li>مشاوره تحصیلی برای هدایت استعدادها</li>
+                    <li>کلاس‌های تقویتی ویژه</li>
+                </ul>
+                <button>مشاهده جزئیات</button>
+            </div>
+        </div>
+
+        <div class="program" data-aos="fade-up" data-aos-delay="300">
+            <div class="program-header">
+                <h2>دوره متوسطه دوم</h2>
+                <p>پایه‌های دهم تا دوازدهم</p>
+            </div>
+            <div class="program-content">
+                <ul>
+                    <li>آماده‌سازی ویژه برای کنکور سراسری</li>
+                    <li>کلاس‌های فشرده جمع‌بندی</li>
+                    <li>مشاوره انتخاب رشته تخصصی</li>
+                    <li>آزمون‌های آزمایشی منظم</li>
+                </ul>
+                <button>مشاهده جزئیات</button>
+            </div>
         </div>
     </div>
-    <div>
-        <img src="{% static 'images/QUizpng.png' %}" alt=""/>
-    </div>
-</div>
-<div class="info">
-    <div>
-        <img src="{% static 'images/nerd2.png' %}" alt=""/>
-    </div>
-    <div>
-        <h1>لورم ایپسوم متن</h1>
-        <p>
-            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده
-            از طراحان گرافیک است. چاپگر ها و متون بلکه روزنامه و مجله در ستون و
-            سطر آنچان که لازم است وبرای شرایط فعلی تکنولوژی مورد نیاز و کاربردهای
-            متونع با هدف بهبود ابزارهای
-        </p>
-        <button>دکمه</button>
-    </div>
-</div>
-{#<div class="slider">#}
-{#    <div class="Head">#}
-{#        <h1>لورم ایپسوم متن ساختگی با تولید</h1>#}
-{#        <p>#}
-{#            لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با#}
-{#            استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در#}
-{#            ستون و سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و#}
-{#            کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد، کتابهای زیادی#}
-{#            در شصت و سه درصد گذشته حال و آینده، شناخت فراوان جامعه و متخصصان را می#}
-{#            طلبد، تا با نرم افزارها شناخت بیشتری را برای طراحان رایانه ای علی#}
-{#            الخصوص طراحان#}
-{#        </p>#}
-{#    </div>#}
-{#    <div class="Slides">#}
-{#        <div class="slide FirstSlide"></div>#}
-{#        <div class="slide SecondSlide">#}
-{#            <button></button>#}
-{#        </div>#}
-{#        <div class="slide ThirdSlide"></div>#}
-{#        <div class="slide"></div>#}
-{#    </div>#}
-{#</div>#}
+</section>
+
 <footer>
     <div class="SocialLinks">
-        <a href="{{ footer.roubica }}" class="telegram" target="_blank">روبیکا</a>
-        <a href="{{ footer.instagram }}" class="instagram" target="_blank">اینستاگرام</a>
-        <a href="{{ footer.soroosh }}" class="twitter" target="_blank">سروش</a>
+        <a href="#" class="telegram">کانال تلگرام</a>
+        <a href="#" class="instagram">صفحه اینستاگرام</a>
+        <a href="#" class="twitter">توییتر ما</a>
     </div>
-    <div>
-        <div class="ManagerInformation">
-            <h2 class="ManagerName">نام مدیر: <span>{{ footer.boss_name }}</span></h2>
-            <h2 class="SchoolPhoneNumber">شماره تماس : <span>{{ footer.phone_number }}</span></h2>
-        </div>
-        <div class="SchoolAddress" dir="rtl">آدرس مدرسه : <span>{{ footer.school_address }}</span>
-        </div>
-        <div class="CopyRight">COPYRIGHT 2024 <span> Amirmahdi Mashayekhi </span></div>
+    <div dir="rtl" class="ManagerInformation">
+        <h2>مدیر آموزشگاه: <span>دکتر محمدی</span></h2>
+        <h2>تلفن تماس: <span>021-88XXXXXX</span></h2>
+    </div>
+    <div dir="rtl" class="SchoolAddress">
+        <h2>آدرس آموزشگاه: <span>تهران، خیابان شهید بهشتی، پلاک XX</span></h2>
+    </div>
+    <div class="CopyRight">
+        <p>تمامی حقوق این وب‌سایت متعلق به <span>آموزشگاه اندیشه پارسیان</span> می‌باشد &copy; 1402</p>
     </div>
 </footer>
-<script src="{% static 'JS/HomeStyle.js' %}"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
 <script>
+    // Initialize AOS library
+    AOS.init({
+        duration: 800,
+        easing: 'ease-in-out',
+        once: true
+    });
+
+    // Preloader
+    window.addEventListener('load', function () {
+        const preloader = document.querySelector('.preloader');
+        preloader.classList.add('fade-out');
+        setTimeout(function () {
+            preloader.style.display = 'none';
+        }, 500);
+    });
+
+    // Navbar scroll effect
+    window.addEventListener('scroll', function () {
+        const nav = document.querySelector('nav');
+        if (window.scrollY > 100) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+
+// Back to top button
+        const backToTop = document.querySelector('.back-to-top');
+        if (window.scrollY > 300) {
+            backToTop.classList.add('active');
+        } else {
+            backToTop.classList.remove('active');
+        }
+    });
+
+    // Mobile menu toggle
+    function clickChecker() {
+        const sideLinks = document.querySelector('.SideLinks');
+        const burgerInput = document.getElementById('burger');
+
+        if (burgerInput.checked) {
+            sideLinks.classList.add('active');
+        } else {
+            sideLinks.classList.remove('active');
+        }
+    }
+
+    // Back to top functionality
+    document.querySelector('.back-to-top').addEventListener('click', function () {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+
+    // Redirect functions
     function redirectToLogin() {
         window.location.href = "{% url 'account:login' %}";
     }
 
-    function redirectTo_logout() {
-        window.location.href = "{% url 'account:logout' %}";
-    }
-
     function redirectTo_panel() {
-        window.location.href = "{% url 'panel:course' %}"
+        window.location.href = "{% url 'panel:lastOrder' %}";
     }
-
 </script>
-</body>
-</html>
