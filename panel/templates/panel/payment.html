@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>صفحه تایید پرداخت</title>
+    <style>
+        @font-face {
+            font-family: 'Vazir';
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot');
+            src: url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.eot?#iefix') format('embedded-opentype'),
+            url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff2') format('woff2'),
+            url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.woff') format('woff'),
+            url('https://cdnjs.cloudflare.com/ajax/libs/vazir-font/30.1.0/Vazir.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Vazir', Tahoma, Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f0f8ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background: linear-gradient(135deg, #2b6cb0, #4299e1);
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 500px;
+            overflow: hidden;
+        }
+
+        .header {
+            background-color: #1a365d;
+            color: white;
+            padding: 20px;
+            text-align: center;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .content {
+            padding: 30px;
+            background-color: white;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c5282;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid #cbd5e0;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4299e1;
+            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.3);
+        }
+
+        .file-upload {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border: 2px dashed #a0aec0;
+            border-radius: 8px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            cursor: pointer;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .file-upload:hover {
+            border-color: #4299e1;
+            background-color: rgba(66, 153, 225, 0.05);
+        }
+
+        .file-upload input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .file-upload i {
+            font-size: 48px;
+            color: #4299e1;
+            margin-bottom: 10px;
+        }
+
+        .file-upload p {
+            color: #4a5568;
+            font-size: 16px;
+        }
+
+        .preview-container {
+            margin-top: 20px;
+            display: none;
+        }
+
+        .preview-image {
+            width: 100%;
+            max-height: 300px;
+            object-fit: contain;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .btn {
+            background-color: #4299e1;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .btn:hover {
+            background-color: #3182ce;
+        }
+
+        .btn:active {
+            transform: translateY(1px);
+        }
+
+        .success-message {
+            display: none;
+            background-color: #c6f6d5;
+            border: 1px solid #9ae6b4;
+            color: #22543d;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .receipt {
+            margin-top: 20px;
+            padding: 20px;
+            background-color: #ebf8ff;
+            border-radius: 8px;
+            border: 1px solid #bee3f8;
+            display: none;
+        }
+
+        .receipt-header {
+            color: #2b6cb0;
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .receipt-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px dashed #bee3f8;
+        }
+
+        .receipt-item:last-child {
+            border-bottom: none;
+        }
+
+        .receipt-label {
+            font-weight: bold;
+            color: #2c5282;
+        }
+
+        .receipt-value {
+            color: #1a365d;
+        }
+
+        .error-message {
+            color: #c53030;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">سیستم تایید پرداخت</div>
+    <div class="content">
+        <div class="form-group">
+            <label for="amount">مبلغ پرداختی (تومان):</label>
+            <input type="text" id="amount" placeholder="مثال: 1,500,000">
+            <div id="amount-error" class="error-message">لطفاً مبلغ را به صورت صحیح وارد کنید</div>
+        </div>
+
+        <div class="form-group">
+            <label for="track-id">شماره پیگیری:</label>
+            <input type="text" id="track-id" placeholder="شماره پیگیری تراکنش را وارد کنید">
+        </div>
+
+        <div class="form-group">
+            <label>تصویر رسید پرداخت:</label>
+            <div class="file-upload" id="drop-area">
+                <i>📁</i>
+                <p>برای آپلود تصویر رسید کلیک کنید یا فایل را اینجا رها کنید</p>
+                <input type="file" id="receipt-image" accept="image/*">
+            </div>
+            <div id="image-error" class="error-message">لطفاً تصویر رسید پرداخت را آپلود کنید</div>
+        </div>
+
+        <div class="preview-container" id="preview-container">
+            <img src="" alt="پیش‌نمایش رسید" class="preview-image" id="preview-image">
+        </div>
+
+        <button class="btn" id="submit-btn">ثبت و تایید پرداخت</button>
+
+        <div class="success-message" id="success-message">
+            پرداخت شما با موفقیت ثبت شد. لطفاً منتظر تایید نهایی باشید.
+        </div>
+
+        <div class="receipt" id="receipt">
+            <div class="receipt-header">رسید پرداخت</div>
+            <div class="receipt-item">
+                <span class="receipt-label">مبلغ:</span>
+                <span class="receipt-value" id="receipt-amount"></span>
+            </div>
+            <div class="receipt-item">
+                <span class="receipt-label">شماره پیگیری:</span>
+                <span class="receipt-value" id="receipt-track-id"></span>
+            </div>
+            <div class="receipt-item">
+                <span class="receipt-label">تاریخ:</span>
+                <span class="receipt-value" id="receipt-date"></span>
+            </div>
+            <div class="receipt-item">
+                <span class="receipt-label">وضعیت:</span>
+                <span class="receipt-value">در انتظار تایید</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+// تعریف متغیرها و انتخاب عناصر
+        const fileInput = document.getElementById('receipt-image');
+        const dropArea = document.getElementById('drop-area');
+        const previewContainer = document.getElementById('preview-container');
+        const previewImage = document.getElementById('preview-image');
+        const submitBtn = document.getElementById('submit-btn');
+        const successMessage = document.getElementById('success-message');
+        const receipt = document.getElementById('receipt');
+        const receiptAmount = document.getElementById('receipt-amount');
+        const receiptTrackId = document.getElementById('receipt-track-id');
+        const receiptDate = document.getElementById('receipt-date');
+        const amountInput = document.getElementById('amount');
+        const trackIdInput = document.getElementById('track-id');
+        const amountError = document.getElementById('amount-error');
+        const imageError = document.getElementById('image-error');
+
+        let hasImage = false;
+
+// تنظیم ورودی برای پذیرش فقط اعداد و کاما در فیلد مبلغ
+        amountInput.addEventListener('input', function (e) {
+            let value = e.target.value.replace(/[^\d,]/g, '');
+
+// حذف کاماهای اضافی و فرمت‌بندی مجدد
+            value = value.replace(/,/g, '');
+            if (value) {
+                value = Number(value).toLocaleString('fa-IR');
+            }
+
+            e.target.value = value;
+        });
+
+// مدیریت رها کردن فایل
+        ['dragenter', 'dragover', 'dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, preventDefaults, false);
+        });
+
+        function preventDefaults(e) {
+            e.preventDefault();
+            e.stopPropagation();
+        }
+
+        ['dragenter', 'dragover'].forEach(eventName => {
+            dropArea.addEventListener(eventName, highlight, false);
+        });
+
+        ['dragleave', 'drop'].forEach(eventName => {
+            dropArea.addEventListener(eventName, unhighlight, false);
+        });
+
+        function highlight() {
+            dropArea.style.borderColor = '#4299e1';
+            dropArea.style.backgroundColor = 'rgba(66, 153, 225, 0.1)';
+        }
+
+        function unhighlight() {
+            dropArea.style.borderColor = '#a0aec0';
+            dropArea.style.backgroundColor = 'transparent';
+        }
+
+        dropArea.addEventListener('drop', handleDrop, false);
+
+        function handleDrop(e) {
+            const dt = e.dataTransfer;
+            const files = dt.files;
+            if (files.length) {
+                fileInput.files = files;
+                handleFiles(files);
+            }
+        }
+
+        fileInput.addEventListener('change', function () {
+            handleFiles(this.files);
+        });
+
+        function handleFiles(files) {
+            if (files.length > 0) {
+                const file = files[0];
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        previewImage.src = e.target.result;
+                        previewContainer.style.display = 'block';
+                        hasImage = true;
+                        imageError.style.display = 'none';
+                    };
+
+                    reader.readAsDataURL(file);
+                }
+            }
+        }
+
+// ارسال فرم
+        submitBtn.addEventListener('click', function () {
+            let isValid = true;
+            const amount = amountInput.value.trim();
+
+            if (!amount) {
+                amountError.textContent = 'لطفاً مبلغ را وارد کنید';
+                amountError.style.display = 'block';
+                isValid = false;
+            } else {
+                amountError.style.display = 'none';
+            }
+
+            if (!hasImage) {
+                imageError.textContent = 'لطفاً تصویر رسید پرداخت را آپلود کنید';
+                imageError.style.display = 'block';
+                isValid = false;
+            } else {
+                imageError.style.display = 'none';
+            }
+
+            if (isValid) {
+// نمایش رسید و پیام موفقیت
+                receiptAmount.textContent = amount + ' تومان';
+                receiptTrackId.textContent = trackIdInput.value || 'وارد نشده';
+
+// تنظیم تاریخ فعلی
+                const now = new Date();
+                const options = {year: 'numeric', month: 'long', day: 'numeric', hour: '2-digit', minute: '2-digit'};
+                receiptDate.textContent = now.toLocaleDateString('fa-IR', options);
+
+// نمایش پیام موفقیت و رسید
+                successMessage.style.display = 'block';
+                receipt.style.display = 'block';
+
+// اسکرول به پایین برای دیدن پیام
+                setTimeout(() => {
+                    successMessage.scrollIntoView({behavior: 'smooth'});
+                }, 300);
+            }
+        });
+    });
+</script>
+</body>
+</html>
