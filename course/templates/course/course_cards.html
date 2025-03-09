@@ -3,7 +3,7 @@
 <div dir="rtl" class="Cards">
     {% for course in courses %}
         <div class="card">
-            {% if course.banner %}
+            {% if course.banner and course.banner.url %}
                 <img src="{{ course.banner.url }}" alt="{{ course.course_name }}"/>
             {% else %}
                 <p>No image available</p>

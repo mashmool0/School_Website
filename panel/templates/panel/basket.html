@@ -74,15 +74,15 @@
         </main>
         <div class="Sabad">
             <div>
-                <h1><span>77700</span>قیمت دوره ها</h1>
+                <h1><span>{{ total_sum|money }}</span>قیمت دوره ها</h1>
             </div>
             <div class="sood">
                 <div class="text"><p>سود شما</p></div>
-                <div class="sale"><p>5000</p></div>
+                <div class="sale"><p>0</p></div>
             </div>
             <div>
                 <h1>قابل پرداخت</h1>
-                <h2>199,000</h2>
+                <h2>{{ total_sum |money}}</h2>
                 <form>
                     <button type="submit">پرداخت</button>
                     <label for="codeTakhfif">کد تخفیف</label>

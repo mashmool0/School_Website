@@ -4,7 +4,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth import authenticate, update_session_auth_hash
 from django.contrib.auth.password_validation import validate_password
-from jalali_date import date2jalali
 
 from .models import Basket
 from account.models import UserStudent
@@ -22,7 +21,8 @@ def course_panel(request):
 @login_required(login_url="account:login")
 def basket_panel(request):
     baskets = Basket.objects.filter(basket_user=request.user)
-    return render(request, 'panel/basket.html', context={'baskets': baskets})
+    total_sum = sum(item.price for item in baskets)
+    return render(request, 'panel/basket.html', context={'baskets': baskets, 'total_sum': total_sum})
 
 
 @login_required(login_url="account:login")
