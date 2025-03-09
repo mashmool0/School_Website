@@ -152,3 +152,9 @@ def delete_form_basket(request):
         response = {"status": "error", "message": "درخواست نامعتبر"}
 
     return JsonResponse(response)
+
+
+def payment_view(request):
+    baskets = Basket.objects.filter(basket_user=request.user)
+    total_sum = sum(item.price for item in baskets)
+    return render(request, 'panel/payment.html', context={'baskets': baskets, 'total_sum': total_sum})

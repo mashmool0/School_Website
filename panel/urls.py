@@ -11,4 +11,5 @@ urlpatterns = [
     path('changePassword/', views.change_password, name='changePassword'),
     path('add_to_basket/', views.add_to_basket, name="add_to_basket"),
     path('delete_from_basket/', views.delete_form_basket, name="delete_from_basket"),
+    path('payment/', views.payment_view, name="payment"),
 ]
