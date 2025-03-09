@@ -1,3 +1,4 @@
+{% load money_converter %}
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
@@ -223,7 +224,7 @@
     <div class="content">
         <div class="form-group">
             <label for="amount">مبلغ پرداختی (تومان):</label>
-            <input type="text" id="amount" placeholder="مثال: 1,500,000">
+            <input type="text" id="amount" value="{{ total_sum | money }}" disabled>
             <div id="amount-error" class="error-message">لطفاً مبلغ را به صورت صحیح وارد کنید</div>
         </div>
 
