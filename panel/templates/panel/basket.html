@@ -83,11 +83,12 @@
             <div>
                 <h1>قابل پرداخت</h1>
                 <h2>{{ total_sum |money}}</h2>
-                <form>
-                    <button type="submit">پرداخت</button>
-                    <label for="codeTakhfif">کد تخفیف</label>
-                    <input type="text" id="codeTakhfif" name="codeTakhfif"/>
-                </form>
+<form action="/panel/payment/" method="POST">
+{% csrf_token %}
+<button type="submit">پرداخت</button>
+<label for="codeTakhfif">کد تخفیف</label>
+<input type="text" id="codeTakhfif" name="codeTakhfif" value="0"/>
+</form>
             </div>
         </div>
     </div>
