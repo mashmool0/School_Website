@@ -5,8 +5,8 @@
       "mountTo": "database"
     },
     {
-      "name": "medias",
-      "mountTo": "medias"
+      "name": "media",
+      "mountTo": "media"
     }
   ],
   "app": "andishedparsian"
