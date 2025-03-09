@@ -10,6 +10,7 @@ class Basket(models.Model):
     price = models.IntegerField(verbose_name="قیمت")
     basket_user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="ارتباط با")
     price_with_off = models.IntegerField(null=True, blank=True, verbose_name="قیمت با تخفیف ")
+
     # when user add to basket add this item
 
     def set_basket_user(self, user):
@@ -66,3 +67,24 @@ class UserTransactions(models.Model):
         verbose_name_plural = "پرداخت های اخیر کاربران"
 
 
+class UserPayment(models.Model):
+    STATUS_CHOICES = [
+        ('pending', 'در انتظار تایید'),
+        ('approved', 'تایید شده'),
+        ('rejected', 'رد شده'),
+    ]
+
+    user = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name="کاربر")
+    amount = models.IntegerField(verbose_name="مبلغ پرداخت")
+    receipt_image = models.ImageField(upload_to='receipts/', verbose_name="تصویر رسید")
+    payment_date = models.DateTimeField(auto_now_add=True, verbose_name="تاریخ ثبت")
+    status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='pending', verbose_name="وضعیت")
+    admin_comment = models.TextField(blank=True, null=True, verbose_name="توضیحات ادمین")
+
+    def __str__(self):
+        return f"پرداخت {self.id} - {self.user.username}"
+
+    class Meta:
+        verbose_name = "پرداخت کاربر"
+        verbose_name_plural = "پرداخت‌های کاربران"
+        ordering = ['-payment_date']
