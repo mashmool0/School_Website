@@ -6,6 +6,8 @@ from django.utils import timezone
 from .models import CustomUser
 import random
 from datetime import timedelta
+from .send_otp_sms import send_otp
+from django.views.decorators.csrf import csrf_exempt
 
 
 def signup_step1_view(request):
@@ -27,9 +29,9 @@ def request_otp_view(request):
         return JsonResponse({"error": "شماره موبایل الزامی است."}, status=400)
 
     user, created = CustomUser.objects.get_or_create(phone_number=phone)
-    otp_code = str(random.randint(100000, 999999))
+    otp_code = str(random.randint(1000, 9999))
     otp_token = str(random.getrandbits(48))
-    expire = timezone.now() + timedelta(minutes=5)
+    expire = timezone.now() + timedelta(minutes=2)
     user.otp_code = otp_code
     user.otp_token = otp_token
     user.otp_expire_at = expire
@@ -37,6 +39,7 @@ def request_otp_view(request):
     user.save()
 
     # اینجا بجا SMS مثلاً لاگ می‌گیری:
+    send_otp(phone_number=phone, otp=otp_code)
     print(f"OTP code for {phone} is {otp_code}")
 
     return JsonResponse({"success": True, "otp_token": otp_token, "msg": "کد تایید ارسال شد"})

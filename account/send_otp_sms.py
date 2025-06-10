@@ -2,12 +2,12 @@ import random
 import requests
 
 
-def send_otp(phone_number):
+def send_otp(phone_number, otp):
     try:
         token = "3FBAD97E4B297C34714A0139A3992DB80E75A24E"
         mobile = phone_number
         code_length = 4
-        optional_code = str(random.randint(1000, 9999))
+        optional_code = str(otp)
         headers = {
             "Authorization": token,
         }
@@ -18,7 +18,8 @@ def send_otp(phone_number):
             "optional_code": optional_code,
         }
 
-        response = requests.post("https://portal.amootsms.com/rest/SendQuickOTP", headers=headers, data=data)
+        response = requests.post(
+            "https://portal.amootsms.com/rest/SendQuickOTP", headers=headers, data=data)
         response.raise_for_status()  # Raise an error for bad status codes
         data_dict = response.json()  # Use .json() instead of ast.literal_eval
 

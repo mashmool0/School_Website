@@ -1,0 +1,165 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ثبت نام | ورود شماره موبایل</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="csrf-token" content="{{ csrf_token }}" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap");
+      body {
+        font-family: "Vazirmatn", sans-serif;
+        background: radial-gradient(circle at top left, #141e30, #243b55 90%);
+        min-height: 100vh;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .glass-box {
+        background: rgba(21, 25, 40, 0.86);
+        border-radius: 22px;
+        padding: 48px 32px 36px 32px;
+        box-shadow: 0 6px 38px #00153d44;
+        width: 360px;
+        text-align: right;
+        border: 1.2px solid #2355ff14;
+        position: relative;
+      }
+      .glass-box h2 {
+        color: #2a7cff;
+        margin-bottom: 12px;
+        font-size: 2rem;
+        font-weight: 700;
+        text-shadow: 0 2px 16px #121b398a;
+      }
+      .glass-box label {
+        color: #a7bbeb;
+        margin-bottom: 8px;
+        display: block;
+        font-size: 1.04rem;
+        font-weight: 500;
+        letter-spacing: 0.01em;
+      }
+      .input {
+        width: 100%;
+        padding: 14px 16px;
+        margin-bottom: 22px;
+        border: none;
+        border-radius: 12px;
+        font-size: 1.07rem;
+        background: linear-gradient(90deg, #253657 90%, #172033 100%);
+        color: #e6ecfa;
+        box-shadow: 0 2px 6px #0002;
+        outline: none;
+        transition: background 0.25s;
+      }
+      .input:focus {
+        background: linear-gradient(90deg, #2a4182 96%, #131a2a 100%);
+        color: #fff;
+      }
+      .submit-btn {
+        width: 100%;
+        padding: 13px 0;
+        border-radius: 11px;
+        border: none;
+        background: linear-gradient(90deg, #1636d3, #2a7cff 90%);
+        color: #fff;
+        font-size: 1.18rem;
+        font-weight: bold;
+        cursor: pointer;
+        box-shadow: 0 2px 16px #15367b33;
+        transition: background 0.22s, transform 0.11s;
+      }
+      .submit-btn:hover {
+        background: linear-gradient(90deg, #2a7cff 60%, #1636d3 100%);
+        transform: translateY(-2px) scale(1.012);
+      }
+      .msg,
+      .error {
+        margin-bottom: 14px;
+        min-height: 26px;
+        font-size: 1rem;
+        font-weight: bold;
+        text-align: center;
+      }
+      .msg {
+        color: #43fdad;
+        text-shadow: 0 1px 10px #0a302a22;
+      }
+      .error {
+        color: #ff577a;
+        text-shadow: 0 1px 10px #4e1a2b22;
+      }
+      @media (max-width: 500px) {
+        .glass-box {
+          width: 96vw;
+          min-width: 0;
+          padding: 36px 10vw 25px 10vw;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form class="glass-box" id="signupForm">
+      <h2>ثبت نام</h2>
+      <label for="phone">شماره موبایل خود را وارد کنید:</label>
+      <input
+        type="text"
+        id="phone"
+        class="input"
+        placeholder="مثلاً 09121234567"
+        required
+      />
+      <div id="msg" class="msg"></div>
+      <div id="error" class="error"></div>
+      <button type="submit" class="submit-btn">دریافت کد تایید</button>
+    </form>
+
+    <script>
+      function getCSRFToken() {
+        return document
+          .querySelector('meta[name="csrf-token"]')
+          .getAttribute("content");
+      }
+      document
+        .getElementById("signupForm")
+        .addEventListener("submit", async function (e) {
+          e.preventDefault();
+          document.getElementById("msg").innerText = "";
+          document.getElementById("error").innerText = "";
+          const phone = document.getElementById("phone").value.trim();
+          if (!/^09\d{9}$/.test(phone)) {
+            document.getElementById("error").innerText =
+              "شماره موبایل معتبر وارد کنید.";
+            return;
+          }
+          document.querySelector(".submit-btn").disabled = true;
+          document.querySelector(".submit-btn").innerText = "در حال ارسال...";
+
+          try {
+            const res = await fetch("/api/register/request-otp/", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCSRFToken(),
+              },
+              body: JSON.stringify({ phone_number: phone }),
+            });
+            const data = await res.json();
+            if (data.success) {
+              document.getElementById("msg").innerText = "کد تایید ارسال شد!";
+            } else {
+              document.getElementById("error").innerText = data.error || "خطا!";
+            }
+          } catch {
+            document.getElementById("error").innerText =
+              "ارتباط با سرور برقرار نشد!";
+          }
+          document.querySelector(".submit-btn").disabled = false;
+          document.querySelector(".submit-btn").innerText = "دریافت کد تایید";
+        });
+    </script>
+  </body>
+</html>

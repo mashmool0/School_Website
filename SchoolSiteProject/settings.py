@@ -114,7 +114,7 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'SchoolSiteProject.wsgi.application'
-
+AUTH_USER_MODEL = 'account.CustomUser'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
