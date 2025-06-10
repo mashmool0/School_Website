@@ -1,46 +1,42 @@
-{% load static %}
 <!DOCTYPE html>
 <html lang="fa">
   <head>
     <meta charset="UTF-8" />
-    <title>ثبت نام | ورود شماره موبایل</title>
+    <title>ثبت کد تایید</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="csrf-token" content="{{ csrf_token }}" />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap");
       body {
         font-family: "Vazirmatn", sans-serif;
-        background: radial-gradient(circle at top left, #141e30, #243b55 90%);
+        background: radial-gradient(circle at top right, #171f2d, #212c47 100%);
         min-height: 100vh;
-        margin: 0;
         display: flex;
-        justify-content: center;
         align-items: center;
+        justify-content: center;
       }
       .glass-box {
-        background: rgba(21, 25, 40, 0.86);
+        background: rgba(18, 22, 32, 0.89);
         border-radius: 22px;
-        padding: 48px 32px 36px 32px;
-        box-shadow: 0 6px 38px #00153d44;
-        width: 360px;
+        padding: 48px 24px 32px 24px;
+        box-shadow: 0 6px 36px #00153d39;
+        width: 350px;
         text-align: right;
-        border: 1.2px solid #2355ff14;
+        border: 1.2px solid #2355ff22;
         position: relative;
       }
-      .glass-box h2 {
+      h2 {
         color: #2a7cff;
-        margin-bottom: 12px;
-        font-size: 2rem;
+        margin-bottom: 16px;
+        font-size: 1.55rem;
         font-weight: 700;
         text-shadow: 0 2px 16px #121b398a;
       }
-      .glass-box label {
+      label {
         color: #a7bbeb;
         margin-bottom: 8px;
         display: block;
-        font-size: 1.04rem;
+        font-size: 1.07rem;
         font-weight: 500;
-        letter-spacing: 0.01em;
       }
       .input {
         width: 100%;
@@ -66,7 +62,7 @@
         border: none;
         background: linear-gradient(90deg, #1636d3, #2a7cff 90%);
         color: #fff;
-        font-size: 1.18rem;
+        font-size: 1.15rem;
         font-weight: bold;
         cursor: pointer;
         box-shadow: 0 2px 16px #15367b33;
@@ -92,77 +88,89 @@
         color: #ff577a;
         text-shadow: 0 1px 10px #4e1a2b22;
       }
-      @media (max-width: 500px) {
-        .glass-box {
-          width: 96vw;
-          min-width: 0;
-          padding: 36px 10vw 25px 10vw;
-        }
-      }
     </style>
   </head>
   <body>
-    <form class="glass-box" id="signupForm">
-      <h2>ثبت نام</h2>
-      <label for="phone">شماره موبایل خود را وارد کنید:</label>
+    <form class="glass-box" id="otpForm">
+      <h2>کد تایید پیامک شده</h2>
+      <label for="otp_input"
+        >کد تایید ارسال شده به شماره موبایل را وارد کنید:</label
+      >
       <input
         type="text"
-        id="phone"
+        id="otp_input"
         class="input"
-        placeholder="مثلاً 09121234567"
+        placeholder="مثلاً 123456"
         required
+        maxlength="6"
+        pattern="[0-9]+"
       />
       <div id="msg" class="msg"></div>
       <div id="error" class="error"></div>
-      <button type="submit" class="submit-btn">دریافت کد تایید</button>
+      <button type="submit" class="submit-btn">تایید کد</button>
     </form>
-
     <script>
       function getCSRFToken() {
         return document
           .querySelector('meta[name="csrf-token"]')
           .getAttribute("content");
       }
+
+      // متغیرها برای ارسال همراه دارد:
+      let phone_number = localStorage.getItem("pending_phone");
+      let otp_token = localStorage.getItem("pending_otp_token");
+      // این متغیرها را در مرحله قبلی ذخیره کن (در JS بعد از درخواست OTP)
+
       document
-        .getElementById("signupForm")
+        .getElementById("otpForm")
         .addEventListener("submit", async function (e) {
           e.preventDefault();
           document.getElementById("msg").innerText = "";
           document.getElementById("error").innerText = "";
-          const phone = document.getElementById("phone").value.trim();
-          if (!/^09\d{9}$/.test(phone)) {
+
+          const otp = document.getElementById("otp_input").value.trim();
+          if (!/^\d{4,6}$/.test(otp)) {
             document.getElementById("error").innerText =
-              "شماره موبایل معتبر وارد کنید.";
+              "کد تایید معتبر وارد کنید";
+            return;
+          }
+          if (!phone_number || !otp_token) {
+            document.getElementById("error").innerText =
+              "خطا: اطلاعات لازم یافت نشد. لطفا مرحله قبل را تکرار کنید.";
             return;
           }
           document.querySelector(".submit-btn").disabled = true;
-          document.querySelector(".submit-btn").innerText = "در حال ارسال...";
-
+          document.querySelector(".submit-btn").innerText = "در حال بررسی...";
           try {
-            const res = await fetch("/api/register/request-otp/", {
+            const res = await fetch("/api/register/verify-otp/", {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
                 "X-CSRFToken": getCSRFToken(),
               },
-              body: JSON.stringify({ phone_number: phone }),
+              body: JSON.stringify({
+                phone_number: phone_number,
+                otp: otp,
+                otp_token: otp_token,
+              }),
             });
             const data = await res.json();
             if (data.success) {
-              document.getElementById("msg").innerText = "کد تایید ارسال شد!";
-              // ذخیره اطلاعات برای مرحله بعد
-              localStorage.setItem("pending_phone", phone);
-              localStorage.setItem("pending_otp_token", data.otp_token);
+              document.getElementById("msg").innerText =
+                data.msg || "تایید شد!";
               setTimeout(() => {
-                window.location.href = "/signup/verify/";
-              }, 1200);
+                // برو مرحله بعد (مثلاً profile)
+                window.location.href = "/signup/profile/";
+              }, 1500);
+            } else {
+              document.getElementById("error").innerText = data.error || "خطا!";
             }
           } catch {
             document.getElementById("error").innerText =
-              "ارتباط با سرور برقرار نشد!";
+              "خطا در ارتباط با سرور.";
           }
           document.querySelector(".submit-btn").disabled = false;
-          document.querySelector(".submit-btn").innerText = "دریافت کد تایید";
+          document.querySelector(".submit-btn").innerText = "تایید کد";
         });
     </script>
   </body>

@@ -2,12 +2,12 @@ import random
 import requests
 
 
-def send_otp(phone_number, otp):
+def send_otp(phone_number):
     try:
         token = "3FBAD97E4B297C34714A0139A3992DB80E75A24E"
         mobile = phone_number
         code_length = 4
-        optional_code = str(otp)
+        optional_code = str(random.randint(1000, 9999))
         headers = {
             "Authorization": token,
         }
