@@ -94,10 +94,8 @@ class StudentProfile(models.Model):
                                 related_name="student_profile", verbose_name="کاربر")
 
     username = models.CharField(max_length=30, verbose_name="نام کاربری")
-    first_name = models.CharField(
-        max_length=50, verbose_name="نام", blank=True, null=True)
-    last_name = models.CharField(
-        max_length=50, verbose_name="نام خانوادگی", blank=True, null=True)
+    full_name = models.CharField(
+        max_length=100, verbose_name="نام و نام خانوادگی", blank=True, null=True)
     birthday_date = models.DateField(
         verbose_name="تاریخ تولد", blank=True, null=True)
     user_birthday_date = models.CharField(
@@ -147,8 +145,7 @@ class StudentProfile(models.Model):
         default=False, verbose_name="آیا اطلاعات اولیه تکمیل شده است ؟")
 
     def __str__(self):
-        full_name = f"{self.first_name or ''} {self.last_name or ''}".strip()
-        return full_name if full_name else self.username
+        return f"{self.full_name} - {self.username} - {self.user.phone_number}"
 
     class Meta:
         verbose_name = "دانش آموز"

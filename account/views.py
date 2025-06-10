@@ -50,7 +50,6 @@ def request_otp_view(request):
 
 
 def verify_otp_view(request):
-    print("jjjjjjjjjjjjjjjjjjjjj")
     if request.method != "POST":
         return JsonResponse({"error": "فقط متد POST مجاز است"}, status=405)
 
