@@ -14,12 +14,15 @@ from django.utils.dateparse import parse_date
 from .models import CustomUser, StudentProfile
 from django.db import transaction
 from django.contrib.auth import login, logout
+from .decorators import basic_info_should_complete, un_authenticated
 
 
+@un_authenticated
 def signup_step1_view(request):
     return render(request, "account/signup_step1.html")
 
 
+@un_authenticated
 def request_otp_view(request):
     if request.method != "POST":
         return JsonResponse({"error": "فقط متد POST مجاز است"}, status=405)
@@ -49,6 +52,7 @@ def request_otp_view(request):
     return JsonResponse({"success": True, "otp_token": otp_token, "msg": "کد تایید ارسال شد"})
 
 
+@un_authenticated
 def verify_otp_view(request):
     if request.method != "POST":
         return JsonResponse({"error": "فقط متد POST مجاز است"}, status=405)
@@ -97,11 +101,13 @@ def verify_otp_view(request):
     return JsonResponse({"success": True, "msg": "تایید شد. لطفاً اطلاعات تکمیلی خود را وارد کنید."})
 
 
+@un_authenticated
 def signup_step2_view(request):
     return render(request, "account/signup_step2.html")
 
 
 @login_required
+@basic_info_should_complete
 def complete_profile_view(request):
     import json
     if request.method != "POST":
@@ -129,6 +135,7 @@ def complete_profile_view(request):
             profile.mother_education = data.get("mother_education", "")
             profile.mother_phone = data.get("mother_mobile", "")
             profile.father_phone = data.get("father_mobile", "")
+            profile.basic_info = True
             profile.save()
     except Exception as e:
         return JsonResponse({"error": f"خطا هنگام ذخیره پروفایل: {str(e)}"}, status=500)
@@ -136,5 +143,7 @@ def complete_profile_view(request):
     return JsonResponse({"success": True, "msg": "ثبت اطلاعات تکمیلی انجام شد."})
 
 
+@login_required
+@basic_info_should_complete
 def signup_step3_view(request):
     return render(request, "account/signup_step3.html")
