@@ -144,6 +144,11 @@ class StudentProfile(models.Model):
     basic_info = models.BooleanField(
         default=False, verbose_name="آیا اطلاعات اولیه تکمیل شده است ؟")
 
+    last_year_gpa = models.CharField(
+        max_length=100, verbose_name="معدل سال قبل", blank=True, null=True)
+    previous_school = models.CharField(
+        max_length=100, verbose_name="مدرسه سال قبل", blank=True, null=True)
+
     def __str__(self):
         return f"{self.full_name} - {self.username} - {self.user.phone_number}"
 

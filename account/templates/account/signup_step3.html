@@ -111,7 +111,13 @@
       />
 
       <label for="birth_date">تاریخ تولد</label>
-      <input type="date" id="birth_date" name="birth_date" required />
+      <input
+        type="text"
+        id="birth_date"
+        name="birth_date"
+        required
+        placeholder="20/7/1383"
+      />
 
       <label for="previous_school">مدرسه قبلی</label>
       <input
@@ -173,6 +179,16 @@
         type="text"
         id="mother_mobile"
         name="mother_mobile"
+        required
+        maxlength="11"
+        placeholder="مثال: ۰۹۱۲۳۴۵۶۷۸۹"
+      />
+
+      <label for="father_mobile">شماره موبایل پدر</label>
+      <input
+        type="text"
+        id="father_mobile"
+        name="father_mobile"
         required
         maxlength="11"
         placeholder="مثال: ۰۹۱۲۳۴۵۶۷۸۹"

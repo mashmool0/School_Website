@@ -117,7 +117,7 @@ def complete_profile_view(request):
         with transaction.atomic():
             profile, created = StudentProfile.objects.get_or_create(user=user)
             profile.full_name = data.get("full_name", "")
-            profile.national_id = data.get("national_id", "")
+            profile.student_code_id = data.get("national_id", "")
             profile.birth_date = parse_date(data.get("birth_date")) or None
             profile.previous_school = data.get("previous_school", "")
             profile.last_year_gpa = data.get("last_year_gpa") or None
@@ -127,7 +127,8 @@ def complete_profile_view(request):
             profile.mother_name = data.get("mother_name", "")
             profile.mother_job = data.get("mother_job", "")
             profile.mother_education = data.get("mother_education", "")
-            profile.mother_mobile = data.get("mother_mobile", "")
+            profile.mother_phone = data.get("mother_mobile", "")
+            profile.father_phone = data.get("father_mobile", "")
             profile.save()
     except Exception as e:
         return JsonResponse({"error": f"خطا هنگام ذخیره پروفایل: {str(e)}"}, status=500)
