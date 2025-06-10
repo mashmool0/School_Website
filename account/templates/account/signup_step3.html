@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <title>تکمیل پروفایل دانش‌آموز</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- فونت وزیر متین -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #181848 0%, #2176ae 100%);
+        font-family: "Vazirmatn", sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .glass-box {
+        background: rgba(20, 31, 44, 0.85);
+        box-shadow: 0 0 40px 2px rgba(29, 45, 68, 0.3);
+        border-radius: 26px;
+        padding: 36px 34px;
+        max-width: 410px;
+        width: 100%;
+        backdrop-filter: blur(10px);
+      }
+      .glass-box h2 {
+        color: #fff;
+        text-align: center;
+        margin-bottom: 28px;
+        letter-spacing: 1px;
+        font-weight: 700;
+      }
+      label {
+        color: #c2dbff;
+        margin-bottom: 4px;
+        font-size: 0.95rem;
+        display: block;
+      }
+      input,
+      select {
+        background: rgba(43, 60, 87, 0.8);
+        color: #fff;
+        border: none;
+        border-radius: 10px;
+        width: 100%;
+        padding: 9px 13px;
+        margin-bottom: 14px;
+        font-size: 1rem;
+        outline: none;
+        transition: box-shadow 0.2s;
+      }
+      input:focus,
+      select:focus {
+        box-shadow: 0 0 0 2px #3496ff;
+      }
+      button {
+        width: 100%;
+        padding: 12px 0;
+        background: linear-gradient(90deg, #3a8dde, #1c2e57);
+        color: #fff;
+        border: none;
+        border-radius: 14px;
+        cursor: pointer;
+        font-weight: 600;
+        font-size: 1.12rem;
+        box-shadow: 0 8px 28px -8px #3574b3a8;
+        margin-top: 7px;
+        transition: background 0.2s;
+      }
+      button:active {
+        background: linear-gradient(90deg, #20568f, #1c2e57);
+      }
+      .status {
+        margin: 18px 0 3px 0;
+        min-height: 24px;
+        font-size: 1rem;
+        font-weight: 500;
+        text-align: center;
+      }
+      ::placeholder {
+        color: #abc6e8a1;
+      }
+    </style>
+  </head>
+  <body>
+    <form class="glass-box" id="profile-form" autocomplete="off">
+      <h2>تکمیل اطلاعات دانش‌آموز</h2>
+      <div class="status" id="status"></div>
+      <label for="full_name">نام و نام خانوادگی</label>
+      <input
+        type="text"
+        id="full_name"
+        name="full_name"
+        required
+        autofocus
+        placeholder="مثال: علی اکبری"
+      />
+
+      <label for="national_id">کد ملی</label>
+      <input
+        type="text"
+        id="national_id"
+        name="national_id"
+        required
+        maxlength="10"
+        placeholder="مثال: ۰۰۱۲۳۴۵۶۷۸"
+      />
+
+      <label for="birth_date">تاریخ تولد</label>
+      <input type="date" id="birth_date" name="birth_date" required />
+
+      <label for="previous_school">مدرسه قبلی</label>
+      <input
+        type="text"
+        id="previous_school"
+        name="previous_school"
+        required
+        placeholder="نام مدرسه قبلی"
+      />
+
+      <label for="last_year_gpa">معدل سال قبل</label>
+      <input
+        type="text"
+        id="last_year_gpa"
+        name="last_year_gpa"
+        required
+        maxlength="5"
+        placeholder="مثال: ۱۹.۲۵"
+      />
+
+      <hr style="border-color: #33518066; margin: 16px 0 12px 0" />
+
+      <label for="father_name">نام پدر</label>
+      <input
+        type="text"
+        id="father_name"
+        name="father_name"
+        required
+        placeholder="مثال: محمد اکبری"
+      />
+
+      <label for="father_job">شغل پدر</label>
+      <input type="text" id="father_job" name="father_job" required />
+
+      <label for="father_education">مدرک تحصیلی پدر</label>
+      <input
+        type="text"
+        id="father_education"
+        name="father_education"
+        required
+      />
+
+      <label for="mother_name">نام مادر</label>
+      <input type="text" id="mother_name" name="mother_name" required />
+
+      <label for="mother_job">شغل مادر</label>
+      <input type="text" id="mother_job" name="mother_job" required />
+
+      <label for="mother_education">مدرک تحصیلی مادر</label>
+      <input
+        type="text"
+        id="mother_education"
+        name="mother_education"
+        required
+      />
+
+      <label for="mother_mobile">شماره موبایل مادر</label>
+      <input
+        type="text"
+        id="mother_mobile"
+        name="mother_mobile"
+        required
+        maxlength="11"
+        placeholder="مثال: ۰۹۱۲۳۴۵۶۷۸۹"
+      />
+
+      <button type="submit" id="submit-btn">ثبت اطلاعات</button>
+    </form>
+
+    <script>
+      // Helper for CSRF
+      function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== "") {
+          const cookies = document.cookie.split(";");
+          for (let i = 0; i < cookies.length; i++) {
+            const cookie = cookies[i].trim();
+            if (cookie.substring(0, name.length + 1) === name + "=") {
+              cookieValue = decodeURIComponent(
+                cookie.substring(name.length + 1)
+              );
+              break;
+            }
+          }
+        }
+        return cookieValue;
+      }
+
+      const form = document.getElementById("profile-form");
+      const status = document.getElementById("status");
+      const btn = document.getElementById("submit-btn");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        status.textContent = "";
+        btn.disabled = true;
+
+        // Gather form data
+        const formData = new FormData(form);
+        const data = {};
+        formData.forEach((v, k) => (data[k] = v));
+
+        fetch("/api/register/complete-profile/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRFToken": getCookie("csrftoken"),
+          },
+          body: JSON.stringify(data),
+        })
+          .then((response) => response.json())
+          .then((data) => {
+            if (data.success) {
+              status.style.color = "#8fffbd";
+              status.textContent = "👑 ثبت موفقیت‌آمیز! در حال انتقال ...";
+              setTimeout(() => {
+                window.location.href = "/dashboard/";
+              }, 1050);
+            } else {
+              status.style.color = "#ffb3b3";
+              status.textContent =
+                data.error || data.msg || "خطایی رخ داده است.";
+            }
+          })
+          .catch((err) => {
+            status.style.color = "#ffb3b3";
+            status.textContent = "خطا در ارتباط با سرور.";
+          })
+          .finally(() => {
+            btn.disabled = false;
+          });
+      });
+    </script>
+  </body>
+</html>

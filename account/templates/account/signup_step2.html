@@ -159,8 +159,7 @@
               document.getElementById("msg").innerText =
                 data.msg || "تایید شد!";
               setTimeout(() => {
-                // برو مرحله بعد (مثلاً profile)
-                window.location.href = "/signup/profile/";
+                window.location.href = "/signup/complete/";
               }, 1500);
             } else {
               document.getElementById("error").innerText = data.error || "خطا!";

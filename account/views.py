@@ -8,6 +8,12 @@ import random
 from datetime import timedelta
 from .send_otp_sms import send_otp
 from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_POST
+from django.contrib.auth.decorators import login_required
+from django.utils.dateparse import parse_date
+from .models import CustomUser, StudentProfile
+from django.db import transaction
+from django.contrib.auth import login, logout
 
 
 def signup_step1_view(request):
@@ -44,6 +50,7 @@ def request_otp_view(request):
 
 
 def verify_otp_view(request):
+    print("jjjjjjjjjjjjjjjjjjjjj")
     if request.method != "POST":
         return JsonResponse({"error": "فقط متد POST مجاز است"}, status=405)
 
@@ -85,6 +92,7 @@ def verify_otp_view(request):
     user.otp_attempts = 0
     user.is_active = True  # یا هر flag مناسب (اگر حساب باید فعال شود)
     user.save()
+    login(request, user=user)
 
     # شما می‌توانید یک توکن یا flag ثبت‌نام مرحله بعدی هم به خروجی اضافه کنید
     return JsonResponse({"success": True, "msg": "تایید شد. لطفاً اطلاعات تکمیلی خود را وارد کنید."})
@@ -92,3 +100,41 @@ def verify_otp_view(request):
 
 def signup_step2_view(request):
     return render(request, "account/signup_step2.html")
+
+
+@login_required
+def complete_profile_view(request):
+    import json
+    if request.method != "POST":
+        return JsonResponse({"error": "فقط متد POST مجاز است."}, status=405)
+    try:
+        data = json.loads(request.body)
+    except Exception:
+        return JsonResponse({"error": "دیتای ورودی نامعتبر است."}, status=400)
+
+    user = request.user
+    # ... ادامه کد قبلی (حذف phone و otp_token) ...
+    try:
+        with transaction.atomic():
+            profile, created = StudentProfile.objects.get_or_create(user=user)
+            profile.full_name = data.get("full_name", "")
+            profile.national_id = data.get("national_id", "")
+            profile.birth_date = parse_date(data.get("birth_date")) or None
+            profile.previous_school = data.get("previous_school", "")
+            profile.last_year_gpa = data.get("last_year_gpa") or None
+            profile.father_name = data.get("father_name", "")
+            profile.father_job = data.get("father_job", "")
+            profile.father_education = data.get("father_education", "")
+            profile.mother_name = data.get("mother_name", "")
+            profile.mother_job = data.get("mother_job", "")
+            profile.mother_education = data.get("mother_education", "")
+            profile.mother_mobile = data.get("mother_mobile", "")
+            profile.save()
+    except Exception as e:
+        return JsonResponse({"error": f"خطا هنگام ذخیره پروفایل: {str(e)}"}, status=500)
+
+    return JsonResponse({"success": True, "msg": "ثبت اطلاعات تکمیلی انجام شد."})
+
+
+def signup_step3_view(request):
+    return render(request, "account/signup_step3.html")
