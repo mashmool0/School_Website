@@ -32,30 +32,24 @@
                 <span></span>
             </label>
             <div class="SideLinks">
-                <a href="{% url 'home:home' %}">خانه</a>
+                <a href="">خانه</a>
                 <a href="">آموزشگاه</a>
-                <a href="{% url 'course:course' %}">فروشگاه</a>
+                <a href="">فروشگاه</a>
                 <a href="">وبلاگ</a>
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
-                {% endif %}
-                {% if request.user.is_authenticated %}
-                    <a href="{% url 'panel:lastOrder' %}">پنل کاربری</a>
-                {% endif %}
+                    <a href="{">ارتباط باما</a>
+                    <a href="">پنل کاربری</a>
 
-                <a href="{% url 'panel:basket' %}" class="tab">
+                <a href="" class="tab">
                     <i class="fas fa-shopping-cart"></i> سبد خرید
                 </a>
             </div>
         </div>
         <div class="links">
-            <a href="{% url 'home:home' %}">خانه</a>
+            <a href="">خانه</a>
             <a href="">آموزشگاه</a>
-            <a href="{% url 'course:course' %}">فروشگاه</a>
+            <a href="">فروشگاه</a>
             <a href="">وبلاگ</a>
-            {% if request.user.is_authenticated %}
-                <a href="{% url 'contactUs:contactus' %}">ارتباط باما</a>
-            {% endif %}
+                <a href="">ارتباط باما</a>
         </div>
         {% if request.user.is_authenticated %}
             <div>
@@ -78,19 +72,19 @@
 
 <section class="cards">
     <div class="card" data-aos="fade-up" data-aos-delay="100">
-        <img src="{% static 'images/elementary.png' %}" alt="دبستان">
+        <img src="" alt="دبستان">
         <h1>دوره ابتدایی</h1>
         <p>پایه‌گذاری صحیح آموزش‌های اولیه برای کودکان با روش‌های نوین و خلاق</p>
         <a href="#">مشاهده جزئیات</a>
     </div>
     <div class="card mainCard" data-aos="fade-up" data-aos-delay="200">
-        <img src="{% static 'images/highschool.png' %}" alt="دبیرستان">
+        <img src="" alt="دبیرستان">
         <h1>دوره متوسطه</h1>
         <p>آموزش عمیق و کاربردی مفاهیم علمی همراه با آمادگی برای کنکور</p>
         <a href="#">مشاهده جزئیات</a>
     </div>
     <div class="card" data-aos="fade-up" data-aos-delay="300">
-        <img src="{% static 'images/courses.png' %}" alt="دوره‌ها">
+        <img src="" alt="دوره‌ها">
         <h1>دوره‌های تخصصی</h1>
         <p>آموزش مهارت‌های نوین و تخصصی برای ورود به بازار کار</p>
         <a href="#">مشاهده جزئیات</a>
@@ -124,13 +118,13 @@
         <button class="rightBTN">ثبت نام در آزمون</button>
     </div>
     <div data-aos="fade-left">
-        <img src="{% static 'images/quiz.jpg' %}" alt="آزمون ورودی">
+        <img src="" alt="آزمون ورودی">
     </div>
 </section>
 
 <section class="info">
     <div data-aos="fade-right">
-        <img src="{% static 'images/school.jpg' %}" alt="آموزشگاه">
+        <img src="" alt="آموزشگاه">
     </div>
     <div data-aos="fade-left">
         <h1>چرا اندیشه پارسیان؟</h1>
@@ -216,10 +210,10 @@
 <script src='{% static 'JS/home.js' %}'></script>
 <script>
     function redirectToLogin() {
-        window.location.href = "{% url 'account:login' %}";
+        window.location.href = "";
     }
 
     function redirectTo_panel() {
-        window.location.href = "{% url 'panel:lastOrder' %}";
+        window.location.href = "";
     }
 </script>

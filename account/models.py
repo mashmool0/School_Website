@@ -143,6 +143,8 @@ class StudentProfile(models.Model):
         default=False, verbose_name="قابلیت پرداخت و ثبت نام")
     is_information_submited = models.BooleanField(
         default=False, verbose_name="کاربر اطلاعات شخصی خود را کامل کرده است")
+    basic_info = models.BooleanField(
+        default=False, verbose_name="آیا اطلاعات اولیه تکمیل شده است ؟")
 
     def __str__(self):
         full_name = f"{self.first_name or ''} {self.last_name or ''}".strip()
