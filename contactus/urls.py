@@ -1,7 +1,7 @@
-from django.urls import path
-from . import views
+# from django.urls import path
+# from . import views
 
-app_name = "contactUs"
+# app_name = "contactUs"
 urlpatterns = [
-    path('', views.contact_us, name="contactus"),
+    # path('', views.contact_us, name="contactus"),
 ]
