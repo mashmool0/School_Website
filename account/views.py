@@ -147,3 +147,9 @@ def complete_profile_view(request):
 @basic_info_should_complete
 def signup_step3_view(request):
     return render(request, "account/signup_step3.html")
+
+
+@login_required
+@basic_info_should_complete
+def done(request):
+    return render(request, "account/done_signup_steps.html")

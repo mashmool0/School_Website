@@ -11,4 +11,6 @@ urlpatterns = [
     path("api/register/complete-profile/",
          views.complete_profile_view, name="complete_profile"),
     path("signup/complete/", views.signup_step3_view, name="signup_complete"),
+    path("signup/complete/done", views.done, name="done_signup"),
+
 ]
