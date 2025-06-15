@@ -1,18 +1,18 @@
 // Initialize AOS library
-AOS.init({
-  duration: 800,
-  easing: "ease-in-out",
-  once: true,
-});
+// AOS.init({
+//   duration: 800,
+//   easing: "ease-in-out",
+//   once: true,
+// });
 
-// Preloader
-window.addEventListener("load", function () {
-  const preloader = document.querySelector(".preloader");
-  preloader.classList.add("fade-out");
-  setTimeout(function () {
-    preloader.style.display = "none";
-  }, 500);
-});
+// // Preloader
+// window.addEventListener("load", function () {
+//   const preloader = document.querySelector(".preloader");
+//   preloader.classList.add("fade-out");
+//   setTimeout(function () {
+//     preloader.style.display = "none";
+//   }, 500);
+// });
 
 // Navbar scroll effect
 window.addEventListener("scroll", function () {
