@@ -119,7 +119,7 @@ def complete_profile_view(request):
             profile, created = StudentProfile.objects.get_or_create(user=user)
             profile.full_name = data.get("full_name", "")
             profile.student_code_id = data.get("national_id", "")
-            profile.birth_date = parse_date(data.get("birth_date")) or None
+            profile.birth_date = data.get("birth_date") or None
             profile.previous_school = data.get("previous_school", "")
             profile.last_year_gpa = data.get("last_year_gpa") or None
             profile.father_name = data.get("father_name", "")
