@@ -41,8 +41,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     # ------------ OTP داخلی ----------
     otp_code = models.CharField(
         max_length=6, blank=True, null=True, verbose_name="کدفعلی OTP")
-    otp_token = models.CharField(
-        max_length=100, blank=True, null=True, unique=True, verbose_name="توکن OTP")
     otp_expire_at = models.DateTimeField(
         blank=True, null=True, verbose_name="انقضای OTP")
     otp_attempts = models.PositiveSmallIntegerField(
@@ -60,10 +58,9 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
     def reset_otp(self):
         self.otp_code = None
-        self.otp_token = None
         self.otp_expire_at = None
         self.otp_attempts = 0
-        self.save(update_fields=['otp_code', 'otp_token',
+        self.save(update_fields=['otp_code',
                   'otp_expire_at', 'otp_attempts'])
 
     class Meta:

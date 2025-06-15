@@ -152,7 +152,6 @@
               document.getElementById("msg").innerText = "کد تایید ارسال شد!";
               // ذخیره اطلاعات برای مرحله بعد
               localStorage.setItem("pending_phone", phone);
-              localStorage.setItem("pending_otp_token", data.otp_token);
               setTimeout(() => {
                 window.location.href = "/signup/verify/";
               }, 1200);

@@ -118,7 +118,6 @@
 
       // متغیرها برای ارسال همراه دارد:
       let phone_number = localStorage.getItem("pending_phone");
-      let otp_token = localStorage.getItem("pending_otp_token");
       // این متغیرها را در مرحله قبلی ذخیره کن (در JS بعد از درخواست OTP)
 
       document
@@ -134,7 +133,7 @@
               "کد تایید معتبر وارد کنید";
             return;
           }
-          if (!phone_number || !otp_token) {
+          if (!phone_number) {
             document.getElementById("error").innerText =
               "خطا: اطلاعات لازم یافت نشد. لطفا مرحله قبل را تکرار کنید.";
             return;
@@ -151,7 +150,6 @@
               body: JSON.stringify({
                 phone_number: phone_number,
                 otp: otp,
-                otp_token: otp_token,
               }),
             });
             const data = await res.json();

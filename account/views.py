@@ -40,16 +40,14 @@ def request_otp_view(request):
     # اینجا بجا SMS مثلاً لاگ می‌گیری:
     otp_code, data = send_otp(phone_number=phone)
     user, created = CustomUser.objects.get_or_create(phone_number=phone)
-    otp_token = str(random.getrandbits(48))
     expire = timezone.now() + timedelta(minutes=2)
     user.otp_code = otp_code
-    user.otp_token = otp_token
     user.otp_expire_at = expire
     user.otp_attempts += 0
     user.save()
     print(f"OTP code for {phone} is {otp_code}")
 
-    return JsonResponse({"success": True, "otp_token": otp_token, "msg": "کد تایید ارسال شد"})
+    return JsonResponse({"success": True, "msg": "کد تایید ارسال شد"})
 
 
 @un_authenticated
@@ -62,15 +60,14 @@ def verify_otp_view(request):
         data = json.loads(request.body)
         phone = data.get("phone_number")
         otp = data.get("otp")
-        otp_token = data.get("otp_token")
     except Exception:
         return JsonResponse({"error": "درخواست نامعتبر."}, status=400)
 
-    if not (phone and otp and otp_token):
+    if not (phone and otp):
         return JsonResponse({"error": "همه فیلدها الزامی است."}, status=400)
 
     try:
-        user = CustomUser.objects.get(phone_number=phone, otp_token=otp_token)
+        user = CustomUser.objects.get(phone_number=phone)
     except CustomUser.DoesNotExist:
         return JsonResponse({"error": "کد تایید یا شماره درست نیست."}, status=404)
 
@@ -90,7 +87,6 @@ def verify_otp_view(request):
 
     # موفقیت، OTP reset
     user.otp_code = ""
-    user.otp_token = ""
     user.otp_expire_at = None
     user.otp_attempts = 0
     user.is_active = True  # یا هر flag مناسب (اگر حساب باید فعال شود)
@@ -118,7 +114,6 @@ def complete_profile_view(request):
         return JsonResponse({"error": "دیتای ورودی نامعتبر است."}, status=400)
 
     user = request.user
-    # ... ادامه کد قبلی (حذف phone و otp_token) ...
     try:
         with transaction.atomic():
             profile, created = StudentProfile.objects.get_or_create(user=user)
