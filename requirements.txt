@@ -6,7 +6,7 @@ charset-normalizer==3.3.2
 diff-match-patch==20230430
 distutils-pytest==0.2.1
 dj-database-url==2.2.0
-Django==5.0.6
+Django==5.2.3
 django-background-tasks==1.2.5
 django-cleanup==8.1.0
 django-compat==1.0.15
