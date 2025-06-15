@@ -1,14 +1,70 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="fa">
-<head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>مجتمع علمی آموزشی اندیشه پارسیان</title>
-    <link rel="stylesheet" href="{% static 'css/newhome.css' %}"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css"/>
-</head>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>مجتمع علمی آموزشی اندیشه پارسیان | آموزشگاه برتر در جیرفت</title>
+    
+        <!-- توضیحات سایت (برای گوگل و شبکه‌های اجتماعی) -->
+        <meta name="description" content="مجتمع آموزشی اندیشه پارسیان، پیشرو در آموزش خلاقانه، آمادگی کنکور و المپیاد، مهارت‌های زندگی و رشد شخصیتی برای دوره های مختلف، واقع در جیرفت."/>
+    
+        <!-- کلمات کلیدی (سابقاً مهم بود حالا ارزش کمتر، ولی ضرری نداره) -->
+        <meta name="keywords" content="مدرسه, آموزشگاه, اندیشه پارسیان, متوسطه اول, متوسطه دوم, ابتدایی, آموزش خلاقانه, کنکور, المپیاد, جیرفت">
+    
+        <!-- Open Graph برای تقسیم در شبکه‌های اجتماعی (واتساپ، فیسبوک و ...) -->
+        <meta property="og:type" content="website"/>
+        <meta property="og:locale" content="fa_IR"/>
+        <meta property="og:title" content="مجتمع آموزشی اندیشه پارسیان"/>
+        <meta property="og:description" content="آموزش خلاقانه و هدفمند، آمادگی کنکور و المپیاد و مهارت‌های زندگی. مجتمع اندیشه پارسیان انتخابی هوشمندانه برای فرزندان شما."/>
+        <meta property="og:url" content="https://example.com/"/>
+        <meta property="og:image" content="{% static 'images/og-image.jpg' %}"/> <!-- عکس شاخص (یک تصویر جذاب از مدرسه) -->
+        <meta property="og:site_name" content="مجتمع علمی آموزشی اندیشه پارسیان"/>
+    
+        <!-- Twitter Card برای توییتر -->
+        <meta name="twitter:card" content="summary_large_image"/>
+        <meta name="twitter:title" content="مجتمع آموزشی اندیشه پارسیان" />
+        <meta name="twitter:description" content="آموزش متمایز، کنکور، المپیاد و رشد فردی در جیرفت." />
+        <meta name="twitter:image" content="{% static 'images/og-image.jpg' %}"/>
+    
+        <!-- Canonical (آدرس اصلی صفحه) -->
+        <link rel="canonical" href="https://example.com/"/>
+    
+        <!-- Favicon -->
+        <link rel="icon" type="image/png" href="{% static 'images/favicon.png' %}"/>
+    
+        <!-- اسکیما: Structured Data (شخص / Organization) -->
+        <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "EducationalOrganization",
+          "name": "مجتمع علمی آموزشی اندیشه پارسیان",
+          "alternateName": "Andishe Parsian School",
+          "url": "https://example.com/",
+          "logo": "{% static 'images/og-image.jpg' %}",
+          "description": "پیشرو در آموزش خلاقانه، آمادگی کنکور و المپیاد و رشد مهارت‌های فردی در جیرفت.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "جیرفت",
+            "addressLocality": "جیرفت",
+            "addressCountry": "ایران"
+          },
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "telephone": "021-88XXXXXX",
+              "contactType": "customer service"
+            }
+          ],
+          "founder": "غلام سالاری"
+        }
+        </script>
+    
+        <link rel="stylesheet" href="{% static 'css/newhome.css' %}"/>
+        <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}"/>
+        <link rel="stylesheet" href="{% static 'aos/aos.css' %}"/>
+    </head>
+    
 <body>
 <!-- Preloader -->
 <div class="preloader">
