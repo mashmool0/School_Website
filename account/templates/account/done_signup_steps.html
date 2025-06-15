@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="fa">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>اطلاعات موفقیت‌آمیز</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        background: linear-gradient(to bottom right, #0d1a2d, #161d27);
+        font-family: "Vazirmatn", sans-serif;
+        color: #fff;
+      }
+      .container {
+        text-align: center;
+        padding: 30px;
+        background-color: rgba(0, 0, 0, 0.6);
+        border-radius: 8px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+      }
+      .message {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+      }
+      .button {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 1rem;
+        color: #fff;
+        background-color: #0069d9;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+      .button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="message">اطلاعات شما با موفقیت ثبت شد!</div>
+      <button class="button" id="redirectButton">برو به خانه</button>
+    </div>
+
+    <script>
+      // ریدایرکت پس از 5 ثانیه
+      setTimeout(() => {
+        window.location.href = "/"; // مسیر صفحه خانه خود را تنظیم کنید
+      }, 5000);
+
+      // ریدایرکت هنگام کلیک بر روی دکمه
+      document
+        .getElementById("redirectButton")
+        .addEventListener("click", function () {
+          window.location.href = "/"; // مسیر صفحه خانه خود را تنظیم کنید
+        });
+    </script>
+  </body>
+</html>

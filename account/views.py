@@ -150,6 +150,5 @@ def signup_step3_view(request):
 
 
 @login_required
-@basic_info_should_complete
 def done(request):
     return render(request, "account/done_signup_steps.html")
