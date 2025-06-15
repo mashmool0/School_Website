@@ -95,6 +95,8 @@ class StudentProfile(models.Model):
         max_length=100, verbose_name="نام و نام خانوادگی", blank=True, null=True)
     birthday_date = models.DateField(
         verbose_name="تاریخ تولد", blank=True, null=True)
+    birth_date = models.CharField(
+        max_length=30, verbose_name="تاریخ تولد اولیه", blank=True, null=True)
     user_birthday_date = models.CharField(
         max_length=20, blank=True, null=True, verbose_name="تاریخ تولد (رشته)")
     section = models.CharField(
@@ -145,6 +147,9 @@ class StudentProfile(models.Model):
         max_length=100, verbose_name="معدل سال قبل", blank=True, null=True)
     previous_school = models.CharField(
         max_length=100, verbose_name="مدرسه سال قبل", blank=True, null=True)
+
+    target_for_signup = models.CharField(
+        max_length=500, verbose_name="هدف ثبت نام : ", blank=True, null=True)
 
     def __str__(self):
         return f"{self.full_name} - {self.username} - {self.user.phone_number}"

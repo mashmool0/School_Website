@@ -130,6 +130,11 @@ def complete_profile_view(request):
             profile.mother_education = data.get("mother_education", "")
             profile.mother_phone = data.get("mother_mobile", "")
             profile.father_phone = data.get("father_mobile", "")
+            targets = data.get("target_for_signup", "")
+            if isinstance(targets, list):
+                profile.target_for_signup = "---".join(targets)
+            else:
+                profile.target_for_signup = targets
             profile.basic_info = True
             profile.save()
     except Exception as e:

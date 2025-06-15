@@ -84,6 +84,82 @@
       ::placeholder {
         color: #abc6e8a1;
       }
+      /* Add this to your existing style section */
+
+      /* Checkbox Group Styling */
+      .checkbox-group {
+        background: rgba(43, 60, 87, 0.8);
+        border-radius: 10px;
+        padding: 8px 12px;
+        margin-bottom: 14px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+      }
+
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        padding: 6px 0;
+      }
+
+      .checkbox-item input[type="checkbox"] {
+        appearance: none;
+        -webkit-appearance: none;
+        width: 18px;
+        height: 18px;
+        border: 2px solid #4a7bb3;
+        border-radius: 4px;
+        background-color: rgba(20, 31, 44, 0.5);
+        margin-left: 8px;
+        cursor: pointer;
+        position: relative;
+        transition: all 0.2s ease;
+        flex-shrink: 0;
+      }
+
+      .checkbox-item input[type="checkbox"]:checked {
+        background-color: #3a8dde;
+        border-color: #3a8dde;
+      }
+
+      .checkbox-item input[type="checkbox"]:checked::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 5px;
+        height: 10px;
+        border: solid white;
+        border-width: 0 2px 2px 0;
+        transform: translate(-50%, -60%) rotate(45deg);
+      }
+
+      .checkbox-item input[type="checkbox"]:focus {
+        box-shadow: 0 0 0 2px #3496ff;
+        outline: none;
+      }
+
+      .checkbox-item label {
+        color: #c2dbff;
+        font-size: 0.9rem;
+        cursor: pointer;
+        margin-bottom: 0;
+        transition: color 0.2s;
+        user-select: none;
+      }
+
+      .checkbox-item:hover label {
+        color: #fff;
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 480px) {
+        .checkbox-group {
+          grid-template-columns: 1fr;
+        }
+      }
+
     </style>
   </head>
   <body>
@@ -118,7 +194,85 @@
         required
         placeholder="20/7/1383"
       />
-
+      <!-- Add this anywhere in your form where you want the multi-select to appear -->
+      <label for="target_for_signup"
+        >هدف ثبت نام (می‌توانید چند مورد انتخاب کنید)</label
+      >
+      <div class="checkbox-group">
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target-2"
+            name="target_for_signup"
+            value="پایه هفتم"
+          />
+          <label for="target-2">پایه هفتم</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target-1"
+            name="target_for_signup"
+            value="پایه هشتم"
+          />
+          <label for="target-1">پایه هشتم</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target0"
+            name="target_for_signup"
+            value="پایه نهم"
+          />
+          <label for="target0">پایه نهم</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target1"
+            name="target_for_signup"
+            value="پایه دهم"
+          />
+          <label for="target1">پایه دهم</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target2"
+            name="target_for_signup"
+            value="پایه یازدهم"
+          />
+          <label for="target2">پایه یازدهم</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target3"
+            name="target_for_signup"
+            value="پایه دوازدهم"
+          />
+          <label for="target3">پایه دوازدهم</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target4"
+            name="target_for_signup"
+            value="آموزشگاه"
+          />
+          <label for="target4">آموزشگاه</label>
+        </div>
+        <div class="checkbox-item">
+          <input
+            type="checkbox"
+            id="target5"
+            name="target_for_signup"
+            value="ماز"
+          />
+          <label for="target5">ماز</label>
+        </div>
+      </div>
+    </br>
       <label for="previous_school">مدرسه قبلی</label>
       <input
         type="text"
@@ -196,7 +350,6 @@
 
       <button type="submit" id="submit-btn">ثبت اطلاعات</button>
     </form>
-
     <script>
       // Helper for CSRF
       function getCookie(name) {
@@ -206,30 +359,44 @@
           for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
             if (cookie.substring(0, name.length + 1) === name + "=") {
-              cookieValue = decodeURIComponent(
-                cookie.substring(name.length + 1)
-              );
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
               break;
             }
           }
         }
         return cookieValue;
       }
-
+    
       const form = document.getElementById("profile-form");
       const status = document.getElementById("status");
       const btn = document.getElementById("submit-btn");
-
+    
       form.addEventListener("submit", function (e) {
         e.preventDefault();
         status.textContent = "";
         btn.disabled = true;
-
+    
         // Gather form data
         const formData = new FormData(form);
         const data = {};
-        formData.forEach((v, k) => (data[k] = v));
-
+        
+        // Handle regular form fields
+        formData.forEach((v, k) => {
+          // Skip target_for_signup as we'll handle it separately
+          if (k !== "target_for_signup") {
+            data[k] = v;
+          }
+        });
+        
+        // Handle checkbox selections
+        const selectedTargets = [];
+        document.querySelectorAll('input[name="target_for_signup"]:checked').forEach(checkbox => {
+          selectedTargets.push(checkbox.value);
+        });
+        
+        // Add targets to data object
+        data.target_for_signup = selectedTargets;
+    
         fetch("/api/register/complete-profile/", {
           method: "POST",
           headers: {
@@ -238,21 +405,26 @@
           },
           body: JSON.stringify(data),
         })
-          .then((response) => response.json())
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error("Network response was not ok");
+            }
+            return response.json();
+          })
           .then((data) => {
             if (data.success) {
               status.style.color = "#8fffbd";
-              status.textContent = "👑 ثبت موفقیت‌آمیز! در حال انتقال ...";
+              status.textContent = "� ثبت موفقیت‌آمیز! در حال انتقال ...";
               setTimeout(() => {
                 window.location.href = "/";
               }, 1050);
             } else {
               status.style.color = "#ffb3b3";
-              status.textContent =
-                data.error || data.msg || "خطایی رخ داده است.";
+              status.textContent = data.error || data.msg || "خطایی رخ داده است.";
             }
           })
           .catch((err) => {
+            console.error("Error:", err);
             status.style.color = "#ffb3b3";
             status.textContent = "خطا در ارتباط با سرور.";
           })
@@ -260,6 +432,18 @@
             btn.disabled = false;
           });
       });
+    
+      // Add some UX improvements for checkboxes
+      document.querySelectorAll('.checkbox-item label').forEach(label => {
+        label.addEventListener('click', (e) => {
+          // Add visual feedback when clicking labels
+          e.currentTarget.parentElement.style.transform = 'scale(0.98)';
+          setTimeout(() => {
+            e.currentTarget.parentElement.style.transform = 'scale(1)';
+          }, 100);
+        });
+      });
     </script>
+    
   </body>
 </html>
