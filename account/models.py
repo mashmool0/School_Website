@@ -97,8 +97,6 @@ class StudentProfile(models.Model):
         verbose_name="تاریخ تولد", blank=True, null=True)
     birth_date = models.CharField(
         max_length=30, verbose_name="تاریخ تولد اولیه", blank=True, null=True)
-    user_birthday_date = models.CharField(
-        max_length=20, blank=True, null=True, verbose_name="تاریخ تولد (رشته)")
     section = models.CharField(
         max_length=30, verbose_name="مقطع تحصیلی", blank=True, null=True, choices=SECTION)
     grade = models.CharField(
